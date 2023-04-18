@@ -1,0 +1,820 @@
+签到:
+  - stamina infinite on
+无限体力: 
+  - stamina infinite on
+无限体力off: 
+  - stamina infinite off
+Q无限充能:
+  - energy infinite on
+q无限充能:
+  - energy infinite on
+Q无限充能off:
+  - energy infinite off
+q无限充能off:
+  - energy infinite off
+玩家无敌:
+  - wudi global avatar on
+玩家无敌off:
+  - wudi global avatar off
+怪物无敌:
+  - wudi global monster on
+怪物无敌off:
+  - wudi global monster off
+解锁命座:
+  - talent unlock all
+解锁命之座:
+  - talent unlock all
+90:
+  - break 6
+  - skill all 10
+  - talent unlock all
+  - level 90
+无锋剑:
+  - equip add 11101 90 6 5
+银剑:
+  - equip add 11201 90 6 5
+冷刃:
+  - equip add 11301 90 6 5
+黎明神剑:
+  - equip add 11302 90 6 5
+旅行剑:
+  - equip add 11303 90 6 5
+暗铁剑:
+  - equip add 11304 90 6 5
+吃虎鱼刀:
+  - equip add 11305 90 6 5
+飞天御剑:
+  - equip add 11306 90 6 5
+西风剑:
+  - equip add 11401 90 6 5
+笛剑:
+  - equip add 11402 90 6 5
+祭礼剑:
+  - equip add 11403 90 6 5
+宗室长剑:
+  - equip add 11404 90 6 5
+匣里龙吟:
+  - equip add 11405 90 6 5
+试作斩岩:
+  - equip add 11406 90 6 5
+铁蜂刺:
+  - equip add 11407 90 6 5
+黑岩长剑:
+  - equip add 11408 90 6 5
+黑剑:
+  - equip add 11409 90 6 5
+暗巷闪光:
+  - equip add 11410 90 6 5
+降临之剑:
+  - equip add 11412 90 6 5
+腐殖之剑:
+  - equip add 11413 90 6 5
+天目影打刀:
+  - equip add 11414 90 6 5
+辰砂之纺锤:
+  - equip add 11415 90 6 5
+笼钓瓶一心:
+  - equip add 11416 90 6 5
+原木刀:
+  - equip add 11417 90 6 5
+西福斯的月光:
+  - equip add 11418 90 6 5
+一心传名刀:
+  - equip add 11421 90 6 5
+东花坊时雨:
+  - equip add 11422 90 6 5
+风鹰剑:
+  - equip add 11501 90 6 5
+天空之刃:
+  - equip add 11502 90 6 5
+苍古自由之誓:
+  - equip add 11503 90 6 5
+斫峰之刃:
+  - equip add 11504 90 6 5
+磐岩结绿:
+  - equip add 11505 90 6 5
+雾切之回光:
+  - equip add 11509 90 6 5
+波乱月白经津:
+  - equip add 11510 90 6 5
+圣显之钥:
+  - equip add 11511 90 6 5
+裁叶萃光:
+  - equip add 11512 90 6 5
+训练大剑:
+  - equip add 12101 90 6 5
+佣兵重剑:
+  - equip add 12201 90 6 5
+铁影阔剑:
+  - equip add 12301 90 6 5
+沐浴龙血的剑:
+  - equip add 12302 90 6 5
+白铁大剑:
+  - equip add 12303 90 6 5
+石英大剑:
+  - equip add 12304 90 6 5
+以理服人:
+  - equip add 12305 90 6 5
+飞天大御剑:
+  - equip add 12306 90 6 5
+西风大剑:
+  - equip add 12401 90 6 5
+钟剑:
+  - equip add 12402 90 6 5
+祭礼大剑:
+  - equip add 12403 90 6 5
+宗室大剑:
+  - equip add 12404 90 6 5
+雨裁:
+  - equip add 12405 90 6 5
+试作古华:
+  - equip add 12406 90 6 5
+白影剑:
+  - equip add 12407 90 6 5
+黑岩斩刀:
+  - equip add 12408 90 6 5
+螭骨剑:
+  - equip add 12409 90 6 5
+千岩古剑:
+  - equip add 12410 90 6 5
+雪葬的星银:
+  - equip add 12411 90 6 5
+衔珠海皇:
+  - equip add 12412 90 6 5
+桂木斩长正:
+  - equip add 12414 90 6 5
+玛海菈的水色:
+  - equip add 12415 90 6 5
+恶王丸:
+  - equip add 12416 90 6 5
+森林王器:
+  - equip add 12417 90 6 5
+饰铁之花:
+  - equip add 12418 90 6 5
+天空之傲:
+  - equip add 12501 90 6 5
+狼的末路:
+  - equip add 12502 90 6 5
+松籁响起之时:
+  - equip add 12503 90 6 5
+无工之剑:
+  - equip add 12504 90 6 5
+赤角石溃杵:
+  - equip add 12510 90 6 5
+苇海信标:
+  - equip add 12511 90 6 5
+新手长枪:
+  - equip add 13101 90 6 5
+铁尖枪:
+  - equip add 13201 90 6 5
+白缨枪:
+  - equip add 13301 90 6 5
+钺矛:
+  - equip add 13302 90 6 5
+黑缨枪:
+  - equip add 13303 90 6 5
+旗杆:
+  - equip add 13304 90 6 5
+匣里灭辰:
+  - equip add 13401 90 6 5
+试作星镰:
+  - equip add 13402 90 6 5
+流月针:
+  - equip add 13403 90 6 5
+黑岩刺枪:
+  - equip add 13404 90 6 5
+决斗之枪:
+  - equip add 13405 90 6 5
+千岩长枪:
+  - equip add 13406 90 6 5
+西风长枪:
+  - equip add 13407 90 6 5
+宗室猎枪:
+  - equip add 13408 90 6 5
+龙脊长枪:
+  - equip add 13409 90 6 5
+喜多院十文字:
+  - equip add 13414 90 6 5
+渔获:
+  - equip add 13415 90 6 5
+断浪长鳍:
+  - equip add 13416 90 6 5
+贯月矢:
+  - equip add 13417 90 6 5
+风信之锋:
+  - equip add 13419 90 6 5
+护摩之杖:
+  - equip add 13501 90 6 5
+天空之脊:
+  - equip add 13502 90 6 5
+贯虹之槊:
+  - equip add 13504 90 6 5
+和璞鸢:
+  - equip add 13505 90 6 5
+息灾:
+  - equip add 13507 90 6 5
+薙草之稻光:
+  - equip add 13509 90 6 5
+赤沙之杖:
+  - equip add 13511 90 6 5
+学徒笔记:
+  - equip add 14101 90 6 5
+口袋魔导书:
+  - equip add 14201 90 6 5
+魔导绪论:
+  - equip add 14301 90 6 5
+讨龙英杰谭:
+  - equip add 14302 90 6 5
+异世界行记:
+  - equip add 14303 90 6 5
+翡玉法球:
+  - equip add 14304 90 6 5
+甲级宝珏:
+  - equip add 14305 90 6 5
+琥珀玥:
+  - equip add 14306 90 6 5
+西风秘典:
+  - equip add 14401 90 6 5
+流浪乐章:
+  - equip add 14402 90 6 5
+祭礼残章:
+  - equip add 14403 90 6 5
+宗室秘法录:
+  - equip add 14404 90 6 5
+匣里日月:
+  - equip add 14405 90 6 5
+试作金珀:
+  - equip add 14406 90 6 5
+万国诸海图谱:
+  - equip add 14407 90 6 5
+黑岩绯玉:
+  - equip add 14408 90 6 5
+昭心:
+  - equip add 14409 90 6 5
+暗巷的酒与诗:
+  - equip add 14410 90 6 5
+忍冬之果:
+  - equip add 14412 90 6 5
+嘟嘟可故事集:
+  - equip add 14413 90 6 5
+白辰之环:
+  - equip add 14414 90 6 5
+证誓之明瞳:
+  - equip add 14415 90 6 5
+流浪的晚星:
+  - equip add 14416 90 6 5
+盈满之实:
+  - equip add 14417 90 6 5
+天空之卷:
+  - equip add 14501 90 6 5
+四风原典:
+  - equip add 14502 90 6 5
+尘世之锁:
+  - equip add 14504 90 6 5
+不灭月华:
+  - equip add 14506 90 6 5
+神乐之真意:
+  - equip add 14509 90 6 5
+千夜浮梦:
+  - equip add 14511 90 6 5
+图莱杜拉的回忆:
+  - equip add 14512 90 6 5
+猎弓:
+  - equip add 15101 90 6 5
+历练的猎弓:
+  - equip add 15201 90 6 5
+鸦羽弓:
+  - equip add 15301 90 6 5
+神射手之誓:
+  - equip add 15302 90 6 5
+反曲弓:
+  - equip add 15303 90 6 5
+弹弓:
+  - equip add 15304 90 6 5
+信使:
+  - equip add 15305 90 6 5
+黑檀弓:
+  - equip add 15306 90 6 5
+西风猎弓:
+  - equip add 15401 90 6 5
+绝弦:
+  - equip add 15402 90 6 5
+祭礼弓:
+  - equip add 15403 90 6 5
+宗室长弓:
+  - equip add 15404 90 6 5
+弓藏:
+  - equip add 15405 90 6 5
+试作澹月:
+  - equip add 15406 90 6 5
+钢轮弓:
+  - equip add 15407 90 6 5
+黑岩战弓:
+  - equip add 15408 90 6 5
+苍翠猎弓:
+  - equip add 15409 90 6 5
+暗巷猎手:
+  - equip add 15410 90 6 5
+落霞:
+  - equip add 15411 90 6 5
+幽夜华尔兹:
+  - equip add 15412 90 6 5
+风花之颂:
+  - equip add 15413 90 6 5
+破魔之弓:
+  - equip add 15414 90 6 5
+掠食者:
+  - equip add 15415 90 6 5
+曚云之月:
+  - equip add 15416 90 6 5
+王下近侍:
+  - equip add 15417 90 6 5
+竭泽:
+  - equip add 15418 90 6 5
+天空之翼:
+  - equip add 15501 90 6 5
+阿莫斯之弓:
+  - equip add 15502 90 6 5
+终末嗟叹之诗:
+  - equip add 15503 90 6 5
+冬极白星:
+  - equip add 15507 90 6 5
+若水:
+  - equip add 15508 90 6 5
+飞雷之弦振:
+  - equip add 15509 90 6 5
+猎人之径:
+  - equip add 15511 90 6 5
+5星武器:
+  - equip add 1151 90 6 5
+  - equip add 1251 90 6 5
+  - equip add 1351 90 6 5
+  - equip add 1451 90 6 5
+  - equip add 1551 90 6 5
+  - equip add 1152 90 6 5
+  - equip add 1252 90 6 5
+  - equip add 1352 90 6 5
+  - equip add 1452 90 6 5
+  - equip add 1552 90 6 5
+  - equip add 1153 90 6 5
+  - equip add 1253 90 6 5
+  - equip add 1553 90 6 5
+  - equip add 1154 90 6 5
+  - equip add 1254 90 6 5
+  - equip add 1354 90 6 5
+  - equip add 1454 90 6 5
+  - equip add 1155 90 6 5
+  - equip add 1355 90 6 5
+  - equip add 1456 90 6 5
+  - equip add 1357 90 6 5
+  - equip add 1557 90 6 5
+  - equip add 1558 90 6 5
+  - equip add 1159 90 6 5
+  - equip add 1359 90 6 5
+  - equip add 1459 90 6 5
+  - equip add 1559 90 6 5
+  - equip add 11510 90 6 5
+  - equip add 12510 90 6 5
+  - equip add 11511 90 6 5
+  - equip add 12511 90 6 5
+  - equip add 13511 90 6 5
+  - equip add 14511 90 6 5
+  - equip add 15511 90 6 5
+  - equip add 11512 90 6 5
+  - equip add 14512 90 6 5
+五星武器:
+  - equip add 1151 90 6 5
+  - equip add 1251 90 6 5
+  - equip add 1351 90 6 5
+  - equip add 1451 90 6 5
+  - equip add 1551 90 6 5
+  - equip add 1152 90 6 5
+  - equip add 1252 90 6 5
+  - equip add 1352 90 6 5
+  - equip add 1452 90 6 5
+  - equip add 1552 90 6 5
+  - equip add 1153 90 6 5
+  - equip add 1253 90 6 5
+  - equip add 1553 90 6 5
+  - equip add 1154 90 6 5
+  - equip add 1254 90 6 5
+  - equip add 1354 90 6 5
+  - equip add 1454 90 6 5
+  - equip add 1155 90 6 5
+  - equip add 1355 90 6 5
+  - equip add 1456 90 6 5
+  - equip add 1357 90 6 5
+  - equip add 1557 90 6 5
+  - equip add 1558 90 6 5
+  - equip add 1159 90 6 5
+  - equip add 1359 90 6 5
+  - equip add 1459 90 6 5
+  - equip add 1559 90 6 5
+  - equip add 11510 90 6 5
+  - equip add 12510 90 6 5
+  - equip add 11511 90 6 5
+  - equip add 12511 90 6 5
+  - equip add 13511 90 6 5
+  - equip add 14511 90 6 5
+  - equip add 15511 90 6 5
+  - equip add 11512 90 6 5
+  - equip add 14512 90 6 5
+四星武器:
+  - equip add 1432 90 6 5
+  - equip add 1141 90 6 5
+  - equip add 1241 90 6 5
+  - equip add 1341 90 6 5
+  - equip add 1441 90 6 5
+  - equip add 1541 90 6 5
+  - equip add 1142 90 6 5
+  - equip add 1242 90 6 5
+  - equip add 1342 90 6 5
+  - equip add 1442 90 6 5
+  - equip add 1542 90 6 5
+  - equip add 1143 90 6 5
+  - equip add 1243 90 6 5
+  - equip add 1343 90 6 5
+  - equip add 1443 90 6 5
+  - equip add 1543 90 6 5
+  - equip add 1144 90 6 5
+  - equip add 1244 90 6 5
+  - equip add 1344 90 6 5
+  - equip add 1444 90 6 5
+  - equip add 1544 90 6 5
+  - equip add 1145 90 6 5
+  - equip add 1245 90 6 5
+  - equip add 1345 90 6 5
+  - equip add 1445 90 6 5
+  - equip add 1545 90 6 5
+  - equip add 1146 90 6 5
+  - equip add 1246 90 6 5
+  - equip add 1346 90 6 5
+  - equip add 1446 90 6 5
+  - equip add 1546 90 6 5
+  - equip add 1147 90 6 5
+  - equip add 1247 90 6 5
+  - equip add 1347 90 6 5
+  - equip add 1447 90 6 5
+  - equip add 1547 90 6 5
+  - equip add 1148 90 6 5
+  - equip add 1248 90 6 5
+  - equip add 1348 90 6 5
+  - equip add 1448 90 6 5
+  - equip add 1548 90 6 5
+  - equip add 1149 90 6 5
+  - equip add 1249 90 6 5
+  - equip add 1349 90 6 5
+  - equip add 1449 90 6 5
+  - equip add 1549 90 6 5
+  - equip add 11410 90 6 5
+  - equip add 12410 90 6 5
+  - equip add 14410 90 6 5
+  - equip add 15410 90 6 5
+  - equip add 12411 90 6 5
+  - equip add 15411 90 6 5
+  - equip add 11412 90 6 5
+  - equip add 12412 90 6 5
+  - equip add 14412 90 6 5
+  - equip add 15412 90 6 5
+  - equip add 11413 90 6 5
+  - equip add 14413 90 6 5
+  - equip add 15413 90 6 5
+  - equip add 11414 90 6 5
+  - equip add 12414 90 6 5
+  - equip add 13414 90 6 5
+  - equip add 14414 90 6 5
+  - equip add 15414 90 6 5
+  - equip add 11415 90 6 5
+  - equip add 12415 90 6 5
+  - equip add 13415 90 6 5
+  - equip add 14415 90 6 5
+  - equip add 15415 90 6 5
+  - equip add 11416 90 6 5
+  - equip add 12416 90 6 5
+  - equip add 13416 90 6 5
+  - equip add 14416 90 6 5
+  - equip add 15416 90 6 5
+  - equip add 11417 90 6 5
+  - equip add 12417 90 6 5
+  - equip add 13417 90 6 5
+  - equip add 14417 90 6 5
+  - equip add 15417 90 6 5
+  - equip add 11418 90 6 5
+  - equip add 12418 90 6 5
+  - equip add 15418 90 6 5
+  - equip add 11419 90 6 5
+  - equip add 13419 90 6 5
+  - equip add 11420 90 6 5
+  - equip add 11421 90 6 5
+  - equip add 11422 90 6 5
+4星武器:
+  - equip add 1432 90 6 5
+  - equip add 1141 90 6 5
+  - equip add 1241 90 6 5
+  - equip add 1341 90 6 5
+  - equip add 1441 90 6 5
+  - equip add 1541 90 6 5
+  - equip add 1142 90 6 5
+  - equip add 1242 90 6 5
+  - equip add 1342 90 6 5
+  - equip add 1442 90 6 5
+  - equip add 1542 90 6 5
+  - equip add 1143 90 6 5
+  - equip add 1243 90 6 5
+  - equip add 1343 90 6 5
+  - equip add 1443 90 6 5
+  - equip add 1543 90 6 5
+  - equip add 1144 90 6 5
+  - equip add 1244 90 6 5
+  - equip add 1344 90 6 5
+  - equip add 1444 90 6 5
+  - equip add 1544 90 6 5
+  - equip add 1145 90 6 5
+  - equip add 1245 90 6 5
+  - equip add 1345 90 6 5
+  - equip add 1445 90 6 5
+  - equip add 1545 90 6 5
+  - equip add 1146 90 6 5
+  - equip add 1246 90 6 5
+  - equip add 1346 90 6 5
+  - equip add 1446 90 6 5
+  - equip add 1546 90 6 5
+  - equip add 1147 90 6 5
+  - equip add 1247 90 6 5
+  - equip add 1347 90 6 5
+  - equip add 1447 90 6 5
+  - equip add 1547 90 6 5
+  - equip add 1148 90 6 5
+  - equip add 1248 90 6 5
+  - equip add 1348 90 6 5
+  - equip add 1448 90 6 5
+  - equip add 1548 90 6 5
+  - equip add 1149 90 6 5
+  - equip add 1249 90 6 5
+  - equip add 1349 90 6 5
+  - equip add 1449 90 6 5
+  - equip add 1549 90 6 5
+  - equip add 11410 90 6 5
+  - equip add 12410 90 6 5
+  - equip add 14410 90 6 5
+  - equip add 15410 90 6 5
+  - equip add 12411 90 6 5
+  - equip add 15411 90 6 5
+  - equip add 11412 90 6 5
+  - equip add 12412 90 6 5
+  - equip add 14412 90 6 5
+  - equip add 15412 90 6 5
+  - equip add 11413 90 6 5
+  - equip add 14413 90 6 5
+  - equip add 15413 90 6 5
+  - equip add 11414 90 6 5
+  - equip add 12414 90 6 5
+  - equip add 13414 90 6 5
+  - equip add 14414 90 6 5
+  - equip add 15414 90 6 5
+  - equip add 11415 90 6 5
+  - equip add 12415 90 6 5
+  - equip add 13415 90 6 5
+  - equip add 14415 90 6 5
+  - equip add 15415 90 6 5
+  - equip add 11416 90 6 5
+  - equip add 12416 90 6 5
+  - equip add 13416 90 6 5
+  - equip add 14416 90 6 5
+  - equip add 15416 90 6 5
+  - equip add 11417 90 6 5
+  - equip add 12417 90 6 5
+  - equip add 13417 90 6 5
+  - equip add 14417 90 6 5
+  - equip add 15417 90 6 5
+  - equip add 11418 90 6 5
+  - equip add 12418 90 6 5
+  - equip add 15418 90 6 5
+  - equip add 11419 90 6 5
+  - equip add 13419 90 6 5
+  - equip add 11420 90 6 5
+  - equip add 11421 90 6 5
+  - equip add 11422 90 6 5
+全角色:
+  - avatar add 10000002
+  - avatar add 10000003
+  - avatar add 10000005
+  - avatar add 10000006
+  - avatar add 10000007
+  - avatar add 10000014
+  - avatar add 10000015
+  - avatar add 10000016
+  - avatar add 10000020
+  - avatar add 10000021
+  - avatar add 10000022
+  - avatar add 10000023
+  - avatar add 10000024
+  - avatar add 10000025
+  - avatar add 10000026
+  - avatar add 10000027
+  - avatar add 10000029
+  - avatar add 10000030
+  - avatar add 10000031
+  - avatar add 10000032
+  - avatar add 10000033
+  - avatar add 10000034
+  - avatar add 10000035
+  - avatar add 10000036
+  - avatar add 10000037
+  - avatar add 10000038
+  - avatar add 10000039
+  - avatar add 10000041
+  - avatar add 10000042
+  - avatar add 10000043
+  - avatar add 10000044
+  - avatar add 10000045
+  - avatar add 10000046
+  - avatar add 10000047
+  - avatar add 10000048
+  - avatar add 10000049
+  - avatar add 10000050
+  - avatar add 10000051
+  - avatar add 10000052
+  - avatar add 10000053
+  - avatar add 10000054
+  - avatar add 10000055
+  - avatar add 10000056
+  - avatar add 10000057
+  - avatar add 10000058
+  - avatar add 10000059
+  - avatar add 10000060
+  - avatar add 10000062
+  - avatar add 10000063
+  - avatar add 10000064
+  - avatar add 10000065
+  - avatar add 10000066
+  - avatar add 10000067
+  - avatar add 10000068
+  - avatar add 10000069
+  - avatar add 10000070
+  - avatar add 10000071
+  - avatar add 10000072
+  - avatar add 10000073
+  - avatar add 10000074
+
+神里绫华: 
+  - avatar add 10000002
+琴: 
+  - avatar add 10000003
+空: 
+  - avatar add 10000005
+丽莎: 
+  - avatar add 10000006
+荧: 
+  - avatar add 10000007
+芭芭拉: 
+  - avatar add 10000014
+凯亚: 
+  - avatar add 10000015
+迪卢克: 
+  - avatar add 10000016
+雷泽: 
+  - avatar add 10000020
+安柏: 
+  - avatar add 10000021
+温迪: 
+  - avatar add 10000022
+香菱: 
+  - avatar add 10000023
+北斗: 
+  - avatar add 10000024
+行秋: 
+  - avatar add 10000025
+魈: 
+  - avatar add 10000026
+凝光: 
+  - avatar add 10000027
+可莉: 
+  - avatar add 10000029
+钟离: 
+  - avatar add 10000030
+菲谢尔: 
+  - avatar add 10000031
+班尼特: 
+  - avatar add 10000032
+达达利亚: 
+  - avatar add 10000033
+诺艾尔: 
+  - avatar add 10000034
+七七: 
+  - avatar add 10000035
+重云: 
+  - avatar add 10000036
+甘雨: 
+  - avatar add 10000037
+阿贝多: 
+  - avatar add 10000038
+迪奥娜: 
+  - avatar add 10000039
+莫娜: 
+  - avatar add 10000041
+刻晴: 
+  - avatar add 10000042
+砂糖: 
+  - avatar add 10000043
+辛焱: 
+  - avatar add 10000044
+罗莎莉亚: 
+  - avatar add 10000045
+胡桃: 
+  - avatar add 10000046
+枫原万叶: 
+  - avatar add 10000047
+烟绯: 
+  - avatar add 10000048
+宵宫: 
+  - avatar add 10000049
+托马: 
+  - avatar add 10000050
+优菈: 
+  - avatar add 10000051
+雷电将军: 
+  - avatar add 10000052
+早柚: 
+  - avatar add 10000053
+珊瑚宫心海: 
+  - avatar add 10000054
+五郎: 
+  - avatar add 10000055
+九条裟罗: 
+  - avatar add 10000056
+荒泷一斗: 
+  - avatar add 10000057
+八重神子: 
+  - avatar add 10000058
+鹿野院平藏: 
+  - avatar add 10000059
+夜兰: 
+  - avatar add 10000060
+埃洛伊: 
+  - avatar add 10000062
+申鹤: 
+  - avatar add 10000063
+云堇: 
+  - avatar add 10000064
+久岐忍: 
+  - avatar add 10000065
+神里绫人: 
+  - avatar add 10000066
+柯莱: 
+  - avatar add 10000067
+多莉: 
+  - avatar add 10000068
+提纳里: 
+  - avatar add 10000069
+妮露: 
+  - avatar add 10000070
+赛诺: 
+  - avatar add 10000071
+坎蒂丝: 
+  - avatar add 10000072
+纳西妲: 
+  - avatar add 10000073
+莱依拉: 
+  - avatar add 10000074
+解锁神像:
+  - quest finish 30302
+  - quest finish 30303
+  - quest finish 30304
+  - quest finish 30305
+  - quest finish 30306
+  - quest finish 30307
+  - quest finish 30308
+  - quest finish 30309
+  - quest finish 30310
+  - quest finish 30311
+  - quest finish 30312
+  - quest finish 30313
+  - quest finish 30314
+  - quest finish 30315
+  - quest finish 30316
+  - quest finish 30317
+  - quest finish 30318
+  - quest finish 30319
+  - quest finish 30320
+  - quest finish 30321
+  - quest finish 30322
+  - quest finish 30323
+  - quest finish 30224
+  - quest finish 30325
+  - quest finish 30326
+  - quest finish 30327
+解锁锚点:
+  - point 3 all
+结晶:
+  - mcoin 99999
+原石:
+  - hcoin 99999
+摩拉:
+  - scoin 99999
+洞天宝钱:
+  - home_coin 99999
+浓缩:
+  - item add 220007 20
+hp:
+  - revive
