@@ -72,8 +72,10 @@ export async function getuid(e = {}) {
   const cfg = config[scenes].uid;
   let uid = cfg.find((item) => Object.keys(item)[0] === uuid);
   if (uid === undefined) {
-    await this.reply([segment.at(e.user_id), `\n请先绑定UID\n格式：绑定UID@zyy\n示例：绑定10002`, segment.at(e.user_id), `\n\n温馨提示，你只有一次绑定次数，请确认你的UID再进行绑定`]);
-    return;
+    setTimeout(() => {
+      e.reply([segment.at(e.user_id), `请绑定UID\n格式：绑定+你的uid 随后艾特你自己\n温馨提示：每位玩家仅拥有1次绑定机会\nBot会自动去除消息中的空格、字母、符号，UID正确即不用担心会绑定错误`]);
+    }, 500);
+    uid = undefined;
   } else {
     uid = Object.values(uid)[0];
   }

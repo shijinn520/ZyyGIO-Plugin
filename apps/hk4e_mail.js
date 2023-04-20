@@ -27,25 +27,31 @@ export class hk4e extends plugin {
         let result = null;
                 
         const { mode } = await getmode(e);
+        const { uid } = await getuid(e);
         if (mode === false || mode === undefined) {
             console.log(`重试请求已停止，因为GM的状态为 ${mode}。`);
             return;
-        }
+        } else if (uid === undefined) {
+            console.log(`此用户未绑定UID，已停止重试`);
+            return;
+          }
         
-        while (retries < maxRetries) {
+          while (retries < maxRetries) {
             try {
-                disposition = await makeRequest();
-                if (disposition) {
-                    result = disposition;
-                    break;
-                }
+              disposition = await makeRequest();
+              if (disposition) {
+                result = disposition;
+                break;
+              }
             } catch (error) {
-                console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
-                e.reply([segment.at(e.user_id), `请求失败->正在重试->(${retries + 1} / ${maxRetries})`]);
+              console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
+              e.reply(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
             }
-                    
             retries++;
-        }
+            if (retries === maxRetries) {
+              e.reply([segment.at(e.user_id), '请求全部失败，请检查你的在线状态、UID是否正确']);
+            }
+          }
         
 
         if (disposition) {
@@ -76,7 +82,7 @@ export class hk4e extends plugin {
                 e.reply([segment.at(e.user_id), `\n失败 -> 邮件日期设置错误，请修改[expire_time]`]);
             }
             else {
-                e.reply([segment.at(e.user_id), `未知事件请把反馈以下内容`,disposition]);
+                e.reply([segment.at(e.user_id), `\n失败 -> 请把此内容反馈给作者\n反馈内容：`,disposition]);
             }
         }
 

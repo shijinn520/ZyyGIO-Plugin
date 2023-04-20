@@ -24,33 +24,39 @@ export class hk4e extends plugin {
     let retries = 0;
     let disposition;
     let result = null;
-            
+
     const { mode } = await getmode(e);
+    const { uid } = await getuid(e);
     if (mode === false || mode === undefined) {
       console.log(`重试请求已停止，因为GM的状态为 ${mode}。`);
-        return;
+      return;
+    } else if (uid === undefined) {
+      console.log(`此用户未绑定UID，已停止重试`);
+      return;
     }
-    
+
     while (retries < maxRetries) {
-        try {
-            disposition = await makeRequest();
-            if (disposition) {
-                result = disposition;
-                break;
-            }
-        } catch (error) {
-            console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
-            e.reply([segment.at(e.user_id), `请求失败->正在重试->(${retries + 1} / ${maxRetries})`]);
+      try {
+        disposition = await makeRequest();
+        if (disposition) {
+          result = disposition;
+          break;
         }
-                
-        retries++;
+      } catch (error) {
+        console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
+        e.reply(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
+      }
+      retries++;
+      if (retries === maxRetries) {
+        e.reply([segment.at(e.user_id), '请求全部失败，请检查你的在线状态、UID是否正确']);
+      }
     }
     
-  
+
     async function makeRequest() {
       const { ip, port, region, sign, ticketping } = await getserver(e)
       const { mode } = await getmode(e)
-      const { value} = await getScenes(e)
+      const { value } = await getScenes(e)
 
       if (mode === true) {
         const data = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/data.yaml', 'utf8'));
@@ -78,98 +84,104 @@ export class hk4e extends plugin {
             },
             timeout: 1000
           };
+          console.log(options)
           const responses = [];
           const sendRequest = (item) => {
-            const encodedItem = item;
-            const handleResponse = (res) => {
-              res.setEncoding('utf8');
+            setTimeout(() => {
+              const encodedItem = item;
+              const handleResponse = (res) => {
+                res.setEncoding('utf8');
 
-              let rawData = [];
-              res.on('data', (chunk) => {
-                rawData.push(Buffer.from(chunk));
-              });
+                let rawData = [];
+                res.on('data', (chunk) => {
+                  rawData.push(Buffer.from(chunk));
+                });
 
-              res.on('end', () => {
-                console.log(`完整响应主体: ${rawData}`);
-                try {
-                  const disposition = JSON.parse(Buffer.concat(rawData).toString('utf-8'))
-                  const retcode = disposition.retcode
-                  if (retcode === 0) {
-                    const datamsg = disposition.data.msg;
-                    responses.push(`执行成功：${datamsg}  ->  ${uid}`);
-                  }
-                  else if (retcode === -1) {
-                    const datamsg = disposition.data.msg;
-                    const dataret = disposition.data.retmsg;
-                    responses.push(`执行失败：${datamsg}  ->  ${uid}\n失败原因：${dataret}`);
-                  }
-                  else if (retcode === 4) {
-                    responses.push(`又不在线，再发我顺着网线打死你！╭(╯^╰)╮`);
-                  }
-                  else if (retcode === 1003) {
-                    responses.push(`执行失败，服务器验证签名错误`);
-                  }
-                  else if (retcode === 1010) {
-                    responses.push(`执行失败，服务器区服不匹配`);
-                  }
-                  if (command === newmsg) {
-                    console.log(responses)
-                    e.reply([segment.at(e.user_id), `\n${responses}`]);
-                    return
-                  }
-                  if (responses.length === command.length) {
-                    let responseStr = '';
-                    for (let i = 0; i < responses.length; i++) {
-                      responseStr += responses[i];
-                      if (i !== responses.length - 1) {
-                        responseStr += '\n\n';
-                      }
+                res.on('end', () => {
+                  console.log(`完整响应主体: ${rawData}`);
+                  try {
+                    const disposition = JSON.parse(Buffer.concat(rawData).toString('utf-8'))
+                    const retcode = disposition.retcode
+                    if (retcode === 0) {
+                      const datamsg = disposition.data.msg;
+                      responses.push(`成功：${datamsg}  ->  ${uid}`);
                     }
-                    console.log(responseStr)
-                    e.reply([segment.at(e.user_id), `\n`, responseStr]);
-                  }   else {
+                    else if (retcode === -1) {
+                      const datamsg = disposition.data.msg;
+                      const dataret = disposition.data.retmsg;
+                      responses.push(`失败：${datamsg}  ->  ${uid}\n原因：${dataret}`);
+                    }
+                    else if (retcode === 4) {
+                      responses.push(`又不在线，再发我顺着网线打死你！╭(╯^╰)╮`);
+                    }
+                    else if (retcode === 1003) {
+                      responses.push(`失败，服务器验证签名错误`);
+                    }
+                    else if (retcode === 1010) {
+                      responses.push(`失败，服务器区服不匹配`);
+                    }
+                    else {
+                      responses.push([`失败 -> 请把此内容反馈给作者\n反馈内容：`, disposition]);
+                    }
+                    if (command === newmsg) {
+                      console.log(responses)
+                      e.reply([segment.at(e.user_id), `\n${responses}`]);
+                      return
+                    }
+                    if (responses.length === command.length) {
+                      let responseStr = '';
+                      for (let i = 0; i < responses.length; i++) {
+                        responseStr += responses[i];
+                        if (i !== responses.length - 1) {
+                          responseStr += '\n\n';
+                        }
+                      }
+                      console.log(responseStr)
+                      e.reply([segment.at(e.user_id), `\n`, responseStr]);
+                    } else {
+                      return
+                    }
+                    console.log(responses)
+                    // ======================================================
+                    resolve(disposition)
                     return
+                  } catch (error) {
+                    reject(`解析响应数据时出错：${error.message}`);
                   }
-                  console.log(responses)
-                  // ======================================================
-                  resolve(disposition)
-                  return
-                } catch (error) {
-                  reject(`解析响应数据时出错：${error.message}`);
-                }
 
+                });
+              };
+
+              const signingkey = {
+                cmd: '1116',
+                uid: uid,
+                region: region,
+                msg: encodedItem,
+                ticket: ticketping
+              };
+              console.log(signingkey)
+              const sortedParams = Object.keys(signingkey)
+                .sort()
+                .map(key => `${key}=${signingkey[key]}`)
+                .join('&');
+              const signStr = sortedParams + sign;
+              console.log(signStr)
+              const newsign = `&sign=` + crypto.createHash('sha256').update(signStr).digest('hex')
+
+              options.path = `/api?cmd=1116&uid=${uid}&region=${region}&msg=${encodeURIComponent(encodedItem)}&ticket=${ticketping}${newsign}`
+
+
+
+              const req = http.request(options, handleResponse);
+              req.setTimeout(1000, () => {
+                req.abort();
               });
-            };
-
-            const signingkey = {
-              cmd: '1116',
-              uid: uid,
-              region: region,
-              msg: encodedItem,
-              ticket: ticketping
-            };
-            console.log(signingkey)
-            const sortedParams = Object.keys(signingkey)
-              .sort()
-              .map(key => `${key}=${signingkey[key]}`)
-              .join('&');
-            const signStr = sortedParams + sign;
-            console.log(signStr)
-            const newsign = `&sign=` + crypto.createHash('sha256').update(signStr).digest('hex')
-
-            options.path = `/api?cmd=1116&uid=${uid}&region=${region}&msg=${encodeURIComponent(encodedItem)}&ticket=${ticketping}${newsign}`
-
-
-
-            const req = http.request(options, handleResponse);
-            req.setTimeout(1000, () => {
-              req.abort();
-            });
-            req.on('error', (e) => {
-              console.error(`problem with request: ${e.message}`);
-              reject(new Error(`哇!连接超时啦!o(╥﹏╥)o`))
-            });
-            req.end();
+              req.on('error', (e) => {
+                console.error(`problem with request: ${e.message}`);
+                reject(new Error(`哇!连接超时啦!o(╥﹏╥)o`))
+              });
+              req.end();
+            }, 500);
           };
           if (Array.isArray(command)) {
             command.forEach(sendRequest);
@@ -187,27 +199,30 @@ export class hk4e extends plugin {
     let retries = 0;
     let disposition;
     let result = null;
-            
+
     const { mode } = await getmode(e);
     if (mode === false || mode === undefined) {
-        console.log(`重试请求已停止，因为GM的状态为 ${mode}。`);
-        return;
+      console.log(`重试请求已停止，因为GM的状态为 ${mode}。`);
+      return;
     }
-    
+
     while (retries < maxRetries) {
-        try {
-            disposition = await makeRequest();
-            if (disposition) {
-                result = disposition;
-                break;
-            }
-        } catch (error) {
-            console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
-            e.reply([segment.at(e.user_id), `请求失败->正在重试->(${retries + 1} / ${maxRetries})`]);
+      try {
+        disposition = await makeRequest();
+        if (disposition) {
+          result = disposition;
+          break;
         }
-                
-        retries++;
+      } catch (error) {
+        console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
+        e.reply(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
+      }
+      retries++;
+      if (retries === maxRetries) {
+        e.reply([segment.at(e.user_id), '在线玩家获取失败，请检查服务器设置']);
+      }
     }
+
     if (disposition) {
       if (disposition.retcode === 0) {
         const ALL = disposition.parsed.data.online_player_num;
@@ -215,14 +230,17 @@ export class hk4e extends plugin {
         const Android = disposition.parsed.data.platform_player_num.ANDROID;
         const IOS = disposition.parsed.data.platform_player_num.IOS;
         e.reply(`server状态：√\n在线人数：${ALL}\nPC：${PC}\nAndroid：${Android}\nIOS：${IOS}`);
-      } else if (disposition.retcode === 1003) {
+      }
+      else if (disposition.retcode === 1003) {
         e.reply([segment.at(e.user_id), `执行失败，服务器验证签名错误`]);
       }
+      else if (retcode === 1010) {
+        e.reply([segment.at(e.user_id), `\n失败 -> 服务器区服错误`]);
+      }
+      else {
+        e.reply([segment.at(e.user_id), `\n失败 -> 请把此内容反馈给作者\n反馈内容：`,disposition]);
+      }
     }
-    else {
-      return
-    }
-
     async function makeRequest() {
       const { ip, port, region, sign, ticketping } = await getserver(e);
       const { mode } = await getmode(e);
