@@ -27,6 +27,16 @@ export const admin = [
         reg: '^(服务器|当前服务器|切换服务器)(.*)$',
         fnc: '切换服务器',
         permission: 'master'
+    },
+    {
+        reg: '^(全局拉黑|拉黑)(.*)$',
+        fnc: '全局拉黑',
+        permission: 'master'
+    },
+    {
+        reg: '^(解除拉黑|删除拉黑)(.*)$',
+        fnc: '解除拉黑',
+        permission: 'master'
     }
 ]
 

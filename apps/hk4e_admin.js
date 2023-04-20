@@ -239,4 +239,35 @@ export class hk4e extends plugin {
       }
     }
   }
+
+
+  async  全局拉黑(e) {
+    const other = Yaml.parse(fs.readFileSync(process.cwd() +'/config/config/other.yaml', 'utf8'));
+    const at = Number(e.message.find(item => item.type === 'at').qq);
+    
+    if (other.blackQQ.includes(at)) {
+      e.reply([segment.at(e.user_id), `玩家 `,segment.at(at),` 已经被拉黑`]);
+    } else {
+      other.blackQQ.push(at);
+      const yamlString = Yaml.stringify(other);
+      fs.writeFileSync(process.cwd() + '/config/config/other.yaml', yamlString.replace(/-\s*"(\d+)"\s*/g, "- $1"), 'utf8');
+      e.reply([segment.at(e.user_id), `拉黑玩家 `,segment.at(at),` 成功`]);
+    }
+  }  
+
+  async 解除拉黑(e) {
+    const other = Yaml.parse(fs.readFileSync(process.cwd() +'/config/config/other.yaml', 'utf8'));
+    const at = e.message.find(item => item.type === 'at').qq;
+  
+    const index = other.blackQQ.indexOf(Number(at));
+    if (index === -1) {
+      e.reply([segment.at(e.user_id), `玩家 `,segment.at(at),` 没有被拉黑`]);
+    } else {
+      other.blackQQ.splice(index, 1);
+      const yamlString = Yaml.stringify(other);
+      fs.writeFileSync(process.cwd() + '/config/config/other.yaml', yamlString.replace(/-\s*"(\d+)"\s*/g, "- $1"), 'utf8');
+      e.reply([segment.at(e.user_id), `玩家 `,segment.at(at),` 已经解除拉黑`]);
+    }
+  }
+     
 }
