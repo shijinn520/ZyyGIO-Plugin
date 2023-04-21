@@ -108,11 +108,19 @@ export class hk4e extends plugin {
                     }
                     else if (retcode === -1) {
                       const datamsg = disposition.data.msg;
-                      const dataret = disposition.data.retmsg;
-                      responses.push(`失败：${datamsg}  ->  ${uid}\n原因：${dataret}`);
+                      const dataret = disposition.data.retmsg.replace(/can't find gm command/g, '找不到GM命令').replace(/command/g, '命令').replace(/execute fails/g, '执行失败').replace(/invalid param/g, '无效参数');
+                      responses.push(`失败：${datamsg} -> ${uid}\n原因：${dataret}`);
                     }
                     else if (retcode === 4) {
                       responses.push(`又不在线，再发我顺着网线打死你！╭(╯^╰)╮`);
+                    }
+                    else if (retcode === 617) {
+                      const datamsg = disposition.data.msg;
+                      responses.push(`失败：${datamsg}  ->  ${uid}\n原因：数量超出限制`);
+                    }
+                    else if (retcode === 627) {
+                      const datamsg = disposition.data.msg;
+                      responses.push(`失败：${datamsg}  ->  ${uid}\n原因：数量超出限制`);
                     }
                     else if (retcode === 1003) {
                       responses.push(`失败，服务器验证签名错误`);
@@ -121,7 +129,7 @@ export class hk4e extends plugin {
                       responses.push(`失败，服务器区服不匹配`);
                     }
                     else {
-                      responses.push([`失败 -> 请把此内容反馈给作者\n反馈内容：`, disposition]);
+                      responses.push(`失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${disposition.data.msg} retcode:${disposition.retcode}`)
                     }
                     if (command === newmsg) {
                       console.log(responses)

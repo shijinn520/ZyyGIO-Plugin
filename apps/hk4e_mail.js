@@ -60,6 +60,9 @@ export class hk4e extends plugin {
                 const dispositionuid = parseInt(disposition.data.uid)
                 e.reply([segment.at(e.user_id), `\n成功 -> ${dispositionuid}`]);
             }
+            else if (retcode === -1) {
+                e.reply([segment.at(e.user_id), `\n失败 -> 发生未知错误，请检查指令`]);
+            }
             else if (retcode === 617) {
                 e.reply([segment.at(e.user_id), `\n失败 -> 邮件物品超过限制`]);
             }
@@ -82,7 +85,7 @@ export class hk4e extends plugin {
                 e.reply([segment.at(e.user_id), `\n失败 -> 邮件日期设置错误，请修改[expire_time]`]);
             }
             else {
-                e.reply([segment.at(e.user_id), `\n失败 -> 请把此内容反馈给作者\n反馈内容：`,disposition]);
+                e.reply([segment.at(e.user_id), `\n失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${disposition.msg} retcode:${disposition.retcode}`]);
             }
         }
 
