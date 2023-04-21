@@ -1,7 +1,7 @@
 import fs from 'fs'
 import Yaml from 'yaml'
 import moment from 'moment'
-let _path = process.cwd() + '/plugins/Zyy-GM-plugin'
+let _path = process.cwd() + '/plugins/Zyy-GM-plugin/resources/hk4e'
 
 // 处理使用环境
 export async function getScenes(e = {}) {
@@ -23,7 +23,7 @@ export async function getScenes(e = {}) {
 
 // 处理GM状态  
 export async function getmode(e = {}) {
-  const config = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/config.yaml', 'utf8'));
+  const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'));
   const { value, scenes } = await getScenes(e)
   let mode
   const modeEnabled = config[scenes]?.mode;
@@ -36,13 +36,13 @@ export async function getmode(e = {}) {
     mode = undefined;
     e.reply(`此${value}的GM插件未初始化`);
   }
-  return { mode};
+  return { mode };
 }
 
 
 // 处理server
 export async function getserver(e = {}) {
-  const config = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/config.yaml', 'utf8'));
+  const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'));
   const { scenes } = await getScenes(e)
 
   const ip = config[scenes]?.server.ip;
@@ -66,7 +66,7 @@ export async function getserver(e = {}) {
 
 // 处理uid
 export async function getuid(e = {}) {
-  const config = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/config.yaml', 'utf8'));
+  const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'));
   const { scenes } = await getScenes(e)
   const uuid = e.user_id.toString();
   const cfg = config[scenes].uid;

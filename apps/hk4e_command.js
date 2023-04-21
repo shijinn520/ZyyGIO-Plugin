@@ -5,7 +5,7 @@ import fs from 'fs'
 import crypto from 'crypto'
 import { commands } from './rule.js'
 import { getmode, getserver, getuid, getScenes } from './index.js'
-let _path = process.cwd() + '/plugins/Zyy-GM-plugin'
+let _path = process.cwd() + '/plugins/Zyy-GM-plugin/resources/hk4e'
 
 export class hk4e extends plugin {
   constructor() {
@@ -51,7 +51,7 @@ export class hk4e extends plugin {
         e.reply([segment.at(e.user_id), '请求全部失败，请检查你的在线状态、UID是否正确']);
       }
     }
-    
+
 
     async function makeRequest() {
       const { ip, port, region, sign, ticketping } = await getserver(e)
@@ -59,7 +59,7 @@ export class hk4e extends plugin {
       const { value } = await getScenes(e)
 
       if (mode === true) {
-        const data = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/data.yaml', 'utf8'));
+        const data = Yaml.parse(fs.readFileSync(_path + '/data.yaml', 'utf8'));
         let command
         const newmsg = e.msg.slice(1)
         for (const key in data) {
@@ -238,7 +238,7 @@ export class hk4e extends plugin {
         e.reply([segment.at(e.user_id), `\n失败 -> 服务器区服错误`]);
       }
       else {
-        e.reply([segment.at(e.user_id), `\n失败 -> 请把此内容反馈给作者\n反馈内容：`,disposition]);
+        e.reply([segment.at(e.user_id), `\n失败 -> 请把此内容反馈给作者\n反馈内容：`, disposition]);
       }
     }
     async function makeRequest() {

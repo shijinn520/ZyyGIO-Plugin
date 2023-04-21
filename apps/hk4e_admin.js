@@ -1,10 +1,18 @@
 import plugin from '../../../lib/plugins/plugin.js'
+import puppeteerRender from '../resources/render.js'
 import fs from 'fs'
 import Yaml from 'yaml'
 import { admin } from './rule.js'
 import { getScenes, getmode } from './index.js'
 
-let _path = process.cwd() + '/plugins/Zyy-GM-plugin'
+let _path = process.cwd() + '/plugins/Zyy-GM-plugin/resources/hk4e'
+let _otherpath = process.cwd() + '/config/config/other.yaml'
+
+const helpPath = process.cwd() + `/plugins/Zyy-GM-plugin/resources/help`
+let helpList = [];
+if (fs.existsSync(helpPath + "/index.json")) {
+  helpList = JSON.parse(fs.readFileSync(helpPath + "/index.json", "utf8")) || [];
+}
 
 export class hk4e extends plugin {
   constructor() {
@@ -18,8 +26,8 @@ export class hk4e extends plugin {
   }
 
   async 开启GM(e) {
-    const config = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/config.yaml', 'utf8'));
-    const server = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/server.yaml', 'utf8'));
+    const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'));
+    const server = Yaml.parse(fs.readFileSync(_path + '/server.yaml', 'utf8'));
     const { value, scenes } = await getScenes(e)
     const modeEnabled = config[scenes]?.mode;
     if (modeEnabled === true) {
@@ -28,7 +36,7 @@ export class hk4e extends plugin {
     }
     if (modeEnabled === false) {
       config[scenes].mode = true;
-      fs.writeFileSync(_path + '/resources/hk4e/config.yaml', Yaml.stringify(config));
+      fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config));
       e.reply("GM当前状态：启用");
       return
     }
@@ -42,14 +50,14 @@ export class hk4e extends plugin {
           { [e.user_id]: '10002' }
         ]
       };
-      fs.writeFileSync(_path + '/resources/hk4e/config.yaml', Yaml.stringify(config));
-      e.reply([`初始化成功~\n当前环境：${value}\nID：${scenes}\nGM状态：启用\n超级管理为：`, segment.at(e.user_id), `\n\n温馨提示：\n普通玩家仅可绑定一次UID\nServer管理员无上限\n\n设置Server管理指令：\n(绑定管理|添加管理)`, segment.at(e.user_id), `\n\n仅超级管理可用~删除同理~`]);
+      fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config));
+      e.reply([`初始化成功~\n当前环境：${value}\nID：${scenes}\nGM状态：启用\n超级管理为：`, segment.at(e.user_id), `\n\n温馨提示：\n普通玩家仅可绑定一次UID\n管理员无上限\n\n设置管理员指令：\n(绑定管理|添加管理)`, segment.at(e.user_id), `\n\n仅超级管理可用~删除同理~`]);
     }
 
   }
 
   async 关闭GM(e) {
-    const config = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/config.yaml', 'utf8'));
+    const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'));
     const { value, scenes } = await getScenes(e)
     const modeEnabled = config[scenes]?.mode;
 
@@ -65,13 +73,13 @@ export class hk4e extends plugin {
 
     if (modeEnabled === true) {
       config[scenes].mode = false;
-      fs.writeFileSync(_path + '/resources/hk4e/config.yaml', Yaml.stringify(config));
+      fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config));
       e.reply("GM当前状态：关闭");
     }
   }
 
   async 绑定管理员(e) {
-    const config = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/config.yaml', 'utf8'));
+    const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'));
     const { value, scenes } = await getScenes(e)
     const modeEnabled = config[scenes]?.mode;
     const at = e.message.find(item => item.type === 'at').qq;
@@ -89,12 +97,12 @@ export class hk4e extends plugin {
       return;
     }
     adminList.push(at);
-    fs.writeFileSync(_path + '/resources/hk4e/config.yaml', Yaml.stringify(config));
+    fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config));
     e.reply([`管理员`, segment.at(at), ` 绑定成功！`]);
   }
 
   async 解绑管理员(e) {
-    const config = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/config.yaml', 'utf8'));
+    const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'));
     const { value, scenes } = await getScenes(e)
 
     const modeEnabled = config[scenes]?.mode;
@@ -113,14 +121,14 @@ export class hk4e extends plugin {
     const index = adminList.indexOf(at.toString());
     if (index !== -1) {
       adminList.splice(index, 1);
-      fs.writeFileSync(_path + '/resources/hk4e/config.yaml', Yaml.stringify(config));
+      fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config));
       e.reply(`解绑管理员成功！`);
     } else {
       e.reply([segment.at(at), `还不是管理员！`]);
     }
   }
   async 绑定UID(e) {
-    const config = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/config.yaml', 'utf8'));
+    const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'));
     const at = e.message.find(item => item.type === 'at').qq;
     const { scenes } = await getScenes(e)
     const { mode } = await getmode(e)
@@ -136,7 +144,7 @@ export class hk4e extends plugin {
             obj[at] = newmsg;
             config[scenes].uid = uidList;
             console.log(`已存在UID ${at}，更新绑定值为 ${newmsg}`);
-            fs.writeFileSync(_path + '/resources/hk4e/config.yaml', Yaml.stringify(config), 'utf8');
+            fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config), 'utf8');
             e.reply([segment.at(at), `绑定成功\n您的UID为：${newmsg}`]);
             return;
           }
@@ -146,7 +154,7 @@ export class hk4e extends plugin {
         newObj[at] = newmsg;
         uidList.push(newObj);
         config[scenes].uid = uidList;
-        fs.writeFileSync(_path + '/resources/hk4e/config.yaml', Yaml.stringify(config), 'utf8');
+        fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config), 'utf8');
         e.reply([segment.at(at), `绑定成功\n您的UID为：${newmsg}`]);
       } else {
         if (e.user_id.toString() !== at) {
@@ -165,15 +173,15 @@ export class hk4e extends plugin {
           newObj[at] = newmsg;
           uidList.push(newObj);
           config[scenes].uid = uidList;
-          fs.writeFileSync(_path + '/resources/hk4e/config.yaml', Yaml.stringify(config), 'utf8');
+          fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config), 'utf8');
           e.reply([segment.at(at), `绑定成功\n您的UID为：${newmsg}`]);
         }
       }
     }
   }
   async 切换服务器(e) {
-    const server = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/server.yaml', 'utf8'));
-    const config = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/config.yaml', 'utf8'));
+    const server = Yaml.parse(fs.readFileSync(_path + '/server.yaml', 'utf8'));
+    const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'));
     const { mode } = await getmode(e)
     const { scenes } = await getScenes(e)
 
@@ -200,7 +208,7 @@ export class hk4e extends plugin {
             result += "\n";
           }
         }
-        e.reply([`当前服务器：${servername}\n通过【切换服务器+序号】进行切换\n当前服务器列表：\n`, result])
+        e.reply([`当前服务器：${servername}\n通过【切换服务器+ID】进行切换\n当前服务器列表：\n`, result])
       } else {
         const serverId = e.msg.match(/\d+/)[0];
         let newserver;
@@ -214,7 +222,7 @@ export class hk4e extends plugin {
 
         if (newserver) {
           config[scenes].server = newserver;
-          fs.writeFileSync(_path + '/resources/hk4e/config.yaml', Yaml.stringify(config));
+          fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config));
           const topkeys = Object.getOwnPropertyNames(server);
           topkeys.sort(function (a, b) {
             return server[a].order - server[b].order;
@@ -241,33 +249,56 @@ export class hk4e extends plugin {
   }
 
 
-  async  全局拉黑(e) {
-    const other = Yaml.parse(fs.readFileSync(process.cwd() +'/config/config/other.yaml', 'utf8'));
+  async 全局拉黑(e) {
+    const other = Yaml.parse(fs.readFileSync(_otherpath, 'utf8'));
     const at = Number(e.message.find(item => item.type === 'at').qq);
-    
+
     if (other.blackQQ.includes(at)) {
-      e.reply([segment.at(e.user_id), `玩家 `,segment.at(at),` 已经被拉黑`]);
+      e.reply([segment.at(e.user_id), `玩家 `, segment.at(at), ` 已经被拉黑`]);
     } else {
       other.blackQQ.push(at);
       const yamlString = Yaml.stringify(other);
-      fs.writeFileSync(process.cwd() + '/config/config/other.yaml', yamlString.replace(/-\s*"(\d+)"\s*/g, "- $1"), 'utf8');
-      e.reply([segment.at(e.user_id), `拉黑玩家 `,segment.at(at),` 成功`]);
+      fs.writeFileSync(_otherpath, yamlString.replace(/-\s*"(\d+)"\s*/g, "- $1"), 'utf8');
+      e.reply([segment.at(e.user_id), `拉黑玩家 `, segment.at(at), ` 成功`]);
     }
-  }  
+  }
 
   async 解除拉黑(e) {
-    const other = Yaml.parse(fs.readFileSync(process.cwd() +'/config/config/other.yaml', 'utf8'));
+    const other = Yaml.parse(fs.readFileSync(_otherpath, 'utf8'));
     const at = e.message.find(item => item.type === 'at').qq;
-  
+
     const index = other.blackQQ.indexOf(Number(at));
     if (index === -1) {
-      e.reply([segment.at(e.user_id), `玩家 `,segment.at(at),` 没有被拉黑`]);
+      e.reply([segment.at(e.user_id), `玩家 `, segment.at(at), ` 没有被拉黑`]);
     } else {
       other.blackQQ.splice(index, 1);
       const yamlString = Yaml.stringify(other);
-      fs.writeFileSync(process.cwd() + '/config/config/other.yaml', yamlString.replace(/-\s*"(\d+)"\s*/g, "- $1"), 'utf8');
-      e.reply([segment.at(e.user_id), `玩家 `,segment.at(at),` 已经解除拉黑`]);
+      fs.writeFileSync(_otherpath, yamlString.replace(/-\s*"(\d+)"\s*/g, "- $1"), 'utf8');
+      e.reply([segment.at(e.user_id), `玩家 `, segment.at(at), ` 已经解除拉黑`]);
     }
   }
-     
+
+
+
+ async 小钰帮助(e) {
+    if (helpList.length === 0) {
+      e.reply("叫你乱改！文档都给你删了！");
+      return;
+    }
+
+    let helpGroup = [];
+    helpList.forEach((group) => {
+      if (group.auth && group.auth === "master" && !this.e.isMaster) {
+        return;
+      }
+
+      helpGroup.push(group);
+    });
+
+    // 调用render方法进行截图操作
+    let res = await puppeteerRender.render('help', 'index', { helpGroup });
+    
+    // 将结果发送给QQ机器人API并返回
+    return e.reply(res);
+  }
 }

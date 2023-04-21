@@ -6,7 +6,7 @@ import crypto from 'crypto'
 import { mail } from './rule.js';
 import { getmode, getserver, getuid } from './index.js'
 
-let _path = process.cwd() + '/plugins/Zyy-GM-plugin'
+let _path = process.cwd() + '/plugins/Zyy-GM-plugin/resources/hk4e'
 
 export class hk4e extends plugin {
     constructor() {
@@ -100,7 +100,7 @@ export class hk4e extends plugin {
                 const source_type = '0';
                 const item_limit_type = '1';
                 const is_collectible = "false";
-                const mail = Yaml.parse(fs.readFileSync(_path + '/resources/hk4e/mail.yaml', 'utf8'));
+                const mail = Yaml.parse(fs.readFileSync(_path + '/mail.yaml', 'utf8'));
                 const msg = e.msg.split(' ');
                 let title = msg[1];
                 let content = msg[2];

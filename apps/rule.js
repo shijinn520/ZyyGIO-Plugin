@@ -37,7 +37,11 @@ export const admin = [
         reg: '^(解除拉黑|删除拉黑)(.*)$',
         fnc: '解除拉黑',
         permission: 'master'
-    }
+    },
+    {
+        reg: '^(帮助|help)(.*)$',
+        fnc: '小钰帮助',
+    },
 ]
 
 export const commands = [
