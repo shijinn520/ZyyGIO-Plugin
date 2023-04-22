@@ -37,11 +37,7 @@ export const admin = [
         reg: '^(解除拉黑|删除拉黑)(.*)$',
         fnc: '解除拉黑',
         permission: 'master'
-    },
-    {
-        reg: '^(帮助|help)(.*)$',
-        fnc: '小钰帮助',
-    },
+    }
 ]
 
 export const commands = [
@@ -59,5 +55,43 @@ export const mail = [
     {
         reg: '^邮件(.*)$',
         fnc: '邮件'
+    },
+    {
+        reg: '^全服邮件$',
+        fnc: '全服邮件',
+        permission: 'master'
+    },
+    {
+        reg: '^添加UID(.*)$',
+        fnc: '添加UID',
+        permission: 'master'
     }
 ]
+
+export const players = [
+    {
+        reg: '^(帮助|help)(.*)$',
+        fnc: '小钰帮助',
+    },
+    {
+        reg: '^玩家列表$',
+        fnc: '玩家列表',
+    },
+    {
+        reg: '^(指令别名|命令别名)$',
+        fnc: '命令别名',
+    },
+    {
+        reg: '^邮件别名$',
+        fnc: '邮件别名',
+    },
+    {
+        reg: '^添加命令(.*)$',
+        fnc: '添加命令别名',
+    },
+    {
+        reg: '^添加邮件(.*)$',
+        fnc: '添加邮件别名',
+    },
+]
+

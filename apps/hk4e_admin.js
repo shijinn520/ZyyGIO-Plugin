@@ -1,5 +1,4 @@
 import plugin from '../../../lib/plugins/plugin.js'
-import puppeteerRender from '../resources/render.js'
 import fs from 'fs'
 import Yaml from 'yaml'
 import { admin } from './rule.js'
@@ -276,29 +275,5 @@ export class hk4e extends plugin {
       fs.writeFileSync(_otherpath, yamlString.replace(/-\s*"(\d+)"\s*/g, "- $1"), 'utf8');
       e.reply([segment.at(e.user_id), `玩家 `, segment.at(at), ` 已经解除拉黑`]);
     }
-  }
-
-
-
- async 小钰帮助(e) {
-    if (helpList.length === 0) {
-      e.reply("叫你乱改！文档都给你删了！");
-      return;
-    }
-
-    let helpGroup = [];
-    helpList.forEach((group) => {
-      if (group.auth && group.auth === "master" && !this.e.isMaster) {
-        return;
-      }
-
-      helpGroup.push(group);
-    });
-
-    // 调用render方法进行截图操作
-    let res = await puppeteerRender.render('help', 'index', { helpGroup });
-    
-    // 将结果发送给QQ机器人API并返回
-    return e.reply(res);
   }
 }
