@@ -29,7 +29,6 @@ export async function getmode(e = {}) {
   const modeEnabled = config[scenes]?.mode;
   if (modeEnabled === true) {
     mode = true;
-    return;
   }
   if (modeEnabled === false) {
     mode = false;
