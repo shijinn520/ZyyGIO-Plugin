@@ -1,4 +1,5 @@
 此插件可以让你在QQ群、QQ频道执行hk4e的GM指令
+
 理论来说，`Miao-Yunzai`应该也适配此插件，如果你只需要在QQ群使用，可以帮我测试。
 
 # 安装TRSS-Yunzai
