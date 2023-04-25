@@ -101,7 +101,6 @@ export class hk4e extends plugin {
         const { scenes } = await getScenes(e)
         if (mode === true) {
             if (!e.msg.includes('/')) {
-                console.log('格式错误');
                 e.reply([segment.at(e.user_id), '格式错误\n正确的格式为：添加命令 别名名称 /指令1 /指令2\n示例：添加命令 货币 /mcoin 99 /hcoin 99']);
                 return;
             }
@@ -145,7 +144,6 @@ export class hk4e extends plugin {
             const emsg = e.msg.split(' ');
 
             if (emsg.length !== 5) {
-                console.log('格式错误');
                 e.reply([segment.at(e.user_id), '格式错误\n正确的格式为：\n添加邮件 别名名称 邮件标题 邮件内容 物品ID:数量,物品ID:数量\n\n示例：\n添加邮件 测试邮件 标题 内容 201:1,105003:1']);
                 return;
             }

@@ -180,9 +180,6 @@ export class hk4e extends plugin {
                     };
 
                     const req = http.request(options, (res) => {
-                        console.log(options);
-                        console.log(`响应状态码: ${res.statusCode}`);
-                        console.log(`响应头: ${JSON.stringify(res.headers)}`);
                         res.setEncoding('utf8');
                         let rawData = '';
                         res.on('data', (chunk) => {

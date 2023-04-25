@@ -84,7 +84,6 @@ export class hk4e extends plugin {
             },
             timeout: 1000
           };
-          console.log(options)
           const responses = [];
           const sendRequest = (item) => {
             setTimeout(() => {
@@ -132,7 +131,6 @@ export class hk4e extends plugin {
                       responses.push(`失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${disposition.data.msg} retcode:${disposition.retcode}`)
                     }
                     if (command === newmsg) {
-                      console.log(responses)
                       e.reply([segment.at(e.user_id), `\n${responses}`]);
                       return
                     }
@@ -144,12 +142,10 @@ export class hk4e extends plugin {
                           responseStr += '\n\n';
                         }
                       }
-                      console.log(responseStr)
                       e.reply([segment.at(e.user_id), `\n`, responseStr]);
                     } else {
                       return
                     }
-                    console.log(responses)
                     // ======================================================
                     resolve(disposition)
                     return
@@ -167,13 +163,11 @@ export class hk4e extends plugin {
                 msg: encodedItem,
                 ticket: ticketping
               };
-              console.log(signingkey)
               const sortedParams = Object.keys(signingkey)
                 .sort()
                 .map(key => `${key}=${signingkey[key]}`)
                 .join('&');
               const signStr = sortedParams + sign;
-              console.log(signStr)
               const newsign = `&sign=` + crypto.createHash('sha256').update(signStr).digest('hex')
 
               options.path = `/api?cmd=1116&uid=${uid}&region=${region}&msg=${encodeURIComponent(encodedItem)}&ticket=${ticketping}${newsign}`
@@ -274,7 +268,6 @@ export class hk4e extends plugin {
             },
             timeout: 1000
           };
-          console.log(options)
           const req = http.request(options, (res) => {
             let rawData = '';
             res.on('data', (chunk) => {
@@ -285,7 +278,6 @@ export class hk4e extends plugin {
               console.log(`完整响应主体: ${rawData}`);
               const parsed = JSON.parse(rawData);
               const retcode = parsed.retcode
-              console.log(parsed)
               const disposition = {
                 parsed,
                 retcode,
