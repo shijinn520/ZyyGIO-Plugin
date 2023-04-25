@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <link rel="preload" href="{{_res_path}}/common/font/tttgbnumber.ttf" as="font" crossorigin>
+  <link rel="stylesheet" type="text/css" href="{{_res_path}}/players/index.css" />
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="info_box">
+      <div class="title">{{title}}</div>
+      <br>
+      <div class="help-authors">{{author}}</div>
+    </div>
+
+    <div class="cont-box">
+      {{each keys key}}
+      <div class="td">
+        <strong>{{key}}</strong>
+        <span>{{values[$index]}}</span>
+      </div>
+      {{/each}}
+    </div>
+    <div class="help-author">Created By Yunzai-Bot<span>3.0.1</span> & Zyy-GM-Plugin<span>0.0.2</span></div>
+</body>
+
+</html>
