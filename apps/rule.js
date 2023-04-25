@@ -37,6 +37,11 @@ export const admin = [
         reg: '^(解除拉黑|删除拉黑)(.*)$',
         fnc: '解除拉黑',
         permission: 'master'
+    },
+    {
+        reg: '^(小钰更新|GM更新|更新GM|更新gm|gm更新)$',
+        fnc: '插件更新',
+        permission: 'master'
     }
 ]
 
