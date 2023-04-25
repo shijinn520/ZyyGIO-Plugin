@@ -29,12 +29,17 @@ export async function getmode(e = {}) {
   const modeEnabled = config[scenes]?.mode;
   if (modeEnabled === true) {
     mode = true;
-  } else if (modeEnabled === false) {
+    return;
+  }
+  if (modeEnabled === false) {
     mode = false;
     e.reply(`GM在此${value}已经关闭`);
-  } else if (modeEnabled === undefined) {
+    return;
+  }
+  if (modeEnabled === undefined) {
     mode = undefined;
     e.reply(`此${value}的GM插件未初始化`);
+    return;
   }
   return { mode };
 }
