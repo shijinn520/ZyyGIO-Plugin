@@ -595,68 +595,72 @@ q无限充能off:
   - equip add 11420 90 6 5
   - equip add 11421 90 6 5
   - equip add 11422 90 6 5
-全角色:
-  - avatar add 10000002
-  - avatar add 10000003
-  - avatar add 10000005
-  - avatar add 10000006
-  - avatar add 10000007
-  - avatar add 10000014
-  - avatar add 10000015
-  - avatar add 10000016
-  - avatar add 10000020
-  - avatar add 10000021
-  - avatar add 10000022
-  - avatar add 10000023
-  - avatar add 10000024
-  - avatar add 10000025
-  - avatar add 10000026
-  - avatar add 10000027
-  - avatar add 10000029
-  - avatar add 10000030
-  - avatar add 10000031
-  - avatar add 10000032
-  - avatar add 10000033
-  - avatar add 10000034
-  - avatar add 10000035
-  - avatar add 10000036
-  - avatar add 10000037
-  - avatar add 10000038
-  - avatar add 10000039
-  - avatar add 10000041
-  - avatar add 10000042
-  - avatar add 10000043
-  - avatar add 10000044
-  - avatar add 10000045
-  - avatar add 10000046
-  - avatar add 10000047
-  - avatar add 10000048
-  - avatar add 10000049
-  - avatar add 10000050
-  - avatar add 10000051
-  - avatar add 10000052
-  - avatar add 10000053
-  - avatar add 10000054
-  - avatar add 10000055
-  - avatar add 10000056
-  - avatar add 10000057
-  - avatar add 10000058
-  - avatar add 10000059
-  - avatar add 10000060
-  - avatar add 10000062
-  - avatar add 10000063
-  - avatar add 10000064
-  - avatar add 10000065
-  - avatar add 10000066
-  - avatar add 10000067
-  - avatar add 10000068
-  - avatar add 10000069
-  - avatar add 10000070
-  - avatar add 10000071
-  - avatar add 10000072
-  - avatar add 10000073
-  - avatar add 10000074
-
+杀怪:
+  - kill monster all
+五香全家桶:
+  - monster 20040101 1 100
+  - monster 20040201 1 100
+  - monster 20040301 1 100
+  - monster 20040401 1 100
+  - monster 20040501 1 100
+  - monster 20040601 1 100
+  - monster 20040701 1 100
+q:
+  - energy infinite on
+Q:
+  - energy infinite on
+雷神专武:
+  - equip add 13509 90 6 5
+雾切:
+  - equip add 11509 90 6 5
+阿莫斯:
+  - equip add 15502 90 6 5
+大伟丘:
+  - monster 21011501 20 200
+狼王:
+  - monster 29020101 5 200
+巨蛇:
+  - monster 24010401 20 200
+雷鸟:
+  - monster 20070101 5 200
+好哥哥:
+  - monster 29030103 20 200
+肥陀:
+  - monster 29040101 2 200
+树脂:
+  - item add 220007 100
+好感:
+  - item add 105  99999
+火法:
+  - monster 22010102 10 200
+Q充能:
+  - energy infinite on
+水晶块:
+  - item add 101003 500
+白铁块:
+  - item add 101002 500
+雷神瞳:
+  - item add 107014 500
+草神瞳:
+  - item add 107017 500
+祝圣精华:
+  - item add 105003 5000
+草之印:
+  - item add 303 5200
+雷之印:
+  - item add 304 5200
+全部角色:
+  - item add avatar all
+式小将:
+  - item add 220045
+缥锦机关:
+  - item add 220074
+魔女:
+  - equip add 23361 1 15008 501241 6 501031 1 501201 1 501221 1
+  - equip add 23365 1 10002 501231 1 501241 1 501201 1 501221 6
+  - equip add 23362 1 10003 501031 1 501241 1 501221 1 501201 6
+  - equip add 23364 1 10001 501241 1 501031 1 501201 6 501221 1
+  - equip add 23363 1 30960 501031 1 501231 1 501241 6 501221 1
 神里绫华: 
   - avatar add 10000002
 琴: 
@@ -804,6 +808,7 @@ q无限充能off:
   - quest finish 30325
   - quest finish 30326
   - quest finish 30327
+  - quest finish 30322
 解锁锚点:
   - point 3 all
 结晶:
