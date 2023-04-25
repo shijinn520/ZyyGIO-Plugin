@@ -25,7 +25,7 @@ export class hk4e extends plugin {
         let retries = 0;
         let disposition;
         let result = null;
-                
+
         const { mode } = await getmode(e);
         const { uid } = await getuid(e);
         if (mode === false || mode === undefined) {
@@ -34,25 +34,25 @@ export class hk4e extends plugin {
         } else if (uid === undefined) {
             console.log(`此用户未绑定UID，已停止重试`);
             return;
-          }
-        
-          while (retries < maxRetries) {
+        }
+
+        while (retries < maxRetries) {
             try {
-              disposition = await makeRequest();
-              if (disposition) {
-                result = disposition;
-                break;
-              }
+                disposition = await makeRequest();
+                if (disposition) {
+                    result = disposition;
+                    break;
+                }
             } catch (error) {
-              console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
-              e.reply(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
+                console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
+                e.reply(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
             }
             retries++;
             if (retries === maxRetries) {
-              e.reply([segment.at(e.user_id), '请求全部失败，请检查你的在线状态、UID是否正确']);
+                e.reply([segment.at(e.user_id), '请求全部失败，请检查你的在线状态、UID是否正确']);
             }
-          }
-        
+        }
+
 
         if (disposition) {
             const retcode = disposition.retcode;

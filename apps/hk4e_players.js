@@ -9,7 +9,7 @@ let _path = process.cwd() + '/plugins/Zyy-GM-plugin/resources/hk4e'
 const helpPath = process.cwd() + `/plugins/Zyy-GM-plugin/resources/help`
 let helpList = [];
 if (fs.existsSync(helpPath + "/index.json")) {
-  helpList = JSON.parse(fs.readFileSync(helpPath + "/index.json", "utf8")) || [];
+    helpList = JSON.parse(fs.readFileSync(helpPath + "/index.json", "utf8")) || [];
 }
 
 export class hk4e extends plugin {
@@ -178,4 +178,11 @@ export class hk4e extends plugin {
 
         }
     }
+    async 用法(e) {
+        e.reply([segment.at(e.user_id), `使用说明：\n1.先绑定你的游戏UID\n示例：绑定10002@你自己\n\n2.使用指令\n可使用普通指令跟邮件，详情看帮助！`])
+    }
+    async 救命(e) {
+        e.reply([segment.at(e.user_id), `\n您好！\n我们已知悉您的问题，但我们的开发者可能过于忙碌，故可能无法第一时间告知您最佳解决方式。\n我们已经将您的问题记录并归档保存，您可能将在未来看到对此类问题的通用解决方式，请耐心等待。\n在此之前，您可以利用以下网站检索可能的解决方案:\n://www.baidu.com/\n警告:第三方网站可能包含未知的有害内容。您在第三方网站上做出任何的行为造成的损失，我们不负任何责任。\n希望能帮到您。\n\n祝好`])
+    }
+
 }

@@ -278,29 +278,29 @@ export class hk4e extends plugin {
     }
   }
 
- async 插件更新(e) {
-  
-  const _path = process.cwd() + '/plugins/Zyy-GM-plugin/'
-  if (!e.isMaster) {
-    e.reply("分支错误");
+  async 插件更新(e) {
+
+    const _path = process.cwd() + '/plugins/Zyy-GM-plugin/'
+    if (!e.isMaster) {
+      e.reply("分支错误");
+      return true;
+    }
+
+    let command = "git  pull";
+    e.reply("GM插件更新中...");
+
+    exec(command, { cwd: `${_path}` }, function (error, stdout) {
+      if (/Already up[ -]to[ -]date/.test(stdout)) {
+        e.reply("GM插件已经是最新版本...");
+        return true;
+      }
+      if (error) {
+        e.reply(`更新失败了呜呜呜\nError code: ${error.code}\n等会再试试吧`);
+        return true;
+      }
+      e.reply("更新完成！请发送 #重启 或者手动重启吧~");
+    });
+
     return true;
   }
-  
-  let command = "git  pull";
-  e.reply("GM插件更新中...");
-  
-  exec(command, { cwd: `${_path}` }, function (error, stdout) {
-    if (/Already up[ -]to[ -]date/.test(stdout)) {
-      e.reply("GM插件已经是最新版本...");
-      return true;
-    }
-    if (error) {
-      e.reply(`更新失败了呜呜呜\nError code: ${error.code}\n等会再试试吧`);
-      return true;
-    }
-    e.reply("更新完成！请发送 #重启 或者手动重启吧~");
-  });
-
-  return true;
-}
 }
