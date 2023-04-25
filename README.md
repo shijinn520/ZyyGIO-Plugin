@@ -14,7 +14,10 @@ Github:[TRSS-Yunzai](https://gitee.com/TimeRainStarSky/Yunzai)
 
 克隆仓库
 
-`暂时没有Gitee`
+Gitee：
+```
+git clone --depth 1 https://gitee.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugin
+```
 
 Github：
 ```
