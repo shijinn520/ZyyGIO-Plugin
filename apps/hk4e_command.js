@@ -19,7 +19,7 @@ export class hk4e extends plugin {
   }
 
   async GM命令(e) {
-    e.reply([segment.at(e.user_id), `请等待执行完毕，禁止重复输入！`]);
+    e.reply([segment.at(e.user_id), `正在处理...请稍后...`]);
     const maxRetries = 3;
     let retries = 0;
     let disposition;
@@ -44,11 +44,11 @@ export class hk4e extends plugin {
         }
       } catch (error) {
         console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
-        e.reply(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
+        console.error(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
       }
       retries++;
       if (retries === maxRetries) {
-        e.reply([segment.at(e.user_id), '请求全部失败，请检查你的在线状态、UID是否正确']);
+        e.reply([segment.at(e.user_id), '请求失败，请检查你的在线状态、UID是否正确']);
       }
     }
 
@@ -127,6 +127,9 @@ export class hk4e extends plugin {
                     else if (retcode === 1010) {
                       responses.push(`失败，服务器区服不匹配`);
                     }
+                    else if (retcode === 8002) {
+                      responses.push(`失败，传说钥匙超过限制`);
+                    }
                     else {
                       responses.push(`失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${disposition.data.msg} retcode:${disposition.retcode}`)
                     }
@@ -180,8 +183,7 @@ export class hk4e extends plugin {
               });
               req.on('error', (e) => {
                 console.error(`problem with request: ${e.message}`);
-                reject(new Error(`哇!连接超时啦!o(╥﹏╥)o`))
-                e.reply([segment.at(e.user_id),`与服务器的连接被意外中断，请稍后重试`])
+                reject(new Error(`哇!连接超时啦!o(╥﹏╥)o`))                
               });
               req.end();
             }, 500);
@@ -218,7 +220,7 @@ export class hk4e extends plugin {
         }
       } catch (error) {
         console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
-        e.reply(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
+        console.error(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
       }
       retries++;
       if (retries === maxRetries) {
@@ -293,7 +295,6 @@ export class hk4e extends plugin {
           req.on('error', (e) => {
             console.error(`请求错误: ${e.message}`);
             reject(new Error(`哇！服务器连接超时啦！o(╥﹏╥)o`));
-            e.reply([segment.at(e.user_id),`与服务器的连接被意外中断，请稍后重试`])
           });
           req.end();
         });

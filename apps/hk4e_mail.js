@@ -20,7 +20,7 @@ export class hk4e extends plugin {
     }
 
     async 邮件(e) {
-        e.reply([segment.at(e.user_id), `请等待执行完毕，禁止重复输入！`]);
+        e.reply([segment.at(e.user_id), `正在处理...请稍后...`]);
         const maxRetries = 3;
         let retries = 0;
         let disposition;
@@ -45,7 +45,7 @@ export class hk4e extends plugin {
                 }
             } catch (error) {
                 console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
-                e.reply(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
+                console.error(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
             }
             retries++;
             if (retries === maxRetries) {
@@ -202,7 +202,6 @@ export class hk4e extends plugin {
                     req.on('error', (e) => {
                         console.error(`请求错误: ${e.message}`);
                         reject(new Error(`哇!连接超时啦!o(╥﹏╥)o`));
-                        e.reply([segment.at(e.user_id),`与服务器的连接被意外中断，请稍后重试`])
                     });
                     req.end();
                 });
