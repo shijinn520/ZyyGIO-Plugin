@@ -58,8 +58,12 @@ git clone --depth 1 https://github.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugi
 
 关于别名这一块，在最开始的版本中是直接克隆仓库会自带了，现版本删除以防止更新发生频繁错误，需要自行手动填入。
 
-#### 以下是我提供的一些自定义配置
+#### 以下是我提供的一些自定义配置，点代码块右上角复制粘贴到对应的文件即可。
+
+如果是初次运行，你需要启动一次机器人让他自动生成文件
+
 <details><summary>data.yaml</summary>
+
 ```
 无限体力: 
   - stamina infinite on
@@ -903,10 +907,13 @@ Q充能:
   - item add 220007 20
 hp:
   - revive
+ 
 ```
+
 </details>
 
 <details><summary>mail.yaml</summary>
+
 ```
 新手礼包:
   title: 「新手礼包」
@@ -925,6 +932,7 @@ hp:
   content: 看，好看的衣服！
   item_list: 340000:1,340001:1,340002:1,340003:1,340004:1,340005:1,340006:1,340007:1,340008:1,340009:1
 ```
+
 </details>
 
 # 使用流程
