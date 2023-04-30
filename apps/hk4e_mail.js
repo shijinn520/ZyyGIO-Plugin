@@ -202,6 +202,7 @@ export class hk4e extends plugin {
                     req.on('error', (e) => {
                         console.error(`请求错误: ${e.message}`);
                         reject(new Error(`哇!连接超时啦!o(╥﹏╥)o`));
+                        e.reply([segment.at(e.user_id),`与服务器的连接被意外中断，请稍后重试`])
                     });
                     req.end();
                 });

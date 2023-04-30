@@ -8,11 +8,7 @@ import { exec } from "child_process";
 let _path = process.cwd() + '/plugins/Zyy-GM-plugin/resources/hk4e'
 let _otherpath = process.cwd() + '/config/config/other.yaml'
 
-const helpPath = process.cwd() + `/plugins/Zyy-GM-plugin/resources/help`
-let helpList = [];
-if (fs.existsSync(helpPath + "/index.json")) {
-  helpList = JSON.parse(fs.readFileSync(helpPath + "/index.json", "utf8")) || [];
-}
+
 
 export class hk4e extends plugin {
   constructor() {
