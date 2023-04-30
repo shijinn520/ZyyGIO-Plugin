@@ -9,7 +9,26 @@ Github:[TRSS-Yunzai](https://gitee.com/TimeRainStarSky/Yunzai)
 
 参考教程：[点击前往TRSS-Yunzai安装教程](https://rainkavik.com/archives/339/)
 
-一些注意事项：貌似如果想在频道使用，go-cqhttp的协议只能设置为`1:安卓协议`或者`6:aPad`，其他协议我已经测试了`2:Android Watch`和`3:MacOS`，都是不可接频道消息的。
+一些注意事项：貌似如果想在频道使用，go-cqhttp的协议只能设置为`1:安卓协议`或者`6:aPad`
+
+其他协议我已经测试了`2:Android Watch`和`3:MacOS`，都是不可接频道消息的。
+
+效果展示：
+
+在线玩家：
+
+![在线玩家示例](https://i.328888.xyz/2023/04/30/iKYK3N.png)
+
+GM指令：
+
+![别名指令示例](https://i.328888.xyz/2023/04/30/iKq4VU.png)
+![普通指令示例](https://i.328888.xyz/2023/04/30/iKqAbv.png)
+
+邮件：
+
+![邮件别名示例](https://i.328888.xyz/2023/04/30/iKYK3N.png)
+![普通指令示例](https://i.328888.xyz/2023/04/30/iKqUQy.png)
+
 # 安装插件
 
 克隆仓库
