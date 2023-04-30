@@ -24,8 +24,13 @@ export const admin = [
         fnc: '绑定UID',
     },
     {
-        reg: '^(服务器|当前服务器|切换服务器)(.*)$',
+        reg: '^(切换服务器)(.*)$',
         fnc: '切换服务器',
+        permission: 'master'
+    },
+    {
+        reg: '^服务器$',
+        fnc: '服务器列表',
         permission: 'master'
     },
     {

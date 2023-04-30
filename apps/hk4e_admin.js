@@ -179,6 +179,35 @@ export class hk4e extends plugin {
       }
     }
   }
+
+  async 服务器列表(e) {
+    const server = Yaml.parse(fs.readFileSync(_path + '/server.yaml', 'utf8'));
+    const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'));
+    const { scenes } = await getScenes(e)
+    const { mode } = await getmode(e)
+    const servername = config[scenes]?.server.name + '-' + config[scenes]?.server.version
+    if (mode === true) {
+      const topkeys = Object.getOwnPropertyNames(server);
+      topkeys.sort(function (a, b) {
+        return server[a].order - server[b].order;
+      });
+
+      let result = "";
+      for (let i = 0; i < topkeys.length; i++) {
+        const key = topkeys[i];
+        const id = server[key].id;
+        result += `${i + 1}: ${key}`;
+        if (id === config[scenes]?.server.id) {
+          result += " ✔️";
+        }
+        if (i < topkeys.length - 1) {
+          result += "\n";
+        }
+      }
+      e.reply([`当前服务器：${servername}\n通过【切换服务器+ID】进行切换\n当前服务器列表：\n`, result])
+    }
+  }
+
   async 切换服务器(e) {
     const server = Yaml.parse(fs.readFileSync(_path + '/server.yaml', 'utf8'));
     const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'));
@@ -186,11 +215,19 @@ export class hk4e extends plugin {
     const { scenes } = await getScenes(e)
 
     if (mode === true) {
-      const servername = config[scenes]?.server.name + '-' + config[scenes]?.server.version
-      if (e.msg === '当前服务器') {
-        e.reply(`当前绑定服务器：${servername}`)
-        return true
-      } else if (e.msg === '服务器') {
+      const serverId = e.msg.match(/\d+/)[0];
+      let newserver;
+
+      Object.keys(server).forEach(key => {
+        const item = server[key];
+        if (item.id === serverId) {
+          newserver = item;
+        }
+      });
+
+      if (newserver) {
+        config[scenes].server = newserver;
+        fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config));
         const topkeys = Object.getOwnPropertyNames(server);
         topkeys.sort(function (a, b) {
           return server[a].order - server[b].order;
@@ -208,42 +245,10 @@ export class hk4e extends plugin {
             result += "\n";
           }
         }
-        e.reply([`当前服务器：${servername}\n通过【切换服务器+ID】进行切换\n当前服务器列表：\n`, result])
+        const servername = config[scenes]?.server.name + '-' + config[scenes]?.server.version
+        e.reply([`当前服务器：${servername}\n通过【切换服务器+序号】进行切换\n当前服务器列表：\n`, result])
       } else {
-        const serverId = e.msg.match(/\d+/)[0];
-        let newserver;
-
-        Object.keys(server).forEach(key => {
-          const item = server[key];
-          if (item.id === serverId) {
-            newserver = item;
-          }
-        });
-
-        if (newserver) {
-          config[scenes].server = newserver;
-          fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config));
-          const topkeys = Object.getOwnPropertyNames(server);
-          topkeys.sort(function (a, b) {
-            return server[a].order - server[b].order;
-          });
-
-          let result = "";
-          for (let i = 0; i < topkeys.length; i++) {
-            const key = topkeys[i];
-            const id = server[key].id;
-            result += `${i + 1}: ${key}`;
-            if (id === config[scenes]?.server.id) {
-              result += " ✔️";
-            }
-            if (i < topkeys.length - 1) {
-              result += "\n";
-            }
-          }
-          e.reply([`当前服务器：${servername}\n通过【切换服务器+序号】进行切换\n当前服务器列表：\n`, result])
-        } else {
-          e.reply('服务器序号输入错误');
-        }
+        e.reply('服务器ID输入错误');
       }
     }
   }
@@ -279,7 +284,6 @@ export class hk4e extends plugin {
   }
 
   async 插件更新(e) {
-
     const _path = process.cwd() + '/plugins/Zyy-GM-plugin/'
     if (!e.isMaster) {
       e.reply("分支错误");
