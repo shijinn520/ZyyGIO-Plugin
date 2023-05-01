@@ -77,12 +77,18 @@ if (!fs.existsSync(_path + '/hk4e/server.yaml')) {
 export async function getScenes(e = {}) {
   let value;
   let scenes;
+
   if (e.message_type === 'group') {
-    value = 'QQ群';
-    scenes = e.group_id;
+    if (typeof e.member?.info?.group_id !== 'undefined') {
+      value = '频道-官方';
+      scenes = e.member.info.group_id;
+    } else {
+      value = 'QQ群';
+      scenes = e.group_id;
+    }
   } else if (e.message_type === 'guild') {
     value = '频道';
-    scenes = e.guild_id;
+    scenes = e.channel_id;
   } else if (e.message_type === 'private') {
     value = '私聊';
     scenes = e.user_id;

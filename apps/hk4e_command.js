@@ -19,182 +19,181 @@ export class hk4e extends plugin {
   }
 
   async GM命令(e) {
-    e.reply([segment.at(e.user_id), `正在处理...请稍后...`]);
-    const maxRetries = 3;
-    let retries = 0;
-    let disposition;
-    let result = null;
+    const { mode } = await getmode(e)
+    if (mode === true) {
+      e.reply([segment.at(e.user_id), `正在处理...请稍后...`]);
+      const maxRetries = 3;
+      let retries = 0;
+      let disposition;
+      let result = null;
 
-    const { mode } = await getmode(e);
-    const { uid } = await getuid(e);
-    if (mode === false || mode === undefined) {
-      console.log(`重试请求已停止，因为GM的状态为 ${mode}。`);
-      return;
-    } else if (uid === undefined) {
-      console.log(`此用户未绑定UID，已停止重试`);
-      return;
-    }
-
-    while (retries < maxRetries) {
-      try {
-        disposition = await makeRequest();
-        if (disposition) {
-          result = disposition;
-          break;
-        }
-      } catch (error) {
-        console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
-        console.error(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
+      const { mode } = await getmode(e);
+      const { uid } = await getuid(e);
+      if (mode === false || mode === undefined) {
+        console.log(`重试请求已停止，因为GM的状态为 ${mode}。`);
+        return;
+      } else if (uid === undefined) {
+        console.log(`此用户未绑定UID，已停止重试`);
+        return;
       }
-      retries++;
-      if (retries === maxRetries) {
-        e.reply([segment.at(e.user_id), '请求失败，请检查你的在线状态、UID是否正确']);
-      }
-    }
 
-
-    async function makeRequest() {
-      const { ip, port, region, sign, ticketping } = await getserver(e)
-      const { mode } = await getmode(e)
-      const { value } = await getScenes(e)
-
-      if (mode === true) {
-        const data = Yaml.parse(fs.readFileSync(_path + '/data.yaml', 'utf8'));
-        let command
-        const newmsg = e.msg.slice(1)
-        for (const key in data) {
-          if (key === newmsg) {
-            command = data[key];
-            command.length = data[key].length;
+      while (retries < maxRetries) {
+        try {
+          disposition = await makeRequest();
+          if (disposition) {
+            result = disposition;
             break;
           }
+        } catch (error) {
+          console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
+          console.error(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
         }
-        if (!command) {
-          command = newmsg;
+        retries++;
+        if (retries === maxRetries) {
+          e.reply([segment.at(e.user_id), '请求失败，请检查你的在线状态、UID是否正确']);
         }
-        const { uid } = await getuid(e)
-
-        return new Promise((resolve, reject) => {
-          const options = {
-            host: ip,
-            port: port,
-            method: 'GET',
-            headers: {
-              'Host': `${ip}:${port}`
-            },
-            timeout: 1000
-          };
-          const responses = [];
-          const sendRequest = (item) => {
-            setTimeout(() => {
-              const encodedItem = item;
-              const handleResponse = (res) => {
-                res.setEncoding('utf8');
-
-                let rawData = [];
-                res.on('data', (chunk) => {
-                  rawData.push(Buffer.from(chunk));
-                });
-
-                res.on('end', () => {
-                  console.log(`完整响应主体: ${rawData}`);
-                  try {
-                    const disposition = JSON.parse(Buffer.concat(rawData).toString('utf-8'))
-                    const retcode = disposition.retcode
-                    if (retcode === 0) {
-                      const datamsg = disposition.data.msg;
-                      responses.push(`成功：${datamsg}  ->  ${uid}`);
-                    }
-                    else if (retcode === -1) {
-                      const datamsg = disposition.data.msg;
-                      const dataret = disposition.data.retmsg.replace(/can't find gm command/g, '找不到GM命令').replace(/command/g, '命令').replace(/execute fails/g, '执行失败').replace(/invalid param/g, '无效参数');
-                      responses.push(`失败：${datamsg} -> ${uid}\n原因：${dataret}`);
-                    }
-                    else if (retcode === 4) {
-                      responses.push(`又不在线，再发我顺着网线打死你！╭(╯^╰)╮`);
-                    }
-                    else if (retcode === 617) {
-                      const datamsg = disposition.data.msg;
-                      responses.push(`失败：${datamsg}  ->  ${uid}\n原因：数量超出限制`);
-                    }
-                    else if (retcode === 627) {
-                      const datamsg = disposition.data.msg;
-                      responses.push(`失败：${datamsg}  ->  ${uid}\n原因：数量超出限制`);
-                    }
-                    else if (retcode === 1003) {
-                      responses.push(`失败，服务器验证签名错误`);
-                    }
-                    else if (retcode === 1010) {
-                      responses.push(`失败，服务器区服不匹配`);
-                    }
-                    else if (retcode === 8002) {
-                      responses.push(`失败，传说钥匙超过限制`);
-                    }
-                    else {
-                      responses.push(`失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${disposition.data.msg} retcode:${disposition.retcode}`)
-                    }
-                    if (command === newmsg) {
-                      e.reply([segment.at(e.user_id), `\n${responses}`]);
-                      return
-                    }
-                    if (responses.length === command.length) {
-                      let responseStr = '';
-                      for (let i = 0; i < responses.length; i++) {
-                        responseStr += responses[i];
-                        if (i !== responses.length - 1) {
-                          responseStr += '\n\n';
-                        }
-                      }
-                      e.reply([segment.at(e.user_id), `\n`, responseStr]);
-                    } else {
-                      return
-                    }
-                    // ======================================================
-                    resolve(disposition)
-                    return
-                  } catch (error) {
-                    reject(`解析响应数据时出错：${error.message}`);
-                  }
-
-                });
-              };
-
-              const signingkey = {
-                cmd: '1116',
-                uid: uid,
-                region: region,
-                msg: encodedItem,
-                ticket: ticketping
-              };
-              const sortedParams = Object.keys(signingkey)
-                .sort()
-                .map(key => `${key}=${signingkey[key]}`)
-                .join('&');
-              const signStr = sortedParams + sign;
-              const newsign = `&sign=` + crypto.createHash('sha256').update(signStr).digest('hex')
-
-              options.path = `/api?cmd=1116&uid=${uid}&region=${region}&msg=${encodeURIComponent(encodedItem)}&ticket=${ticketping}${newsign}`
 
 
+        async function makeRequest() {
+          const { ip, port, region, sign, ticketping } = await getserver(e)
+          const { value } = await getScenes(e)
 
-              const req = http.request(options, handleResponse);
-              req.setTimeout(1000, () => {
-                req.abort();
-              });
-              req.on('error', (e) => {
-                console.error(`problem with request: ${e.message}`);
-                reject(new Error(`哇!连接超时啦!o(╥﹏╥)o`))                
-              });
-              req.end();
-            }, 500);
-          };
-          if (Array.isArray(command)) {
-            command.forEach(sendRequest);
-          } else {
-            sendRequest(command);
+          const data = Yaml.parse(fs.readFileSync(_path + '/data.yaml', 'utf8'));
+          let command
+          const newmsg = e.msg.slice(1)
+          for (const key in data) {
+            if (key === newmsg) {
+              command = data[key];
+              command.length = data[key].length;
+              break;
+            }
           }
-          return true;
-        })
+          if (!command) {
+            command = newmsg;
+          }
+          const { uid } = await getuid(e)
+
+          return new Promise((resolve, reject) => {
+            const options = {
+              host: ip,
+              port: port,
+              method: 'GET',
+              headers: {
+                'Host': `${ip}:${port}`
+              },
+              timeout: 1000
+            };
+            const responses = [];
+            const sendRequest = (item) => {
+              setTimeout(() => {
+                const encodedItem = item;
+                const handleResponse = (res) => {
+                  res.setEncoding('utf8');
+
+                  let rawData = [];
+                  res.on('data', (chunk) => {
+                    rawData.push(Buffer.from(chunk));
+                  });
+
+                  res.on('end', () => {
+                    console.log(`完整响应主体: ${rawData}`);
+                    try {
+                      const disposition = JSON.parse(Buffer.concat(rawData).toString('utf-8'))
+                      const retcode = disposition.retcode
+                      if (retcode === 0) {
+                        const datamsg = disposition.data.msg;
+                        responses.push(`成功：${datamsg}  ->  ${uid}`);
+                      }
+                      else if (retcode === -1) {
+                        const datamsg = disposition.data.msg;
+                        const dataret = disposition.data.retmsg.replace(/can't find gm command/g, '找不到GM命令').replace(/command/g, '命令').replace(/execute fails/g, '执行失败').replace(/invalid param/g, '无效参数');
+                        responses.push(`失败：${datamsg} -> ${uid}\n原因：${dataret}`);
+                      }
+                      else if (retcode === 4) {
+                        responses.push(`又不在线，再发我顺着网线打死你！╭(╯^╰)╮`);
+                      }
+                      else if (retcode === 617) {
+                        const datamsg = disposition.data.msg;
+                        responses.push(`失败：${datamsg}  ->  ${uid}\n原因：数量超出限制`);
+                      }
+                      else if (retcode === 627) {
+                        const datamsg = disposition.data.msg;
+                        responses.push(`失败：${datamsg}  ->  ${uid}\n原因：数量超出限制`);
+                      }
+                      else if (retcode === 1003) {
+                        responses.push(`失败，服务器验证签名错误`);
+                      }
+                      else if (retcode === 1010) {
+                        responses.push(`失败，服务器区服不匹配`);
+                      }
+                      else if (retcode === 8002) {
+                        responses.push(`失败，传说钥匙超过限制`);
+                      }
+                      else {
+                        responses.push(`失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${disposition.data.msg} retcode:${disposition.retcode}`)
+                      }
+                      if (command === newmsg) {
+                        e.reply([segment.at(e.user_id), `\n${responses}`]);
+                        return
+                      }
+                      if (responses.length === command.length) {
+                        let responseStr = '';
+                        for (let i = 0; i < responses.length; i++) {
+                          responseStr += responses[i];
+                          if (i !== responses.length - 1) {
+                            responseStr += '\n\n';
+                          }
+                        }
+                        e.reply([segment.at(e.user_id), `\n`, responseStr]);
+                      } else {
+                        return
+                      }
+                      resolve(disposition)
+                      return
+                    } catch (error) {
+                      reject(`解析响应数据时出错：${error.message}`);
+                    }
+
+                  });
+                };
+
+                const signingkey = {
+                  cmd: '1116',
+                  uid: uid,
+                  region: region,
+                  msg: encodedItem,
+                  ticket: ticketping
+                };
+                const sortedParams = Object.keys(signingkey)
+                  .sort()
+                  .map(key => `${key}=${signingkey[key]}`)
+                  .join('&');
+                const signStr = sortedParams + sign;
+                const newsign = `&sign=` + crypto.createHash('sha256').update(signStr).digest('hex')
+
+                options.path = `/api?cmd=1116&uid=${uid}&region=${region}&msg=${encodeURIComponent(encodedItem)}&ticket=${ticketping}${newsign}`
+
+
+
+                const req = http.request(options, handleResponse);
+                req.setTimeout(1000, () => {
+                  req.abort();
+                });
+                req.on('error', (e) => {
+                  console.error(`problem with request: ${e.message}`);
+                  reject(new Error(`哇!连接超时啦!o(╥﹏╥)o`))
+                });
+                req.end();
+              }, 500);
+            };
+            if (Array.isArray(command)) {
+              command.forEach(sendRequest);
+            } else {
+              sendRequest(command);
+            }
+            return true;
+          })
+        }
       }
     }
   }

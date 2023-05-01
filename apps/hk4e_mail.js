@@ -20,80 +20,80 @@ export class hk4e extends plugin {
     }
 
     async 邮件(e) {
-        e.reply([segment.at(e.user_id), `正在处理...请稍后...`]);
-        const maxRetries = 3;
-        let retries = 0;
-        let disposition;
-        let result = null;
-
         const { mode } = await getmode(e);
-        const { uid } = await getuid(e);
-        if (mode === false || mode === undefined) {
-            console.log(`重试请求已停止，因为GM的状态为 ${mode}。`);
-            return;
-        } else if (uid === undefined) {
-            console.log(`此用户未绑定UID，已停止重试`);
-            return;
-        }
+        if (mode === true) {
+            e.reply([segment.at(e.user_id), `正在处理...请稍后...`]);
+            const maxRetries = 3;
+            let retries = 0;
+            let disposition;
+            let result = null;
 
-        while (retries < maxRetries) {
-            try {
-                disposition = await makeRequest();
-                if (disposition) {
-                    result = disposition;
-                    break;
-                }
-            } catch (error) {
-                console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
-                console.error(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
-            }
-            retries++;
-            if (retries === maxRetries) {
-                e.reply([segment.at(e.user_id), '请求全部失败，请检查你的在线状态、UID是否正确']);
-            }
-        }
-
-
-        if (disposition) {
-            const retcode = disposition.retcode;
-            if (retcode === 0) {
-                const dispositionuid = parseInt(disposition.data.uid)
-                e.reply([segment.at(e.user_id), `\n成功 -> ${dispositionuid}`]);
-            }
-            else if (retcode === -1) {
-                e.reply([segment.at(e.user_id), `\n失败 -> 发生未知错误，请检查指令`]);
-            }
-            else if (retcode === 617) {
-                e.reply([segment.at(e.user_id), `\n失败 -> 邮件物品超过限制`]);
-            }
-            else if (retcode === 1002) {
-                e.reply([segment.at(e.user_id), `\n失败 -> ${disposition.msg}`]);
-            }
-            else if (retcode === 1003) {
-                e.reply([segment.at(e.user_id), `\n失败 -> 服务器验证签名错误`]);
-            }
-            else if (retcode === 1010) {
-                e.reply([segment.at(e.user_id), `\n失败 -> 服务器区服错误`]);
-            }
-            else if (retcode === 1311) {
-                e.reply([segment.at(e.user_id), `\n失败 -> 禁止发送「创世结晶」`]);
-            }
-            else if (retcode === 1312) {
-                e.reply([segment.at(e.user_id), `\n失败 -> 游戏货币超限`]);
-            }
-            else if (retcode === 2028) {
-                e.reply([segment.at(e.user_id), `\n失败 -> 邮件日期设置错误，请修改[expire_time]`]);
-            }
-            else {
-                e.reply([segment.at(e.user_id), `\n失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${disposition.msg} retcode:${disposition.retcode}`]);
-            }
-        }
-
-        async function makeRequest() {
-            const { uid } = await getuid(e);
-            const { ip, port, region, sign, ticketping, sender } = await getserver(e);
             const { mode } = await getmode(e);
-            if (mode === true) {
+            const { uid } = await getuid(e);
+            if (mode === false || mode === undefined) {
+                console.log(`重试请求已停止，因为GM的状态为 ${mode}。`);
+                return;
+            } else if (uid === undefined) {
+                console.log(`此用户未绑定UID，已停止重试`);
+                return;
+            }
+
+            while (retries < maxRetries) {
+                try {
+                    disposition = await makeRequest();
+                    if (disposition) {
+                        result = disposition;
+                        break;
+                    }
+                } catch (error) {
+                    console.error(`第 ${retries + 1} 次请求失败：${error.message}`);
+                    console.error(`请求失败->正在重试->(${retries + 1} / ${maxRetries})`);
+                }
+                retries++;
+                if (retries === maxRetries) {
+                    e.reply([segment.at(e.user_id), '请求全部失败，请检查你的在线状态、UID是否正确']);
+                }
+            }
+
+
+            if (disposition) {
+                const retcode = disposition.retcode;
+                if (retcode === 0) {
+                    const dispositionuid = parseInt(disposition.data.uid)
+                    e.reply([segment.at(e.user_id), `\n成功 -> ${dispositionuid}`]);
+                }
+                else if (retcode === -1) {
+                    e.reply([segment.at(e.user_id), `\n失败 -> 发生未知错误，请检查指令`]);
+                }
+                else if (retcode === 617) {
+                    e.reply([segment.at(e.user_id), `\n失败 -> 邮件物品超过限制`]);
+                }
+                else if (retcode === 1002) {
+                    e.reply([segment.at(e.user_id), `\n失败 -> ${disposition.msg}`]);
+                }
+                else if (retcode === 1003) {
+                    e.reply([segment.at(e.user_id), `\n失败 -> 服务器验证签名错误`]);
+                }
+                else if (retcode === 1010) {
+                    e.reply([segment.at(e.user_id), `\n失败 -> 服务器区服错误`]);
+                }
+                else if (retcode === 1311) {
+                    e.reply([segment.at(e.user_id), `\n失败 -> 禁止发送「创世结晶」`]);
+                }
+                else if (retcode === 1312) {
+                    e.reply([segment.at(e.user_id), `\n失败 -> 游戏货币超限`]);
+                }
+                else if (retcode === 2028) {
+                    e.reply([segment.at(e.user_id), `\n失败 -> 邮件日期设置错误，请修改[expire_time]`]);
+                }
+                else {
+                    e.reply([segment.at(e.user_id), `\n失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${disposition.msg} retcode:${disposition.retcode}`]);
+                }
+            }
+
+            async function makeRequest() {
+                const { uid } = await getuid(e);
+                const { ip, port, region, sign, ticketping, sender } = await getserver(e);
                 const config_id = '0';
                 const now = Math.floor(Date.now() / 1000);
                 const thirtyDaysLater = now + (30 * 24 * 60 * 60);
@@ -208,5 +208,4 @@ export class hk4e extends plugin {
             }
         }
     }
-
 }
