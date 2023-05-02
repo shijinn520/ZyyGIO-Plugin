@@ -153,7 +153,7 @@ export async function getuid(e = {}) {
   let uid = cfg.find((item) => Object.keys(item)[0] === uuid);
   if (uid === undefined) {
     setTimeout(() => {
-      e.reply([segment.at(e.user_id), `请绑定UID\n格式：绑定+你的uid 随后艾特你自己\n温馨提示：每位玩家仅拥有1次绑定机会\nBot会自动去除消息中的空格、字母、符号，UID正确即不用担心会绑定错误`]);
+      e.reply([segment.at(e.user_id), `请绑定UID\n格式：绑定+你的uid\n\n温馨提示：每位玩家仅拥有1次绑定机会\nBot会自动去除消息中的空格、字母、符号，UID正确即不用担心会绑定错误`]);
     }, 500);
     uid = undefined;
   } else {

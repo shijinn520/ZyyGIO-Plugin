@@ -79,7 +79,7 @@ export class hk4e extends plugin {
     const { value, scenes } = await getScenes(e)
     const modeEnabled = config[scenes]?.mode;
     const at = e.message.find(item => item.type === 'at').qq;
-    const adminList = config[scenes].Administrator;
+    const admin = config[scenes].Administrator;
     if (modeEnabled === undefined) {
       e.reply(`当前${value}还没开启过GM，请先启用！`);
       return;
@@ -88,11 +88,11 @@ export class hk4e extends plugin {
       e.reply(`当前${value}已经关闭GM，执行失败！`);
       return;
     }
-    if (adminList.includes(at)) {
+    if (admin.includes(at)) {
       e.reply([segment.at(at), `已经是管理员了！`]);
       return;
     }
-    adminList.push(at);
+    admin.push(at);
     fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config));
     e.reply([`管理员`, segment.at(at), ` 绑定成功！`]);
   }
@@ -103,7 +103,7 @@ export class hk4e extends plugin {
 
     const modeEnabled = config[scenes]?.mode;
     const at = e.message.find(item => item.type === 'at').qq;
-    const adminList = config[scenes]?.Administrator;
+    const admin = config[scenes]?.Administrator;
     if (modeEnabled === undefined) {
       e.reply(`当前${value}还没开启过GM，请先启用！`);
       return;
@@ -114,63 +114,51 @@ export class hk4e extends plugin {
       return;
     }
 
-    const index = adminList.indexOf(at.toString());
+    const index = admin.indexOf(at.toString());
     if (index !== -1) {
-      adminList.splice(index, 1);
+      admin.splice(index, 1);
       fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config));
       e.reply(`解绑管理员成功！`);
     } else {
       e.reply([segment.at(at), `还不是管理员！`]);
     }
   }
+
   async 绑定UID(e) {
     const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'));
-    const at = e.message.find(item => item.type === 'at').qq;
-    const { scenes } = await getScenes(e)
-    const { mode } = await getmode(e)
+    const { scenes } = await getScenes(e);
+    const { mode } = await getmode(e);
 
     if (mode === true) {
-      const adminList = config[scenes].Administrator;
+      const admin = config[scenes].Administrator;
       const newmsg = e.msg.replace(/绑定|\s|\W/g, '').replace(/[^0-9]/g, '');
-      const uidList = config[scenes]?.uid || [];
-      if (adminList.includes(e.user_id.toString())) {
-        for (const obj of uidList) {
-          const subKeys = Object.keys(obj);
-          if (subKeys.includes(at)) {
-            obj[at] = newmsg;
-            config[scenes].uid = uidList;
-            console.log(`已存在UID ${at}，更新绑定值为 ${newmsg}`);
-            fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config), 'utf8');
-            e.reply([segment.at(at), `绑定成功\n您的UID为：${newmsg}`]);
-            return;
-          }
-        }
+      const uid = config[scenes]?.uid || [];
 
-        const newObj = {};
-        newObj[at] = newmsg;
-        uidList.push(newObj);
-        config[scenes].uid = uidList;
-        fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config), 'utf8');
-        e.reply([segment.at(at), `绑定成功\n您的UID为：${newmsg}`]);
-      } else {
-        if (e.user_id.toString() !== at) {
-          console.log(`e.user_id 和 at 不同: e.user_id=${e.user_id}, at=${at}`);
-          e.reply([segment.at(e.user_id), `非管理员仅允许为自己绑定UID`]);
+      let at = String(e.user_id);
+      const newat = e.message.find(item => item.type === 'at');
+      if (newat) {
+        at = String(newat.qq);
+      }
+
+      if (admin.includes(e.user_id.toString())) {
+        const newuid = uid.findIndex(item => at in item);
+        if (newuid !== -1) {
+          uid[newuid][at] = newmsg;
         } else {
-          for (const obj of uidList) {
-            const subKeys = Object.keys(obj);
-            if (subKeys.includes(at)) {
-              e.reply([segment.at(at), `您当前存在绑定的UID ${obj[at]}，请联系管理员！`]);
-              return;
-            }
-          }
-
-          const newObj = {};
-          newObj[at] = newmsg;
-          uidList.push(newObj);
-          config[scenes].uid = uidList;
+          uid.push({ [at]: newmsg });
+        }
+        config[scenes].uid = uid;
+        fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config), 'utf8');
+        e.reply([segment.at(at), `绑定成功\n您的UID为：${newmsg}`])
+      } else {
+        const newuid = uid.find(item => Object.keys(item).includes(String(e.user_id)));
+        if (newuid) {
+          e.reply([segment.at(e.user_id), `您当前存在绑定的UID ${newuid[e.user_id]} 请联系管理员`]);
+        } else {
+          uid.push({ [e.user_id]: newmsg });
+          config[scenes].uid = uid;
           fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config), 'utf8');
-          e.reply([segment.at(at), `绑定成功\n您的UID为：${newmsg}`]);
+          e.reply([segment.at(e.user_id), `绑定成功\n您的UID为：${newmsg}`])
         }
       }
     }
