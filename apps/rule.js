@@ -20,7 +20,7 @@ export const admin = [
         permission: 'master'
     },
     {
-        reg: '^绑定(.*)$',
+        reg: '^\/?绑定(.*)$',
         fnc: '绑定UID',
     },
     {
@@ -44,7 +44,7 @@ export const admin = [
         permission: 'master'
     },
     {
-        reg: '^(小钰更新|GM更新|更新GM|更新gm|gm更新)$',
+        reg: '^(小钰更新|GM更新|更新GM|更新gm|gm更新|Gm更新)$',
         fnc: '插件更新',
         permission: 'master'
     }
@@ -63,7 +63,7 @@ export const commands = [
 
 export const mail = [
     {
-        reg: '^邮件(.*)$',
+        reg: '^\/?邮件 (.*)$',
         fnc: '邮件'
     },
     {
@@ -96,12 +96,24 @@ export const players = [
         fnc: '邮件别名',
     },
     {
-        reg: '^添加命令(.*)$',
+        reg: '^添加命令 (.*)$',
         fnc: '添加命令别名',
     },
     {
-        reg: '^添加邮件(.*)$',
+        reg: '^添加邮件 (.*)$',
         fnc: '添加邮件别名',
+    },
+    {
+        reg: '^修改命令 (.*)$',
+        fnc: '修改命令别名',
+    },
+    {
+        reg: '^修改邮件 (.*)$',
+        fnc: '修改邮件别名',
+    },
+    {
+        reg: '^别名帮助$',
+        fnc: '别名帮助',
     }
 ]
 

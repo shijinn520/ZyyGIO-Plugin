@@ -1,10 +1,9 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import http from 'http'
-import Yaml from 'yaml'
 import fs from 'fs'
 import crypto from 'crypto'
 import { commands } from './rule.js'
-import { getmode, getserver, getuid, getScenes } from './index.js'
+import { getmode, getserver, getuid } from './index.js'
 let _path = process.cwd() + '/plugins/Zyy-GM-plugin/resources/hk4e'
 
 export class hk4e extends plugin {
@@ -13,7 +12,7 @@ export class hk4e extends plugin {
       name: 'hk4e-GM',
       dsc: 'hk4e-游戏指令',
       event: 'message',
-      priority: -100,
+      priority: -50,
       rule: commands
     })
   }
@@ -56,18 +55,23 @@ export class hk4e extends plugin {
 
         async function makeRequest() {
           const { ip, port, region, sign, ticketping } = await getserver(e)
-          const { value } = await getScenes(e)
+          const cfg = JSON.parse(fs.readFileSync(_path + '/command.json', 'utf8'));
+          let command;
+          const newmsg = e.msg.slice(e.msg.indexOf('/') + 1);
 
-          const data = Yaml.parse(fs.readFileSync(_path + '/data.yaml', 'utf8'));
-          let command
-          const newmsg = e.msg.slice(1)
-          for (const key in data) {
-            if (key === newmsg) {
-              command = data[key];
-              command.length = data[key].length;
-              break;
+          for (const obj of cfg) {
+            for (const [key, value] of Object.entries(obj)) {
+              if (key === "command") {
+                continue;
+              }
+              if (Array.isArray(value) && value.includes(newmsg)) {
+                command = obj.command;
+                break;
+              }
             }
           }
+
+
           if (!command) {
             command = newmsg;
           }
@@ -86,7 +90,7 @@ export class hk4e extends plugin {
             const responses = [];
             const sendRequest = (item) => {
               setTimeout(() => {
-                const encodedItem = item;
+                const newmsg = item;
                 const handleResponse = (res) => {
                   res.setEncoding('utf8');
 
@@ -161,7 +165,7 @@ export class hk4e extends plugin {
                   cmd: '1116',
                   uid: uid,
                   region: region,
-                  msg: encodedItem,
+                  msg: newmsg,
                   ticket: ticketping
                 };
                 const sortedParams = Object.keys(signingkey)
@@ -170,10 +174,7 @@ export class hk4e extends plugin {
                   .join('&');
                 const signStr = sortedParams + sign;
                 const newsign = `&sign=` + crypto.createHash('sha256').update(signStr).digest('hex')
-
-                options.path = `/api?cmd=1116&uid=${uid}&region=${region}&msg=${encodeURIComponent(encodedItem)}&ticket=${ticketping}${newsign}`
-
-
+                options.path = `/api?cmd=1116&uid=${uid}&region=${region}&msg=${encodeURIComponent(newmsg)}&ticket=${ticketping}${newsign}`
 
                 const req = http.request(options, handleResponse);
                 req.setTimeout(1000, () => {

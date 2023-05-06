@@ -29,22 +29,32 @@ const fs_cfg = {
     }
   }
 }
-const fs_data = {
-  90: [
-    "break 6",
-    "skill all 10",
-    "talent unlock all",
-    "level 90"
-  ]
-}
-
-const fs_mail = {
-  "新手礼包": {
-    title: "这里填标题",
-    content: "这里填写邮件内容",
-    item_list: "220007:5,105003:999,1202:3,201:1000"
+const fs_command = [
+  {
+    "90": [
+      "90",
+      "一键满级"
+    ],
+    "command": [
+      "break 6",
+      "skill all 10",
+      "talent unlock all",
+      "level 90"
+    ]
   }
-}
+]
+
+const fs_mail = [
+  {
+    "邮件模板": [
+      "邮件模板",
+      "别名2"
+    ],
+    "title": "这里填标题",
+    "content": "这里填写邮件内容",
+    "item_list": "201:2"
+  }
+]
 
 const fs_server = {
   "模板-3.2": {
@@ -62,11 +72,11 @@ const fs_server = {
 if (!fs.existsSync(_path + '/hk4e/config.yaml')) {
   fs.writeFileSync(_path + '/hk4e/config.yaml', Yaml.stringify(fs_cfg))
 }
-if (!fs.existsSync(_path + '/hk4e/data.yaml')) {
-  fs.writeFileSync(_path + '/hk4e/data.yaml', Yaml.stringify(fs_data))
+if (!fs.existsSync(_path + '/hk4e/command.json')) {
+  fs.writeFileSync(_path + '/hk4e/command.json', JSON.stringify(fs_command));
 }
-if (!fs.existsSync(_path + '/hk4e/mail.yaml')) {
-  fs.writeFileSync(_path + '/hk4e/mail.yaml', Yaml.stringify(fs_mail))
+if (!fs.existsSync(_path + '/hk4e/mail.json')) {
+  fs.writeFileSync(_path + '/hk4e/mail.json', JSON.stringify(fs_mail));
 }
 if (!fs.existsSync(_path + '/hk4e/server.yaml')) {
   fs.writeFileSync(_path + '/hk4e/server.yaml', Yaml.stringify(fs_server))

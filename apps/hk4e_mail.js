@@ -21,13 +21,13 @@ export class hk4e extends plugin {
 
     async 邮件(e) {
         const { mode } = await getmode(e);
+        const maxRetries = 3;
+        let retries = 0;
+        let disposition;
+        let msglength = true
+        let result = null;
         if (mode === true) {
             e.reply([segment.at(e.user_id), `正在处理...请稍后...`]);
-            const maxRetries = 3;
-            let retries = 0;
-            let disposition;
-            let result = null;
-
             const { mode } = await getmode(e);
             const { uid } = await getuid(e);
             if (mode === false || mode === undefined) {
@@ -41,6 +41,9 @@ export class hk4e extends plugin {
             while (retries < maxRetries) {
                 try {
                     disposition = await makeRequest();
+                    if (msglength === false) {
+                        break;
+                    }
                     if (disposition) {
                         result = disposition;
                         break;
@@ -87,7 +90,7 @@ export class hk4e extends plugin {
                     e.reply([segment.at(e.user_id), `\n失败 -> 邮件日期设置错误，请修改[expire_time]`]);
                 }
                 else {
-                    e.reply([segment.at(e.user_id), `\n失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${disposition.msg} retcode:${disposition.retcode}`]);
+                    e.reply([segment.at(e.user_id), `\n失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${disposition.msg} retcode:${disposition.retcode}]`]);
                 }
             }
 
@@ -103,22 +106,45 @@ export class hk4e extends plugin {
                 const source_type = '0';
                 const item_limit_type = '1';
                 const is_collectible = "false";
-                const mail = Yaml.parse(fs.readFileSync(_path + '/mail.yaml', 'utf8'));
+                const mail = JSON.parse(fs.readFileSync(_path + '/mail.json', 'utf8'));
                 const msg = e.msg.split(' ');
                 let title = msg[1];
                 let content = msg[2];
                 let item_list = msg[3];
+                let foundTemplate = false;
 
-                const topLevelKeys = Object.keys(mail);
-                for (let i = 0; i < topLevelKeys.length; i++) {
-                    const key = topLevelKeys[i];
-                    if (key === msg[1]) {
-                        title = mail[key].title;
-                        content = mail[key].content;
-                        item_list = mail[key].item_list;
-                        break;
+                // 遍历所有邮件模板，查找与消息名称匹配的模板
+                for (let i = 0; i < mail.length; i++) {
+                    const template = mail[i];
+                    const firstKey = Object.keys(template)[0];
+                    const value = template[firstKey];
+
+                    // 如果第一个键值是数组，则遍历数组，查找与消息名称匹配的元素
+                    // if (Array.isArray(value)) {
+                        for (let j = 0; j < value.length; j++) {
+                            if (value[j] === msg[1]) {
+                                title = template.title;
+                                content = template.content;
+                                item_list = template.item_list;
+                                foundTemplate = true;
+                                break;
+                            }
+                        // }
                     }
                 }
+
+
+                // 如果没有找到匹配的别名，则继续使用默认格式
+                if (!foundTemplate) {
+                    if (msg.length < 4) {
+                        e.reply([segment.at(e.user_id), `邮件格式错误\n\n格式：邮件 [标题] [内容] [ID:数量,ID:数量]\n举例：邮件 测试 你好 201:1`]);
+                        msglength = false
+                        return msglength;
+                    }
+                    console.log('没有找到匹配的邮件模板');
+                }
+
+
                 // 计算签名
                 const signingkey = {
                     cmd: '1005',
@@ -166,7 +192,6 @@ export class hk4e extends plugin {
                     .sort()
                     .map(key => `${key}=${original[key]}`)
                     .join('&');
-
                 return new Promise((resolve, reject) => {
                     const options = {
                         host: ip,
@@ -176,7 +201,7 @@ export class hk4e extends plugin {
                         headers: {
                             'Host': `${ip}:${port}`
                         },
-                        timeout: 5000
+                        timeout: 1000
                     };
 
                     const req = http.request(options, (res) => {
@@ -189,14 +214,14 @@ export class hk4e extends plugin {
                             console.log(`完整响应主体: ${rawData}`);
                             try {
                                 const disposition = JSON.parse(rawData);
-                                resolve(disposition)
+                                resolve(disposition, msglength)
                             } catch (error) {
                                 reject(`解析响应数据时出错：${error.message}`);
                             }
 
                         });
                     });
-                    req.setTimeout(5000, () => {
+                    req.setTimeout(1000, () => {
                         req.abort();
                     })
                     req.on('error', (e) => {

@@ -20,7 +20,7 @@ body {
 .info_box .title {
   padding-top: 150px;
   padding-left: 20px;
-  color: white;
+  color: #ceb78b;
   font-size: 40px;
 }
 
@@ -118,7 +118,7 @@ body {
   text-align: center;
 }
 
-.help-authors {
+.description {
   display: block;
   font-size: 16px;
   line-height: 24px;
