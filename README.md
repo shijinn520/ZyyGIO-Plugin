@@ -1,19 +1,6 @@
-此插件可以让你在QQ群、QQ频道执行hk4e的GM指令
+使用`Yunzai`执行`hk4e`的GM指令
 
-理论来说，`Miao-Yunzai`应该也适配此插件，如果你只需要在QQ群使用，可以帮我测试。
-
-# 安装TRSS-Yunzai
-Gitee:[TRSS-Yunzai](https://gitee.com/TimeRainStarSky/Yunzai)
-
-Github:[TRSS-Yunzai](https://gitee.com/TimeRainStarSky/Yunzai)
-
-参考教程：[点击前往TRSS-Yunzai安装教程](https://rainkavik.com/archives/339/)
-
-一些注意事项：貌似如果想在频道使用，go-cqhttp的协议只能设置为`1:安卓协议`或者`6:aPad`
-
-其他协议我已经测试了`2:Android Watch`和`3:MacOS`，都是不可接频道消息的。
-
-效果展示：
+# 效果展示：
 
 在线玩家：
 
@@ -29,9 +16,20 @@ GM指令：
 ![邮件别名示例](https://i.328888.xyz/2023/04/30/iKYK3N.png)
 ![普通指令示例](https://i.328888.xyz/2023/04/30/iKqUQy.png)
 
+# 安装Yunzai
+根据自己的需求任选其一安装即可
+Miao-Yunzai：[Gitee](https://gitee.com/yoimiya-kokomi/Miao-Yunzai) | [Github](https://github.com/yoimiya-kokomi/Miao-Yunzai)
+
+TRSS-Yunzai：[Gitee](https://gitee.com/TimeRainStarSky/Yunzai) | [Github](https://github.com/TimeRainStarSky/Yunzai)
+
+| 支持的协议       | QQ群 | QQ频道 | QQ频道-官方 | WeChat | Telegram | Discord | KOOK |
+|-------------|-----|------|---------|--------|----------|---------|------|
+| Miao-Yunzai | ✔   |      | ✔       |        |          |         |      |
+| TRSS-Yunzai | ✔   | ✔    | ✔       | ✔      | ✔        | ✔       | ✔    |
+
 # 安装插件
 
-克隆仓库
+在`Yunzai`根目录执行，任选其一
 
 Gitee：
 ```
@@ -43,22 +41,22 @@ Github：
 git clone --depth 1 https://github.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugin
 ```
 
-# 配置插件
-* 存储群配置：`Zyy-GM-plugin\resources\hk4e\config.yaml`
+# 插件结构
+以下所有文件都在此路径`Zyy-GM-plugin\resources\hk4e`
 
-* 存储指令别名：`Zyy-GM-plugin\resources\hk4e\command.json`
+目前只有`server.yaml`文件需要手动进行添加服务器，其他文件都不推荐进行手动修改。
+* `config.yaml`：存放每个群聊的服务器，管理员，玩家UID
 
-* 存储邮件别名：`Zyy-GM-plugin\resources\hk4e\mail.json`
+* `command.json`：存放命令别名。小白不推荐手动修改，最好使用命令添加。
 
-* 存储服务器：`Zyy-GM-plugin\resources\hk4e\server.yaml`
+* `mail.json`：存放邮件别名。小白不推荐手动修改，最好使用命令添加。
 
+* `server.yaml`：存放服务器列表，方便服主快捷在多个群聊切换服务器。
 
-需要手动修改`server.yaml`，你需要添加你的服务器,文件内有一个模板，请复制该模板在进行修改，以防出错`(你是大佬当我没说)`
-
-注意事项：
-
-* 请保持服务器的键名和ID为唯一
-* 如果你的服务器启用了 `sign` ，请在配置中把 `signswitch: "false"` 修改为 `signswitch: "true"` 
+# 注意事项：
+* 你需要往`server.yaml`里面添加你要使用的服务器信息
+* 请保持服务器的键名和ID为唯一，切换服务器指令使用的是服务器的ID
+* 如果你的服务器启用了`sign`，请在配置中把 `signswitch: "false"` 修改为 `signswitch: "true"` 
 
 以下是各项配置的解析
 ```
@@ -74,16 +72,14 @@ git clone --depth 1 https://github.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugi
 
 ```
 
+# 关于别名模板
+下面是插件提供的一些模板，部分别名来自群友
 
-关于别名这一块，在最开始的版本中是直接克隆仓库会自带了，现版本删除以防止更新发生频繁错误，需要自行手动填入。
+初次运行，需要先启动一次`Yunzai`，需要生成配置文件
 
-#### 以下是我提供的一些自定义配置，点代码块右上角复制粘贴到对应的文件即可。
-
-如果是初次运行，你需要启动一次机器人让他自动生成文件
+以下内容，可直接覆盖到对应的文件内
 
 <details><summary>command.json</summary>
-
-</details>
 
 ```
 [
@@ -2757,6 +2753,8 @@ git clone --depth 1 https://github.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugi
 ]
 ```
 
+</details>
+
 <details><summary>mail.json</summary>
 
 ```
@@ -2825,18 +2823,15 @@ git clone --depth 1 https://github.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugi
 ### 超级管理流程
 
 ##### 1.开启GM
-配置好服务器后，在想使用的群聊、频道发送 开启GN
+配置好服务器后，在想使用的群聊发送 开启GN
 随后发送 切换服务器2
 参数说明，这里的2是指你自己设置的服务器ID，自己更改即可，配置完成即可到玩家流程。
 
 
 ### 玩家流程：
-##### 1.绑定UID
-绑定10002@自己
+首先需要绑定自己的UID
 
-参数说明：绑定+UID+@自己
-
-2.享受即可
+在已经开启GM的群聊发送`绑定+UID`即可。
 
 
 # 指令说明
@@ -2929,8 +2924,8 @@ git clone --depth 1 https://github.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugi
 
 `没什么区别的啦，自己发帮助看`
 
-# 免责生命
-本人不太懂代码，所以碰到问题能自行解决最好。
+# 免责声明
+遇到问题最好自行解决
 
 大部分代码来自[喵喵插件](https://github.com/yoimiya-kokomi/miao-plugin)和[白纸插件](https://github.com/HeadmasterTan/zhi-plugin)
 
