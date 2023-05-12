@@ -355,7 +355,7 @@ export class hk4e extends plugin {
 
                 const alias = cfg[key][0].names.join(' ')
                 const title = cfg[key][1].title
-                const content = cfg[key][2].content.length > 10 ? '邮件内容过长...不予展示' : cfg[key][1].content.replace(/\n/g, '\\n')
+                const content = cfg[key][2].content.length
                 const item_list = cfg[key][3].item_list
                 e.reply([segment.at(e.user_id), `\n主别名：${key}\n已拥有别名：\n${alias}\n\n标题：${title}\n内容：${content}\n物品：${item_list}\n\n添加新别名指令：\n添加命令别名 ${key} [新别名]`])
             }
