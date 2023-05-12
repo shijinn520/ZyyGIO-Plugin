@@ -1,0 +1,2079 @@
+# 存放指令别名
+"60":
+  - names:
+      - "60"
+      - 60级
+  - command:
+      - player level 60
+
+"90":
+  - names:
+      - "90"
+  - command:
+      - break 6
+      - skill all 10
+      - talent unlock all
+      - level 90
+      - item add 105  99999
+
+无限体力:
+  - names:
+      - 无限体力
+      - 体力
+  - command:
+      - stamina infinite on
+
+无限体力off:
+  - names:
+      - 无限体力off
+      - 体力off
+      - 体力关
+  - command:
+      - stamina infinite off
+
+Q无限充能:
+  - names:
+      - Q无限充能
+      - q
+      - Q
+  - command:
+      - energy infinite on
+
+Q无限充能off:
+  - names:
+      - Q无限充能off
+      - qoff
+      - Qoff
+  - command:
+      - energy infinite off
+
+玩家无敌:
+  - names:
+      - 玩家无敌
+      - 无敌
+  - command:
+      - wudi global avatar on
+
+玩家无敌off:
+  - names:
+      - 玩家无敌off
+      - 无敌off
+  - command:
+      - wudi global avatar off
+
+怪物无敌:
+  - names:
+      - 怪物无敌
+  - command:
+      - wudi global monster on
+
+怪物无敌off:
+  - names:
+      - 怪物无敌off
+  - command:
+      - wudi global monster off
+
+解锁命座:
+  - names:
+      - 解锁命座
+      - 解锁命之座
+  - command:
+      - talent unlock all
+
+全神瞳:
+  - names:
+      - 全神瞳
+      - 所有神瞳
+  - command:
+      - item add 107001 1000
+      - item add 107003 1000
+      - item add 107014 1000
+      - item add 107017 1000
+
+风神瞳:
+  - names:
+      - 风神瞳
+  - command:
+      - item add 107001 1000
+
+岩神瞳:
+  - names:
+      - 岩神瞳
+  - command:
+      - item add 107003 1000
+
+雷神瞳:
+  - names:
+      - 雷神瞳
+  - command:
+      - item add 107014 1000
+
+草神瞳:
+  - names:
+      - 草神瞳
+  - command:
+      - item add 107017 1000
+
+西风剑:
+  - names:
+      - 西风剑
+  - command:
+      - equip add 11401 90 6 5
+
+笛剑:
+  - names:
+      - 笛剑
+  - command:
+      - equip add 11402 90 6 5
+
+祭礼剑:
+  - names:
+      - 祭礼剑
+  - command:
+      - equip add 11403 90 6 5
+
+宗室长剑:
+  - names:
+      - 宗室长剑
+  - command:
+      - equip add 11404 90 6 5
+
+匣里龙吟:
+  - names:
+      - 匣里龙吟
+  - command:
+      - equip add 11405 90 6 5
+
+试作斩岩:
+  - names:
+      - 试作斩岩
+  - command:
+      - equip add 11406 90 6 5
+
+铁蜂刺:
+  - names:
+      - 铁蜂刺
+  - command:
+      - equip add 11407 90 6 5
+
+黑岩长剑:
+  - names:
+      - 黑岩长剑
+  - command:
+      - equip add 11408 90 6 5
+
+黑剑:
+  - names:
+      - 黑剑
+  - command:
+      - equip add 11409 90 6 5
+
+暗巷闪光:
+  - names:
+      - 暗巷闪光
+  - command:
+      - equip add 11410 90 6 5
+
+降临之剑:
+  - names:
+      - 降临之剑
+  - command:
+      - equip add 11412 90 6 5
+
+腐殖之剑:
+  - names:
+      - 腐殖之剑
+  - command:
+      - equip add 11413 90 6 5
+
+天目影打刀:
+  - names:
+      - 天目影打刀
+      - 天目
+  - command:
+      - equip add 11414 90 6 5
+
+辰砂之纺锤:
+  - names:
+      - 辰砂之纺锤
+      - 辰砂
+  - command:
+      - equip add 11415 90 6 5
+
+笼钓瓶一心:
+  - names:
+      - 笼钓瓶一心
+  - command:
+      - equip add 11416 90 6 5
+
+原木刀:
+  - names:
+      - 原木刀
+  - command:
+      - equip add 11417 90 6 5
+
+西福斯的月光:
+  - names:
+      - 西福斯的月光
+  - command:
+      - equip add 11418 90 6 5
+
+一心传名刀:
+  - names:
+      - 一心传名刀
+  - command:
+      - equip add 11421 90 6 5
+
+东花坊时雨:
+  - names:
+      - 东花坊时雨
+  - command:
+      - equip add 11422 90 6 5
+
+风鹰剑:
+  - names:
+      - 风鹰剑
+  - command:
+      - equip add 11501 90 6 5
+
+天空之刃:
+  - names:
+      - 天空之刃
+  - command:
+      - equip add 11502 90 6 5
+
+苍古自由之誓:
+  - names:
+      - 苍古自由之誓
+      - 苍古
+  - command:
+      - equip add 11503 90 6 5
+
+斫峰之刃:
+  - names:
+      - 斫峰之刃
+      - 盾剑
+  - command:
+      - equip add 11504 90 6 5
+
+磐岩结绿:
+  - names:
+      - 磐岩结绿
+      - 绿箭
+  - command:
+      - equip add 11505 90 6 5
+
+雾切之回光:
+  - names:
+      - 雾切之回光
+      - 雾切
+  - command:
+      - equip add 11509 90 6 5
+
+波乱月白经津:
+  - names:
+      - 波乱月白经津
+      - 波乱
+  - command:
+      - equip add 11510 90 6 5
+
+圣显之钥:
+  - names:
+      - 圣显之钥
+      - 圣显
+  - command:
+      - equip add 11511 90 6 5
+
+裁叶萃光:
+  - names:
+      - 裁叶萃光
+      - 裁叶
+  - command:
+      - equip add 11512 90 6 5
+
+以理服人:
+  - names:
+      - 以理服人
+  - command:
+      - equip add 12305 90 6 5
+
+西风大剑:
+  - names:
+      - 西风大剑
+  - command:
+      - equip add 12401 90 6 5
+
+钟剑:
+  - names:
+      - 钟剑
+  - command:
+      - equip add 12402 90 6 5
+
+祭礼大剑:
+  - names:
+      - 祭礼大剑
+  - command:
+      - equip add 12403 90 6 5
+
+宗室大剑:
+  - names:
+      - 宗室大剑
+  - command:
+      - equip add 12404 90 6 5
+
+雨裁:
+  - names:
+      - 雨裁
+  - command:
+      - equip add 12405 90 6 5
+
+试作古华:
+  - names:
+      - 试作古华
+  - command:
+      - equip add 12406 90 6 5
+
+白影剑:
+  - names:
+      - 白影剑
+  - command:
+      - equip add 12407 90 6 5
+
+黑岩斩刀:
+  - names:
+      - 黑岩斩刀
+  - command:
+      - equip add 12408 90 6 5
+
+螭骨剑:
+  - names:
+      - 螭骨剑
+      - 螭骨
+  - command:
+      - equip add 12409 90 6 5
+
+千岩古剑:
+  - names:
+      - 千岩古剑
+  - command:
+      - equip add 12410 90 6 5
+
+雪葬的星银:
+  - names:
+      - 雪葬的星银
+      - 雪葬
+  - command:
+      - equip add 12411 90 6 5
+
+衔珠海皇:
+  - names:
+      - 衔珠海皇
+      - 咸鱼大剑
+      - 咸鱼
+  - command:
+      - equip add 12412 90 6 5
+
+桂木斩长正:
+  - names:
+      - 桂木斩长正
+  - command:
+      - equip add 12414 90 6 5
+
+玛海菈的水色:
+  - names:
+      - 玛海菈的水色
+  - command:
+      - equip add 12415 90 6 5
+
+恶王丸:
+  - names:
+      - 恶王丸
+  - command:
+      - equip add 12416 90 6 5
+
+森林王器:
+  - names:
+      - 森林王器
+  - command:
+      - equip add 12417 90 6 5
+
+饰铁之花:
+  - names:
+      - 饰铁之花
+  - command:
+      - equip add 12418 90 6 5
+
+天空之傲:
+  - names:
+      - 天空之傲
+  - command:
+      - equip add 12501 90 6 5
+
+狼的末路:
+  - names:
+      - 狼的末路
+      - 狼末
+  - command:
+      - equip add 12502 90 6 5
+
+松籁响起之时:
+  - names:
+      - 松籁响起之时
+      - 松籁
+  - command:
+      - equip add 12503 90 6 5
+
+无工之剑:
+  - names:
+      - 无工之剑
+      - 蜈蚣
+      - 无工
+  - command:
+      - equip add 12504 90 6 5
+
+赤角石溃杵:
+  - names:
+      - 赤角石溃杵
+      - 赤角
+  - command:
+      - equip add 12510 90 6 5
+
+苇海信标:
+  - names:
+      - 苇海信标
+  - command:
+      - equip add 12511 90 6 5
+
+白缨枪:
+  - names:
+      - 白缨枪
+  - command:
+      - equip add 13301 90 6 5
+
+钺矛:
+  - names:
+      - 钺矛
+  - command:
+      - equip add 13302 90 6 5
+
+黑缨枪:
+  - names:
+      - 黑缨枪
+  - command:
+      - equip add 13303 90 6 5
+
+旗杆:
+  - names:
+      - 旗杆
+  - command:
+      - equip add 13304 90 6 5
+
+匣里灭辰:
+  - names:
+      - 匣里灭辰
+      - 匣里
+  - command:
+      - equip add 13401 90 6 5
+
+试作星镰:
+  - names:
+      - 试作星镰
+  - command:
+      - equip add 13402 90 6 5
+
+流月针:
+  - names:
+      - 流月针
+  - command:
+      - equip add 13403 90 6 5
+
+黑岩刺枪:
+  - names:
+      - 黑岩刺枪
+  - command:
+      - equip add 13404 90 6 5
+
+决斗之枪:
+  - names:
+      - 决斗之枪
+  - command:
+      - equip add 13405 90 6 5
+
+千岩长枪:
+  - names:
+      - 千岩长枪
+  - command:
+      - equip add 13406 90 6 5
+
+西风长枪:
+  - names:
+      - 西风长枪
+      - 西风枪
+  - command:
+      - equip add 13407 90 6 5
+
+宗室猎枪:
+  - names:
+      - 宗室猎枪
+  - command:
+      - equip add 13408 90 6 5
+
+龙脊长枪:
+  - names:
+      - 龙脊长枪
+  - command:
+      - equip add 13409 90 6 5
+
+喜多院十文字:
+  - names:
+      - 喜多院十文字
+  - command:
+      - equip add 13414 90 6 5
+
+渔获:
+  - names:
+      - 渔获
+      - 鱼叉
+  - command:
+      - equip add 13415 90 6 5
+
+断浪长鳍:
+  - names:
+      - 断浪长鳍
+      - 断浪
+  - command:
+      - equip add 13416 90 6 5
+
+贯月矢:
+  - names:
+      - 贯月矢
+  - command:
+      - equip add 13417 90 6 5
+
+风信之锋:
+  - names:
+      - 风信之锋
+  - command:
+      - equip add 13419 90 6 5
+
+护摩之杖:
+  - names:
+      - 护摩之杖
+      - 护摩
+  - command:
+      - equip add 13501 90 6 5
+
+天空之脊:
+  - names:
+      - 天空之脊
+  - command:
+      - equip add 13502 90 6 5
+
+贯虹之槊:
+  - names:
+      - 贯虹之槊
+      - 盾枪
+  - command:
+      - equip add 13504 90 6 5
+
+和璞鸢:
+  - names:
+      - 和璞鸢
+      - 鸟枪
+  - command:
+      - equip add 13505 90 6 5
+
+息灾:
+  - names:
+      - 息灾
+  - command:
+      - equip add 13507 90 6 5
+
+薙草之稻光:
+  - names:
+      - 薙草之稻光
+      - 薙草
+      - 雷神专武
+  - command:
+      - equip add 13509 90 6 5
+
+赤沙之杖:
+  - names:
+      - 赤沙之杖
+      - 赤沙
+  - command:
+      - equip add 13511 90 6 5
+
+讨龙英杰谭:
+  - names:
+      - 讨龙英杰谭
+  - command:
+      - equip add 14302 90 6 5
+
+异世界行记:
+  - names:
+      - 异世界行记
+  - command:
+      - equip add 14303 90 6 5
+
+翡玉法球:
+  - names:
+      - 翡玉法球
+  - command:
+      - equip add 14304 90 6 5
+
+甲级宝珏:
+  - names:
+      - 甲级宝珏
+  - command:
+      - equip add 14305 90 6 5
+
+琥珀玥:
+  - names:
+      - 琥珀玥
+  - command:
+      - equip add 14306 90 6 5
+
+西风秘典:
+  - names:
+      - 西风秘典
+  - command:
+      - equip add 14401 90 6 5
+
+流浪乐章:
+  - names:
+      - 流浪乐章
+  - command:
+      - equip add 14402 90 6 5
+
+祭礼残章:
+  - names:
+      - 祭礼残章
+  - command:
+      - equip add 14403 90 6 5
+
+宗室秘法录:
+  - names:
+      - 宗室秘法录
+  - command:
+      - equip add 14404 90 6 5
+
+匣里日月:
+  - names:
+      - 匣里日月
+  - command:
+      - equip add 14405 90 6 5
+
+试作金珀:
+  - names:
+      - 试作金珀
+  - command:
+      - equip add 14406 90 6 5
+
+万国诸海图谱:
+  - names:
+      - 万国诸海图谱
+  - command:
+      - equip add 14407 90 6 5
+
+黑岩绯玉:
+  - names:
+      - 黑岩绯玉
+  - command:
+      - equip add 14408 90 6 5
+
+昭心:
+  - names:
+      - 昭心
+  - command:
+      - equip add 14409 90 6 5
+
+暗巷的酒与诗:
+  - names:
+      - 暗巷的酒与诗
+  - command:
+      - equip add 14410 90 6 5
+
+忍冬之果:
+  - names:
+      - 忍冬之果
+  - command:
+      - equip add 14412 90 6 5
+
+嘟嘟可故事集:
+  - names:
+      - 嘟嘟可故事集
+  - command:
+      - equip add 14413 90 6 5
+
+白辰之环:
+  - names:
+      - 白辰之环
+  - command:
+      - equip add 14414 90 6 5
+
+证誓之明瞳:
+  - names:
+      - 证誓之明瞳
+  - command:
+      - equip add 14415 90 6 5
+
+流浪的晚星:
+  - names:
+      - 流浪的晚星
+  - command:
+      - equip add 14416 90 6 5
+
+盈满之实:
+  - names:
+      - 盈满之实
+  - command:
+      - equip add 14417 90 6 5
+
+天空之卷:
+  - names:
+      - 天空之卷
+  - command:
+      - equip add 14501 90 6 5
+
+四风原典:
+  - names:
+      - 四风原典
+  - command:
+      - equip add 14502 90 6 5
+
+尘世之锁:
+  - names:
+      - 尘世之锁
+  - command:
+      - equip add 14504 90 6 5
+
+不灭月华:
+  - names:
+      - 不灭月华
+  - command:
+      - equip add 14506 90 6 5
+
+神乐之真意:
+  - names:
+      - 神乐之真意
+      - 神乐
+  - command:
+      - equip add 14509 90 6 5
+
+千夜浮梦:
+  - names:
+      - 千夜浮梦
+      - 千夜
+  - command:
+      - equip add 14511 90 6 5
+
+图莱杜拉的回忆:
+  - names:
+      - 图莱杜拉的回忆
+      - 散兵专武
+  - command:
+      - equip add 14512 90 6 5
+
+猎弓:
+  - names:
+      - 猎弓
+  - command:
+      - equip add 15101 90 6 5
+
+历练的猎弓:
+  - names:
+      - 历练的猎弓
+  - command:
+      - equip add 15201 90 6 5
+
+鸦羽弓:
+  - names:
+      - 鸦羽弓
+  - command:
+      - equip add 15301 90 6 5
+
+神射手之誓:
+  - names:
+      - 神射手之誓
+  - command:
+      - equip add 15302 90 6 5
+
+反曲弓:
+  - names:
+      - 反曲弓
+  - command:
+      - equip add 15303 90 6 5
+
+弹弓:
+  - names:
+      - 弹弓
+  - command:
+      - equip add 15304 90 6 5
+
+信使:
+  - names:
+      - 信使
+  - command:
+      - equip add 15305 90 6 5
+
+黑檀弓:
+  - names:
+      - 黑檀弓
+  - command:
+      - equip add 15306 90 6 5
+
+西风猎弓:
+  - names:
+      - 西风猎弓
+  - command:
+      - equip add 15401 90 6 5
+
+绝弦:
+  - names:
+      - 绝弦
+  - command:
+      - equip add 15402 90 6 5
+
+祭礼弓:
+  - names:
+      - 祭礼弓
+  - command:
+      - equip add 15403 90 6 5
+
+宗室长弓:
+  - names:
+      - 宗室长弓
+  - command:
+      - equip add 15404 90 6 5
+
+弓藏:
+  - names:
+      - 弓藏
+  - command:
+      - equip add 15405 90 6 5
+
+试作澹月:
+  - names:
+      - 试作澹月
+  - command:
+      - equip add 15406 90 6 5
+
+钢轮弓:
+  - names:
+      - 钢轮弓
+  - command:
+      - equip add 15407 90 6 5
+
+黑岩战弓:
+  - names:
+      - 黑岩战弓
+  - command:
+      - equip add 15408 90 6 5
+
+苍翠猎弓:
+  - names:
+      - 苍翠猎弓
+  - command:
+      - equip add 15409 90 6 5
+
+暗巷猎手:
+  - names:
+      - 暗巷猎手
+  - command:
+      - equip add 15410 90 6 5
+
+落霞:
+  - names:
+      - 落霞
+  - command:
+      - equip add 15411 90 6 5
+
+幽夜华尔兹:
+  - names:
+      - 幽夜华尔兹
+  - command:
+      - equip add 15412 90 6 5
+
+风花之颂:
+  - names:
+      - 风花之颂
+  - command:
+      - equip add 15413 90 6 5
+
+破魔之弓:
+  - names:
+      - 破魔之弓
+      - 破魔
+  - command:
+      - equip add 15414 90 6 5
+
+掠食者:
+  - names:
+      - 掠食者
+  - command:
+      - equip add 15415 90 6 5
+
+曚云之月:
+  - names:
+      - 曚云之月
+  - command:
+      - equip add 15416 90 6 5
+
+王下近侍:
+  - names:
+      - 王下近侍
+  - command:
+      - equip add 15417 90 6 5
+
+竭泽:
+  - names:
+      - 竭泽
+  - command:
+      - equip add 15418 90 6 5
+
+天空之翼:
+  - names:
+      - 天空之翼
+  - command:
+      - equip add 15501 90 6 5
+
+阿莫斯之弓:
+  - names:
+      - 阿莫斯之弓
+      - 阿莫斯
+  - command:
+      - equip add 15502 90 6 5
+
+终末嗟叹之诗:
+  - names:
+      - 终末嗟叹之诗
+      - 终末
+  - command:
+      - equip add 15503 90 6 5
+
+冬极白星:
+  - names:
+      - 冬极白星
+      - 冬极
+  - command:
+      - equip add 15507 90 6 5
+
+若水:
+  - names:
+      - 若水
+  - command:
+      - equip add 15508 90 6 5
+
+飞雷之弦振:
+  - names:
+      - 飞雷之弦振
+      - 飞雷
+  - command:
+      - equip add 15509 90 6 5
+
+猎人之径:
+  - names:
+      - 猎人之径
+      - 猎人
+      - 绿弓
+  - command:
+      - equip add 15511 90 6 5
+
+神里绫华:
+  - names:
+      - 神里绫华
+      - 凌华
+      - 绫华
+  - command:
+      - avatar add 10000002
+
+琴:
+  - names:
+      - 琴
+      - 琴团长
+  - command:
+      - avatar add 10000003
+
+空:
+  - names:
+      - 空
+      - 男主
+  - command:
+      - avatar add 10000005
+
+丽莎:
+  - names:
+      - 丽莎
+  - command:
+      - avatar add 10000006
+
+荧:
+  - names:
+      - 荧
+      - 女主
+  - command:
+      - avatar add 10000007
+
+芭芭拉:
+  - names:
+      - 芭芭拉
+  - command:
+      - avatar add 10000014
+
+凯亚:
+  - names:
+      - 凯亚
+  - command:
+      - avatar add 10000015
+
+迪卢克:
+  - names:
+      - 迪卢克
+  - command:
+      - avatar add 10000016
+
+雷泽:
+  - names:
+      - 雷泽
+  - command:
+      - avatar add 10000020
+
+安柏:
+  - names:
+      - 安柏
+  - command:
+      - avatar add 10000021
+
+温迪:
+  - names:
+      - 温迪
+  - command:
+      - avatar add 10000022
+
+香菱:
+  - names:
+      - 香菱
+  - command:
+      - avatar add 10000023
+
+北斗:
+  - names:
+      - 北斗
+  - command:
+      - avatar add 10000024
+
+行秋:
+  - names:
+      - 行秋
+  - command:
+      - avatar add 10000025
+
+魈:
+  - names:
+      - 魈
+  - command:
+      - avatar add 10000026
+
+凝光:
+  - names:
+      - 凝光
+  - command:
+      - avatar add 10000027
+
+可莉:
+  - names:
+      - 可莉
+  - command:
+      - avatar add 10000029
+
+钟离:
+  - names:
+      - 钟离
+  - command:
+      - avatar add 10000030
+
+菲谢尔:
+  - names:
+      - 菲谢尔
+  - command:
+      - avatar add 10000031
+
+班尼特:
+  - names:
+      - 班尼特
+  - command:
+      - avatar add 10000032
+
+达达利亚:
+  - names:
+      - 达达利亚
+      - 公子
+  - command:
+      - avatar add 10000033
+
+诺艾尔:
+  - names:
+      - 诺艾尔
+      - 女仆
+  - command:
+      - avatar add 10000034
+
+七七:
+  - names:
+      - 七七
+  - command:
+      - avatar add 10000035
+
+重云:
+  - names:
+      - 重云
+  - command:
+      - avatar add 10000036
+
+甘雨:
+  - names:
+      - 甘雨
+  - command:
+      - avatar add 10000037
+
+阿贝多:
+  - names:
+      - 阿贝多
+  - command:
+      - avatar add 10000038
+
+迪奥娜:
+  - names:
+      - 迪奥娜
+  - command:
+      - avatar add 10000039
+
+莫娜:
+  - names:
+      - 莫娜
+  - command:
+      - avatar add 10000041
+
+刻晴:
+  - names:
+      - 刻晴
+  - command:
+      - avatar add 10000042
+
+砂糖:
+  - names:
+      - 砂糖
+  - command:
+      - avatar add 10000043
+
+辛焱:
+  - names:
+      - 辛焱
+  - command:
+      - avatar add 10000044
+
+罗莎莉亚:
+  - names:
+      - 罗莎莉亚
+  - command:
+      - avatar add 10000045
+
+胡桃:
+  - names:
+      - 胡桃
+  - command:
+      - avatar add 10000046
+
+枫原万叶:
+  - names:
+      - 枫原万叶
+      - 万叶
+  - command:
+      - avatar add 10000047
+
+烟绯:
+  - names:
+      - 烟绯
+  - command:
+      - avatar add 10000048
+
+宵宫:
+  - names:
+      - 宵宫
+  - command:
+      - avatar add 10000049
+
+托马:
+  - names:
+      - 托马
+  - command:
+      - avatar add 10000050
+
+优菈:
+  - names:
+      - 优菈
+  - command:
+      - avatar add 10000051
+
+雷电将军:
+  - names:
+      - 雷电将军
+      - 雷神
+      - 影
+  - command:
+      - avatar add 10000052
+
+早柚:
+  - names:
+      - 早柚
+  - command:
+      - avatar add 10000053
+
+珊瑚宫心海:
+  - names:
+      - 珊瑚宫心海
+      - 心海
+  - command:
+      - avatar add 10000054
+
+五郎:
+  - names:
+      - 五郎
+  - command:
+      - avatar add 10000055
+
+九条裟罗:
+  - names:
+      - 九条裟罗
+      - 九条
+  - command:
+      - avatar add 10000056
+
+荒泷一斗:
+  - names:
+      - 荒泷一斗
+      - 一抖
+      - 一斗
+  - command:
+      - avatar add 10000057
+
+八重神子:
+  - names:
+      - 八重神子
+      - 八重
+      - 神子
+  - command:
+      - avatar add 10000058
+
+鹿野院平藏:
+  - names:
+      - 鹿野院平藏
+      - 小鹿
+  - command:
+      - avatar add 10000059
+
+夜兰:
+  - names:
+      - 夜兰
+  - command:
+      - avatar add 10000060
+
+埃洛伊:
+  - names:
+      - 埃洛伊
+  - command:
+      - avatar add 10000062
+
+申鹤:
+  - names:
+      - 申鹤
+      - 小姨
+  - command:
+      - avatar add 10000063
+
+云堇:
+  - names:
+      - 云堇
+  - command:
+      - avatar add 10000064
+
+久岐忍:
+  - names:
+      - 久岐忍
+      - 97忍
+  - command:
+      - avatar add 10000065
+
+神里绫人:
+  - names:
+      - 神里绫人
+      - 绫人
+      - 凌人
+  - command:
+      - avatar add 10000066
+
+柯莱:
+  - names:
+      - 柯莱
+  - command:
+      - avatar add 10000067
+
+多莉:
+  - names:
+      - 多莉
+  - command:
+      - avatar add 10000068
+
+提纳里:
+  - names:
+      - 提纳里
+  - command:
+      - avatar add 10000069
+
+妮露:
+  - names:
+      - 妮露
+  - command:
+      - avatar add 10000070
+
+赛诺:
+  - names:
+      - 赛诺
+  - command:
+      - avatar add 10000071
+
+坎蒂丝:
+  - names:
+      - 坎蒂丝
+  - command:
+      - avatar add 10000072
+
+纳西妲:
+  - names:
+      - 纳西妲
+      - 草神
+  - command:
+      - avatar add 10000073
+
+莱依拉:
+  - names:
+      - 莱依拉
+  - command:
+      - avatar add 10000074
+
+解锁神像:
+  - names:
+      - 解锁神像
+      - 解锁地图
+      - 解锁锚点
+  - command:
+      - quest finish 30302
+      - quest finish 30303
+      - quest finish 30304
+      - quest finish 30305
+      - quest finish 30306
+      - quest finish 30307
+      - quest finish 30308
+      - quest finish 30309
+      - quest finish 30310
+      - quest finish 30311
+      - quest finish 30312
+      - quest finish 30313
+      - quest finish 30314
+      - quest finish 30315
+      - quest finish 30316
+      - quest finish 30317
+      - quest finish 30318
+      - quest finish 30319
+      - quest finish 30320
+      - quest finish 30321
+      - quest finish 30322
+      - quest finish 30323
+      - quest finish 30224
+      - quest finish 30325
+      - quest finish 30326
+      - quest finish 30327
+      - point 3 all
+
+结晶:
+  - names:
+      - 结晶
+      - 创世结晶
+  - command:
+      - mcoin 99999
+
+原石:
+  - names:
+      - 原石
+  - command:
+      - hcoin 99999
+
+摩拉:
+  - names:
+      - 摩拉
+  - command:
+      - scoin 99999
+
+洞天宝钱:
+  - names:
+      - 洞天宝钱
+      - 家园币
+  - command:
+      - home_coin 99999
+
+浓缩:
+  - names:
+      - 浓缩
+      - 浓缩树脂
+  - command:
+      - item add 220007 20
+
+奶:
+  - names:
+      - 奶
+      - 回血
+      - hp
+  - command:
+      - revive
+
+杀怪:
+  - names:
+      - 杀怪
+      - 清怪
+      - 清图
+  - command:
+      - kill monster all
+
+无相全家桶:
+  - names:
+      - 无相全家桶
+      - 五香全家桶
+  - command:
+      - monster 20040101 1 100
+      - monster 20040201 1 100
+      - monster 20040301 1 100
+      - monster 20040401 1 100
+      - monster 20040501 1 100
+      - monster 20040601 1 100
+      - monster 20040701 1 100
+
+大伟哥:
+  - names:
+      - 大伟哥
+      - 大伟丘
+  - command:
+      - monster 21011501 20 200
+
+煮饭婆:
+  - names:
+      - 煮饭婆
+      - 周本雷神
+      - 怪物雷神
+  - command:
+      - monster 29060203 2 200
+
+玩具大使:
+  - names:
+      - 玩具大使
+  - command:
+      - monster 29030103 20 200
+      - monster 29030103 20 200
+      - monster 29030103 20 200
+
+狼王:
+  - names:
+      - 狼王
+  - command:
+      - monster 29020101 5 200
+
+巨蛇:
+  - names:
+      - 巨蛇
+  - command:
+      - monster 24010401 20 200
+
+雷鸟:
+  - names:
+      - 雷鸟
+  - command:
+      - monster 20070101 5 200
+
+好哥哥:
+  - names:
+      - 好哥哥
+  - command:
+      - monster 29030103 20 200
+
+若陀:
+  - names:
+      - 若陀
+      - 肥陀
+      - 若陀龙王
+  - command:
+      - monster 29040101 2 200
+
+树脂:
+  - names:
+      - 树脂
+  - command:
+      - item add 220007 100
+
+火法:
+  - names:
+      - 火法
+  - command:
+      - monster 22010102 10 200
+
+水晶块:
+  - names:
+      - 水晶块
+  - command:
+      - item add 101003 500
+
+白铁块:
+  - names:
+      - 白铁块
+  - command:
+      - item add 101002 500
+
+祝圣精华:
+  - names:
+      - 祝圣精华
+  - command:
+      - item add 105003 5000
+
+草之印:
+  - names:
+      - 草之印
+  - command:
+      - item add 303 5200
+
+雷之印:
+  - names:
+      - 雷之印
+  - command:
+      - item add 304 5200
+
+全部角色:
+  - names:
+      - 全部角色
+  - command:
+      - item add avatar all
+
+式小将:
+  - names:
+      - 式小将
+  - command:
+      - item add 220045
+
+缥锦机关:
+  - names:
+      - 缥锦机关
+  - command:
+      - item add 220074
+
+魔女:
+  - names:
+      - 魔女
+  - command:
+      - equip add 23361 1 15008 501241 6 501031 1 501201 1 501221 1
+      - equip add 23365 1 10002 501231 1 501241 1 501201 1 501221 6
+      - equip add 23362 1 10003 501031 1 501241 1 501221 1 501201 6
+      - equip add 23364 1 10001 501241 1 501031 1 501201 6 501221 1
+      - equip add 23363 1 30960 501031 1 501231 1 501241 6 501221 1
+
+删除安柏:
+  - names:
+      - 删除安柏
+  - command:
+      - avatar del 10000021
+
+冰法:
+  - names:
+      - 冰法
+  - command:
+      - monster 22010201 20 200
+      - monster 22010201 20 200
+      - monster 22010201 20 200
+
+普通人:
+  - names:
+      - 普通人
+  - command:
+      - monster 21010101 20 200
+      - monster 21010101 20 200
+      - monster 21010101 20 200
+
+丘盔:
+  - names:
+      - 丘盔
+  - command:
+      - monster 21020501 20 200
+      - monster 21020501 20 200
+
+雷法:
+  - names:
+      - 雷法
+  - command:
+      - monster 22010403 20 200
+      - monster 22010403 20 200
+
+会飞:
+  - names:
+      - 会飞
+  - command:
+      - monster 20050901 20 200
+      - monster 20050901 20 200
+
+三剑客:
+  - names:
+      - 三剑客
+  - command:
+      - monster 25090201 5 200
+      - monster 25090301 5 200
+      - monster 25090401 5 200
+
+冰块:
+  - names:
+      - 冰块
+  - command:
+      - monster 20040501 20 200
+
+七印礼:
+  - names:
+      - 七印礼
+  - command:
+      - item add 301 1314
+      - item add 302 1314
+      - item add 303 1314
+      - item add 304 1314
+      - item add 305 1314
+      - item add 306 1314
+      - item add 307 1314
+
+夏天:
+  - names:
+      - 夏天
+  - command:
+      - monster 20040601 5 200
+      - monster 20040601 5 200
+      - monster 20040601 5 200
+
+内鬼:
+  - names:
+      - 内鬼
+  - command:
+      - monster 21030101 20 200
+      - monster 21030101 20 200
+      - monster 21030101 20 200
+
+大风车:
+  - names:
+      - 大风车
+  - command:
+      - monster 24010109 20 200
+      - monster 24010108 20 200
+      - monster 24010101 20 200
+
+愚人众:
+  - names:
+      - 愚人众
+  - command:
+      - monster 23020101 20 200
+      - monster 23010601 20 200
+      - monster 23010501 20 200
+      - monster 23010401 20 200
+      - monster 23010301 20 200
+      - monster 23010201 20 200
+
+千岩军:
+  - names:
+      - 千岩军
+  - command:
+      - monster 25050201 20 200
+      - monster 25050101 20 200
+
+花呗多:
+  - names:
+      - 花呗多
+  - command:
+      - monster 26010301 20 200
+      - monster 26010201 20 200
+      - monster 26010104 20 200
+      - monster 26010103 20 200
+      - monster 26010102 20 200
+      - monster 26010101 20 200
+
+两棵树:
+  - names:
+      - 两棵树
+  - command:
+      - monster 26030101 20 200
+      - monster 26020201 20 200
+      - monster 26020102 20 200
+      - monster 26020101 20 200
+
+盗宝团:
+  - names:
+      - 盗宝团
+  - command:
+      - monster 25040102 20 200
+      - monster 25030301 20 200
+      - monster 25030201 20 200
+      - monster 25030101 20 200
+      - monster 25020201 20 200
+      - monster 25020101 20 200
+      - monster 25010701 20 200
+      - monster 25010701 20 200
+      - monster 25010601 20 200
+      - monster   25010501 20 200
+      - monster 25010401 20 200
+      - monster 25010301 20 200
+      - monster 25010201 20 200
+      - monster 25010101 20 200
+
+朋友:
+  - names:
+      - 朋友
+  - command:
+      - monster 29040111 1 200
+      - monster 29040104 1 200
+      - monster 29040103 1 200
+      - monster 29040102 1 200
+      - monster 29040101 1 200
+
+开会:
+  - names:
+      - 开会
+  - command:
+      - monster 20011501 20 200
+      - monster 20011301 20 200
+      - monster 20011101 20 200
+      - monster 20010901 20 200
+      - monster 20010701 20 200
+      - monster 20010601 20 200
+
+猜猜看:
+  - names:
+      - 猜猜看
+  - command:
+      - monster 21030601 20 200
+      - monster 21030501 20 200
+      - monster 21030401 20 200
+      - monster 21030101 20 200
+      - monster 21030301 20 200
+      - monster 21030201 20 200
+
+暴走团:
+  - names:
+      - 暴走团
+  - command:
+      - monster 21020301 20 200
+      - monster 21020801 20 200
+      - monster 21020701 20 200
+      - monster 21020601 20 200
+      - monster 21020201 20 200
+      - monster 21020101 20 200
+
+萝卜开会:
+  - names:
+      - 萝卜开会
+  - command:
+      - monster 26050401 20 200
+      - monster 26050301 20 200
+      - monster 26050201 20 200
+      - monster 26050101 20 200
+      - monster 26050101 20 200
+      - monster 26040101 20 200
+      - monster 26030101 20 200
+
+哈士奇:
+  - names:
+      - 哈士奇
+  - command:
+      - monster 22060101 1 200
+      - monster 22050201 20 200
+      - monster 22050101 20 200
+      - monster 22040201 20 200
+      - monster 22040101 20 200
+
+阅兵:
+  - names:
+      - 阅兵
+  - command:
+      - monster 21011501 20 200
+      - monster 21020501 20 200
+      - monster 21020501 20 200
+      - monster 21020501 20 200
+      - monster 21020501 20 200
+      - monster 21020501 20 200
+      - monster 21020501 20 200
+      - monster 21020501 20 200
+      - monster 21020501 20 200
+      - monster 21020501 20 200
+
+叉烧粉:
+  - names:
+      - 叉烧粉
+  - command:
+      - monster 21011602 20 200
+      - monster 21011601 20 200
+      - monster 21011501 20 200
+      - monster 21011403 20 200
+      - monster 21011401 20 200
+      - monster 21011302 20 200
+      - monster 21011301 20 200
+      - monster 21011201 20 200
+      - monster 21011002 20 200
+      - monster 21011001 20 200
+      - monster 21010902 20 200
+      - monster 21010901 20 200
+      - monster 21010701 20 200
+      - monster 21010603 20 200
+      - monster 21010601 20 200
+      - monster 21010502 20 200
+      - monster 21010501 20 200
+      - monster 21010402 20 200
+      - monster 21010401 20 200
+      - monster 21010301 20 200
+      - monster 21010201 20 200
+
+冰淇淋:
+  - names:
+      - 冰淇淋
+  - command:
+      - monster 20050901 20 200
+      - monster 20050801 20 200
+      - monster 20050701 20 200
+      - monster 20050601 20 200
+      - monster 20050501 20 200
+      - monster 20050401 20 200
+      - monster 20050301 20 200
+      - monster 20050201 20 200
+
+三叶草:
+  - names:
+      - 三叶草
+  - command:
+      - monster 22030201 20 200
+      - monster 22030101 20 200
+      - monster 22020101 20 200
+
+摸鱼:
+  - names:
+      - 摸鱼
+  - command:
+      - monster 26060301 20 200
+      - monster 26060201 20 200
+      - monster 26060101 20 200
+      - monster 20060601 20 200
+      - monster 20060501 20 200
+      - monster 20060401 20 200
+      - monster 20060301 20 200
+      - monster 20060201 20 200
+      - monster 20060101 20 200
+
+男团:
+  - names:
+      - 男团
+  - command:
+      - monster 25100401 20 200
+      - monster 25100201 20 200
+      - monster 25100301 20 200
+      - monster 25100101 20 200
+      - monster 25080401 20 200
+      - monster 25080301 20 200
+      - monster 25080202 20 200
+      - monster 25080201 20 200
+      - monster 25080101 20 200
+      - monster 25050501 20 200
+      - monster 25050401 20 200
+      - monster 25050301 20 200
+
+辞别:
+  - names:
+      - 辞别
+  - command:
+      - monster 24021101 20 200
+      - monster 24020401 20 200
+      - monster 24020301 20 200
+      - monster 24020201 20 200
+      - monster 24020101 20 200
+      - monster 24010401 20 200
+      - monster 24010301 20 200
+      - monster 24010201 20 200
+      - monster 24010101 20 200
+
+白菜汤:
+  - names:
+      - 白菜汤
+  - command:
+      - monster 25100401 20 200
+      - monster 25100201 20 200
+      - monster 25100301 20 200
+      - monster 25100101 20 200
+      - monster 25080401 20 200
+      - monster 25080301 20 200
+      - monster 25080202 20 200
+      - monster 25080201 20 200
+      - monster 25080101 20 200
+      - monster 25050501 20 200
+      - monster 25050401 20 200
+      - monster 25050301 20 200
+
+神龛钥匙:
+  - names:
+      - 神龛钥匙
+  - command:
+      - item add 107006 20 item add 107007 20 item add 107008 20
+
+传说钥匙:
+  - names:
+      - 传说钥匙
+  - command:
+      - item add 107 5
+
+四风记忆:
+  - names:
+      - 四风记忆
+  - command:
+      - item add 915 1
+
+不动记忆:
+  - names:
+      - 不动记忆
+  - command:
+      - item add 917 1
+
+草木记忆:
+  - names:
+      - 草木记忆
+  - command:
+      - item add 913 1
+
+苍雷记忆:
+  - names:
+      - 苍雷记忆
+  - command:
+      - item add 914 1
+
+降级:
+  - names:
+      - 降级
+  - command:
+      - player level 1
+
+纱雾:
+  - names:
+      - 纱雾
+  - command:
+      - monster 29060203 20 200
+      - monster 20040601 20 200
+      - monster 20040501 20 200
+      - monster 20040401 20 200
+      - monster 20040302 20 200
+      - monster 20040301 20 200
+      - monster 20040202 20 200
+      - monster 20040201 20 200
+      - monster 20040102 20 200
+      - monster 20040101 20 200
+
+风套:
+  - names:
+      - 风套
+  - command:
+      - item add 23401 5
+      - item add 23402 5
+      - item add 23403 5
+      - item add 23404 5
+      - item add 23405 5
+
+璃月钥匙:
+  - names:
+      - 璃月钥匙
+  - command:
+      - item add 107007 20
+
+蒙德钥匙:
+  - names:
+      - 蒙德钥匙
+  - command:
+      - item add 107006 20
+
+稻妻钥匙:
+  - names:
+      - 稻妻钥匙
+  - command:
+      - item add 107008 20
+
+仙速瓶:
+  - names:
+      - 仙速瓶
+  - command:
+      - item add 107013 50
+
+无主星辉:
+  - names:
+      - 无主星辉
+  - command:
+      - item add 221 99999
+
+无主星尘:
+  - names:
+      - 无主星尘
+  - command:
+      - item add 222 99999
+    
+重登:
+  - names:
+      - 重登
+  - command:
+      - kick
+
+水套:
+  - names:
+      - 水套
+  - command:
+      - item add 23531 5
+      - item add 23532 5
+      - item add 23533 5
+      - item add 23534 5
+      - item add 23535 5
+
+纯水:
+  - names:
+      - 纯水
+  - command:
+      - monster 20050101 5 200
+
+漂浮灵:
+  - names:
+      - 漂浮灵
+  - command:
+      - monster 20060101 100 2
+
+翅膀:
+  - names:
+      - 翅膀
+  - command:
+      - item add 14002 1
+      - item add 14003 1
+      - item add 14004 1
+      - item add 14005 1
+      - item add 14006 1
+      - item add 14007 1
+      - item add 14008 1
+      - item add 14009 1
+      - item add 140010 1
+
+全声望:
+  - names:
+      - 全声望
+      - 声望
+      - 声望满级
+  - command:
+      - item add 314 9999
+      - item add 315 9999
+      - item add 316 9999
+      - item add 317 9999

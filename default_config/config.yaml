@@ -1,0 +1,16 @@
+# 此文件存放群配置
+"1072411694":
+  mode: true
+  server:
+    id: "1"
+    name: 小钰
+    version: "3.2"
+    ip: 192.168.56.128
+    port: 20011
+    region: dev_gio
+    sign: zyy
+    signswitch: "false"
+  Administrator:
+    - "1072411694"
+  uid:
+    - "1072411694": "10001"

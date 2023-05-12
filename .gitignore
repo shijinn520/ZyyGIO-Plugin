@@ -1,7 +1,2 @@
 
-resources/hk4e/config.yaml
-resources/hk4e/data.yaml
-resources/hk4e/mail.yaml
-resources/hk4e/server.yaml
-resources/hk4e/mail.json
-resources/hk4e/command.json
+config
