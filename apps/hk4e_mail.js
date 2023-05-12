@@ -88,6 +88,9 @@ export class hk4e extends plugin {
                 else if (retcode === 1312) {
                     e.reply([segment.at(e.user_id), `\n失败 -> 游戏货币超限`])
                 }
+                else if (retcode === 1316) {
+                    e.reply([segment.at(e.user_id), `\n失败 -> 游戏货币超限`])
+                }
                 else if (retcode === 2028) {
                     e.reply([segment.at(e.user_id), `\n失败 -> 邮件日期设置错误，请修改[expire_time]`])
                 }

@@ -182,7 +182,7 @@ export class hk4e extends plugin {
                     "content": msg[3]
                 },
                 {
-                    "item_list": msg[4]
+                    "item_list": msg[4].replace(/，/g, ',')
                 }
             ]
 
