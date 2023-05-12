@@ -1,34 +1,100 @@
 使用`Yunzai`执行`hk4e`的GM指令
 
+需要手动配置的只有`server.yaml`这个文件，你需要在里面添加上你的服务器
+
 # 效果展示：
 
 在线玩家：
 
-![在线玩家示例](https://i.328888.xyz/2023/04/30/iKYK3N.png)
+![在线玩家示例](https://i.328888.xyz/2023/05/13/iuRFgt.png)
 
 GM指令：
 
 ![别名指令示例](https://i.328888.xyz/2023/04/30/iKq4VU.png)
 ![普通指令示例](https://i.328888.xyz/2023/04/30/iKqAbv.png)
+![添加命令示例](https://i.328888.xyz/2023/05/13/iuRGKJ.png)
 
 邮件：
 
 ![邮件别名示例](https://i.328888.xyz/2023/04/30/iKYK3N.png)
 ![普通指令示例](https://i.328888.xyz/2023/04/30/iKqUQy.png)
+![添加邮件示例](https://i.328888.xyz/2023/05/13/iuRhUc.png)
 
-# 安装Yunzai
-根据自己的需求任选其一安装即可
+# 目录
+* [基本](#basic)
+    * [安装Yunzai](#install)
+    * [安装插件](#install_plugin)
+    * [插件结构](#plugin_structure)
 
-Miao-Yunzai：[Gitee](https://gitee.com/yoimiya-kokomi/Miao-Yunzai) | [Github](https://github.com/yoimiya-kokomi/Miao-Yunzai)
+* [玩家指令](#player_command)
+    * [玩家UID](#player_uid)
+        * [绑定UID](#bind_uid)
+        * [玩家列表](#player_list)
 
-TRSS-Yunzai：[Gitee](https://gitee.com/TimeRainStarSky/Yunzai) | [Github](https://github.com/TimeRainStarSky/Yunzai)
+    * [查看别名](#view_alias)
+        * [指令别名](#command_alias)
+        * [邮件别名](#mail_alias)
+        * [查看命令别名](#view_command_alias)
+        * [查看邮件别名](#view_mail_alias)
+
+    * [设置快捷指令](#set_shortcut)
+        * [添加命令](#add_command)
+        * [添加邮件](#add_mail)
+
+    * [给现有快捷指令添加更多别名](#add_more_alias)
+        * [添加命令别名](#add_command_alias)
+        * [添加邮件别名](#add_mail_alias)
+    * [使用命令、邮件](#use_shortcut)
+        * [发送命令](#send_command)
+        * [发送邮件](#send_mail)
+        
+* [管理员指令](#admin_command)
+    * [换绑UID](#change_bind_uid)
+    * [删除命令](#delete_command)
+    * [删除邮件](#delete_mail)
+    * [全服邮件](#global_mail)
+
+* [超级管理指令](#super_admin_command)
+    * [初始化GM](#init_gm)
+        * [开启GM](#enable_gm)
+        * [关闭GM](#disable_gm)
+        * [添加全服邮件UID](#add_global_mail_uid)
+    * [服务器](#server)
+        * [服务器列表](#server_list)
+        * [切换服务器](#switch_server)
+
+    * [设置管理员](#set_admin)
+        * [绑定管理员](#bind_admin)
+        * [解绑管理员](#unbind_admin)
+
+    * [黑名单](#blacklist)
+        * [拉黑玩家](#add_blacklist)
+        * [解除拉黑](#unblock_player)
+
+    * [更新插件](#update_plugin)
+
+* [其他](#others)
+
+* [免责声明](#disclaimer)
+
+
+<br>
+<br>
+<br>
+<h1 id="basic">基本</h1>
+
+<h4 id="install">安装Yunzai</h4>
+
+* 根据自己的需求任选其一安装即可
+* Miao-Yunzai：[Gitee](https://gitee.com/yoimiya-kokomi/Miao-Yunzai) | [Github](https://github.com/yoimiya-kokomi/Miao-Yunzai)
+* TRSS-Yunzai：[Gitee](https://gitee.com/TimeRainStarSky/Yunzai) | [Github](https://github.com/TimeRainStarSky/Yunzai)
 
 | 支持的协议       | QQ群 | QQ频道 | QQ频道-官方 | WeChat | Telegram | Discord | KOOK |
 |-------------|-----|------|---------|--------|----------|---------|------|
 | Miao-Yunzai | ✔   |      | ✔       |        |          |         |      |
 | TRSS-Yunzai | ✔   | ✔    | ✔       | ✔      | ✔        | ✔       | ✔    |
 
-# 安装插件
+<h4 id="install_plugin">安装插件</h4>
 
 在`Yunzai`根目录执行，任选其一
 
@@ -42,24 +108,218 @@ Github：
 git clone --depth 1 https://github.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugin
 ```
 
-# 插件结构
-以下所有文件都在此路径`Zyy-GM-plugin/config`
+<h4 id="plugin_structure">插件结构</h4>
 
-目前只有`server.yaml`文件需要手动进行添加服务器，其他文件都不推荐进行手动修改。
-* `config.yaml`：存放每个群聊的服务器，管理员，玩家UID
+* 文件路径：`Zyy-GM-plugin/config`
+    * `server.yaml`：服务器列表、用于快速切换
+    * `command.json`：命令别名
+    * `mail.json`：邮件别名
+    * `config.yaml`：玩家UID、群聊服务器配置、群聊管理员
+    * `full_server_mail.yaml`：全服邮件玩家UID
 
-* `command.json`：存放命令别名。小白不推荐手动修改，最好使用命令添加。
+<br>
+<br>
+<br>
+<h1 id="player_command">玩家指令</h1>
 
-* `mail.json`：存放邮件别名。小白不推荐手动修改，最好使用命令添加。
+<h4 id="player_uid">玩家UID</h4>
 
-* `server.yaml`：存放服务器列表，方便服主快捷在多个群聊切换服务器。
+<h6 id="bind_uid">绑定UID</h6>
 
-# 注意事项：
-* 你需要往`server.yaml`里面添加你要使用的服务器信息
-* 请保持服务器的键名和ID为唯一，切换服务器指令使用的是服务器的ID
-* 如果你的服务器启用了`sign`，请在配置中把 `signswitch: "false"` 修改为 `signswitch: "true"` 
+| 指令     | 说明 |
+|--------|----|
+| 绑定+UID | 为自己绑定UID  |
 
-以下是各项配置的解析
+<h6 id="player_list">玩家列表</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 玩家列表 | 查看当前群聊已绑定UID的玩家  |
+
+<h4 id="view_alias">查看别名</h4>
+
+<h6 id="command_alias">指令别名</h6>   
+
+| 指令     | 说明 |
+|--------|----|
+| 指令别名 | 查看所有已添加的指令别名  |
+
+<h6 id="mail_alias">邮件别名</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 邮件别名 | 查看所有已添加的邮件别名  |
+
+<h6 id="view_command_alias">查看命令别名信息</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 查看命令别名+xx | 查看单个命令别名的结构  |
+
+<h6 id="view_mail_alias">查看邮件别名信息</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 查看邮件别名+xx | 查看单个邮件别名的结构  |
+
+<h4 id="set_shortcut">设置快捷指令</h4>
+
+<h6 id="add_command">添加命令</h6>     
+
+| 指令     | 说明 |
+|--------|----|
+| 添加命令 别名/别名1 /指令1/指令2 | 多个别名使用`/`连接、多个命令使用`/`连接、注意空格  |
+
+<h6 id="add_mail">添加邮件</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 添加邮件 别名/别名1 标题 内容 物品ID:数量,ID:数量 | 多个别名使用`/`连接，多个id使用`,`连接、注意空格 |
+
+<h4 id="add_more_alias">给现有快捷指令添加更多别名</h4>
+
+<h6 id="add_command_alias">添加命令别名</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 添加命令别名 主别名 新别名/新别名1 | [主别名查询方法](###查看命令别名信息) 多个新别名使用`/`连接 |
+          
+<h6 id="add_mail_alias">添加邮件别名</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 添加邮件别名 主别名 新别名/新别名1 | [主别名查询方法](###查看邮件别名信息) 多个新别名使用`/`连接 |
+
+<h4 id="use_shortcut">使用命令、邮件</h4>
+
+<h6 id="send_command">发送命令</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| /+别名 | 搭配[指令别名](###指令别名)使用 |
+| /+原始指令 | 搭配服务器自带指令使用 |
+| 温馨提示 | 所有`/`开头的消息都会被读取为指令 |
+
+<h6 id="send_mail">发送邮件</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 邮件 别名 | 搭配[邮件别名](###邮件别名)使用 |
+| 邮件 标题 内容 物品ID:数量,物品ID:数量 | 发送自定义邮件 |
+| 温馨提示 | 邮件后面有一个`空格` |
+
+<br>
+<br>
+<br>
+<h1 id="admin_command">管理员指令</h1>
+
+<h4 id="change_bind_uid">换绑UID</h4>
+
+| 指令     | 说明 |
+|--------|----|
+| 绑定+UID+@玩家 | 绑定、换绑都可使用  |
+
+<h4 id="delete_command">删除命令</h4>
+
+| 指令     | 说明 |
+|--------|----|
+| 删除命令 主别名 | [主别名查询方法](###查看命令别名信息) 删除已有的快捷命令  |
+
+<h4 id="delete_mail">删除邮件</h4>
+
+| 指令     | 说明 |
+|--------|----|
+| 删除邮件 主别名 | [主别名查询方法](###查看邮件别名信息) 删除已有的快捷邮件  |
+
+<h4 id="global_mail">全服邮件</h4>
+
+| 指令     | 说明 |
+|--------|----|
+| 全服邮件 + 别名 | 搭配已有的[邮件别名](###邮件别名)使用  |
+| 全服邮件 标题 内容 物品ID:数量,物品ID:数量 | 自定义全服邮件、多个物品请使用`,`连接  |
+<br>
+<br>
+<br>
+<h1 id="super_admin_command">超级管理指令</h1>
+
+<h4 id="init_gm">初始化GM</h4>
+
+<h6 id="enable_gm">开启GM</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 开启GM | 在私聊、群聊、子频道开启、初始化GM  |
+
+<h6 id="disable_gm">关闭GM</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 关闭GM | 关闭当前群聊开启的GM  |
+
+<h6 id="add_global_mail_uid">添加全服邮件UID</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 添加UID 1 100 | 用于初始化已有的UID、快速添加1-100的UID  |
+
+<h4 id="server">服务器</h4>
+<h6 id="server_list">服务器列表</h6>
+
+
+| 指令     | 说明 |
+|--------|----|
+| 服务器 | 查看服务器列表  |
+
+<h6 id="switch_server">切换服务器</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 切换服务器x | 快速在当前群聊切换服务器、指令后面带`服务器ID`  |
+
+<h4 id="set_admin">设置管理员</h4>
+<h6 id="bind_admin">绑定管理员</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 绑定管理+@玩家 | 绑定后可使用管理员指令  |
+
+<h6 id="unbind_admin">解绑管理员</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 解绑管理+@玩家 | 解除该玩家的管理员身份  |
+
+<h4 id="blacklist">黑名单</h4>
+<h6 id="add_blacklist">拉黑玩家</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 拉黑玩家+@玩家 | 快捷拉黑、使用`Yunzai`自带黑名单让玩家无法使用任何指令  |
+
+<h6 id="unblock_player">解除拉黑</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 解除拉黑+@玩家 | 解除拉黑  |
+
+<h4 id="update_plugin">更新插件</h4>
+
+| 指令     | 说明 |
+|--------|----|
+| 更新GM | 更新插件  |
+
+<br>
+<br>
+<br>
+<h1 id="others">其他</h1>
+
+* 插件会覆盖默认的`Yunzai`帮助，如果想使用默认帮助，发送`指令|云崽帮助`即可
+
+* `server.yaml`:
+    * 你需要往`server.yaml`里面添加你要使用的服务器信息
+    * 请保持服务器的键名和ID为唯一，切换服务器指令使用的是服务器的ID
+    * 如果你的服务器启用了`sign`，请在配置中把 `signswitch: "false"` 修改为 `signswitch: "true"` 
+
 ```
 "小钰-3.2":                 // 这里是键名，如果你不知道怎么改，按照name-版本这样填写即可
   id: "1"                   // 这里是id，请保持唯一，用于机器人区分多服务器
@@ -70,49 +330,11 @@ git clone --depth 1 https://github.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugi
   region: "dev_gio"         // 服务器区服
   sign: "zyy"               // 服务器签名
   signswitch: "false"       // 签名开关
-
+以下是各项配置的解析
 ```
 
-# 使用流程
-
-### 超级管理流程
-
-##### 1.开启GM
-配置好服务器后，在想使用的群聊发送 开启GN
-随后发送 切换服务器2
-参数说明，这里的2是指你自己设置的服务器ID，自己更改即可，配置完成即可到玩家流程。
-
-
-### 玩家流程：
-首先需要绑定自己的UID
-
-在已经开启GM的群聊发送`绑定+UID`即可。
-
-
-# 指令说明
-插件会覆盖默认的`Yunzai`帮助，如果想使用默认帮助，发送`指令|云崽帮助`即可
-
-| ** 指令**   | **权限** | **结构**                                               | **说明**          |
-|-----------|--------|------------------------------------------------------|-----------------|
-|  绑定123    |  所有人   | 绑定[UID]                                              | 需要绑定UID才可以使用    |
-| /别名       |  所有人   | /[别名]                                                | 搭配别名            |
-| /指令       |  所有人   | /[原有指令]                                              | 自行查阅原有指令        |
-| 指令别名      |  所有人   | 指令别名                                                 | 查看已有的指令别名       |
-| 邮件别名      |  所有人   | 邮件别名                                                 | 查看已有的邮件别名       |
-| 玩家列表      |  所有人   | 玩家列表                                                 | 查看现有绑定UID的玩家    |
-| 邮件 新手礼包   |  权限    | 邮件 [别名]                                              | 搭配别名            |
-| 自定义邮件     |  所有人   |  邮件 [标题] [内容] [物品ID:数量,物品ID:数量]                      | 发送自定义邮件，物品      |
-| 添加命令组     |  所有人   | [添加命令] [主别名/别名1/别名2] [/指令1 /指令2 /指令3]                |  添加自定义名称指令      |
-| 添加邮件组     |  所有人   | [添加邮件] [主别名/别名1/别名2] [邮件标题] [邮件内容] [物品ID:数量,物品ID:数量] |  添加自定义名称邮件      |
-| 查看命令|邮件别名 |  所有人   | [查看(邮件|命令)别名][需要查看的别名]                               | 查看别名的基本信息       |
-| 添加命令别名    |        | [添加命令别名] [需要添加别名的主别名] [新别名1/新别名2/新别名3]                | 给现有的命令主别名添加更多别名 |
-| 添加邮件别名    |        | [添加邮件别名] [需要添加别名的主别名] [新别名1/新别名2/新别名3]               | 给现有的邮件主别名添加更多别名 |
-|           |        |                                                      |                 |
-| 换绑UID     |  管理员   |  绑定[uid][@玩家]                                        | 使用方法：绑定+uid+@玩家 |
-| 删除命令      |  管理员   | 删除命令[主别名]                                            |  删掉命令组          |
-| 删除邮件      |  管理员   | 删除邮件[主别名]                                            |  删掉邮件组          |
-| 全服邮件      |  管理员   | 全服邮件 [标题] [内容] [物品ID:数量,物品ID:数量]                     | 用法一致            |
-| 添加全服邮件UID |  管理员   |  添加UID [开始数] [截止数]                                   | 用于初次批量添加        |
+<details>
+<summary>以前的写的，暂时保留观看</summary>
 
 ```
 * 添加命令组
@@ -163,12 +385,17 @@ git clone --depth 1 https://github.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugi
     * 不举例了，给管理员用的指令。查别名随后删即可，删除后机器人会发送一次让你重新添加的指令，可用于快速修改命令
 * 删除邮件
     * 结构：[删除邮件] [主别名]
-    * 不举例了，给管理员用的指令。查别名随后删即可，删除后机器人会发送一次让你重新添加的指令，可用于快速修改命令
-### 超级管理指令(主人)
+    * 不举例了，给管理员用的指令。查别名随后删即可，删除后机器人会发送一次让你重新添加的指令，可用于快速
+```
 
-`没什么区别的啦，自己发帮助看`
+</details>
 
-# 免责声明
+
+<br>
+<br>
+<br>
+<h1 id="disclaimer">免责声明</h1>
+
 遇到问题最好自行解决
 
 大部分代码来自[喵喵插件](https://github.com/yoimiya-kokomi/miao-plugin)和[白纸插件](https://github.com/HeadmasterTan/zhi-plugin)
