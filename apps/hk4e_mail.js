@@ -29,7 +29,7 @@ export class hk4e extends plugin {
         let msglength = true
         let result = null
         if (mode === true) {
-            e.reply([segment.at(e.user_id), `正在处理...请稍后...`])
+            e.reply([segment.at(e.user_id), `\n正在处理...请稍后...`])
             const { mode } = await getmode(e) || {}
             if (!mode) return
             const { uid } = await getuid(e)

@@ -22,7 +22,7 @@ export class hk4e extends plugin {
     const { mode } = await getmode(e) || {}
     if (!mode) return
     if (mode === true) {
-      e.reply([segment.at(e.user_id), `正在处理...请稍后... (￣▽￣)~*`])
+      e.reply([segment.at(e.user_id), `\n正在处理...请稍后... (￣▽￣)~*`])
       const maxRetries = 3
       let retries = 0
       let disposition
