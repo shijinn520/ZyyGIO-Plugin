@@ -108,7 +108,7 @@ export class hk4e extends plugin {
         const { mode } = await getmode(e) || {}
         if (!mode) return
         if (mode === true) {
-            if (e.msg.split(' ').length !== 3) {
+            if (e.msg.split(' ').length < 3) {
                 e.reply([segment.at(e.user_id), '格式错误\n正确的格式为：添加命令 别名名称 /指令1 /指令2\n示例：添加命令 货币 /mcoin 99 /hcoin 99'])
                 return
             }
