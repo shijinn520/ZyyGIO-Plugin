@@ -72,7 +72,8 @@ export const mail = [
     },
     {
         reg: '^添加(UID|uid|Uid) (.*)$',
-        fnc: '添加UID'
+        fnc: '添加UID',
+        permission: 'master'
     }
 ]
 

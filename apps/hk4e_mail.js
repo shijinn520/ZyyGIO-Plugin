@@ -418,10 +418,10 @@ export class hk4e extends plugin {
                     // 1000个请求暂停发送响应
                     if (responseCount >= 1000) {
                         if (fail.length > 0) {
-                            this.reply(`\n全服邮件发送中...\n玩家数量：${uid.length}\n请求成功：${messages.length}\n请求失败：${errorCount}\n发送成功：${succ.length}\n发送失败:${fail.length}\n失败原因：\n${fail.slice(0, 10).join('\n')}\n失败原因仅展示前10个，完整原因请前往控制台查看`)
+                            this.reply(`全服邮件发送中...\n玩家数量：${uid.length}\n请求成功：${messages.length}\n请求失败：${errorCount}\n发送成功：${succ.length}\n发送失败:${fail.length}\n失败原因：\n${fail.slice(0, 10).join('\n')}\n失败原因仅展示前10个，完整原因请前往控制台查看`)
                         }
                         else {
-                            this.reply(`\n全服邮件发送中...\n玩家数量：${uid.length}\n请求成功：${messages.length}\n请求失败：${errorCount}\n发送成功：${succ.length}\n发送失败:${fail.length}`)
+                            this.reply(`全服邮件发送中...\n玩家数量：${uid.length}\n请求成功：${messages.length}\n请求失败：${errorCount}\n发送成功：${succ.length}\n发送失败:${fail.length}`)
                         }
                         responseCount = 0
                         await new Promise(resolve => setTimeout(resolve, 10000)) // 等待10秒钟
