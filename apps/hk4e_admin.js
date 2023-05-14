@@ -281,27 +281,105 @@ export class hk4e extends plugin {
   }
 
   async 插件更新(e) {
+    let local
     const _path = process.cwd() + '/plugins/Zyy-GM-plugin/'
-    if (!e.isMaster) {
-      e.reply("分支错误")
-      return true
-    }
-
-    let command = "git  pull"
     e.reply("GM插件更新中...")
 
-    exec(command, { cwd: `${_path}` }, function (error, stdout) {
+    exec("git pull --no-rebase", { cwd: `${_path}` }, function (error, stdout) {
       if (/Already up[ -]to[ -]date/.test(stdout)) {
-        e.reply("GM插件已经是最新版本...")
+        exec('git log -1 --format="%h %cd %s" --date=iso', { cwd: `${_path}` }, function (error, stdout) {
+          if (error) {
+            console.error(`exec error: ${error}`)
+            return
+          }
+
+          const gitlog = stdout.split(' ')
+          local = gitlog
+        })
+        e.reply(`GM插件已经是最新版本...\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
         return true
       }
+
       if (error) {
-        e.reply(`更新失败了呜呜呜\nError code: ${error.code}\n等会再试试吧`)
-        return true
+        console.log(error)
+        if (/be overwritten by merge/.test(error.message)) {
+          const Error = error.message
+            .replace(/Command failed/gi, '命令失败')
+            .replace(/error: Your local changes to the following files would be overwritten by merge/gi, '错误：您对以下文件的本地更改将被合并覆盖')
+            .replace(/Please commit your changes or stash them before you merge/gi, '请在合并之前提交更改或存储它们')
+            .replace(/error: The following untracked working tree files would be overwritten by merge/gi, '错误：以下未跟踪的工作树文件将被合并覆盖')
+            .replace(/Please move or remove them before you merge/gi, '请在合并之前移动或删除它们')
+            .replace(/Aborting/gi, '中止')
+          e.reply(`存在冲突：\n${Error}\n` + '请解决冲突后再更新，或者执行 强制更新GM，放弃本地修改')
+          return
+        }
+        if (/Failed to connect|unable to access|CONFLICT/.test(error.message)) {
+          const Error = error.message
+            .replace(/Command failed/gi, '命令失败')
+            .replace(/fatal: unable to access/gi, '致命：无法访问')
+            .replace(/Recv failure: Connection was reset/gi, 'Recv 失败：连接已重置')
+            .replace(/ Couldn't connect to server/gi, '无法连接到服务器')
+            .replace(/port/gi, '端口')
+            .replace(/Failed to connect to/gi, '无法连接到')
+            .replace(/after/gi, '之后')
+            .replace(/ms/gi, '毫秒')
+          e.reply(`连接超时：\n${Error}\n` + '请检查网络连接')
+          return
+        }
       }
-      e.reply("更新完成！请发送 #重启 或者手动重启吧~")
+      exec('git log -1 --format="%h %cd %s" --date=iso', { cwd: `${_path}` }, function (error, stdout) {
+        if (error) {
+          console.error(`exec error: ${error}`)
+          return
+        }
+
+        const gitlog = stdout.split(' ')
+        local = gitlog
+      })
+      e.reply(`更新成功...\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
     })
 
+    return true
+  }
+
+  async 强制更新(e) {
+    let local
+    const _path = process.cwd() + '/plugins/Zyy-GM-plugin/'
+    e.reply("正在强制更新GM插件...")
+
+    exec('git log -1 --format="%h %cd %s" --date=iso', { cwd: `${_path}` }, function (error, stdout) {
+      if (error) {
+        console.error(`exec error: ${error}`)
+        return
+      }
+
+      const gitlog = stdout.split(' ')
+      local = gitlog
+    })
+
+    exec("git reset --hard origin/main", { cwd: `${_path}` }, function (error, stdout) {
+      const hash = stdout.replace(/HEAD is now at /gi, '').split(' ')[0]
+      console.log(stdout)
+      if (hash === local[0]) {
+        e.reply(`GM插件已经是最新版本...\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
+        return
+      }
+      if (error) {
+        console.log(`未知错误：\n`, error)
+        return
+      }
+
+      exec('git log -1 --format="%h %cd %s" --date=iso', { cwd: `${_path}` }, function (error, stdout) {
+        if (error) {
+          console.error(`exec error: ${error}`)
+          return
+        }
+
+        const gitlog = stdout.split(' ')
+        local = gitlog
+      })
+      e.reply(`强制更新完成，请手动重启\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
+    })
     return true
   }
 }

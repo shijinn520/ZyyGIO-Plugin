@@ -44,8 +44,13 @@ export const admin = [
         permission: 'master'
     },
     {
-        reg: '^(小钰更新|GM更新|更新GM|更新gm|gm更新|Gm更新)$',
+        reg: '^(GM更新|Gm更新|gm更新|更新GM|更新Gm|更新gm)$',
         fnc: '插件更新',
+        permission: 'master'
+    },
+    {
+        reg: '^(GM强制更新|Gm强制更新|gm强制更新|强制更新GM|强制更新Gm|更新gm)$',
+        fnc: '强制更新',
         permission: 'master'
     }
 ]
