@@ -10,6 +10,16 @@ export const admin = [
         permission: 'master'
     },
     {
+        reg: '^开启签到$',
+        fnc: '开启签到',
+        permission: 'master'
+    },
+    {
+        reg: '^关闭签到$',
+        fnc: '关闭签到',
+        permission: 'master'
+    },
+    {
         reg: '^(绑定管理|添加管理|绑定管理员|添加管理员)(.*)$',
         fnc: '绑定管理员',
         permission: 'master'

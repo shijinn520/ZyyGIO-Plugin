@@ -43,13 +43,19 @@ export async function getmode(e = {}) {
   const { value, scenes } = await getScenes(e)
   let mode
   if (!config[scenes]) {
-    e.reply(`此${value}的GM插件未初始化`)
     mode = undefined
+    if (e.isMaster) {
+      e.reply(`此${value}的GM插件未初始化`)
+      return
+    }
     return
   }
   else if (config[scenes]?.mode === false) {
     mode = false
-    e.reply(`GM在此${value}已经关闭`)
+    if (e.isMaster) {
+      e.reply(`GM在此${value}已经关闭`)
+      return
+    }
     return
   }
   else if (config[scenes]?.mode === true) {
