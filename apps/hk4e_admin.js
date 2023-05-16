@@ -19,25 +19,46 @@ export class hk4e extends plugin {
     })
   }
 
-  async 开启GM(e) {
+  async 开启功能(e) {
+    let mode
     const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
     const server = Yaml.parse(fs.readFileSync(_path + '/server.yaml', 'utf8'))
     const { value, scenes } = await getScenes(e)
-    const modeEnabled = config[scenes]?.mode
-    if (modeEnabled === true) {
-      e.reply(`GM在此${value}已经启用，请不要重复启用`)
-      return
+    const Function = config[scenes]?.mode === false ? false : config[scenes]?.mode || ''
+    if (e.msg === '开启GM' || e.msg === '开启gm' || e.msg === '开启Gm') {
+      if (Function === 'gm') {
+        e.reply(`失败 -> 当前${value}目前已开启GM功能`)
+        return
+      }
+      else if (Function === '' || Function === false) {
+        mode = 'gm'
+      } else {
+        e.reply(`失败 -> 当前${value}目前已开启${Function}功能`)
+        return
+      }
     }
-    if (modeEnabled === false) {
-      config[scenes].mode = true
+
+    if (e.msg === '开启签到') {
+      if (Function === 'CheckIns') {
+        e.reply(`失败 -> 当前${value}目前已开启签到功能`)
+        return
+      }
+      else if (Function === '' || Function === false) {
+        mode = 'CheckIns'
+      } else {
+        e.reply(`失败 -> 当前${value}目前已开启${Function}功能`)
+        return
+      }
+    }
+
+    if (Function === false) {
+      config[scenes].mode = mode
       fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config))
-      e.reply("GM当前状态：启用")
-      return
-    }
-    if (modeEnabled === undefined) {
+      e.reply(`${mode}当前状态：启用`)
+    } else {
       const cfg = server[Object.keys(server)[0]]
       config[scenes] = {
-        mode: true,
+        mode: mode,
         server: cfg,
         Administrator: [e.user_id.toString()],
         uid: [
@@ -45,47 +66,51 @@ export class hk4e extends plugin {
         ]
       }
       fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config))
+      const players = Yaml.parse(fs.readFileSync(_path + '/players.yaml', 'utf8'))
+      players[scenes] = {
+        [e.user_id]: {
+          total_signin_count: 0,
+          last_signin_time: "1999-12-12 00:00:00"
+        }
+      }
+      fs.writeFileSync(_path + '/players.yaml', Yaml.stringify(players))
       const mail = Yaml.parse(fs.readFileSync(_path + '/full_server_mail.yaml', 'utf8'))
       mail[scenes] = ['100001']
       fs.writeFileSync(_path + '/full_server_mail.yaml', Yaml.stringify(mail))
-      e.reply([`初始化成功~\n当前环境：${value}\nID：${scenes}\nGM状态：启用\n超级管理为：`, segment.at(e.user_id), `\n\n温馨提示：\n普通玩家仅可绑定一次UID\n管理员无上限\n\n设置管理员指令：\n(绑定管理|添加管理)`, segment.at(e.user_id), `\n\n仅超级管理可用~删除同理~`])
+      e.reply([`初始化成功~\n当前环境：${value}\nID：${scenes}\n功能：${mode}\n超级管理为：`, segment.at(e.user_id), `\n\n温馨提示：\n普通玩家仅可绑定一次UID\n管理员无上限\n\n设置管理员指令：\n(绑定管理|添加管理)`, segment.at(e.user_id), `\n\n仅超级管理可用~删除同理~`])
     }
-
   }
 
-  async 关闭GM(e) {
+  async 关闭功能(e) {
     const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
     const { value, scenes } = await getScenes(e)
-    const modeEnabled = config[scenes]?.mode
-
-    if (modeEnabled === undefined) {
-      e.reply(`此${value}还没有开启过GM哦`)
+    const Function = config[scenes]?.mode === false ? false : config[scenes]?.mode || ''
+    console.log(Function)
+    if (Function === '') {
+      e.reply(`失败 -> 当前${value}没有开启过任何功能`)
       return
     }
-
-    if (modeEnabled === false) {
-      e.reply(`GM在此${value}已经关闭，请不要重复关闭`)
+    else if (Function === false) {
+      e.reply(`失败 -> 当前${value}已经关闭所有功能，无需重复关闭`)
       return
-    }
-
-    if (modeEnabled === true) {
+    } else {
       config[scenes].mode = false
       fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config))
-      e.reply("GM当前状态：关闭")
+      e.reply(`成功 -> 当前${value}已经关闭所有功能`)
     }
   }
 
   async 绑定管理员(e) {
     const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
     const { value, scenes } = await getScenes(e)
-    const modeEnabled = config[scenes]?.mode
+    const Function = config[scenes]?.mode
     const at = e.message.find(item => item.type === 'at').qq
     const admin = config[scenes].Administrator
-    if (modeEnabled === undefined) {
+    if (Function === undefined) {
       e.reply(`当前${value}还没开启过GM，请先启用！`)
       return
     }
-    if (modeEnabled === false) {
+    if (Function === false) {
       e.reply(`当前${value}已经关闭GM，执行失败！`)
       return
     }
@@ -102,15 +127,15 @@ export class hk4e extends plugin {
     const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
     const { value, scenes } = await getScenes(e)
 
-    const modeEnabled = config[scenes]?.mode
+    const Function = config[scenes]?.mode
     const at = e.message.find(item => item.type === 'at').qq
     const admin = config[scenes]?.Administrator
-    if (modeEnabled === undefined) {
+    if (Function === undefined) {
       e.reply(`当前${value}还没开启过GM，请先启用！`)
       return
     }
 
-    if (modeEnabled === false) {
+    if (Function === false) {
       e.reply(`当前${value}已经关闭GM，执行失败！`)
       return
     }
@@ -132,7 +157,7 @@ export class hk4e extends plugin {
     const { mode } = await getmode(e) || {}
     if (!mode) return
     console.log(scenes)
-    if (mode === true) {
+    if (!mode === false) {
       const admin = config[scenes].Administrator
       const newmsg = e.msg.replace(/绑定|\s|\W/g, '').replace(/[^0-9]/g, '')
       const uid = config[scenes]?.uid || []
@@ -182,7 +207,7 @@ export class hk4e extends plugin {
     const { mode } = await getmode(e) || {}
     if (!mode) return
     const servername = config[scenes]?.server.name + '-' + config[scenes]?.server.version
-    if (mode === true) {
+    if (!mode === false) {
       const topkeys = Object.getOwnPropertyNames(server)
       topkeys.sort(function (a, b) {
         return server[a].order - server[b].order
@@ -211,7 +236,7 @@ export class hk4e extends plugin {
     if (!mode) return
     const { scenes } = await getScenes(e)
 
-    if (mode === true) {
+    if (!mode === false) {
       const serverId = e.msg.match(/\d+/)[0]
       let newserver
 

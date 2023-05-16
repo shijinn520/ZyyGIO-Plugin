@@ -51,7 +51,7 @@ export class hk4e extends plugin {
     async 玩家列表(e) {
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        if (mode === true) {
+        if (mode === 'gm') {
             const cfg = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
             const { value, scenes } = await getScenes(e)
             const uid = cfg[scenes].uid
@@ -71,7 +71,7 @@ export class hk4e extends plugin {
     async 命令别名(e) {
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        if (mode === true) {
+        if (mode === 'gm') {
             const cfg = Yaml.parse(fs.readFileSync(_path + '/command.yaml', 'utf8'))
             const keys = Object.values(cfg).map(entry => entry.filter(obj => 'names' in obj).flatMap(obj => obj.names).join(' - '))
             const data = {
@@ -89,7 +89,7 @@ export class hk4e extends plugin {
     async 邮件别名(e) {
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        if (mode === true) {
+        if (mode === 'gm') {
             const cfg = Yaml.parse(fs.readFileSync(_path + '/mail.yaml', 'utf8'))
             const keys = Object.values(cfg).map(entry => entry.filter(obj => 'names' in obj).flatMap(obj => obj.names).join(' - '))
             const data = {
@@ -107,7 +107,7 @@ export class hk4e extends plugin {
     async 添加命令(e) {
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        if (mode === true) {
+        if (mode === 'gm') {
             if (e.msg.split(' ').length < 3) {
                 e.reply([segment.at(e.user_id), '格式错误\n正确的格式为：添加命令 别名名称 /指令1 /指令2\n示例：添加命令 货币 /mcoin 99 /hcoin 99'])
                 return
@@ -148,7 +148,7 @@ export class hk4e extends plugin {
     async 添加邮件(e) {
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        if (mode === true) {
+        if (mode === 'gm') {
             const msg = e.msg.split(' ')
             if (msg.length !== 5) {
                 e.reply([segment.at(e.user_id), '格式错误\n正确的格式为：\n添加邮件 [别名 多个使用/分隔] 邮件标题 邮件内容 物品ID:数量,物品ID:数量\n\n示例：\n添加邮件 测试邮件 标题 内容 201:1,105003:1'])
@@ -194,7 +194,7 @@ export class hk4e extends plugin {
     async 添加命令别名(e) {
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        if (mode === true) {
+        if (mode === 'gm') {
             const msg = e.msg.split(' ')
             if (msg.length !== 3) {
                 e.reply([segment.at(e.user_id), '格式错误\n正确的格式为：\n添加命令别名 [主别名] [新别名]\n\n示例：\n添加命令别名 90 一键满级'])
@@ -240,7 +240,7 @@ export class hk4e extends plugin {
     async 添加邮件别名(e) {
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        if (mode === true) {
+        if (mode === 'gm') {
             const msg = e.msg.split(' ')
             if (msg.length !== 3) {
                 e.reply([segment.at(e.user_id), '格式错误\n正确的格式为：\n添加邮件别名 [主别名] [新别名]\n\n示例：\n添加邮件别名 新手礼包 测试礼包'])
@@ -286,7 +286,7 @@ export class hk4e extends plugin {
     async 查看别名信息(e) {
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        if (mode === true) {
+        if (mode === 'gm') {
             let msg
             if (e.msg.includes('别名')) {
                 msg = e.msg.split('别名')
@@ -364,7 +364,7 @@ export class hk4e extends plugin {
     async 删除命令别名(e) {
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        if (mode === true) {
+        if (mode === 'gm') {
             const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
             const { scenes } = await getScenes(e)
             const admin = config[scenes]?.Administrator
@@ -399,7 +399,7 @@ export class hk4e extends plugin {
     async 删除邮件别名(e) {
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        if (mode === true) {
+        if (mode === 'gm') {
             const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
             const { scenes } = await getScenes(e)
             const admin = config[scenes]?.Administrator

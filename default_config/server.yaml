@@ -11,7 +11,8 @@
   region: "dev_gio"
   sign: "zyy"
   signswitch: "false"
-
+  title: "净善宫每日签到奖品发放"
+  content: "亲爱的旅行者:\n净善宫每日签到奖品现已发放，请在附件中查收。\n感谢旅行者对于四叶草的关注和支持。"
 
 # 自定义服务器1，可按需求添加
 "小钰-3.5":
@@ -23,3 +24,5 @@
   region: "dev_gio"
   sign: "zyy"
   signswitch: "false"
+  title: "净善宫每日签到奖品发放"
+  content: "亲爱的旅行者:\n净善宫每日签到奖品现已发放，请在附件中查收。\n感谢旅行者对于四叶草的关注和支持。"

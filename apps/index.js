@@ -39,6 +39,7 @@ export async function getScenes(e = {}) {
 
 // 处理GM状态  
 export async function getmode(e = {}) {
+  // 将开关修改为功能的名称
   const config = Yaml.parse(fs.readFileSync(_path + '/config/config.yaml', 'utf8'))
   const { value, scenes } = await getScenes(e)
   let mode
@@ -58,8 +59,11 @@ export async function getmode(e = {}) {
     }
     return
   }
-  else if (config[scenes]?.mode === true) {
-    mode = true
+  else if (config[scenes]?.mode === 'gm') {
+    mode = 'gm'
+  }
+  else if (config[scenes]?.mode === 'CheckIns') {
+    mode = 'CheckIns'
   }
   return { mode }
 }
@@ -85,7 +89,9 @@ export async function getserver(e = {}) {
   }
   const timestamp = moment().format('YYYYMMDDHHmmss')
   const ticketping = (`Zyy${timestamp}`)
-  return { ip, port, region, sign, sender, ticketping }
+  const title = config[scenes]?.server.title
+  const content = config[scenes]?.server.content
+  return { ip, port, region, sign, sender, ticketping, title, content }
 }
 
 

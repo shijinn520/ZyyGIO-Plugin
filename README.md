@@ -58,6 +58,8 @@ GM指令：
     * [初始化GM](#init_gm)
         * [开启GM](#enable_gm)
         * [关闭GM](#disable_gm)
+        * [开启签到](#enable_CheckIns)
+        * [关闭签到](#disable_CheckIns)
         * [添加全服邮件UID](#add_global_mail_uid)
     * [服务器](#server)
         * [服务器列表](#server_list)
@@ -256,6 +258,18 @@ git clone --depth 1 https://github.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugi
 |--------|----|
 | 关闭GM | 关闭当前群聊开启的GM  |
 
+<h6 id="enable_CheckIns">开启签到</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 开启签到 | 在私聊、群聊、子频道开启、初始化签到  |
+
+<h6 id="disable_CheckIns">关闭签到</h6>
+
+| 指令     | 说明 |
+|--------|----|
+| 关闭签到 | 关闭当前群聊开启的签到  |
+
 <h6 id="add_global_mail_uid">添加全服邮件UID</h6>
 
 | 指令     | 说明 |
@@ -330,6 +344,8 @@ git clone --depth 1 https://github.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugi
   region: "dev_gio"         // 服务器区服
   sign: "zyy"               // 服务器签名
   signswitch: "false"       // 签名开关
+  title: "每日签到"          // 每日签到邮件标题
+  content: "内容"            // 每日签到邮件内容
 以下是各项配置的解析
 ```
 

@@ -28,7 +28,7 @@ export class hk4e extends plugin {
         let disposition
         let msglength = true
         let result = null
-        if (mode === true) {
+        if (mode === 'gm') {
             e.reply([segment.at(e.user_id), `\n正在处理...请稍后...`])
             const { mode } = await getmode(e) || {}
             if (!mode) return
@@ -232,7 +232,7 @@ export class hk4e extends plugin {
     async 全服邮件(e) {
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        if (mode === true) {
+        if (mode === 'gm') {
             const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
             const { scenes } = await getScenes(e)
             const admin = config[scenes]?.Administrator
@@ -454,7 +454,7 @@ export class hk4e extends plugin {
         // 添加uid添加重复检测
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        if (mode === true) {
+        if (mode === 'gm') {
             const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
             const { scenes } = await getScenes(e)
             const admin = config[scenes]?.Administrator

@@ -1,22 +1,13 @@
 export const admin = [
+      // 将开关修改为功能的名称
     {
-        reg: '^(开启GM|开启gm|启用GM|启用gm)$',
-        fnc: '开启GM',
+        reg: '^(开启GM|开启gm|开启gm|开启签到)$',
+        fnc: '开启功能',
         permission: 'master'
     },
     {
-        reg: '^(关闭GM|关闭gm|停止gm|停止GM)$',
-        fnc: '关闭GM',
-        permission: 'master'
-    },
-    {
-        reg: '^开启签到$',
-        fnc: '开启签到',
-        permission: 'master'
-    },
-    {
-        reg: '^关闭签到$',
-        fnc: '关闭签到',
+        reg: '^(关闭GM|关闭Gm|关闭gm|关闭签到)$',
+        fnc: '关闭功能',
         permission: 'master'
     },
     {
@@ -140,5 +131,12 @@ export const players = [
     {
         reg: '^删除邮件(?:别名)?(.*)$',
         fnc: '删除邮件别名'
+    }
+]
+
+export const cdk = [
+    {
+        reg: '^签到$',
+        fnc: '签到'
     }
 ]
