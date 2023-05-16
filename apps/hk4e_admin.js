@@ -360,8 +360,8 @@ export class hk4e extends plugin {
 
         const gitlog = stdout.split(' ')
         local = gitlog
+        e.reply(`更新成功...\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
       })
-      e.reply(`更新成功...\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
     })
 
     return true
@@ -384,7 +384,6 @@ export class hk4e extends plugin {
 
     exec("git reset --hard origin/main", { cwd: `${_path}` }, function (error, stdout) {
       const hash = stdout.replace(/HEAD is now at /gi, '').split(' ')[0]
-      console.log(stdout)
       if (hash === local[0]) {
         e.reply(`GM插件已经是最新版本...\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
         return
@@ -402,8 +401,8 @@ export class hk4e extends plugin {
 
         const gitlog = stdout.split(' ')
         local = gitlog
+        e.reply(`强制更新完成，请手动重启\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
       })
-      e.reply(`强制更新完成，请手动重启\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
     })
     return true
   }
