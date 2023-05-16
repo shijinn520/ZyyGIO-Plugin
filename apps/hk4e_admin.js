@@ -320,8 +320,8 @@ export class hk4e extends plugin {
 
           const gitlog = stdout.split(' ')
           local = gitlog
+          e.reply(`GM插件已经是最新版本...\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
         })
-        e.reply(`GM插件已经是最新版本...\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
         return true
       }
 
