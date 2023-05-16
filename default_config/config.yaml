@@ -1,6 +1,6 @@
 # 此文件存放群配置
 "1072411694":
-  mode: true
+  mode: false
   server:
     id: "1"
     name: 小钰

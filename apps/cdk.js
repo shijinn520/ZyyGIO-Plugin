@@ -3,6 +3,7 @@ import http from 'http'
 import fs from 'fs'
 import crypto from 'crypto'
 import Yaml from 'yaml'
+import schedule from 'node-schedule'
 import { cdk } from './rule.js'
 import { getmode, getserver, getuid, getScenes } from './index.js'
 let _path = process.cwd() + '/plugins/Zyy-GM-plugin/config'
@@ -157,5 +158,33 @@ export class hk4e extends plugin {
                 req.end()
             })
         }
+
     }
+
 }
+
+
+function autoTask() {
+    schedule.scheduleJob('0 0 1 * *', () => {
+        try {
+            const playersContent = fs.readFileSync(_path + '/players.yaml', 'utf8')
+            const players = Yaml.parse(playersContent)
+            const updateNestedKey = (obj) => {
+                for (const key in obj) {
+                    if (typeof obj[key] === 'object') {
+                        updateNestedKey(obj[key])
+                    } else if (key === 'total_signin_count') {
+                        obj[key] = 0
+                    }
+                }
+            }
+            updateNestedKey(players)
+            fs.writeFileSync(_path + '/players.yaml', Yaml.stringify(players), 'utf8')
+            console.log('现在是新的一月，已经将所有玩家的签到状态清空')
+        } catch (error) {
+            console.error('读取或写入文件时出现错误:', error)
+        }
+    })
+}
+
+autoTask()
