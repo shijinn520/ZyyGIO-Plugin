@@ -23,6 +23,7 @@ export class hk4e extends plugin {
         if (!mode) return
         if (mode === 'CheckIns') {
             const { uid } = await getuid(e)
+            if (!uid) return
             const { scenes } = await getScenes(e)
             const { ip, port, region, sign, ticketping, sender, title, content } = await getserver(e)
             const CheckIns = Yaml.parse(fs.readFileSync(_path + '/CheckIns.yaml', 'utf8'))
