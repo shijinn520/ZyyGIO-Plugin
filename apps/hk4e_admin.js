@@ -343,7 +343,7 @@ export class hk4e extends plugin {
 
         const gitlog = stdout.split(' ')
         local = gitlog
-        e.reply(`更新成功...\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
+        e.reply(`更新成功...\n请手动重启...\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
       })
     })
 
