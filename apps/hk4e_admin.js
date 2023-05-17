@@ -101,7 +101,7 @@ export class hk4e extends plugin {
   }
 
   async 绑定管理员(e) {
-    const { mode } = await getmode(e) || ''
+    const { mode } = await getmode(e) || {}
     if (!mode) return
     if (mode !== false) {
       const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
@@ -119,7 +119,7 @@ export class hk4e extends plugin {
   }
 
   async 解绑管理员(e) {
-    const { mode } = await getmode(e) || ''
+    const { mode } = await getmode(e) || {}
     if (!mode) return
     if (mode !== false) {
       const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
@@ -138,7 +138,7 @@ export class hk4e extends plugin {
   }
 
   async 绑定UID(e) {
-    const { mode } = await getmode(e) || ''
+    const { mode } = await getmode(e) || {}
     if (!mode) return
     const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
     const mail = Yaml.parse(fs.readFileSync(_path + '/full_server_mail.yaml', 'utf8'))
@@ -186,7 +186,7 @@ export class hk4e extends plugin {
   }
 
   async 服务器列表(e) {
-    const { mode } = await getmode(e) || ''
+    const { mode } = await getmode(e) || {}
     if (!mode) return
     const server = Yaml.parse(fs.readFileSync(_path + '/server.yaml', 'utf8'))
     const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))

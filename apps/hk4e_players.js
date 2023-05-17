@@ -49,7 +49,7 @@ export class hk4e extends plugin {
     }
 
     async 玩家列表(e) {
-        const { mode } = await getmode(e) || ''
+        const { mode } = await getmode(e) || {}
         if (!mode) return
         if (mode !== false) {
             const cfg = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
@@ -69,7 +69,7 @@ export class hk4e extends plugin {
     }
 
     async 命令别名(e) {
-        const { mode } = await getmode(e) || ''
+        const { mode } = await getmode(e) || {}
         if (!mode) return
         if (mode === 'gm') {
             const cfg = Yaml.parse(fs.readFileSync(_path + '/command.yaml', 'utf8'))
@@ -87,7 +87,7 @@ export class hk4e extends plugin {
     }
 
     async 邮件别名(e) {
-        const { mode } = await getmode(e) || ''
+        const { mode } = await getmode(e) || {}
         if (!mode) return
         if (mode === 'gm') {
             const cfg = Yaml.parse(fs.readFileSync(_path + '/mail.yaml', 'utf8'))
@@ -105,7 +105,7 @@ export class hk4e extends plugin {
     }
 
     async 添加命令(e) {
-        const { mode } = await getmode(e) || ''
+        const { mode } = await getmode(e) || {}
         if (!mode) return
         if (mode === 'gm') {
             if (e.msg.split(' ').length < 3) {
@@ -146,7 +146,7 @@ export class hk4e extends plugin {
     }
 
     async 添加邮件(e) {
-        const { mode } = await getmode(e) || ''
+        const { mode } = await getmode(e) || {}
         if (!mode) return
         if (mode === 'gm') {
             const msg = e.msg.split(' ')
@@ -192,7 +192,7 @@ export class hk4e extends plugin {
     }
 
     async 添加命令别名(e) {
-        const { mode } = await getmode(e) || ''
+        const { mode } = await getmode(e) || {}
         if (!mode) return
         if (mode === 'gm') {
             const msg = e.msg.split(' ')
@@ -238,7 +238,7 @@ export class hk4e extends plugin {
     }
 
     async 添加邮件别名(e) {
-        const { mode } = await getmode(e) || ''
+        const { mode } = await getmode(e) || {}
         if (!mode) return
         if (mode === 'gm') {
             const msg = e.msg.split(' ')
@@ -284,7 +284,7 @@ export class hk4e extends plugin {
     }
 
     async 查看别名信息(e) {
-        const { mode } = await getmode(e) || ''
+        const { mode } = await getmode(e) || {}
         if (!mode) return
         if (mode === 'gm') {
             let msg
@@ -362,7 +362,7 @@ export class hk4e extends plugin {
         }
     }
     async 删除命令别名(e) {
-        const { mode } = await getmode(e) || ''
+        const { mode } = await getmode(e) || {}
         if (!mode) return
         if (mode === 'gm') {
             const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
@@ -397,7 +397,7 @@ export class hk4e extends plugin {
     }
 
     async 删除邮件别名(e) {
-        const { mode } = await getmode(e) || ''
+        const { mode } = await getmode(e) || {}
         if (!mode) return
         if (mode === 'gm') {
             const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))

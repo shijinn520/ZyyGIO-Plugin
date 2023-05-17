@@ -125,7 +125,7 @@ export async function getmail(e = {}) {
     uid = cfg[scenes]
   }
   else {
-    uid = await getuid(e) || ''
+    uid = await getuid(e) || {}
     if (!uid) return
   }
   console.log(e.msg)

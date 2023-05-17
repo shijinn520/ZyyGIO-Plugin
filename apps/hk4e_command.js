@@ -19,7 +19,7 @@ export class hk4e extends plugin {
   }
 
   async GM命令(e) {
-    const { mode } = await getmode(e) || ''
+    const { mode } = await getmode(e) || {}
     if (!mode) return
     const { uid } = await getuid(e)
     if (!uid) return

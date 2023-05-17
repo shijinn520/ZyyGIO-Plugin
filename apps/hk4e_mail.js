@@ -20,11 +20,11 @@ export class hk4e extends plugin {
     }
 
     async 邮件(e) {
-        const { mode } = await getmode(e) || ''
+        const { mode } = await getmode(e) || {}
         if (!mode) return
-        const { uid } = await getuid(e) || ''
+        const { uid } = await getuid(e) || {}
         if (!uid) return
-        const { msglength } = await getmail(e) || ''
+        const { msglength } = await getmail(e) || {}
         if (!msglength) return
 
         if (mode === 'gm') {
@@ -139,7 +139,7 @@ export class hk4e extends plugin {
     async 全服邮件(e) {
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        const { msglength } = await getmail(e) || ''
+        const { msglength } = await getmail(e) || {}
         if (!msglength) return
         if (mode === 'gm') {
             const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
