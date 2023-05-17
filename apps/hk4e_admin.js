@@ -101,71 +101,56 @@ export class hk4e extends plugin {
   }
 
   async 绑定管理员(e) {
-    const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
-    const { value, scenes } = await getScenes(e)
-    const Function = config[scenes]?.mode
-    const at = e.message.find(item => item.type === 'at').qq
-    const admin = config[scenes].Administrator
-    if (Function === undefined) {
-      e.reply(`当前${value}还没开启过GM，请先启用！`)
-      return
+    const { mode } = await getmode(e) || ''
+    if (!mode) return
+    if (mode !== false) {
+      const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
+      const { scenes } = await getScenes(e)
+      const admin = config[scenes].Administrator
+
+      if (admin.includes(e.at)) {
+        e.reply([segment.at(e.at), `已经是管理员了！`])
+        return
+      }
+      admin.push(e.at)
+      fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config))
+      e.reply([`管理员`, segment.at(e.at), ` 绑定成功！`])
     }
-    if (Function === false) {
-      e.reply(`当前${value}已经关闭GM，执行失败！`)
-      return
-    }
-    if (admin.includes(at)) {
-      e.reply([segment.at(at), `已经是管理员了！`])
-      return
-    }
-    admin.push(at)
-    fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config))
-    e.reply([`管理员`, segment.at(at), ` 绑定成功！`])
   }
 
   async 解绑管理员(e) {
-    const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
-    const { value, scenes } = await getScenes(e)
+    const { mode } = await getmode(e) || ''
+    if (!mode) return
+    if (mode !== false) {
+      const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
+      const { scenes } = await getScenes(e)
+      const admin = config[scenes]?.Administrator
+      const index = admin.indexOf(e.at.toString())
 
-    const Function = config[scenes]?.mode
-    const at = e.message.find(item => item.type === 'at').qq
-    const admin = config[scenes]?.Administrator
-    if (Function === undefined) {
-      e.reply(`当前${value}还没开启过GM，请先启用！`)
-      return
-    }
-
-    if (Function === false) {
-      e.reply(`当前${value}已经关闭GM，执行失败！`)
-      return
-    }
-
-    const index = admin.indexOf(at.toString())
-    if (index !== -1) {
-      admin.splice(index, 1)
-      fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config))
-      e.reply(`解绑管理员成功！`)
-    } else {
-      e.reply([segment.at(at), `还不是管理员！`])
+      if (index !== -1) {
+        admin.splice(index, 1)
+        fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config))
+        e.reply(`解绑管理员成功！`)
+      } else {
+        e.reply([segment.at(e.at), `还不是管理员！`])
+      }
     }
   }
 
   async 绑定UID(e) {
+    const { mode } = await getmode(e) || ''
+    if (!mode) return
     const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
     const mail = Yaml.parse(fs.readFileSync(_path + '/full_server_mail.yaml', 'utf8'))
     const { scenes } = await getScenes(e)
-    const { mode } = await getmode(e) || {}
-    if (!mode) return
-    console.log(scenes)
-    if (!mode === false) {
+    if (mode !== false) {
       const admin = config[scenes].Administrator
       const newmsg = e.msg.replace(/绑定|\s|\W/g, '').replace(/[^0-9]/g, '')
       const uid = config[scenes]?.uid || []
 
       let at = String(e.user_id)
-      const newat = e.message.find(item => item.type === 'at')
-      if (newat) {
-        at = String(newat.qq)
+      if (e.at) {
+        at = String(e.at)
       }
 
       if (admin.includes(e.user_id.toString())) {
@@ -201,13 +186,13 @@ export class hk4e extends plugin {
   }
 
   async 服务器列表(e) {
+    const { mode } = await getmode(e) || ''
+    if (!mode) return
     const server = Yaml.parse(fs.readFileSync(_path + '/server.yaml', 'utf8'))
     const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
     const { scenes } = await getScenes(e)
-    const { mode } = await getmode(e) || {}
-    if (!mode) return
     const servername = config[scenes]?.server.name + '-' + config[scenes]?.server.version
-    if (!mode === false) {
+    if (mode !== false) {
       const topkeys = Object.getOwnPropertyNames(server)
       topkeys.sort(function (a, b) {
         return server[a].order - server[b].order
@@ -230,13 +215,13 @@ export class hk4e extends plugin {
   }
 
   async 切换服务器(e) {
-    const server = Yaml.parse(fs.readFileSync(_path + '/server.yaml', 'utf8'))
-    const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
     const { mode } = await getmode(e) || {}
     if (!mode) return
+    const server = Yaml.parse(fs.readFileSync(_path + '/server.yaml', 'utf8'))
+    const config = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
     const { scenes } = await getScenes(e)
 
-    if (!mode === false) {
+    if (mode !== false) {
       const serverId = e.msg.match(/\d+/)[0]
       let newserver
 
@@ -278,30 +263,28 @@ export class hk4e extends plugin {
 
   async 全局拉黑(e) {
     const other = Yaml.parse(fs.readFileSync(_otherpath, 'utf8'))
-    const at = Number(e.message.find(item => item.type === 'at').qq)
 
-    if (other.blackQQ.includes(at)) {
+    if (other.blackQQ.includes(e.at)) {
       e.reply([segment.at(e.user_id), `玩家 `, segment.at(at), ` 已经被拉黑`])
     } else {
-      other.blackQQ.push(at)
+      other.blackQQ.push(e.at)
       const yamlString = Yaml.stringify(other)
       fs.writeFileSync(_otherpath, yamlString.replace(/-\s*"(\d+)"\s*/g, "- $1"), 'utf8')
-      e.reply([segment.at(e.user_id), `拉黑玩家 `, segment.at(at), ` 成功`])
+      e.reply([segment.at(e.user_id), `拉黑玩家 `, segment.at(e.at), ` 成功`])
     }
   }
 
   async 解除拉黑(e) {
     const other = Yaml.parse(fs.readFileSync(_otherpath, 'utf8'))
-    const at = e.message.find(item => item.type === 'at').qq
+    const index = other.blackQQ.indexOf(Number(e.at))
 
-    const index = other.blackQQ.indexOf(Number(at))
     if (index === -1) {
-      e.reply([segment.at(e.user_id), `玩家 `, segment.at(at), ` 没有被拉黑`])
+      e.reply([segment.at(e.user_id), `玩家 `, segment.at(e.at), ` 没有被拉黑`])
     } else {
       other.blackQQ.splice(index, 1)
       const yamlString = Yaml.stringify(other)
       fs.writeFileSync(_otherpath, yamlString.replace(/-\s*"(\d+)"\s*/g, "- $1"), 'utf8')
-      e.reply([segment.at(e.user_id), `玩家 `, segment.at(at), ` 已经解除拉黑`])
+      e.reply([segment.at(e.user_id), `玩家 `, segment.at(e.at), ` 已经解除拉黑`])
     }
   }
 

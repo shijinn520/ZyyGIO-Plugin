@@ -139,7 +139,7 @@ export class hk4e extends plugin {
                                     e.reply([segment.at(e.user_id), `\n签到成功\n当前UID：${parseInt(data.data.uid)}\n累计签到：${checkInSum + 1} 天\n签到时间：${getNow} \n签到物品：${name}`])
                                 }
                                 else {
-                                    e.reply([segment.at(e.user_id), `邮件发送失败\n请联系管理员更改签到物品`])
+                                    e.reply([segment.at(e.user_id), `邮件发送失败\n请检查你的UID，如多数玩家发送失败，请服主检查签到物品设置是否可发送`])
                                 }
                             }
                         } catch (error) {
