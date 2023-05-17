@@ -75,7 +75,8 @@ export class hk4e extends plugin {
           if (!command) {
             command = newmsg
           }
-          const { uid } = await getuid(e)
+          const { uid } = await getuid(e) || ''
+          if (!uid) return
 
           return new Promise((resolve, reject) => {
             const options = {
@@ -251,7 +252,7 @@ export class hk4e extends plugin {
       const { mode } = await getmode(e) || {}
       if (!mode) return
 
-      if (mode === 'gm') {
+      if (!mode === false) {
         // 查询服务器状态都是符合标准的参数，不需要转义
         const parameter = { cmd: '1129', region: region, ticket: ticketping }
         const newparameter = Object.keys(parameter)
