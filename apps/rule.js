@@ -34,6 +34,7 @@ export const admin = [
         fnc: '服务器列表',
         permission: 'master'
     },
+    /* 有点小问题，先禁用
     {
         reg: '^(全局拉黑|拉黑)(.*)$',
         fnc: '全局拉黑',
@@ -44,6 +45,7 @@ export const admin = [
         fnc: '解除拉黑',
         permission: 'master'
     },
+    */
     {
         reg: '^(GM更新|Gm更新|gm更新|更新GM|更新Gm|更新gm)$',
         fnc: '插件更新',
