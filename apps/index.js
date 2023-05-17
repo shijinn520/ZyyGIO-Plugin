@@ -126,10 +126,9 @@ export async function getmail(e = {}) {
   }
   else {
     uid = await getuid(e) || {}
+    uid = uid.uid
     if (!uid) return
   }
-  console.log(e.msg)
-  // console.log(uid)
 
   let msglength = true
   const { region, sign, ticketping, sender } = await getserver(e)
@@ -171,7 +170,7 @@ export async function getmail(e = {}) {
   }
   const signingkey = {
     cmd: '1005',
-    uid: uid,    
+    uid: uid,
     region: region,
     config_id: config_id,
     content: content,
@@ -186,54 +185,54 @@ export async function getmail(e = {}) {
     title: title,
     ticket: ticketping,
   }
-  console.log(`uid:${uid}`)
+
   const sortedParams = Object.keys(signingkey)
     .sort()
     .map(key => `${key}=${signingkey[key]}`)
     .join('&')
   const signStr = sortedParams + sign
   const newsign = `&sign=` + crypto.createHash('sha256').update(signStr).digest('hex')
-let original
-if (e.msg.includes('全服邮件')) {
-  original = {
-    cmd: '1005',
-    region: region,
-    config_id: config_id,
-    content: encodeURIComponent(content),
-    expire_time: expire_time,
-    importance: importance,
-    is_collectible: is_collectible,
-    item_limit_type: item_limit_type,
-    item_list: item_list,
-    source_type: source_type,
-    tag: tag,
-    sender: encodeURIComponent(sender),
-    title: encodeURIComponent(title),
-    ticket: ticketping,
+  let original
+  if (e.msg.includes('全服邮件')) {
+    original = {
+      cmd: '1005',
+      region: region,
+      config_id: config_id,
+      content: encodeURIComponent(content),
+      expire_time: expire_time,
+      importance: importance,
+      is_collectible: is_collectible,
+      item_limit_type: item_limit_type,
+      item_list: item_list,
+      source_type: source_type,
+      tag: tag,
+      sender: encodeURIComponent(sender),
+      title: encodeURIComponent(title),
+      ticket: ticketping,
+    }
   }
-}
-else{
-  original = {
-    cmd: '1005',
-    uid: uid,
-    region: region,
-    config_id: config_id,
-    content: encodeURIComponent(content),
-    expire_time: expire_time,
-    importance: importance,
-    is_collectible: is_collectible,
-    item_limit_type: item_limit_type,
-    item_list: item_list,
-    source_type: source_type,
-    tag: tag,
-    sender: encodeURIComponent(sender),
-    title: encodeURIComponent(title),
-    ticket: ticketping,
+  else {
+    original = {
+      cmd: '1005',
+      uid: uid,
+      region: region,
+      config_id: config_id,
+      content: encodeURIComponent(content),
+      expire_time: expire_time,
+      importance: importance,
+      is_collectible: is_collectible,
+      item_limit_type: item_limit_type,
+      item_list: item_list,
+      source_type: source_type,
+      tag: tag,
+      sender: encodeURIComponent(sender),
+      title: encodeURIComponent(title),
+      ticket: ticketping,
+    }
   }
-}
   const parameter = Object.keys(original)
     .sort()
     .map(key => `${key}=${original[key]}`)
     .join('&')
-  return { parameter, newsign, uid,msglength }
+  return { parameter, newsign, uid, msglength }
 }
