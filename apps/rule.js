@@ -133,6 +133,10 @@ export const players = [
     {
         reg: '^删除邮件(?:别名)?(.*)$',
         fnc: '删除邮件别名'
+    },
+    {
+        reg: '^(我的ID|我的id|我的信息)$',
+        fnc: '查看ID'
     }
 ]
 

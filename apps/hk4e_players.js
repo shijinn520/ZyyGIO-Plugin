@@ -432,4 +432,8 @@ export class hk4e extends plugin {
             e.reply([segment.at(e.user_id), `\n已删除 ${msg}\n你可以通过指令重新添加此命令：\n添加邮件 ${alias} ${title} ${content} ${item_list}`])
         }
     }
+    async 查看ID(e) {
+        const { Scenes, value } = await getScenes(e)
+        e.reply(`当前${value}ID：${Scenes}\n您的个人ID：${e.user_id}`)
+    }
 }
