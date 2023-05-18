@@ -433,7 +433,7 @@ export class hk4e extends plugin {
         }
     }
     async 查看ID(e) {
-        const { Scenes, value } = await getScenes(e)
-        e.reply(`当前${value}ID：${Scenes}\n您的个人ID：${e.user_id}`)
+        const { scenes, value } = await getScenes(e)
+        e.reply(`当前${value}ID：${scenes}\n您的个人ID：${e.user_id}`)
     }
 }
