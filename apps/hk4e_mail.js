@@ -22,7 +22,7 @@ export class hk4e extends plugin {
     async 邮件(e) {
         const { mode } = await getmode(e) || {}
         if (!mode) return
-        const { uid } = await getuid(e) || {}
+        const { uid } = await getuid(e) || {} || {}
         if (!uid) return
         const { msglength } = await getmail(e) || {}
         if (!msglength) return

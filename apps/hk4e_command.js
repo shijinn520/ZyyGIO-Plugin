@@ -21,7 +21,7 @@ export class hk4e extends plugin {
   async GM命令(e) {
     const { mode } = await getmode(e) || {}
     if (!mode) return
-    const { uid } = await getuid(e)
+    const { uid } = await getuid(e) || {}
     if (!uid) return
     if (mode === 'gm') {
       e.reply([segment.at(e.user_id), `\n正在处理...请稍后... (￣▽￣)~*`])

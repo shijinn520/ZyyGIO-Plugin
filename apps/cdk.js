@@ -23,7 +23,7 @@ export class hk4e extends plugin {
         const { mode } = await getmode(e) || {}
         if (!mode) return
         if (mode === 'CheckIns' || mode === 'gm') {
-            const { uid } = await getuid(e)
+            const { uid } = await getuid(e) || {}
             if (!uid) return
             const { scenes } = await getScenes(e)
             const { ip, port, region, sign, ticketping, sender, title, content } = await getserver(e)
