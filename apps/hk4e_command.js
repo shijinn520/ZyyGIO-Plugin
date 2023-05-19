@@ -24,7 +24,7 @@ export class hk4e extends plugin {
     const { uid } = await getuid(e) || {}
     if (!uid) return
     if (mode === 'gm') {
-      e.reply([segment.at(e.user_id), `\n正在处理...请稍后... (￣▽￣)~*`])
+    //  e.reply([segment.at(e.user_id), `\n正在处理...请稍后... (￣▽￣)~*`])
       const maxRetries = 3
       let retries = 0
 
