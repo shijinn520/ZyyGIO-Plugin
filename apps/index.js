@@ -110,7 +110,7 @@ export async function getuid(e = {}) {
     }, 500)
     return
   } else {
-    uid = Object.values(uid)[0]
+    uid = Object.values(uid)[0] || {}
   }
   return { uid }
 }
