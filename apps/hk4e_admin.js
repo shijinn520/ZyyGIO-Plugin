@@ -147,7 +147,10 @@ export class hk4e extends plugin {
       const admin = config[scenes].Administrator
       const newmsg = e.msg.replace(/绑定|\s|\W/g, '').replace(/[^0-9]/g, '')
       const uid = config[scenes]?.uid || []
-
+      if (!uid) {
+        e.reply([segment.at(at), `￣へ￣\nUID呢！我问你UID呢！`])
+        return
+      }
       let at = String(e.user_id)
       if (e.at) {
         at = String(e.at)
