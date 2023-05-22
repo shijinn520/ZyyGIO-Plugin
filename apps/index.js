@@ -22,6 +22,12 @@ export async function getScenes(e = {}) {
     value = '私聊'
     scenes = e.user_id
   }
+  else if (e.sub_type === 'group') {
+    // QQ频道官方 私聊
+    value = 'QQ频道官方-私聊'
+    scenes = e.sender.group_id
+    // 不建议开启，任何人私聊机器人都可以使用
+  }
   else if (e.sub_type === 'channel') {
     // TRSS-Yunzai 使用go-cqhttp消息段
     value = 'QQ频道'

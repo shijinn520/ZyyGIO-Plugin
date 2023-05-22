@@ -77,7 +77,7 @@ export class hk4e extends plugin {
       const mail = Yaml.parse(fs.readFileSync(_path + '/full_server_mail.yaml', 'utf8'))
       mail[scenes] = ['100001']
       fs.writeFileSync(_path + '/full_server_mail.yaml', Yaml.stringify(mail))
-      e.reply([`初始化成功~\n当前环境：${value}\nID：${scenes}\n功能：${mode}\n超级管理为：`, segment.at(e.user_id), `\n\n温馨提示：\n普通玩家仅可绑定一次UID\n管理员无上限\n\n设置管理员指令：\n(绑定管理|添加管理)`, segment.at(e.user_id), `\n\n仅超级管理可用~删除同理~`])
+      e.reply([`初始化成功~\n当前环境：${value}\nID：${scenes}\n功能：${mode}\n超级管理为：`, segment.at(e.user_id), `\n\n温馨提示：\n普通玩家仅可绑定一次UID\n管理员无上限\n\n设置管理员指令：\n(绑定管理|添加管理)`, segment.at(e.user_id), `\n\n仅超级管理可用~删除同理\n\n如果你是在官方的QQ频道私聊模式下开始，请尽快关闭，因为全频道都可以使用。`])
     }
   }
 
