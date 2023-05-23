@@ -51,6 +51,19 @@ export class hk4e extends plugin {
       }
     }
 
+    if (e.msg === '开启cdk'||e.msg === '开启CDK') {
+      if (Function === 'cdk') {
+        e.reply(`失败 -> 当前${value}目前已开启cdk功能`)
+        return
+      }
+      else if (Function === '' || Function === false) {
+        mode = 'cdk'
+      } else {
+        e.reply(`失败 -> 当前${value}目前已开启${Function}功能`)
+        return
+      }
+    }
+
     if (Function === false) {
       config[scenes].mode = mode
       fs.writeFileSync(_path + '/config.yaml', Yaml.stringify(config))
@@ -74,9 +87,17 @@ export class hk4e extends plugin {
         }
       }
       fs.writeFileSync(_path + '/players.yaml', Yaml.stringify(players))
+
       const mail = Yaml.parse(fs.readFileSync(_path + '/full_server_mail.yaml', 'utf8'))
       mail[scenes] = ['100001']
       fs.writeFileSync(_path + '/full_server_mail.yaml', Yaml.stringify(mail))
+
+      const cdk = Yaml.parse(fs.readFileSync(_path + '/cdk.yaml', 'utf8'))
+      cdk[scenes] = {
+        test: '0-2023.05.23-command-item add 201,item add 202'
+      }
+      fs.writeFileSync(_path + '/cdk.yaml', Yaml.stringify(cdk))
+
       e.reply([`初始化成功~\n当前环境：${value}\nID：${scenes}\n功能：${mode}\n超级管理为：`, segment.at(e.user_id), `\n\n温馨提示：\n普通玩家仅可绑定一次UID\n管理员无上限\n\n设置管理员指令：\n(绑定管理|添加管理)`, segment.at(e.user_id), `\n\n仅超级管理可用~删除同理\n\n如果你是在官方的QQ频道私聊模式下开始，请尽快关闭，因为全频道都可以使用。`])
     }
   }

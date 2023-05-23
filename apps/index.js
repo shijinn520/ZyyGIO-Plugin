@@ -74,6 +74,9 @@ export async function getmode(e = {}) {
   else if (config[scenes]?.mode === 'CheckIns') {
     mode = 'CheckIns'
   }
+  else if (config[scenes]?.mode === 'cdk') {
+    mode = 'cdk'
+  }
   return { mode }
 }
 
