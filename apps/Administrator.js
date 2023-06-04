@@ -5,7 +5,6 @@ import { admin } from './rule.js'
 import { getScenes, getmode, getpath, getadmin } from './index.js'
 import { exec } from "child_process"
 
-const uids = []
 const { data, config } = await getpath()
 
 export class hk4e extends plugin {
@@ -341,7 +340,7 @@ export class hk4e extends plugin {
     }
     if (!yamlfile) {
       const admin = {
-        uid: uids[0],
+        uid: uid,
         Administrator: false,
         total_signin_count: 0,
         last_signin_time: "1999-12-12 00:00:00"
@@ -357,15 +356,15 @@ export class hk4e extends plugin {
       readstream.on('end', () => {
         const existingdata = existingstrings.join('')
         const existingArray = Yaml.parse(existingdata)
-        const isUidExists = existingArray.includes(uids[0])
+        const isUidExists = existingArray.includes(uid)
 
         if (!isUidExists) {
           const stream = fs.createWriteStream(yamlfile, { flags: 'a' })
-          stream.write(` - "${parseInt(uids[0])}"\n`)
+          stream.write(` - "${parseInt(uid)}"\n`)
           stream.end()
         }
       })
-      this.reply([segment.at(this.e.user_id), `绑定成功\n你的UID为：${uids[0]}`])
+      this.reply([segment.at(this.e.user_id), `绑定成功\n你的UID为：${uid}`])
       this.finish('uid1')
     }
   }
