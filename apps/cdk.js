@@ -220,7 +220,7 @@ export class gm extends plugin {
                 uidusagelimit: 1,
                 createtime: time,
                 actiontype: cdk0[0],
-                command: cdk0[3].replace(/[^a-zA-Z0-9\s]/g, ''),
+                command: cdk0[3].replace("，", ",").replace("：", ":"),
                 used: 0,
                 uid: {
                     "10001": 0
