@@ -183,6 +183,13 @@ export class hk4e extends plugin {
     async 添加命令别名(e) {
         const { gm } = await getmode(e)
         if (!gm) return
+
+        const { gioadmin } = await getadmin(e)
+        if (!gioadmin && !e.isMaster) {
+            e.reply(`只有管理大大才能命令我哦~\n(*/ω＼*)`)
+            return
+        }
+
         const msg = e.msg.split(' ')
         if (msg.length !== 3) {
             e.reply([segment.at(e.user_id), '格式错误\n正确的格式为：\n添加命令别名 [主别名] [新别名]\n\n示例：\n添加命令别名 90 一键满级'])
@@ -227,6 +234,13 @@ export class hk4e extends plugin {
     async 添加邮件别名(e) {
         const { mail } = await getmode(e)
         if (!mail) return
+
+        const { gioadmin } = await getadmin(e)
+        if (!gioadmin && !e.isMaster) {
+            e.reply(`只有管理大大才能命令我哦~\n(*/ω＼*)`)
+            return
+        }
+
         const msg = e.msg.split(' ')
         if (msg.length !== 3) {
             e.reply([segment.at(e.user_id), '格式错误\n正确的格式为：\n添加邮件别名 [主别名] [新别名]\n\n示例：\n添加邮件别名 新手礼包 测试礼包'])
@@ -380,7 +394,7 @@ export class hk4e extends plugin {
     async 删除邮件别名(e) {
         const { mail } = await getmode(e)
         if (!mail) return
-        
+
         const { gioadmin } = await getadmin(e)
         if (!gioadmin && !e.isMaster) {
             e.reply(`只有管理大大才能命令我哦~\n(*/ω＼*)`)
@@ -411,6 +425,7 @@ export class hk4e extends plugin {
         fs.writeFileSync(_path + '/mail.yaml', Yaml.stringify(cfg), 'utf8')
         e.reply([segment.at(e.user_id), `\n已删除 ${msg}\n你可以通过指令重新添加此命令：\n添加邮件 ${alias} ${title} ${content} ${item_list}`])
     }
+
     async 查看ID(e) {
         const { scenes, value } = await getScenes(e)
         e.reply(`当前${value}ID：${scenes}\n您的个人ID：${e.user_id}`)

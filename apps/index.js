@@ -133,7 +133,6 @@ export async function getuid(e = {}) {
   const file = `${data}/user/${e.user_id}.yaml`
   if (!fs.existsSync(file)) {
     e.reply([segment.at(e.user_id), "\n清先绑定UID\n格式：绑定+UID\n举例：绑定100001"])
-    return
   }
   else {
     const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
@@ -430,6 +429,9 @@ export async function getmail(e = {}, mode, item) {
               }
               else if (retcode === -1) {
                 e.reply([segment.at(e.user_id), `失败 -> 发生未知错误，请检查指令`])
+              }
+              else if(retcode === 17){
+                e.reply([segment.at(e.user_id), `失败 -> 账户不存在\nuid：${uid}`])
               }
               else if (retcode === 617) {
                 e.reply([segment.at(e.user_id), `失败 -> 邮件物品超过限制`])

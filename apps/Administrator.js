@@ -278,22 +278,26 @@ export class hk4e extends plugin {
     if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk) return
     const { scenes } = await getScenes(e)
     let uid = e.msg.replace(/绑定|\s|\W/g, '').replace(/[^0-9]/g, '')
+
     if (!uid) {
       e.reply([segment.at(e.user_id), `￣へ￣ UID呢！我问你UID呢！`])
       return
     }
 
     let uuid = e.user_id
-    let yamlfile = true
-    const gioadmin = await getadmin(e)
+    let yamlfile = false
+    const alluid = `${data}/group/${scenes}/alluid.yaml`
+    const { gioadmin } = await getadmin(e)
+
     if (e.isMaster || gioadmin) {
       if (e.at) {
         uuid = e.at
       }
     }
+
     const file = `${data}/user/${uuid}.yaml`
-    if (!fs.existsSync(file)) {
-      yamlfile = false
+    if (fs.existsSync(file)) {
+      yamlfile = true
     }
 
     if (e.isMaster || gioadmin.gioadmin) {
@@ -310,63 +314,44 @@ export class hk4e extends plugin {
         const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
         cfg.uid = uid
         fs.writeFileSync(file, Yaml.stringify(cfg))
-        
-        const yamlfile = `${data}/group/${scenes}/alluid.yaml`
-
-        const existingstrings = []
-        const readstream = fs.createReadStream(yamlfile, { encoding: 'utf8' })
-        readstream.on('data', (chunk) => {
-          existingstrings.push(chunk)
-        })
-        readstream.on('end', () => {
-          const existingdata = existingstrings.join('')
-          const existingArray = Yaml.parse(existingdata)
-          const isUidExists = existingArray.includes(uid)
-
-          if (!isUidExists) {
-            const stream = fs.createWriteStream(yamlfile, { flags: 'a' })
-            stream.write(` - "${parseInt(uid)}"\n`)
-            stream.end()
-          }
-        })
-        e.reply([segment.at(uuid), `绑定成功\n你的UID为：${uid}`])
       }
-      return
     }
-    if (yamlfile) {
-      const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
-      e.reply([segment.at(uuid), `\n请联系管理员重新绑定\n当前绑定的UID：${cfg.uid}`])
-      return
-    }
-    if (!yamlfile) {
-      const admin = {
-        uid: uid,
-        Administrator: false,
-        total_signin_count: 0,
-        last_signin_time: "1999-12-12 00:00:00"
+    else {
+      if (yamlfile) {
+        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
+        e.reply([segment.at(uuid), `\n请联系管理员重新绑定\n当前绑定的UID：${cfg.uid}`])
+        return
       }
-      fs.writeFileSync(`${data}/user/${this.e.user_id}.yaml`, Yaml.stringify(admin))
-      const yamlfile = `${data}/group/${scenes}/alluid.yaml`
 
-      const existingstrings = []
-      const readstream = fs.createReadStream(yamlfile, { encoding: 'utf8' })
-      readstream.on('data', (chunk) => {
-        existingstrings.push(chunk)
-      })
-      readstream.on('end', () => {
-        const existingdata = existingstrings.join('')
-        const existingArray = Yaml.parse(existingdata)
-        const isUidExists = existingArray.includes(uid)
-
-        if (!isUidExists) {
-          const stream = fs.createWriteStream(yamlfile, { flags: 'a' })
-          stream.write(` - "${parseInt(uid)}"\n`)
-          stream.end()
+      if (!yamlfile) {
+        const admin = {
+          uid: uid,
+          Administrator: false,
+          total_signin_count: 0,
+          last_signin_time: "1999-12-12 00:00:00"
         }
-      })
-      this.reply([segment.at(this.e.user_id), `绑定成功\n你的UID为：${uid}`])
-      this.finish('uid1')
+        fs.writeFileSync(`${data}/user/${this.e.user_id}.yaml`, Yaml.stringify(admin))
+      }
     }
+
+    // 写入全服uid
+    const existingstrings = []
+    const readstream = fs.createReadStream(alluid, { encoding: 'utf8' })
+    readstream.on('data', (chunk) => {
+      existingstrings.push(chunk)
+    })
+    readstream.on('end', () => {
+      const existingdata = existingstrings.join('')
+      const existingArray = Yaml.parse(existingdata)
+      const isUidExists = existingArray.includes(uid)
+
+      if (!isUidExists) {
+        const stream = fs.createWriteStream(alluid, { flags: 'a' })
+        stream.write(` - "${parseInt(uid)}"\n`)
+        stream.end()
+      }
+    })
+    e.reply([segment.at(this.e.user_id), `绑定成功\n你的UID为：${uid}`])
   }
 
   async 服务器列表(e) {
