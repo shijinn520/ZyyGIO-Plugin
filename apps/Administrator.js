@@ -35,7 +35,7 @@ export class hk4e extends plugin {
       fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(servervalues))
       fs.mkdirSync(`${data}/group/${scenes}/cdk`)
       fs.mkdirSync(`${data}/group/${scenes}/txt`)
-      fs.writeFileSync(`${data}/group/${scenes}/alluid.yaml`, '10001')
+      fs.writeFileSync(`${data}/group/${scenes}/alluid.yaml`, ' - "10001"\n')
     }
 
     const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
@@ -346,15 +346,18 @@ export class hk4e extends plugin {
   }
 
   async uid1() {
-    const { scenes } = await getScenes(e)
-    if (this.e.message[0].text !== uid) {
-      this.reply([segment.at(this.e.user_id), `\nUID不一致\n第一次：${uid}\n第二次：${this.e.message[0].text}`])
-      this.finish('uid1')
+    this.finish('uid1')
+    const { scenes } = await getScenes(this.e)
+    if(uid){
+      if (this.e.message[0].text !== uid) {
+        this.reply([segment.at(this.e.user_id), `\nUID不一致\n第一次：${uid}\n第二次：${this.e.message[0].text}`])        
+        return
+      }
     }
     else {
       const admin = {
-        uid: 0,
-        Administrator: true,
+        uid: this.e.message[0].text,
+        Administrator: false,
         total_signin_count: 0,
         last_signin_time: "1999-12-12 00:00:00"
       }
@@ -369,15 +372,15 @@ export class hk4e extends plugin {
       readstream.on('end', () => {
         const existingdata = existingstrings.join('')
         const existingArray = Yaml.parse(existingdata)
-        const isUidExists = existingArray.includes(uid)
+        const isUidExists = existingArray.includes(this.e.message[0].text)
 
         if (!isUidExists) {
           const stream = fs.createWriteStream(yamlfile, { flags: 'a' })
-          stream.write(` - "${parseInt(uid)}"\n`)
+          stream.write(` - "${parseInt(this.e.message[0].text)}"\n`)
           stream.end()
         }
       })
-      this.reply([segment.at(this.e.user_id), `绑定成功\n你的UID为：${uid}`])
+      this.reply([segment.at(this.e.user_id), `绑定成功\n你的UID为：${this.e.message[0].text}`])
       this.finish('uid1')
     }
   }
