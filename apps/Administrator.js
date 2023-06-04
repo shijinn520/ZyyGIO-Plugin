@@ -5,7 +5,7 @@ import { admin } from './rule.js'
 import { getScenes, getmode, getpath, getadmin } from './index.js'
 import { exec } from "child_process"
 
-let uid
+const uids = []
 const { data, config } = await getpath()
 
 export class hk4e extends plugin {
@@ -341,6 +341,7 @@ export class hk4e extends plugin {
     }
     if (!yamlfile) {
       this.setContext('uid1')
+      uids.push(uid)
       e.reply([segment.at(uuid), "\n请再输入一次你的UID\n如果第一次输入错误可以输入不一样的UID来进行停止绑定"])
     }
   }
@@ -348,15 +349,13 @@ export class hk4e extends plugin {
   async uid1() {
     this.finish('uid1')
     const { scenes } = await getScenes(this.e)
-    if(uid){
-      if (this.e.message[0].text !== uid) {
-        this.reply([segment.at(this.e.user_id), `\nUID不一致\n第一次：${uid}\n第二次：${this.e.message[0].text}`])        
+      if (this.e.message[0].text !== uids[0]) {
+        this.reply([segment.at(this.e.user_id), `\nUID不一致\n第一次：${uids[0]}\n第二次：${this.e.message[0].text}`])        
         return
       }
-    }
     else {
       const admin = {
-        uid: this.e.message[0].text,
+        uid: uids[0],
         Administrator: false,
         total_signin_count: 0,
         last_signin_time: "1999-12-12 00:00:00"
@@ -372,15 +371,15 @@ export class hk4e extends plugin {
       readstream.on('end', () => {
         const existingdata = existingstrings.join('')
         const existingArray = Yaml.parse(existingdata)
-        const isUidExists = existingArray.includes(this.e.message[0].text)
+        const isUidExists = existingArray.includes(uids[0])
 
         if (!isUidExists) {
           const stream = fs.createWriteStream(yamlfile, { flags: 'a' })
-          stream.write(` - "${parseInt(this.e.message[0].text)}"\n`)
+          stream.write(` - "${parseInt(uids[0])}"\n`)
           stream.end()
         }
       })
-      this.reply([segment.at(this.e.user_id), `绑定成功\n你的UID为：${this.e.message[0].text}`])
+      this.reply([segment.at(this.e.user_id), `绑定成功\n你的UID为：${uids[0]}`])
       this.finish('uid1')
     }
   }
