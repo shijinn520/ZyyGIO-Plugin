@@ -66,7 +66,7 @@ export class gm extends plugin {
     }
 
 
-    async 生成兑换码() {
+    async 生成兑换码(e) {
         const { generatecdk } = await getmode(e)
         if (!generatecdk) return
         this.setContext('cdk1')
@@ -195,7 +195,7 @@ export class gm extends plugin {
                 redeemlimit: Number(cdk0[2]),
                 uidusagelimit: Number(cdk0[3]),
                 createtime: time,
-                actiontype: Number(cdk0[0]),
+                actiontype: cdk0[0],
                 command: cdk0[4],
                 used: 0,
                 uid: {

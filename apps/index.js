@@ -338,7 +338,6 @@ export async function getmail(e = {}, mode, item) {
   const newsign = `&sign=` + crypto.createHash('sha256').update(base + sign).digest('hex')
   const url = `http://${ip}:${port}/api?${encodeURI(base)}${newsign}`
   urls.push(url)
-  console.log(`url:${url}`)
 
   const options = {
     method: 'GET',
