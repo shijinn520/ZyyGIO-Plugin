@@ -201,7 +201,7 @@ export async function getcommand(e = {}, mode, msg) {
               if (retcode === 0) {                
                 newmsg.push(`成功：${datamsg}  ->  ${uid}`)
 
-                if (mode = "cdk") {
+                if (mode === "cdk") {
                   let uidstate = false
                   const name = e.msg.replace(/兑换/g, '').trim()
                   const file = `${data}/group/${scenes}/cdk/${name}.yaml`
