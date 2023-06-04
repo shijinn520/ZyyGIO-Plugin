@@ -1,23 +1,22 @@
 export const admin = [
-      // 将开关修改为功能的名称
     {
-        reg: '^(开启GM|开启gm|开启gm|开启签到|开启cdk|开启CDK)$',
+        reg: '^(开启GM|开启gm|开启邮件|开启签到|开启cdk|开启CDK|开启cdk生成|开启CDK生成)$',
         fnc: '开启功能',
         permission: 'master'
     },
     {
-        reg: '^(关闭GM|关闭Gm|关闭gm|关闭签到)$',
+        reg: '^(关闭GM|关闭gm|关闭邮件|关闭签到|关闭cdk|关闭CDK|关闭cdk生成|关闭CDK生成)$',
         fnc: '关闭功能',
         permission: 'master'
     },
     {
-        reg: '^(绑定管理|添加管理|绑定管理员|添加管理员)(.*)$',
-        fnc: '绑定管理员',
+        reg: '^\/?(设置管理员|绑定管理)$',
+        fnc: '设置管理员',
         permission: 'master'
     },
     {
-        reg: '^(删除管理|解绑管理|删除管理员|解绑管理员)(.*)$',
-        fnc: '解绑管理员',
+        reg: '^\/?(解除管理员|解绑管理)$',
+        fnc: '解除管理员',
         permission: 'master'
     },
     {
@@ -25,40 +24,37 @@ export const admin = [
         fnc: '绑定UID',
     },
     {
-        reg: '^(切换服务器)(.*)$',
+        reg: '^\/?(切换服务器)(.*)$',
         fnc: '切换服务器',
         permission: 'master'
     },
     {
-        reg: '^服务器$',
+        reg: '^\/?服务器$',
         fnc: '服务器列表',
         permission: 'master'
     },
-    /* 有点小问题，先禁用
     {
-        reg: '^(全局拉黑|拉黑)(.*)$',
-        fnc: '全局拉黑',
+        reg: '^\/?添加(UID|uid|Uid) (.*)$',
+        fnc: '添加UID',
         permission: 'master'
     },
     {
-        reg: '^(解除拉黑|删除拉黑)(.*)$',
-        fnc: '解除拉黑',
-        permission: 'master'
-    },
-    */
-    {
-        reg: '^(GM更新|Gm更新|gm更新|更新GM|更新Gm|更新gm)$',
+        reg: '^\/?(GM更新|Gm更新|gm更新|更新GM|更新Gm|更新gm)$',
         fnc: '插件更新',
         permission: 'master'
     },
     {
-        reg: '^(GM强制更新|Gm强制更新|gm强制更新|强制更新GM|强制更新Gm|更新gm)$',
+        reg: '^\/?(GM强制更新|Gm强制更新|gm强制更新|强制更新GM|强制更新Gm|更新gm)$',
         fnc: '强制更新',
         permission: 'master'
     }
 ]
 
 export const commands = [
+    {
+        reg: '^签到$',
+        fnc: '签到'
+    },
     {
         reg: '^/(.*)$',
         fnc: 'GM命令'
@@ -77,80 +73,72 @@ export const mail = [
     {
         reg: '^全服邮件 (.*)$',
         fnc: '全服邮件'
-    },
-    {
-        reg: '^添加(UID|uid|Uid) (.*)$',
-        fnc: '添加UID',
-        permission: 'master'
     }
 ]
 
 export const players = [
     {
-        reg: '^(帮助|help)(.*)$',
+        reg: '^\/?(帮助|help)(.*)$',
         fnc: '小钰帮助',
     },
+    // 先不改，有空再说
+    // {
+    //     reg: '^\/?玩家列表$',
+    //     fnc: '玩家列表',
+    // },
     {
-        reg: '^玩家列表$',
-        fnc: '玩家列表',
-    },
-    {
-        reg: '^(指令别名|命令别名)$',
+        reg: '^\/?(指令别名|命令别名)$',
         fnc: '命令别名',
     },
     {
-        reg: '^邮件别名$',
+        reg: '^\/?邮件别名$',
         fnc: '邮件别名',
     },
     {
-        reg: '^添加命令 (.*)$',
+        reg: '^\/?添加命令 (.*)$',
         fnc: '添加命令',
     },
     {
-        reg: '^添加邮件 (.*)$',
+        reg: '^\/?添加邮件 (.*)$',
         fnc: '添加邮件',
     },
     {
-        reg: '^别名帮助$',
+        reg: '^\/?别名帮助$',
         fnc: '别名帮助',
     },
     {
-        reg: '^查看(命令|邮件)(?:别名)?(.*)$',
+        reg: '^\/?查看(命令|邮件)(.*)$',
         fnc: '查看别名信息'
     },
     {
-        reg: '^添加命令别名(.*)$',
+        reg: '^\/?添加命令别名(.*)$',
         fnc: '添加命令别名'
     },
     {
-        reg: '^添加邮件别名(.*)$',
+        reg: '^\/?添加邮件别名(.*)$',
         fnc: '添加邮件别名'
     },
     {
-        reg: '^删除命令(?:别名)?(.*)$',
+        reg: '^\/?删除命令(.*)$',
         fnc: '删除命令别名'
     },
     {
-        reg: '^删除邮件(?:别名)?(.*)$',
+        reg: '^\/?删除邮件(.*)$',
         fnc: '删除邮件别名'
     },
     {
-        reg: '^(我的ID|我的id|我的信息)$',
+        reg: '^\/?(我的ID|我的id)$',
         fnc: '查看ID'
     }
 ]
 
 export const cdk = [
     {
-        reg: '^签到$',
-        fnc: '签到'
-    },
-    {
-        reg: '^兑换(.*)$',
+        reg: '^\/?兑换(.*)$',
         fnc: '兑换码'
     },
     {
-        reg: '^生成cdk$',
+        reg: '^\/?生成cdk$',
         fnc: '生成兑换码'
     }
 ]

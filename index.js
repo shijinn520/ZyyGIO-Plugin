@@ -4,7 +4,7 @@ if (!global.segment) {
   global.segment = (await import("oicq")).segment
 }
 console.log('\x1b[36m%s\x1b[0m', '-----------------------------');
-console.log('\x1b[36m%s\x1b[0m', 'GM插件0.0.2初始化~');
+console.log('\x1b[36m%s\x1b[0m', 'GM插件0.0.5初始化~');
 console.log('\x1b[36m%s\x1b[0m', 'Hi~这里是Zyy.小钰！');
 console.log('\x1b[2m%s\x1b[0m', '---------------------');
 //加载插件
