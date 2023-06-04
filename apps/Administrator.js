@@ -142,7 +142,7 @@ export class hk4e extends plugin {
       return
     }
     cfg.generatecdk.mode = true
-    cfg.generatecdk.group = Number(allfolder[this.e.message[0].text - 1])
+    cfg.generatecdk.group = allfolder[this.e.message[0].text - 1]
 
     fs.writeFileSync(file, Yaml.stringify(cfg))
     this.reply(`成功开启\n可使用指令：生成cdk\n当前群聊：${scenes}\ncdk兑换群聊：${cfg.generatecdk.group}`)
