@@ -300,7 +300,7 @@ export class administrator extends plugin {
       yamlfile = true
     }
 
-    if (e.isMaster || gioadmin.gioadmin) {
+    if (e.isMaster || gioadmin) {
       if (!yamlfile) {
         const admin = {
           uid: uid,
