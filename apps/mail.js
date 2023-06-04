@@ -9,11 +9,11 @@ import { getmode, getserver, getuid, getScenes, getmail, getadmin } from './inde
 let state = true
 let _path = process.cwd() + '/plugins/Zyy-GM-plugin'
 
-export class hk4e extends plugin {
+export class mails extends plugin {
     constructor() {
         super({
-            name: 'hk4e-邮件',
-            dsc: 'hk4e-邮件',
+            name: 'mail',
+            dsc: '邮件相关',
             event: 'message',
             priority: -100,
             rule: mail

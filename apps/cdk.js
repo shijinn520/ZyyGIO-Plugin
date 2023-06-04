@@ -1,10 +1,10 @@
-import plugin from '../../../lib/plugins/plugin.js'
 import fs from 'fs'
-import crypto from 'crypto'
 import Yaml from 'yaml'
+import crypto from 'crypto'
 import moment from 'moment'
-import common from '../../../lib/common/common.js'
 import { cdk } from './rule.js'
+import common from '../../../lib/common/common.js'
+import plugin from '../../../lib/plugins/plugin.js'
 import { getmode, getserver, getuid, getpath, getcommand, getmail, getScenes } from './index.js'
 
 const { data } = await getpath()
@@ -18,7 +18,7 @@ export class gm extends plugin {
             name: 'CDK',
             dsc: '兑换码',
             event: 'message',
-            priority: -50,
+            priority: -100,
             rule: cdk
         })
     }
@@ -38,11 +38,9 @@ export class gm extends plugin {
         }
 
         const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
-        if (cfg.redeemlimit !== '0') {
-            if (cfg.redeemlimit <= cfg.used) {
-                e.reply("兑换码可兑换次数不足!")
-                return
-            }
+        if (cfg.redeemlimit <= cfg.used) {
+            e.reply("兑换码可兑换次数不足!")
+            return
         }
 
         if (uid in cfg.uid) {
@@ -113,13 +111,13 @@ export class gm extends plugin {
     cdk3() {
         this.finish('cdk3')
         cdk0.push(this.e.message[0].text)
-        this.reply("请输入兑换码总共可使用次数，0位无限次，请输入数字")
+        this.reply("请输入兑换码总共可使用次数，禁止为0，请输入数字")
         this.setContext('cdk4')
     }
     cdk4() {
         this.finish('cdk4')
         if (type === '1') {
-            if (isNaN(this.e.message[0].text)) {
+            if (isNaN(this.e.message[0].text) || this.e.message[0].text === '0') {
                 this.reply("输入错误")
                 return
             }
@@ -196,18 +194,18 @@ export class gm extends plugin {
                 uidusagelimit: Number(cdk0[3]),
                 createtime: time,
                 actiontype: cdk0[0],
-                command: cdk0[4],
+                command: cdk0[4].replace(/[^a-zA-Z0-9\s]/g, ''),
                 used: 0,
                 uid: {
                     "10001": 0
                 }
             }
             fs.writeFileSync(file, Yaml.stringify(cdk))
-            e.reply([segment.at(e.user_id), `生成完毕`])
+            e.reply([segment.at(e.user_id), `\n生成完毕\n兑换码为：${cdk0[4]}\n可使用次数：${Number(cdk0[2])}\n每个玩家可兑换次数：${Number(cdk0[3])}\n发放方式：${cdk0[0]}`])
         }
         if (type === '2') {
             if (actiontype === 'mail') {
-                cdk0[3].replace("，", ",").replace("：", ":") 
+                cdk0[3].replace("，", ",").replace("：", ":")
                 const comma = cdk0[3].split(',').length
                 const colon = cdk0[3].split(':').length
                 if (comma * 2 !== colon) {
@@ -222,7 +220,7 @@ export class gm extends plugin {
                 uidusagelimit: 1,
                 createtime: time,
                 actiontype: cdk0[0],
-                command: cdk0[3],
+                command: cdk0[3].replace(/[^a-zA-Z0-9\s]/g, ''),
                 used: 0,
                 uid: {
                     "10001": 0

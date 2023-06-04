@@ -1,17 +1,17 @@
-import plugin from '../../../lib/plugins/plugin.js'
 import fs from 'fs'
 import Yaml from 'yaml'
 import { admin } from './rule.js'
-import { getScenes, getmode, getpath, getadmin } from './index.js'
 import { exec } from "child_process"
+import plugin from '../../../lib/plugins/plugin.js'
+import { getScenes, getmode, getpath, getadmin } from './index.js'
 
 const { data, config } = await getpath()
 
-export class hk4e extends plugin {
+export class administrator extends plugin {
   constructor() {
     super({
-      name: 'hk4e-admin',
-      dsc: 'hk4e-超级管理',
+      name: 'Administrator',
+      dsc: '插件关键性功能',
       event: 'message',
       priority: -100,
       rule: admin

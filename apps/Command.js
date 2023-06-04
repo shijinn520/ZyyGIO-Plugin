@@ -6,13 +6,13 @@ import { commands } from './rule.js'
 import plugin from '../../../lib/plugins/plugin.js'
 import { getmode, getserver, getuid, getpath, getcommand, getmail } from './index.js'
 
-const { data, config } = await getpath()
+const { config } = await getpath()
 
-export class hk4e extends plugin {
+export class Command extends plugin {
   constructor() {
     super({
-      name: 'hk4e-GM',
-      dsc: 'hk4e-游戏指令',
+      name: 'Command',
+      dsc: '游戏指令',
       event: 'message',
       priority: -50,
       rule: commands

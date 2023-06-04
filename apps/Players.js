@@ -1,8 +1,8 @@
-import plugin from '../../../lib/plugins/plugin.js'
-import puppeteerRender from '../resources/render.js'
 import fs from 'fs'
 import Yaml from 'yaml'
 import { players } from './rule.js'
+import plugin from '../../../lib/plugins/plugin.js'
+import puppeteerRender from '../resources/render.js'
 import { getScenes, getmode, getadmin } from './index.js'
 
 let _path = process.cwd() + '/plugins/Zyy-GM-plugin/config'
@@ -12,13 +12,13 @@ if (fs.existsSync(helpPath + "/index.json")) {
     helpList = JSON.parse(fs.readFileSync(helpPath + "/index.json", "utf8")) || []
 }
 
-export class hk4e extends plugin {
+export class Player extends plugin {
     constructor() {
         super({
-            name: 'hk4e-players',
-            dsc: 'hk4e-玩家',
+            name: 'Players',
+            dsc: '一些通用功能',
             event: 'message',
-            priority: -200,
+            priority: -100,
             rule: players
         })
     }

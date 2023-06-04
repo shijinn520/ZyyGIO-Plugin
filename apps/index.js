@@ -157,6 +157,7 @@ export async function getadmin(e = {}) {
 // command
 export async function getcommand(e = {}, mode, msg) {
   const { uid } = await getuid(e)
+  const { scenes } = await getScenes(e)
   const { ip, port, region, sign, ticketping } = await getserver(e)
   const urls = []
   msg.forEach(msg => {
@@ -197,8 +198,48 @@ export async function getcommand(e = {}, mode, msg) {
                 console.log('响应内容:', outcome)
               }
               let datamsg = outcome.data.msg
-              if (retcode === 0) {
+              if (retcode === 0) {                
                 newmsg.push(`成功：${datamsg}  ->  ${uid}`)
+
+                if (mode = "cdk") {
+                  let uidstate = false
+                  const name = e.msg.replace(/兑换/g, '').trim()
+                  const file = `${data}/group/${scenes}/cdk/${name}.yaml`
+                  const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
+                  if (cfg.redeemlimit <= (Number(cfg.used) + 1)) {
+                    fs.unlink(file, (err) => {
+                      if (err) {
+                        console.error(err)
+                        return
+                      }
+                      console.log(`兑换码可使用次数为0，已删除文件：${file} `)
+                    })
+                    e.reply([segment.at(e.user_id), "兑换成功"])
+                    return
+                  }
+
+                  if (uid in cfg.uid) {
+                    uidstate = true
+                  }
+                  if (uidstate === false) {
+                    // yaml中uid不存在，创建并写入，cdk总次数+1
+                    cfg.uid[uid] = Number(1)
+                    cfg.used += 1
+                    fs.writeFileSync(file, Yaml.stringify(cfg), 'utf8')
+                    e.reply([segment.at(e.user_id), "兑换成功"])
+                    return
+                  }
+                  if (uidstate === true) {
+                    // 存在uid，总次数+1，uid兑换次数+1
+                    // 更新 cfg 对象的值
+                    cfg.used += 1
+                    cfg.uid[uid] = Number(cfg.uid[uid]) + 1
+                    fs.writeFileSync(file, Yaml.stringify(cfg), 'utf8')
+                    e.reply([segment.at(e.user_id), "兑换成功"])
+                    return
+                  }
+                }
+
               }
               else if (retcode === -1) {
                 const dataret = outcome.data.retmsg.replace(/can't find gm command/g, '找不到GM命令').replace(/command/g, '命令').replace(/execute fails/g, '执行失败').replace(/invalid param/g, '无效参数')
