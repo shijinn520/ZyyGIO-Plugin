@@ -207,7 +207,7 @@ export class gm extends plugin {
         }
         if (type === '2') {
             if (actiontype === 'mail') {
-                cdk0[3].replace("，", ",").replace("：", ":") // 转换字符
+                cdk0[3].replace("，", ",").replace("：", ":") 
                 const comma = cdk0[3].split(',').length
                 const colon = cdk0[3].split(':').length
                 if (comma * 2 !== colon) {

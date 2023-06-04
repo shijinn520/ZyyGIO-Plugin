@@ -277,6 +277,7 @@ export class hk4e extends plugin {
   async 绑定UID(e) {
     const { gm, mail, birthday, CheckIns, generatecdk, cdk } = await getmode(e)
     if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk) return
+    const { scenes } = await getScenes(e)
     let uid = e.msg.replace(/绑定|\s|\W/g, '').replace(/[^0-9]/g, '')
     if (!uid) {
       e.reply([segment.at(e.user_id), `￣へ￣ UID呢！我问你UID呢！`])
@@ -310,8 +311,7 @@ export class hk4e extends plugin {
         const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
         cfg.uid = uid
         fs.writeFileSync(file, Yaml.stringify(cfg))
-
-        const { scenes } = await getScenes(e)
+        
         const yamlfile = `${data}/group/${scenes}/alluid.yaml`
 
         const existingstrings = []

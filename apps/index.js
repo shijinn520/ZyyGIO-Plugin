@@ -193,10 +193,10 @@ export async function getcommand(e = {}, mode, msg) {
         if (response.ok) {
           response.json()
             .then(outcome => {
+              const retcode = outcome.retcode
               if (retcode !== 0) {
                 console.log('响应内容:', outcome)
               }
-              const retcode = outcome.retcode
               let datamsg = outcome.data.msg
               if (retcode === 0) {
                 newmsg.push(`成功：${datamsg}  ->  ${uid}`)
