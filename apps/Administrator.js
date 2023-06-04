@@ -351,7 +351,7 @@ export class administrator extends plugin {
         stream.end()
       }
     })
-    e.reply([segment.at(this.e.user_id), `绑定成功\n你的UID为：${uid}`])
+    e.reply([segment.at(uuid), `绑定成功\n你的UID为：${uid}`])
   }
 
   async 服务器列表(e) {
