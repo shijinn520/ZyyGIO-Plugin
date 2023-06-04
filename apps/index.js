@@ -166,7 +166,6 @@ export async function getcommand(e = {}, mode, msg) {
     const newsign = `&sign=` + crypto.createHash('sha256').update(base + sign).digest('hex')
     const url = `http://${ip}:${port}/api?${encodeURI(base)}${newsign}`
     urls.push(url)
-    console.log(`url:${url}`)
   })
   const options = {
     method: 'GET',
@@ -191,13 +190,12 @@ export async function getcommand(e = {}, mode, msg) {
   Promise.all(fetchResults)
     .then(responses => {
       responses.forEach(response => {
-        // 获取响应的状态码
-        const status = response.status
-        console.log('状态码:', status)
         if (response.ok) {
           response.json()
             .then(outcome => {
-              console.log('响应内容:', outcome)
+              if (retcode !== 0) {
+                console.log('响应内容:', outcome)
+              }
               const retcode = outcome.retcode
               let datamsg = outcome.data.msg
               if (retcode === 0) {
@@ -368,8 +366,10 @@ export async function getmail(e = {}, mode, item) {
         if (response.ok) {
           response.json()
             .then(outcome => {
-              console.log('响应内容:', outcome)
               const retcode = outcome.retcode
+              if (retcode !== 0) {
+                console.log('响应内容:', outcome)
+              }
               if (retcode === 0) {
                 if (mode === "mail") {
                   e.reply([segment.at(e.user_id), `成功 -> ${parseInt(outcome.data.uid)}`])

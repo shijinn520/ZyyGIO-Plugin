@@ -64,13 +64,14 @@ export class hk4e extends plugin {
         const json = await response.json()
         if (json.retcode === 0) {
           const data = json.data
-          console.log("完整响应：", data)
           e.reply(`啾咪φ(>ω<*) \n在线人数：${data.online_player_num}\nPC：${data.platform_player_num.PC}\nAndroid：${data.platform_player_num.ANDROID}\nIOS：${data.platform_player_num.IOS}`)
         }
         else {
+          console.log("完整响应：", json)
           e.reply("发生未知错误，请自行前往控制台查看完整响应")
         }
       } else {
+        console.log("完整响应：", json)
         e.reply("发生未知错误，请自行前往控制台查看错误信息")
         console.error('请求失败:', response.status)
       }

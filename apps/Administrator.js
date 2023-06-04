@@ -233,7 +233,7 @@ export class hk4e extends plugin {
     e.reply(`功能列表：\nGM：${gm}\n邮件：${mail}\n生日推送：${birthday}\n每日签到：${CheckIns}\ncdk生成：${generatecdk}\ncdk：${cdk}\n\n当前环境：${value}\n当前环境ID：${scenes}`)
   }
 
-  async 绑定管理员(e) {
+  async 设置管理员(e) {
     const file = `${data}/user/${e.at}.yaml`
     if (fs.existsSync(file)) {
       const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
@@ -257,7 +257,7 @@ export class hk4e extends plugin {
     }
   }
 
-  async 解绑管理员(e) {
+  async 解除管理员(e) {
     const file = `${data}/user/${e.at}.yaml`
     if (fs.existsSync(file)) {
       const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
@@ -340,20 +340,6 @@ export class hk4e extends plugin {
       return
     }
     if (!yamlfile) {
-      this.setContext('uid1')
-      uids.push(uid)
-      e.reply([segment.at(uuid), "\n请再输入一次你的UID\n如果第一次输入错误可以输入不一样的UID来进行停止绑定"])
-    }
-  }
-
-  async uid1() {
-    this.finish('uid1')
-    const { scenes } = await getScenes(this.e)
-      if (this.e.message[0].text !== uids[0]) {
-        this.reply([segment.at(this.e.user_id), `\nUID不一致\n第一次：${uids[0]}\n第二次：${this.e.message[0].text}`])        
-        return
-      }
-    else {
       const admin = {
         uid: uids[0],
         Administrator: false,

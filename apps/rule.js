@@ -10,12 +10,12 @@ export const admin = [
         permission: 'master'
     },
     {
-        reg: '^\/?(设置管理员|绑定管理)$',
+        reg: '^\/?(设置管理|绑定管理)$',
         fnc: '设置管理员',
         permission: 'master'
     },
     {
-        reg: '^\/?(解除管理员|解绑管理)$',
+        reg: '^\/?(解除管理|解绑管理)$',
         fnc: '解除管理员',
         permission: 'master'
     },

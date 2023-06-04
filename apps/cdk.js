@@ -102,7 +102,7 @@ export class gm extends plugin {
             return
         }
         if (type === '1') {
-            this.reply("请输入你的自定义兑换码，请不要出现空格，否则兑换码会生成失败")            
+            this.reply("请输入你的自定义兑换码，请不要出现空格，否则兑换码会生成失败")
             this.setContext('cdk3')
         }
         if (type === '2') {
@@ -113,7 +113,7 @@ export class gm extends plugin {
     cdk3() {
         this.finish('cdk3')
         cdk0.push(this.e.message[0].text)
-        this.reply("请输入兑换码总共可使用次数，0位无限次，请输入数字")        
+        this.reply("请输入兑换码总共可使用次数，0位无限次，请输入数字")
         this.setContext('cdk4')
     }
     cdk4() {
@@ -203,6 +203,7 @@ export class gm extends plugin {
                 }
             }
             fs.writeFileSync(file, Yaml.stringify(cdk))
+            e.reply([segment.at(e.user_id), `生成完毕`])
         }
         if (type === '2') {
             if (actiontype === 'mail') {
