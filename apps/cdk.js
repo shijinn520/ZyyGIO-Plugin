@@ -173,15 +173,6 @@ export class gm extends plugin {
         const { keycdk, groupcdk } = await getserver(e)
 
         if (type === '1') {
-            if (actiontype === 'mail') {
-                cdk0[4].replace("，", ",").replace("：", ":") // 转换字符
-                const comma = cdk0[4].split(',')
-                const colon = cdk0[4].split(':')
-                if (comma.length + 1 !== colon.length) {
-                    this.reply(`格式错误\n逗号数量：${comma}\n冒号数量：${colon}\n冒号数量=逗号+1`)
-                    return
-                }
-            }
             const file = `${data}/group/${groupcdk}/cdk/${cdk0[1]}.yaml`
             if (fs.existsSync(file)) {
                 e.reply([segment.at(e.user_id), `兑换码${cdk0[1]}已经存在`])
@@ -204,15 +195,6 @@ export class gm extends plugin {
             e.reply([segment.at(e.user_id), `\n生成完毕\n兑换码为：${cdk0[1]}\n可使用次数：${Number(cdk0[2])}\n每个玩家可兑换次数：${Number(cdk0[3])}\n发放方式：${cdk0[0]}`])
         }
         if (type === '2') {
-            if (actiontype === 'mail') {
-                cdk0[3].replace("，", ",").replace("：", ":")
-                const comma = cdk0[3].split(',')
-                const colon = cdk0[3].split(':')
-                if (comma.length + 1 !== colon.length) {
-                    this.reply(`格式错误\n逗号数量：${comma}\n冒号数量：${colon}\n冒号数量必须=逗号+1`)
-                    return
-                }
-            }
             e.reply([segment.at(e.user_id), `正在生成中...`])
             const time = moment().format('YYYY-MM-DD HH:mm:ss')
             const cdkContent = {
