@@ -193,6 +193,7 @@ export class gm extends plugin {
             }
             fs.writeFileSync(file, Yaml.stringify(cdk))
             e.reply([segment.at(e.user_id), `\n生成完毕\n兑换码为：${cdk0[1]}\n可使用次数：${Number(cdk0[2])}\n每个玩家可兑换次数：${Number(cdk0[3])}\n发放方式：${cdk0[0]}`])
+            return
         }
         if (type === '2') {
             e.reply([segment.at(e.user_id), `正在生成中...`])
@@ -259,9 +260,9 @@ export class gm extends plugin {
             } catch (err) {
                 console.error(err)
             }
-        }
-        cdk0 = []
-        return
+            cdk0 = []
+            return
+        }        
     }
 }
 
