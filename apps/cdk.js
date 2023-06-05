@@ -178,7 +178,7 @@ export class gm extends plugin {
                 const comma = cdk0[4].split(',')
                 const colon = cdk0[4].split(':')
                 if (comma.length + 1 !== colon.length) {
-                    this.reply(`格式错误\n逗号数量：${comma}\n冒号数量：${colon}\n逗号*2必须等于冒号数量`)
+                    this.reply(`格式错误\n逗号数量：${comma}\n冒号数量：${colon}\n冒号数量=逗号+1`)
                     return
                 }
             }
@@ -194,7 +194,7 @@ export class gm extends plugin {
                 uidusagelimit: Number(cdk0[3]),
                 createtime: time,
                 actiontype: cdk0[0],
-                command: cdk0[4].replace(/[^a-zA-Z0-9\s]/g, ''),
+                command: cdk0[4].replace("，", ",").replace("：", ":"),
                 used: 0,
                 uid: {
                     "10001": 0
@@ -209,7 +209,7 @@ export class gm extends plugin {
                 const comma = cdk0[3].split(',')
                 const colon = cdk0[3].split(':')
                 if (comma.length + 1 !== colon.length) {
-                    this.reply(`格式错误\n逗号数量：${comma}\n冒号数量：${colon}\n冒号数量必须=逗号*2`)
+                    this.reply(`格式错误\n逗号数量：${comma}\n冒号数量：${colon}\n冒号数量必须=逗号+1`)
                     return
                 }
             }
