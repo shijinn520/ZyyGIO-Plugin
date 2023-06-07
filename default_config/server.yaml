@@ -61,3 +61,5 @@
     sender: "Zyy.小钰"
     title: "【奖励】兑换码兑换奖励"
     content: "亲爱的旅行者：请查收您通过兑换码获得的奖励"
+  ping:
+    mode: false

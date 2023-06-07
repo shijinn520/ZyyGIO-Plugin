@@ -24,7 +24,6 @@ export class administrator extends plugin {
     const server = Yaml.parse(fs.readFileSync(config + '/server.yaml', 'utf8'))
 
     if (fs.existsSync(`${data}/group/${scenes}`)) {
-      console.log("文件夹存在")
       mode = true
     }
 
@@ -93,6 +92,17 @@ export class administrator extends plugin {
       }
     }
 
+    if (e.msg === "开启在线玩家" || e.msg === "开启ping") {
+      if (cfg.ping.mode === true) {
+        e.reply("在线玩家当前已经开启，无需重复开启")
+        return
+      }
+      if (cfg.ping.mode === false) {
+        cfg.ping.mode = true
+        fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
+      }
+    }
+
     if (e.msg === "开启cdk生成" || e.msg === "开启CDK生成") {
       if (cfg.generatecdk.mode === true) {
         e.reply("CDK生成当前已经开启，无需重复开启")
@@ -121,7 +131,8 @@ export class administrator extends plugin {
       const CheckIns = cfg.CheckIns.mode ? "✔️" : "关闭"
       const generatecdk = cfg.generatecdk.mode ? "✔️" : "关闭"
       const cdk = cfg.cdk.mode ? "✔️" : "关闭"
-      e.reply(`功能列表：\nGM：${gm}\n邮件：${mail}\n生日推送：${birthday}\n每日签到：${CheckIns}\ncdk生成：${generatecdk}\ncdk：${cdk}\n\n当前环境：${value}\n当前环境ID：${scenes}`)
+      const ping = cfg.ping.mode ? "✔️" : "关闭"
+      e.reply(`功能列表：\nGM：${gm}\n邮件：${mail}\n生日推送：${birthday}\n每日签到：${CheckIns}\ncdk生成：${generatecdk}\ncdk：${cdk}\n在线玩家：${ping}\n\n当前环境：${value}\n当前环境ID：${scenes}`)
     }
   }
 
@@ -223,14 +234,45 @@ export class administrator extends plugin {
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
     }
+
+    if (e.msg === "关闭在线玩家" || e.msg === "关闭ping") {
+      if (cfg.ping.mode === false) {
+        e.reply("在线玩家当前已经关闭，无需重复关闭")
+        return
+      }
+      if (cfg.ping.mode === true) {
+        cfg.ping.mode = false
+        fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
+      }
+    }
     const gm = cfg.gm.mode ? "✔️" : "关闭"
     const mail = cfg.mail.mode ? "✔️" : "关闭"
     const birthday = cfg.birthday.mode ? "✔️" : "关闭"
     const CheckIns = cfg.CheckIns.mode ? "✔️" : "关闭"
     const generatecdk = cfg.generatecdk.mode ? "✔️" : "关闭"
     const cdk = cfg.cdk.mode ? "✔️" : "关闭"
-    e.reply(`功能列表：\nGM：${gm}\n邮件：${mail}\n生日推送：${birthday}\n每日签到：${CheckIns}\ncdk生成：${generatecdk}\ncdk：${cdk}\n\n当前环境：${value}\n当前环境ID：${scenes}`)
+    const ping = cfg.ping.mode ? "✔️" : "关闭"
+    e.reply(`功能列表：\nGM：${gm}\n邮件：${mail}\n生日推送：${birthday}\n每日签到：${CheckIns}\ncdk生成：${generatecdk}\ncdk：${cdk}\n在线玩家：${ping}\n\n当前环境：${value}\n当前环境ID：${scenes}`)
   }
+
+  async 功能列表(e) {
+    const { value, scenes } = await getScenes(e)
+    if (!(fs.existsSync(`${data}/group/${scenes}`))) {
+      e.reply(`当前${scenes}还未初始化`)
+      return
+    }
+
+    const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
+    const gm = cfg.gm.mode ? "✔️" : "关闭"
+    const mail = cfg.mail.mode ? "✔️" : "关闭"
+    const birthday = cfg.birthday.mode ? "✔️" : "关闭"
+    const CheckIns = cfg.CheckIns.mode ? "✔️" : "关闭"
+    const generatecdk = cfg.generatecdk.mode ? "✔️" : "关闭"
+    const cdk = cfg.cdk.mode ? "✔️" : "关闭"
+    const ping = cfg.ping.mode ? "✔️" : "关闭"
+    e.reply(`功能列表：\nGM：${gm}\n邮件：${mail}\n生日推送：${birthday}\n每日签到：${CheckIns}\ncdk生成：${generatecdk}\ncdk：${cdk}\n在线玩家：${ping}\n\n当前环境：${value}\n当前环境ID：${scenes}`)
+  }
+
 
   async 设置管理员(e) {
     const file = `${data}/user/${e.at}.yaml`
@@ -355,8 +397,8 @@ export class administrator extends plugin {
   }
 
   async 服务器列表(e) {
-    const { gm, mail, birthday, CheckIns, generatecdk, cdk } = await getmode(e)
-    if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk) return
+    const { gm, mail, birthday, CheckIns, generatecdk, cdk, ping } = await getmode(e)
+    if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk && !ping) return
     const { scenes } = await getScenes(e)
     const list = []
     const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
@@ -375,8 +417,8 @@ export class administrator extends plugin {
   }
 
   async 切换服务器(e) {
-    const { gm, mail, birthday, CheckIns, generatecdk, cdk } = await getmode(e)
-    if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk) return
+    const { gm, mail, birthday, CheckIns, generatecdk, cdk, ping } = await getmode(e)
+    if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk && !ping) return
     const { scenes } = await getScenes(e)
     const list = []
     const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
@@ -448,8 +490,6 @@ export class administrator extends plugin {
     })
 
   }
-
-  // 黑白名单相关函数...
 
   async 插件更新(e) {
     let local

@@ -4,7 +4,7 @@ import crypto from 'crypto'
 import fetch from 'node-fetch'
 import { commands } from './rule.js'
 import plugin from '../../../lib/plugins/plugin.js'
-import { getmode, getserver, getuid, getpath, getcommand, getmail } from './index.js'
+import { getmode, getserver, getuid, getpath, getcommand, getmail, getadmin, getintercept } from './index.js'
 
 const { config } = await getpath()
 
@@ -32,6 +32,11 @@ export class Command extends plugin {
   async GM命令(e) {
     const { gm } = await getmode(e)
     if (!gm) return
+    const { gioadmin } = await getadmin(e)
+    if (!e.isMaster && !gioadmin) {
+      const { intercept } = await getintercept(e)
+      if (!intercept) return
+    }
     const { uid } = await getuid(e)
     if (!uid) return
 
@@ -51,8 +56,8 @@ export class Command extends plugin {
   }
 
   async 服务器状态(e) {
-    const { gm, mail, birthday, CheckIns, generatecdk, cdk } = await getmode(e)
-    if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk) return
+    const { gm, mail, birthday, CheckIns, generatecdk, cdk, ping } = await getmode(e)
+    if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk && !ping) return
     const { ip, port, region, sign, ticketping } = await getserver(e)
     const signingkey = { cmd: '1129', region: region, ticket: ticketping }
     const base = Object.keys(signingkey).sort().map(key => `${key}=${signingkey[key]}`).join('&')

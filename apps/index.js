@@ -83,8 +83,8 @@ export async function getmode(e = {}) {
   const CheckIns = cfg.CheckIns.mode ? true : false
   const generatecdk = cfg.generatecdk.mode ? true : false
   const cdk = cfg.cdk.mode ? true : false
-
-  return { gm, mail, birthday, CheckIns, generatecdk, cdk }
+  const ping = cfg.ping.mode ? true : false
+  return { gm, mail, birthday, CheckIns, generatecdk, cdk, ping }
 }
 
 
@@ -154,6 +154,39 @@ export async function getadmin(e = {}) {
   return { gioadmin }
 }
 
+export async function getintercept(e = {}) {
+  let blocklist = ''
+  let intercept = ''
+  const cfg = Yaml.parse(fs.readFileSync(`${config}/other.yaml`, 'utf8'))
+
+  if (!cfg.whitelist || cfg.whitelist.length === 0) {
+    console.log('白名单为空')
+    for (let i = 0; i < cfg.blacklist.length; i++) {
+      blocklist += `(${cfg.blacklist[i].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})|`
+    }
+    blocklist = blocklist.slice(0, -1)
+    intercept = !((new RegExp(`^.*(${blocklist})\\.*`)).test(e.msg))
+    if (!intercept) {
+      console.log(`${e.msg} 存在黑名单中`)
+    }
+  }
+  else {
+    for (let i = 0; i < cfg.whitelist.length; i++) {
+      blocklist += `(${cfg.whitelist[i].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})|`
+    }
+    blocklist = blocklist.slice(0, -1)
+    intercept = (new RegExp(`^.*(${blocklist})\\.*`)).test(e.msg)
+    if (!intercept) {
+      console.log(`${e.msg} 不存在白名单中`)
+    }
+  }
+  /* 
+  白名单存在：msg存在白名单中，返回true，不存在返回false
+  白名单不存在：msg存在黑名单中，返回false，不存在返回true
+  */
+  return { intercept }
+}
+
 // command
 export async function getcommand(e = {}, mode, msg) {
   const { uid } = await getuid(e)
@@ -187,6 +220,7 @@ export async function getcommand(e = {}, mode, msg) {
   })
 
   const newmsg = []
+  const fail = []
   Promise.all(fetchResults)
     .then(responses => {
       responses.forEach(response => {
@@ -195,79 +229,80 @@ export async function getcommand(e = {}, mode, msg) {
             .then(outcome => {
               const retcode = outcome.retcode
               if (retcode !== 0) {
-                console.log('响应内容:', outcome)
+                console.error(`响应内容:${JSON.stringify(outcome)}`)
               }
               let datamsg = outcome.data.msg
-              if (retcode === 0) {                
+              if (retcode === 0) {
                 newmsg.push(`成功：${datamsg}  ->  ${uid}`)
-
-                if (mode === "cdk") {
-                  let uidstate = false
-                  const name = e.msg.replace(/兑换/g, '').trim()
-                  const file = `${data}/group/${scenes}/cdk/${name}.yaml`
-                  const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
-                  if (cfg.redeemlimit <= (Number(cfg.used) + 1)) {
-                    fs.unlink(file, (err) => {
-                      if (err) {
-                        console.error(err)
-                        return
-                      }
-                      console.log(`兑换码可使用次数为0，已删除文件：${file} `)
-                    })
-                    e.reply([segment.at(e.user_id), "兑换成功"])
-                    return
-                  }
-
-                  if (uid in cfg.uid) {
-                    uidstate = true
-                  }
-                  if (uidstate === false) {
-                    // yaml中uid不存在，创建并写入，cdk总次数+1
-                    cfg.uid[uid] = Number(1)
-                    cfg.used += 1
-                    fs.writeFileSync(file, Yaml.stringify(cfg), 'utf8')
-                    e.reply([segment.at(e.user_id), "兑换成功"])
-                    return
-                  }
-                  if (uidstate === true) {
-                    // 存在uid，总次数+1，uid兑换次数+1
-                    // 更新 cfg 对象的值
-                    cfg.used += 1
-                    cfg.uid[uid] = Number(cfg.uid[uid]) + 1
-                    fs.writeFileSync(file, Yaml.stringify(cfg), 'utf8')
-                    e.reply([segment.at(e.user_id), "兑换成功"])
-                    return
-                  }
-                }
-
               }
               else if (retcode === -1) {
                 const dataret = outcome.data.retmsg.replace(/can't find gm command/g, '找不到GM命令').replace(/command/g, '命令').replace(/execute fails/g, '执行失败').replace(/invalid param/g, '无效参数')
-                newmsg.push(`失败：${datamsg} -> ${uid}\n原因：${dataret}`)
+                fail.push(`失败：${datamsg} -> ${uid}\n原因：${dataret}`)
               }
               else if (retcode === 4) {
-                newmsg.push(`又不在线，再发我顺着网线打死你！╭(╯^╰)╮`)
+                fail.push(`又不在线，再发我顺着网线打死你！╭(╯^╰)╮`)
               }
               else if (retcode === 617) {
-                newmsg.push(`失败：${datamsg}  ->  ${uid}\n原因：数量超出限制`)
+                fail.push(`失败：${datamsg}  ->  ${uid}\n原因：数量超出限制`)
               }
               else if (retcode === 627) {
-                newmsg.push(`失败：${datamsg}  ->  ${uid}\n原因：数量超出限制`)
+                fail.push(`失败：${datamsg}  ->  ${uid}\n原因：数量超出限制`)
               }
               else if (retcode === 1003) {
-                newmsg.push(`失败，服务器验证签名错误`)
+                fail.push(`失败，服务器验证签名错误`)
               }
               else if (retcode === 1010) {
-                newmsg.push(`失败，服务器区服不匹配`)
+                fail.push(`失败，服务器区服不匹配`)
               }
               else if (retcode === 8002) {
-                newmsg.push(`失败，传说钥匙超过限制`)
+                fail.push(`失败，传说钥匙超过限制`)
               }
               else {
-                newmsg.push(`失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${outcome.data.msg} retcode:${outcome.retcode}`)
+                fail.push(`失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${outcome.data.msg} retcode:${outcome.retcode}`)
               }
-              if (urls.length === newmsg.length) {
-                e.reply([segment.at(e.user_id), `\n`, newmsg.join('\n')])
+              if (urls.length === (newmsg.length + fail.length)) {
+                if (mode === "cdk") {
+                  if (newmsg.length > 0) {
+                    let uidstate = false
+                    const name = e.msg.replace(/兑换/g, '').trim()
+                    const file = `${data}/group/${scenes}/cdk/${name}.yaml`
+                    const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
+                    if (cfg.redeemlimit <= (Number(cfg.used) + 1)) {
+                      fs.unlink(file, (err) => {
+                        if (err) {
+                          console.error(err)
+                          return
+                        }
+                        console.log(`兑换码可使用次数为0，已删除文件：${file} `)
+                      })
+                      e.reply([segment.at(e.user_id), "兑换成功"])
+                      return
+                    }
+
+                    if (uid in cfg.uid) {
+                      uidstate = true
+                    }
+                    if (uidstate === false) {
+                      cfg.uid[uid] = Number(1)
+                      cfg.used += 1
+                      fs.writeFileSync(file, Yaml.stringify(cfg), 'utf8')
+                      e.reply([segment.at(e.user_id), "兑换成功"])
+                      return
+                    }
+                    if (uidstate === true) {
+                      cfg.used += 1
+                      cfg.uid[uid] = Number(cfg.uid[uid]) + 1
+                      fs.writeFileSync(file, Yaml.stringify(cfg), 'utf8')
+                      e.reply([segment.at(e.user_id), "兑换成功"])
+                      return
+                    }
+                    return
+                  }
+                  else {
+                    e.reply([segment.at(e.user_id), `\n兑换失败\n`, fail.join('\n')])
+                  }
+                }
+                e.reply([segment.at(e.user_id), `\n`, newmsg.join('\n'), `\n\n`, fail.join('\n')])
               }
             })
         } else {
@@ -407,7 +442,7 @@ export async function getmail(e = {}, mode, item) {
             .then(outcome => {
               const retcode = outcome.retcode
               if (retcode !== 0) {
-                console.log('响应内容:', outcome)
+                console.error(`响应内容:${JSON.stringify(outcome)}`)
               }
               if (retcode === 0) {
                 if (mode === "mail") {
@@ -471,7 +506,7 @@ export async function getmail(e = {}, mode, item) {
               else if (retcode === -1) {
                 e.reply([segment.at(e.user_id), `失败 -> 发生未知错误，请检查指令`])
               }
-              else if(retcode === 17){
+              else if (retcode === 17) {
                 e.reply([segment.at(e.user_id), `失败 -> 账户不存在\nuid：${uid}`])
               }
               else if (retcode === 617) {

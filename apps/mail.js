@@ -4,7 +4,7 @@ import Yaml from 'yaml'
 import crypto from 'crypto'
 import { mail } from './rule.js'
 import plugin from '../../../lib/plugins/plugin.js'
-import { getmode, getserver, getuid, getScenes, getmail, getadmin } from './index.js'
+import { getmode, getserver, getuid, getScenes, getmail, getadmin, getintercept } from './index.js'
 
 let state = true
 let _path = process.cwd() + '/plugins/Zyy-GM-plugin'
@@ -23,6 +23,11 @@ export class mails extends plugin {
     async 邮件(e) {
         const { mail } = await getmode(e)
         if (!mail) return
+        const { gioadmin } = await getadmin(e)
+        if (!e.isMaster && !gioadmin) {
+          const { intercept } = await getintercept(e)
+          if (!intercept) return
+        }
         const { uid } = await getuid(e)
         if (!uid) return
         const mode = "mail"

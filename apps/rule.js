@@ -1,11 +1,11 @@
 export const admin = [
     {
-        reg: '^(开启GM|开启gm|开启邮件|开启签到|开启cdk|开启CDK|开启cdk生成|开启CDK生成)$',
+        reg: '^(开启GM|开启gm|开启邮件|开启签到|开启cdk|开启CDK|开启cdk生成|开启CDK生成|开启在线玩家|开启ping)$',
         fnc: '开启功能',
         permission: 'master'
     },
     {
-        reg: '^(关闭GM|关闭gm|关闭邮件|关闭签到|关闭cdk|关闭CDK|关闭cdk生成|关闭CDK生成)$',
+        reg: '^(关闭GM|关闭gm|关闭邮件|关闭签到|关闭cdk|关闭CDK|关闭cdk生成|关闭CDK生成|关闭在线玩家|关闭ping)$',
         fnc: '关闭功能',
         permission: 'master'
     },
@@ -36,6 +36,11 @@ export const admin = [
     {
         reg: '^\/?添加(UID|uid|Uid) (.*)$',
         fnc: '添加UID',
+        permission: 'master'
+    },
+    {
+        reg: '^(功能列表|当前功能)$',
+        fnc: '功能列表',
         permission: 'master'
     },
     {
@@ -78,7 +83,7 @@ export const mail = [
 
 export const players = [
     {
-        reg: '^\/?(帮助|help)(.*)$',
+        reg: '^\/?(帮助|help)$',
         fnc: '小钰帮助',
     },
     // 先不改，有空再说
