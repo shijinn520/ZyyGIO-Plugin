@@ -78,6 +78,7 @@ export class gm extends plugin {
         await this.reply('请输入需要生成cdk的方式\n只能输入1或者2\n1.自定义生成单个兑换码\n2.随机生成若干个兑换码')
     }
     cdk1() {
+        this.finish('cdk1')
         if (this.e.message[0].text === '1') {
             type = '1'
         }
@@ -85,17 +86,16 @@ export class gm extends plugin {
             type = '2'
         }
         else {
-            this.reply("输入错误")
-            this.finish('cdk1')
+            this.reply("输入错误")            
             cdk0 = []
             state = false
             return
         }
         this.reply("请选择cdk发放方式：\n只能输入1或者2\n1.邮件发放(无需玩家在线)\n2.在线GM发放(需玩家在线)")
-        this.finish('cdk1')
         this.setContext('cdk2')
     }
     cdk2() {
+        this.finish('cdk2')
         if (this.e.message[0].text === '1') {
             actiontype = 'mail'
             cdk0.push('mail')
@@ -105,41 +105,37 @@ export class gm extends plugin {
             cdk0.push('command')
         }
         else {
-            this.reply("输入错误")
-            this.finish('cdk2')
+            this.reply("输入错误")            
             cdk0 = []
             state = false
             return
         }
         if (type === '1') {
             this.reply("请输入你的自定义兑换码，请不要出现空格，否则兑换码会生成失败")
-            this.finish('cdk2')
             this.setContext('cdk3')
         }
         if (type === '2') {
             this.reply("请输入需要生成的兑换码数量，请输入纯数字，不大于1000")
-            this.finish('cdk2')
             this.setContext('cdk4')
         }
     }
     cdk3() {
-        cdk0.push(this.e.message[0].text)
-        this.reply("请输入兑换码总共可使用次数，禁止为0，请输入数字")
         this.finish('cdk3')
+        cdk0.push(this.e.message[0].text)
+        this.reply("请输入兑换码总共可使用次数，禁止为0，请输入数字")        
         this.setContext('cdk4')
     }
     cdk4() {
+        this.finish('cdk4')
         if (type === '1') {
             if (isNaN(this.e.message[0].text) || this.e.message[0].text === '0') {
-                this.finish('cdk4')
                 this.reply("输入错误")
                 cdk0 = []
                 state = false
                 return
             }
             this.reply("请输入单个uid可以使用此兑换码的次数，请输入数字")
-            cdk0.push(this.e.message[0].text)
-            this.finish('cdk4')
+            cdk0.push(this.e.message[0].text)            
             this.setContext('cdk5')
         }
         if (type === '2') {
@@ -151,21 +147,19 @@ export class gm extends plugin {
             }
             this.reply("请输入TXT文件名称前缀，用于识别txt")
             cdk0.push(this.e.message[0].text)
-            this.finish('cdk4')
             this.setContext('cdk5')
         }
     }
     cdk5() {
+        this.finish('cdk5')
         if (this.e.message[0].text === "0") {
-            this.reply("禁止为0")
-            this.finish('cdk5')
+            this.reply("禁止为0")            
             state = false
             return
         }
         if (type === '1') {
             if (isNaN(this.e.message[0].text)) {
                 this.reply("格式错误，非数字")
-                this.finish('cdk5')
                 cdk0 = []
                 state = false
                 return
@@ -177,9 +171,8 @@ export class gm extends plugin {
         }
         if (type === '2') {
             cdk0.push(this.e.message[0].text)
-            if (this.e.message[0].text > 1000) {
+            if (isNaN(this.e.message[0].text) > 1000) {
                 this.reply([segment.at(e.user_id), "单次生成仅限1000个"])
-                this.finish('cdk5')
                 cdk0 = []
                 state = false
                 return
@@ -192,18 +185,17 @@ export class gm extends plugin {
         if (actiontype === 'command') {
             this.reply("你选择的是在线GM发放\n请根据以下格式填写需要发放的对应物品\n\n格式：指令1,指令2,指令3\n多个指令使用逗号分隔\n举例：revive,player level 45")
         }
-        this.finish('cdk5')
         this.setContext('cdk6')
     }
     async cdk6(e) {
+        this.finish('cdk6')
         cdk0.push(this.e.message[0].text)
         const { keycdk, groupcdk } = await getserver(e)
 
         if (type === '1') {
             const file = `${data}/group/${groupcdk}/cdk/${cdk0[1]}.yaml`
             if (fs.existsSync(file)) {
-                e.reply([segment.at(e.user_id), `兑换码${cdk0[1]}已经存在`])
-                this.finish('cdk6')
+                e.reply([segment.at(e.user_id), `兑换码${cdk0[1]}已经存在`])                
                 cdk0 = []
                 state = false
                 return
@@ -223,7 +215,6 @@ export class gm extends plugin {
             }
             fs.writeFileSync(file, Yaml.stringify(cdk))
             e.reply([segment.at(e.user_id), `\n生成完毕\n兑换码为：${cdk0[1]}\n可使用次数：${Number(cdk0[2])}\n每个玩家可兑换次数：${Number(cdk0[3])}\n发放方式：${cdk0[0]}`])
-            this.finish('cdk6')
             state = false
             cdk0 = []
             return
@@ -294,7 +285,6 @@ export class gm extends plugin {
                 console.error(err)
             }
             cdk0 = []
-            this.finish('cdk6')
             state = false
             return
         }
