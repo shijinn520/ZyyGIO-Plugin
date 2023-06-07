@@ -160,7 +160,6 @@ export async function getintercept(e = {}) {
   const cfg = Yaml.parse(fs.readFileSync(`${config}/other.yaml`, 'utf8'))
 
   if (!cfg.whitelist || cfg.whitelist.length === 0) {
-    console.log('白名单为空')
     for (let i = 0; i < cfg.blacklist.length; i++) {
       blocklist += `(${cfg.blacklist[i].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})|`
     }
@@ -262,7 +261,7 @@ export async function getcommand(e = {}, mode, msg) {
               }
               if (urls.length === (newmsg.length + fail.length)) {
                 if (mode === "cdk") {
-                  // 如果存在多个请求，哪里失败多个，只要成功一个都会被判定为成功
+                  // 如果存在多个请求，哪怕失败多个，只要成功一个都会被判定为成功
                   if (newmsg.length > 0) {
                     let uidstate = false
                     const name = e.msg.replace(/兑换/g, '').trim()
@@ -300,6 +299,20 @@ export async function getcommand(e = {}, mode, msg) {
                   }
                   else {
                     e.reply([segment.at(e.user_id), `\n兑换失败\n${fail.join('\n')}`])
+                    return
+                  }
+                }
+                else if (mode === "gm") {
+                  if (newmsg.length === 0) {
+                    e.reply([segment.at(e.user_id), `\n${fail.join('\n')}`])
+                    return
+                  }
+                  if (fail.length === 0) {
+                    e.reply([segment.at(e.user_id), `\n${newmsg.join('\n')}`])
+                    return
+                  }
+                  if (newmsg.length > 0 && fail.length > 0) {
+                    e.reply([segment.at(e.user_id), `\n${newmsg.join('\n')}\n\n${fail.join('\n')}`])
                     return
                   }
                 }
