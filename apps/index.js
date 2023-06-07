@@ -262,6 +262,7 @@ export async function getcommand(e = {}, mode, msg) {
               }
               if (urls.length === (newmsg.length + fail.length)) {
                 if (mode === "cdk") {
+                  // 如果存在多个请求，哪里失败多个，只要成功一个都会被判定为成功
                   if (newmsg.length > 0) {
                     let uidstate = false
                     const name = e.msg.replace(/兑换/g, '').trim()
@@ -296,24 +297,9 @@ export async function getcommand(e = {}, mode, msg) {
                       e.reply([segment.at(e.user_id), "兑换成功"])
                       return
                     }
-                    return
                   }
                   else {
-                    e.reply([segment.at(e.user_id), `\n兑换失败\n`, fail.join('\n')])
-                  }
-                }
-                if (urls.length === (newmsg.length + fail.length)) {
-                  if (urls.length === newmsg.length === 0) {
-                    e.reply([segment.at(e.user_id), `\n${fail.join('\n')}`])
-                    return
-                  }
-                  else if (fail.length === 0) {
-                    e.reply([segment.at(e.user_id), `\n${newmsg.join('\n')}`])
-                    return
-                  }
-                  else {
-                    e.reply([segment.at(e.user_id), `${newmsg.length > 0 && fail.length > 0 ? `\n${newmsg.join('\n')}\n\n${fail.join('\n')}` : newmsg.join('\n') + fail.join('\n')
-                      }`])
+                    e.reply([segment.at(e.user_id), `\n兑换失败\n${fail.join('\n')}`])
                     return
                   }
                 }
