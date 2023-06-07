@@ -419,3 +419,5 @@ git clone --depth 1 https://github.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugi
 大部分代码来自[喵喵插件](https://github.com/yoimiya-kokomi/miao-plugin)和[白纸插件](https://github.com/HeadmasterTan/zhi-plugin)
 
 本插件所有资源都来自互联网，请不要把此插件用于任何商业性行为，侵权请联系我删除。
+
+关注[嘉然今天吃什么](https://space.bilibili.com/672328094)谢谢喵
