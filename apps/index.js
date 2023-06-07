@@ -304,15 +304,16 @@ export async function getcommand(e = {}, mode, msg) {
                 }
                 if (urls.length === (newmsg.length + fail.length)) {
                   if (urls.length === newmsg.length === 0) {
-                    e.reply([segment.at(e.user_id), `\n`, fail.join('\n')])
+                    e.reply([segment.at(e.user_id), `\n${fail.join('\n')}`])
                     return
                   }
                   else if (fail.length === 0) {
-                    e.reply([segment.at(e.user_id), `\n`, newmsg.join('\n')])
+                    e.reply([segment.at(e.user_id), `\n${newmsg.join('\n')}`])
                     return
                   }
                   else {
-                    e.reply([segment.at(e.user_id), `\n`, newmsg.join('\n'), `\n\n`, fail.join('\n')])
+                    e.reply([segment.at(e.user_id), `${newmsg.length > 0 && fail.length > 0 ? `\n${newmsg.join('\n')}\n\n${fail.join('\n')}` : newmsg.join('\n') + fail.join('\n')
+                      }`])
                     return
                   }
                 }
