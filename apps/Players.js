@@ -25,11 +25,6 @@ export class Player extends plugin {
 
 
     async 小钰帮助(e) {
-        if (helpList.length === 0) {
-            e.reply("叫你乱改！文档都给你删了！")
-            return
-        }
-
         let helpGroup = []
         helpList.forEach((group) => {
             if (group.auth && group.auth === "master" && !this.e.isMaster) {

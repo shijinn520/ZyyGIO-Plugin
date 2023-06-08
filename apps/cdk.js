@@ -7,9 +7,10 @@ import common from '../../../lib/common/common.js'
 import plugin from '../../../lib/plugins/plugin.js'
 import { getmode, getserver, getuid, getpath, getcommand, getmail, getScenes } from './index.js'
 
-const { data } = await getpath()
+const { config, data } = await getpath()
 let cdk0 = []
 let type
+let method
 let actiontype
 let state = false
 
@@ -68,7 +69,7 @@ export class gm extends plugin {
     async 生成兑换码(e) {
         const { generatecdk } = await getmode(e)
         if (!generatecdk) return
-        if(state){
+        if (state) {
             e.reply("上个cdk生成还未结束")
             return
         }
@@ -86,7 +87,7 @@ export class gm extends plugin {
             type = '2'
         }
         else {
-            this.reply("输入错误")            
+            this.reply("输入错误")
             cdk0 = []
             state = false
             return
@@ -105,7 +106,7 @@ export class gm extends plugin {
             cdk0.push('command')
         }
         else {
-            this.reply("输入错误")            
+            this.reply("输入错误")
             cdk0 = []
             state = false
             return
@@ -122,7 +123,7 @@ export class gm extends plugin {
     cdk3() {
         this.finish('cdk3')
         cdk0.push(this.e.message[0].text)
-        this.reply("请输入兑换码总共可使用次数，禁止为0，请输入数字")        
+        this.reply("请输入兑换码总共可使用次数，禁止为0，请输入数字")
         this.setContext('cdk4')
     }
     cdk4() {
@@ -135,7 +136,7 @@ export class gm extends plugin {
                 return
             }
             this.reply("请输入单个uid可以使用此兑换码的次数，请输入数字")
-            cdk0.push(this.e.message[0].text)            
+            cdk0.push(this.e.message[0].text)
             this.setContext('cdk5')
         }
         if (type === '2') {
@@ -153,7 +154,7 @@ export class gm extends plugin {
     cdk5() {
         this.finish('cdk5')
         if (this.e.message[0].text === "0") {
-            this.reply("禁止为0")            
+            this.reply("禁止为0")
             state = false
             return
         }
@@ -188,14 +189,16 @@ export class gm extends plugin {
         this.setContext('cdk6')
     }
     async cdk6(e) {
-        this.finish('cdk6')
-        cdk0.push(this.e.message[0].text)
+        if (method !== 'fastcdk') {
+            this.finish('cdk6')
+            cdk0.push(this.e.message[0].text)
+        }
         const { keycdk, groupcdk } = await getserver(e)
 
         if (type === '1') {
             const file = `${data}/group/${groupcdk}/cdk/${cdk0[1]}.yaml`
             if (fs.existsSync(file)) {
-                e.reply([segment.at(e.user_id), `兑换码${cdk0[1]}已经存在`])                
+                e.reply([segment.at(e.user_id), `兑换码${cdk0[1]}已经存在`])
                 cdk0 = []
                 state = false
                 return
@@ -289,5 +292,110 @@ export class gm extends plugin {
             return
         }
     }
-}
 
+    async 快捷生成列表(e) {
+        const { generatecdk } = await getmode(e)
+        if (!generatecdk) return
+        const file = `${config}/cdk.yaml`
+        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
+        e.reply(`${Object.keys(cfg).join('\n')}`)
+    }
+
+    async 快捷生成cdk(e) {
+        const { generatecdk } = await getmode(e)
+        if (!generatecdk) return
+        if (state) {
+            e.reply("上个cdk生成还未结束")
+            return
+        }
+        const msg = e.msg.replace("快捷生成", "")
+        const file = `${config}/cdk.yaml`
+        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
+        if (!(cfg[msg])) {
+            e.reply([segment.at(e.user_id), `\n${msg} 不存在\n发送“快捷生成列表”查看已有的`])
+            return
+        }
+        state = true
+        method = 'fastcdk'
+        type = '2'
+        const content = cfg[msg].split('-')
+        cdk0 = []
+        cdk0.push(content[0])
+        cdk0.push(content[1])
+        cdk0.push(msg)
+        cdk0.push(`${content[2].replace("，", ",").replace("：", ":")}`)
+        this.cdk6(e)
+    }
+
+    async 快捷生成自定义cdk(e) {
+        const { generatecdk } = await getmode(e)
+        if (!generatecdk) return
+        if (state) {
+            e.reply("上个cdk生成还未结束")
+            return
+        }
+        const msg = e.msg.split('-')
+        if (msg.length !== 6) {
+            const base64 = Buffer.from(fs.readFileSync(process.cwd() + '/plugins/Zyy-GM-plugin/resources/players/cdk-随机.png')).toString('base64')
+            await e.reply([segment.image(`base64://${base64}`), "正确格式：\n自定义cdk-兑换类型-兑换码-总使用次数-单uid使用次数-对应命令"])
+            return
+        }
+        if (msg[1] !== '邮件' && msg[1] !== '命令') {
+            e.reply("只能输入邮件或者命令")
+            return
+        }
+        state = true
+        method = 'fastcdk'
+        type = '1'
+        cdk0 = []
+        if (msg[1] === '邮件') {
+            cdk0.push("mail")
+        }
+        else {
+            cdk0.push("command")
+        }
+        cdk0.push(msg[2])
+        cdk0.push(msg[3])
+        cdk0.push(msg[4])
+        cdk0.push(`${msg[5].replace("，", ",").replace("：", ":")}`)
+        this.cdk6(e)
+    }
+
+    async 快捷生成随机cdk(e) {
+        const { generatecdk } = await getmode(e)
+        if (!generatecdk) return
+        if (state) {
+            e.reply("上个cdk生成还未结束")
+            return
+        }
+        const msg = e.msg.split('-')
+        if (msg.length !== 5) {
+            const base64 = Buffer.from(fs.readFileSync(process.cwd() + '/plugins/Zyy-GM-plugin/resources/players/cdk-随机.png')).toString('base64')
+            await e.reply([segment.image(`base64://${base64}`), "正确格式：\n随机cdk-兑换类型-生成数量-TXT前缀-对应命令"])
+            return
+        }
+        if (msg[1] !== '邮件' && msg[1] !== '命令') {
+            e.reply("只能输入邮件或者命令")
+            return
+        }
+        state = true
+        method = 'fastcdk'
+        type = '2'
+        cdk0 = []
+        if (msg[1] === '邮件') {
+            cdk0.push("mail")
+        }
+        else {
+            cdk0.push("command")
+        }
+
+        cdk0.push(msg[2])
+        cdk0.push(msg[3])
+        cdk0.push(`${msg[4].replace("，", ",").replace("：", ":")}`)
+        this.cdk6(e)
+    }
+
+    async 生成cdk帮助(e) {
+        e.reply(`目前有4种生成方式：\n1.快捷生成\n2.自定义cdk\n3.随机cdk\n4.生成cdk(上下文)\n\n第一种需要配置好cdk.yaml，随后快捷生成+名称\n第二种发送“自定义cdk”即可查看使用指南\n第三张发送“随机cdk”即可查看使用指南\n第四种直接发送“生成cdk”，跟着提示走即可`)
+    }
+}
