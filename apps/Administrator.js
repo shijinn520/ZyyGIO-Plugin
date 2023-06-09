@@ -42,7 +42,7 @@ export class administrator extends plugin {
         e.reply("GM当前已经开启，无需重复开启")
         return
       }
-      if (cfg.gm.mode === false) {
+      else {
         cfg.gm.mode = true
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -53,7 +53,7 @@ export class administrator extends plugin {
         e.reply("邮件当前已经开启，无需重复开启")
         return
       }
-      if (cfg.mail.mode === false) {
+      else {
         cfg.mail.mode = true
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -64,7 +64,7 @@ export class administrator extends plugin {
         e.reply("生日推送当前已经开启，无需重复开启")
         return
       }
-      if (cfg.birthday.mode === false) {
+      else {
         cfg.birthday.mode = true
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -75,7 +75,7 @@ export class administrator extends plugin {
         e.reply("每日签到当前已经开启，无需重复开启")
         return
       }
-      if (cfg.CheckIns.mode === false) {
+      else {
         cfg.CheckIns.mode = true
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -86,7 +86,7 @@ export class administrator extends plugin {
         e.reply("CDK当前已经开启，无需重复开启")
         return
       }
-      if (cfg.cdk.mode === false) {
+      else {
         cfg.cdk.mode = true
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -97,7 +97,7 @@ export class administrator extends plugin {
         e.reply("在线玩家当前已经开启，无需重复开启")
         return
       }
-      if (cfg.ping.mode === false) {
+      else {
         cfg.ping.mode = true
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -108,7 +108,7 @@ export class administrator extends plugin {
         e.reply("CDK生成当前已经开启，无需重复开启")
         return
       }
-      if (cfg.generatecdk.mode === false) {
+      else {
         const getthefolder = (folder) =>
           fs.readdirSync(folder, { withFileTypes: true })
             .filter((entry) => entry.isDirectory())
@@ -167,7 +167,7 @@ export class administrator extends plugin {
         e.reply("GM当前已经关闭，无需重复关闭")
         return
       }
-      if (cfg.gm.mode === true) {
+      else {
         cfg.gm.mode = false
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -178,7 +178,7 @@ export class administrator extends plugin {
         e.reply("邮件当前已经关闭，无需重复关闭")
         return
       }
-      if (cfg.mail.mode === true) {
+      else {
         cfg.mail.mode = false
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -189,7 +189,7 @@ export class administrator extends plugin {
         e.reply("生日推送当前已经关闭，无需重复关闭")
         return
       }
-      if (cfg.birthday.mode === true) {
+      else {
         cfg.birthday.mode = false
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -200,7 +200,7 @@ export class administrator extends plugin {
         e.reply("每日签到当前已经关闭，无需重复关闭")
         return
       }
-      if (cfg.CheckIns.mode === true) {
+      else {
         cfg.CheckIns.mode = false
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -211,7 +211,7 @@ export class administrator extends plugin {
         e.reply("CDK生成当前已经关闭，无需重复关闭")
         return
       }
-      if (cfg.generatecdk.mode === true) {
+      else {
         cfg.generatecdk.mode = false
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -222,7 +222,7 @@ export class administrator extends plugin {
         e.reply("CDK当前已经关闭，无需重复关闭")
         return
       }
-      if (cfg.cdk.mode === true) {
+      else {
         cfg.cdk.mode = false
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -233,7 +233,7 @@ export class administrator extends plugin {
         e.reply("在线玩家当前已经关闭，无需重复关闭")
         return
       }
-      if (cfg.ping.mode === true) {
+      else {
         cfg.ping.mode = false
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
