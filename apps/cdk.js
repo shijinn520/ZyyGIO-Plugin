@@ -35,6 +35,7 @@ export class gm extends plugin {
         const file = `${data}/group/${scenes}/cdk/${msg}.yaml`
 
         if (!fs.existsSync(file)) {
+            e.group.recallMsg(e.message_id)
             e.reply(`无效的兑换码!`)
             return
         }
@@ -47,6 +48,7 @@ export class gm extends plugin {
 
         if (uid in cfg.uid) {
             if (cfg.uid[uid] >= cfg.uidusagelimit) {
+                e.group.recallMsg(e.message_id)
                 e.reply(`同一个兑换码单个uid使用次数达到上限!`)
                 return
             }
