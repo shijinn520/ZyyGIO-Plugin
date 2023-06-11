@@ -135,7 +135,7 @@ GM指令：
 
 
 ## * 玩家相关-所有人可用
-    * 请注意其中的空格
+* 请注意其中的空格
 ```
 [/]<绑定><UID>
 
@@ -164,11 +164,16 @@ GM指令：
 
 ## 鸣谢：
 [Miao-Yunzai](https://github.com/yoimiya-kokomi/Miao-Yunzai)
+
 [TRSS-Yunzai](https://github.com/TimeRainStarSky/Yunzai)
+
 [喵喵插件](https://github.com/yoimiya-kokomi/miao-plugin)
+
 [白纸插件](https://github.com/HeadmasterTan/zhi-plugin)
 
 ## 免责声明：
 使用此插件产生的一切后果与本人均无关
+
 请不要用于任何商业性行为
+
 插件所有资源都来自互联网，侵删
