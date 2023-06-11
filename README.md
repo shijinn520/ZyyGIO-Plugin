@@ -2,6 +2,18 @@
 
 需要手动配置的只有`server.yaml`这个文件，你需要在里面添加上你的服务器
 
+## `2023年6月11日之前拉取的仓库请在插件根目录执行以下命令以获取最新的仓库地址`
+
+    * Gitee:
+    ```
+    git remote set-url origin https://gitee.com/Zyy955/Zyy-GM-plugin.git && git pull
+    ```
+    
+    * Github:
+    ```
+    git remote set-url origin https://github.com/Zyy955/Zyy-GM-plugin.git && git pull
+    ```
+
 # 效果展示：
 
 在线玩家：
