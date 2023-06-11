@@ -49,7 +49,7 @@ export const admin = [
         permission: 'master'
     },
     {
-        reg: '^\/?(GM强制更新|Gm强制更新|gm强制更新|强制更新GM|强制更新Gm|更新gm)$',
+        reg: '^\/?(GM强制更新|Gm强制更新|gm强制更新|强制更新GM|强制更新Gm|强制更新gm)$',
         fnc: '强制更新',
         permission: 'master'
     }
