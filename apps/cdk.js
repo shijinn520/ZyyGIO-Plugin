@@ -36,20 +36,20 @@ export class gm extends plugin {
 
         if (!fs.existsSync(file)) {
             e.group.recallMsg(e.message_id)
-            e.reply(`无效的兑换码!`)
+            e.reply([segment.at(e.user_id),`无效的兑换码!`])
             return
         }
 
         const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
         if (cfg.redeemlimit <= cfg.used) {
-            e.reply("兑换码可兑换次数不足!")
+            e.reply([segment.at(e.user_id),"兑换码可兑换次数不足!"])
             return
         }
 
         if (uid in cfg.uid) {
             if (cfg.uid[uid] >= cfg.uidusagelimit) {
                 e.group.recallMsg(e.message_id)
-                e.reply(`同一个兑换码单个uid使用次数达到上限!`)
+                e.reply([segment.at(e.user_id),`同一个兑换码单个uid使用次数达到上限!`])
                 return
             }
         }
