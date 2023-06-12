@@ -165,5 +165,9 @@ export const cdk = [
     {
         reg: '^\/?生成cdk帮助$',
         fnc: '生成cdk帮助'
+    },
+    {
+        reg: '^\/?重置cdk$',
+        fnc: '重置cdk'
     }
 ]

@@ -38,29 +38,49 @@ const { data, config } = await getpath()
 export async function getScenes(e = {}) {
   let value = false
   let scenes = false
-  if (e.sub_type === 'friend') {
-    value = '私聊'
-    scenes = e.user_id
+
+  if (typeof model !== "undefined" && model === "TRSS-Yunzai") {
+    if (e.sub_type === 'channel') {
+      value = 'QQ频道-群聊'
+      scenes = `${e.group_id}`
+    }
+    else if (e.sub_type === 'friend') {
+      value = 'QQ私聊'
+      scenes = e.user_id
+    }
+    else if (e.sub_type === 'normal') {
+      value = 'QQ群聊'
+      scenes = e.group_id
+    }
+    /* else {
+        未经确认，暂不使用
+       value = 'QQ频道-私聊'
+       scenes = e.group_id 
+  }*/
   }
-  else if (e.sub_type === 'group') {
-    value = 'QQ频道-私聊'
-    scenes = e.sender.group_id
+
+  else if (typeof group_name !== "undefined" && group_name === "频道插件") {
+    if (e.sub_type === 'group') {
+      value = 'QQ频道-私聊'
+      scenes = e.sender.group_id
+    }
+    else if (e.sub_type === 'normal') {
+      value = 'QQ频道-群聊'
+      scenes = `${e.group_id}-${e.member.info.group_id}`
+    }
   }
-  else if (e.sub_type === 'channel') {
-    value = 'QQ频道'
-    scenes = e.channel_id
-  }
-  else if (e.sub_type === 'normal') {
-    if (typeof e.member?.info?.group_id !== 'undefined') {
-      if (e.group_id === e.member.info.group_id) {
-        value = 'QQ群'
-        scenes = e.group_id
-      } else {
-        value = 'QQ频道'
-        scenes = `${e.group_id}-${e.member.info.group_id}`
-      }
-    } else {
-      value = 'QQ群'
+
+  else {
+    if (e.sub_type === 'friend') {
+      value = 'QQ私聊'
+      scenes = e.user_id
+    }
+    else if (e.sub_type === 'normal') {
+      value = 'QQ群聊'
+      scenes = e.group_id
+    }
+    else if (e.message_type = "group" && e.guild_id) {
+      value = 'QQ频道-群聊'
       scenes = e.group_id
     }
   }
@@ -70,10 +90,10 @@ export async function getScenes(e = {}) {
 
 // 处理功能状态  
 export async function getmode(e = {}) {
-  const { scenes } = await getScenes(e)
+  const { value, scenes } = await getScenes(e)
   const file = `${data}/group/${scenes}/config.yaml`
   if (!fs.existsSync(file)) {
-    console.error(`群聊${scenes}未初始化`)
+    console.error(`当前${value} ${scenes} 未初始化`)
     return { gm: false, mail: false, birthday: false, CheckIns: false, generatecdk: false, cdk: false }
   }
   const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
