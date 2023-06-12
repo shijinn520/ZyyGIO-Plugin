@@ -38,51 +38,34 @@ const { data, config } = await getpath()
 export async function getScenes(e = {}) {
   let value = false
   let scenes = false
-
-  if (typeof model !== "undefined" && model === "TRSS-Yunzai") {
-    if (e.sub_type === 'channel') {
-      value = 'QQ频道-群聊'
-      scenes = `${e.group_id}`
-    }
-    else if (e.sub_type === 'friend') {
-      value = 'QQ私聊'
-      scenes = e.user_id
-    }
-    else if (e.sub_type === 'normal') {
+  if (e.sub_type === 'friend') {
+    value = 'QQ私聊'
+    scenes = e.user_id
+  }
+  else if (e.sub_type === 'group') {
+    value = 'QQ频道-私聊'
+    scenes = e.sender.group_id
+  }
+  else if (e.sub_type === 'channel') {
+    value = 'QQ频道-群聊'
+    scenes = e.channel_id
+  }
+  else if (e.sub_type === 'normal') {
+    if (typeof e.member?.info?.group_id !== 'undefined') {
+      if (e.group_id === e.member.info.group_id) {
+        value = 'QQ群聊'
+        scenes = e.group_id
+      } else {
+        value = 'QQ频道-群聊'
+        scenes = `${e.group_id}-${e.member.info.group_id}`
+      }
+    } else {
       value = 'QQ群聊'
       scenes = e.group_id
     }
-    /* else {
-        未经确认，暂不使用
-       value = 'QQ频道-私聊'
-       scenes = e.group_id 
-  }*/
-  }
-
-  else if (typeof group_name !== "undefined" && group_name === "频道插件") {
-    if (e.sub_type === 'group') {
-      value = 'QQ频道-私聊'
-      scenes = e.sender.group_id
-    }
-    else if (e.sub_type === 'normal') {
-      value = 'QQ频道-群聊'
-      scenes = `${e.group_id}-${e.member.info.group_id}`
-    }
-  }
-
-  else {
-    if (e.sub_type === 'friend') {
-      value = 'QQ私聊'
-      scenes = e.user_id
-    }
-    else if (e.sub_type === 'normal') {
-      value = 'QQ群聊'
-      scenes = e.group_id
-    }
-    else if (e.message_type = "group" && e.guild_id) {
-      value = 'QQ频道-群聊'
-      scenes = e.group_id
-    }
+  } else {
+    value = 'QQ频道-群聊'
+    scenes = e.group_id
   }
   return { value, scenes }
 }
