@@ -70,6 +70,46 @@ export class Command extends plugin {
         if (json.retcode === 0) {
           const data = json.data
           e.reply(`啾咪φ(>ω<*) \n在线人数：${data.online_player_num}\nPC：${data.platform_player_num.PC}\nAndroid：${data.platform_player_num.ANDROID}\nIOS：${data.platform_player_num.IOS}`)
+          await this.子区(e)
+        }
+        else {
+          console.log("完整响应：", json)
+          e.reply("发生未知错误，请自行前往控制台查看完整响应")
+        }
+      } else {
+        console.log("完整响应：", json)
+        e.reply("发生未知错误，请自行前往控制台查看错误信息")
+        console.error('请求失败:', response.status)
+      }
+    } catch (error) {
+      e.reply("发生网络请求错误，请检查服务器是否正确配置")
+      console.error('网络请求错误:', error)
+    }
+  }
+  async 子区(e) {
+    const { gm, mail, birthday, CheckIns, generatecdk, cdk, ping } = await getmode(e)
+    if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk && !ping) return
+    const { ip, port, region, sign, ticketping } = await getserver(e)
+    const signingkey = { cmd: '1101', region: region, ticket: ticketping }
+    const base = Object.keys(signingkey).sort().map(key => `${key}=${signingkey[key]}`).join('&')
+    const newsign = `&sign=` + crypto.createHash('sha256').update(base + sign).digest('hex')
+    const url = `http://${ip}:${port}/api?${encodeURI(base)}${newsign}`
+    try {
+      const response = await fetch(url)
+      if (response.ok) {
+        const json = await response.json()
+        if (json.retcode === 0) {
+          const data = json.data
+          const jsonString = JSON.stringify(data.gameserver_player_num)
+          const formattedString = jsonString.replace(/,/g, '\n').replace(/"/g, '').replace(/:/g, '：').slice(1, -1).trim()
+          const lines = formattedString.split('\n')
+          const sortedLines = lines.sort((a, b) => {
+            const numA = parseFloat(a.split('：')[0])
+            const numB = parseFloat(b.split('：')[0])
+            return numB - numA
+          })
+          const sortedString = sortedLines.join('\n')
+          e.reply(`game数量：${Object.keys(data.gameserver_player_num).length}\n详细人数：\n${sortedString}`)
         }
         else {
           console.log("完整响应：", json)
