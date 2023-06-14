@@ -379,7 +379,7 @@ export class gm extends plugin {
         if (msg.length !== 5) {
             const base64 = Buffer.from(fs.readFileSync(process.cwd() + '/plugins/Zyy-GM-plugin/resources/players/cdk-随机.png')).toString('base64')
             await e.reply([segment.image(`base64://${base64}`)])
-            e.reply("正确格式：\n自定义cdk-兑换类型-兑换码-总使用次数-单uid使用次数-对应命令")
+            e.reply("正确格式：\n随机cdk-兑换类型-生成数量-TXT前缀-对应命令")
             return
         }
         if (msg[1] !== '邮件' && msg[1] !== '命令') {
