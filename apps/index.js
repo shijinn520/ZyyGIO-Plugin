@@ -210,14 +210,20 @@ export async function getcommand(e = {}, mode, msg) {
     timeout: 1000
   }
 
-  const fetchResults = [].concat(urls).map(url => {
+  const fetchResults = [].concat(urls).map((url, index) => {
     const timeoutPromise = new Promise((_, reject) => {
       setTimeout(() => {
         reject(new Error('超过1秒未响应，中断请求'))
       }, 1000)
     })
-
-    const fetchPromise = fetch(url, options)
+    
+    const fetchPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        fetch(url, options)
+          .then(response => resolve(response))
+          .catch(error => reject(error))
+      }, index * 100)
+    })
     return Promise.race([fetchPromise, timeoutPromise])
   })
 
