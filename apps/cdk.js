@@ -324,7 +324,7 @@ export class gm extends plugin {
         state = true
         method = 'fastcdk'
         const content = cfg[msg].split('-')
-        if (content[0] !== '邮件' && msg[0] !== '命令') {
+        if (content[0] !== '邮件' && content[0] !== '命令') {
             e.reply("兑换类型不正确，请检查")
             return
         }
