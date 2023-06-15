@@ -262,11 +262,14 @@ export async function getcommand(e = {}, mode, msg) {
               else if (retcode === 1010) {
                 fail.push(`失败，服务器区服不匹配`)
               }
+              else if (retcode === 1117) {
+                e.reply([segment.at(e.user_id), `失败 -> 未达到副本要求等级`])
+              }
               else if (retcode === 8002) {
                 fail.push(`失败，传说钥匙超过限制`)
               }
               else {
-                fail.push(`失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${outcome.data.msg} retcode:${outcome.retcode}`)
+                fail.push(`失败 -> 请把此内容反馈给作者\nUID:${uid}\n反馈内容：\n${JSON.stringify(outcome)}`)
               }
               if (urls.length === (newmsg.length + fail.length)) {
                 if (mode === "cdk") {
@@ -539,7 +542,7 @@ export async function getmail(e = {}, mode, item) {
                 e.reply([segment.at(e.user_id), `失败 -> 发生未知错误，请检查指令`])
               }
               else if (retcode === 17) {
-                e.reply([segment.at(e.user_id), `失败 -> 账户不存在\nuid：${uid}`])
+                e.reply([segment.at(e.user_id), `\n失败 -> 账户不存在\nuid：${uid}`])
               }
               else if (retcode === 617) {
                 e.reply([segment.at(e.user_id), `失败 -> 邮件物品超过限制`])
@@ -575,7 +578,7 @@ export async function getmail(e = {}, mode, item) {
                 e.reply([segment.at(e.user_id), `失败 -> 邮件日期设置错误，请修改[expire_time`])
               }
               else {
-                e.reply([segment.at(e.user_id), `失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${outcome.msg} retcode:${outcome.retcode}`])
+                e.reply([segment.at(e.user_id), `\n失败 -> 请把此内容反馈给作者\nUID:${uid}\n反馈内容：\n${JSON.stringify(outcome)}`])
               }
             })
         }
