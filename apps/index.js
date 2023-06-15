@@ -8,23 +8,25 @@ let _path = process.cwd() + '/plugins/Zyy-GM-plugin'
 if (!fs.existsSync(_path + '/data')) {
   fs.mkdirSync(_path + '/data')
 }
-
 if (!fs.existsSync(_path + '/data/group')) {
   fs.mkdirSync(_path + '/data/group')
 }
-
 if (!fs.existsSync(_path + '/data/user')) {
   fs.mkdirSync(_path + '/data/user')
 }
-
 if (!fs.existsSync(_path + '/config')) {
   fs.mkdirSync(_path + '/config')
-  fs.readdirSync(_path + '/default_config').forEach(file => {
-    if (file !== '请勿修改此文件夹下的任何文件.txt') {
-      fs.copyFileSync(_path + '/default_config' + '/' + file, _path + '/config' + '/' + file)
-    }
-  })
 }
+
+const configfiles = (fs.readdirSync(`${_path}/default_config`))
+  .filter(file => !(fs.readdirSync(`${_path}/config`))
+    .includes(file) && !'请勿修改此文件夹下的任何文件.txt'.includes(file))
+
+configfiles.forEach(file => {
+  fs.copyFileSync(`${_path}/default_config/${file}`, `${_path}/config/${file}`)
+  logger.mark(`GM插件：缺少文件...创建完成(${file})`)
+})
+
 
 // 处理文件路径
 export async function getpath() {
@@ -169,7 +171,7 @@ export async function getintercept(e = {}) {
     blocklist = blocklist.slice(0, -1)
     intercept = !((new RegExp(`^.*(${blocklist})\\.*`)).test(e.msg))
     if (!intercept) {
-      console.log(`${e.msg} 存在黑名单中`)
+      logger.mark(`${e.msg} 存在黑名单中`)
     }
   }
   else {
@@ -179,7 +181,7 @@ export async function getintercept(e = {}) {
     blocklist = blocklist.slice(0, -1)
     intercept = (new RegExp(`^.*(${blocklist})\\.*`)).test(e.msg)
     if (!intercept) {
-      console.log(`${e.msg} 不存在白名单中`)
+      logger.mark(`${e.msg} 不存在白名单中`)
     }
   }
   /* 
@@ -216,7 +218,7 @@ export async function getcommand(e = {}, mode, msg) {
         reject(new Error('超过1秒未响应，中断请求'))
       }, 1000)
     })
-    
+
     const fetchPromise = new Promise((resolve, reject) => {
       setTimeout(() => {
         fetch(url, options)
@@ -237,7 +239,7 @@ export async function getcommand(e = {}, mode, msg) {
             .then(outcome => {
               const retcode = outcome.retcode
               if (retcode !== 0) {
-                console.error(`响应内容:${JSON.stringify(outcome)}`)
+                logger.mark(`[error-command][${e.sender.card || e.sender.nickname}(${e.user_id}-${uid})][${e.msg}][${JSON.stringify(outcome).replace(/[{}]/g, '')}]`)
               }
               let datamsg = outcome.data.msg
               if (retcode === 0) {
@@ -474,7 +476,7 @@ export async function getmail(e = {}, mode, item) {
             .then(outcome => {
               const retcode = outcome.retcode
               if (retcode !== 0) {
-                console.error(`响应内容:${JSON.stringify(outcome)}`)
+                logger.mark(`[error-mail][${e.sender.card || e.sender.nickname}(${e.user_id}-${uid})][${e.msg}][${JSON.stringify(outcome).replace(/[{}]/g, '')}]`)
               }
               if (retcode === 0) {
                 if (mode === "mail") {

@@ -323,12 +323,15 @@ export class gm extends plugin {
         }
         state = true
         method = 'fastcdk'
-        type = '2'
         const content = cfg[msg].split('-')
+        if (content[0] !== '邮件' && msg[1] !== '命令') {
+            e.reply("兑换类型不正确，请检查")
+            return
+        }
         cdk0 = [
             "开始生成",
             "随机",
-            content[0],
+            content[0].replace("邮件", "mail").replace("命令", "command"),
             content[1],
             msg,
             content[2].replace("，", ",").replace("：", ":")
@@ -345,7 +348,7 @@ export class gm extends plugin {
         }
         const msg = e.msg.split('-')
         if (msg.length !== 6) {
-            const base64 = Buffer.from(fs.readFileSync(process.cwd() + '/plugins/Zyy-GM-plugin/resources/players/cdk-随机.png')).toString('base64')
+            const base64 = Buffer.from(fs.readFileSync(process.cwd() + '/plugins/Zyy-GM-plugin/resources/players/cdk-自定义.png')).toString('base64')
             await e.reply([segment.image(`base64://${base64}`)])
             e.reply("正确格式：\n自定义cdk-兑换类型-兑换码-总使用次数-单uid使用次数-对应命令")
             return
