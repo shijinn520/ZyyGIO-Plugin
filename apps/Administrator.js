@@ -357,7 +357,7 @@ export class administrator extends plugin {
     else {
       if (yamlfile) {
         const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
-        e.reply([segment.at(uuid), `\n请联系管理员重新绑定\n当前绑定的UID：${cfg.uid}`])
+        e.reply([segment.at(uuid), `\n当前已绑定的UID：${cfg.uid}\n如需换绑，请联系管理人员，请遵守规则哦`])
         return
       }
 
