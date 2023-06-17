@@ -442,10 +442,30 @@ export async function getmail(e = {}, mode, item) {
     title: title,
     ticket: ticketping,
   }
-
   const base = Object.keys(signingkey).sort().map(key => `${key}=${signingkey[key]}`).join('&')
   const newsign = `&sign=` + crypto.createHash('sha256').update(base + sign).digest('hex')
-  const url = `http://${ip}:${port}/api?${encodeURI(base)}${newsign}`
+
+  const constitute = {
+    cmd: '1005',
+    uid: uid,
+    region: region,
+    config_id: config_id,
+    content: encodeURIComponent(content),
+    expire_time: expire_time,
+    importance: importance,
+    is_collectible: is_collectible,
+    item_limit_type: item_limit_type,
+    item_list: encodeURIComponent(item_list),
+    source_type: source_type,
+    tag: tag,
+    sender: encodeURIComponent(sender),
+    title: encodeURIComponent(title),
+    ticket: ticketping,
+  }
+
+  const parameter = Object.keys(constitute).sort().map(key => `${key}=${constitute[key]}`).join('&')
+
+  const url = `http://${ip}:${port}/api?${parameter}${newsign}`
   urls.push(url)
 
   const options = {
