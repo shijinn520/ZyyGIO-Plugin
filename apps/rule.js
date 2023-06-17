@@ -67,6 +67,10 @@ export const commands = [
     {
         reg: '^(ping|在线玩家|在线人数|状态)$',
         fnc: '服务器状态',
+    },
+    {
+        reg: '^\/?子区$',
+        fnc: '子区',
     }
 ]
 
