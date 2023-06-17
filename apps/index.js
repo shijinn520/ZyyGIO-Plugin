@@ -224,7 +224,7 @@ export async function getcommand(e = {}, mode, msg) {
         fetch(url, options)
           .then(response => resolve(response))
           .catch(error => reject(error))
-      }, index * 100)
+      }, index * 150)
     })
     return Promise.race([fetchPromise, timeoutPromise])
   })
