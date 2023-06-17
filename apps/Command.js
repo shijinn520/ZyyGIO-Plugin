@@ -70,7 +70,6 @@ export class Command extends plugin {
         if (json.retcode === 0) {
           const data = json.data
           e.reply(`啾咪φ(>ω<*) \n在线人数：${data.online_player_num}\nPC：${data.platform_player_num.PC}\nAndroid：${data.platform_player_num.ANDROID}\nIOS：${data.platform_player_num.IOS}`)
-          await this.子区(e)
         }
         else {
           console.log("完整响应：", json)
