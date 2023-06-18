@@ -2,6 +2,7 @@ import fs from 'fs'
 import Yaml from 'yaml'
 import crypto from 'crypto'
 import fetch from 'node-fetch'
+import schedule from 'node-schedule'
 import { commands } from './rule.js'
 import plugin from '../../../lib/plugins/plugin.js'
 import { getmode, getserver, getuid, getpath, getcommand, getmail, getadmin, getintercept } from './index.js'
@@ -126,28 +127,19 @@ export class Command extends plugin {
   }
 }
 
-// 咕咕咕
-/* function autoTask() {
-    schedule.scheduleJob('0 0 1 * *', () => {
-        try {
-            const playersContent = fs.readFileSync(_path + '/CheckIns.yaml', 'utf8')
-            const players = Yaml.parse(playersContent)
-            const updateNestedKey = (obj) => {
-                for (const key in obj) {
-                    if (typeof obj[key] === 'object') {
-                        updateNestedKey(obj[key])
-                    } else if (key === 'total_signin_count') {
-                        obj[key] = 0
-                    }
-                }
-            }
-            updateNestedKey(players)
-            fs.writeFileSync(_path + '/CheckIns.yaml', Yaml.stringify(players), 'utf8')
-            console.log('现在是新的一月，已经将所有玩家的签到状态清空')
-        } catch (error) {
-            console.error('读取或写入文件时出现错误:', error)
-        }
-    })
-}
-
-autoTask() */
+const _path = process.cwd() + '/plugins/Zyy-GM-plugin/data/user'
+schedule.scheduleJob('0 0 1 * *', async () => {
+  try {
+    const files = await fs.promises.readdir(_path)
+    await Promise.all(files.map(async (file) => {
+      if (file.endsWith('.yaml')) {
+        const doc = Yaml.parse(await fs.promises.readFile(`${_path}/${file}`, { encoding: 'utf8' }))
+        doc.total_signin_count = 0
+        await fs.promises.writeFile(`${_path}/${file}`, Yaml.stringify(doc))
+      }
+    }))
+    logger.mark('现在是每月1日，已将所有玩家的签到状态清空')
+  } catch (err) {
+    logger.mark(err)
+  }
+})
