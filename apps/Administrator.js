@@ -312,8 +312,8 @@ export class administrator extends plugin {
   }
 
   async 绑定UID(e) {
-    const { gm, mail, birthday, CheckIns, generatecdk, cdk } = await getmode(e)
-    if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk) return
+    const { gm, mail, birthday, CheckIns, generatecdk, cdk, ping } = await getmode(e)
+    if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk && !ping) return
     const { scenes } = await getScenes(e)
     let uid = e.msg.replace(/绑定|\s|\W/g, '').replace(/[^0-9]/g, '')
 
