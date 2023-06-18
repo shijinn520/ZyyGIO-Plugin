@@ -357,7 +357,7 @@ export async function getmail(e = {}, mode, item) {
     CheckInssender, CheckInstitle, CheckInscontent, cdksender, cdktitle, cdkcontent } = await getserver(e)
   const { uid } = await getuid(e)
   const mail = Yaml.parse(fs.readFileSync(`${config}/mail.yaml`, 'utf8'))
-  const msg = e.msg.split(' ')
+  const msg = (e.msg.replace(/&lt;color=([^&]+)&gt;([^&]+)&lt;\/color&gt;/g, '<color=$1>$2</color>')).split(' ')
 
   let title = msg[1]
   let content = msg[2]
