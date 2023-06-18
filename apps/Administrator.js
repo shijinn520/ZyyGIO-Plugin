@@ -483,8 +483,8 @@ export class administrator extends plugin {
       const writeStream = fs.createWriteStream(yamlfile)
       uniquestrings.forEach(s => writeStream.write(` - "${parseInt(s)}"\n`))
       writeStream.end()
+      e.reply(`已将${start}开始到${end}的所有UID添加到全服UID中`)
     })
-
   }
 
   async 插件更新(e) {
