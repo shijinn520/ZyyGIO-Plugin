@@ -578,6 +578,9 @@ export async function getmail(e = {}, mode, item) {
               else if (retcode === 1010) {
                 e.reply([segment.at(e.user_id), `失败 -> 服务器区服错误`])
               }
+              else if (retcode === 1202) {
+                e.reply([segment.at(e.user_id), `失败 -> 处于多人模式非房主`])
+              }
               else if (retcode === 1311) {
                 e.reply([segment.at(e.user_id), `失败 -> 禁止发送「创世结晶」`])
               }
