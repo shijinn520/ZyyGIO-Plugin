@@ -322,6 +322,11 @@ export class administrator extends plugin {
       return
     }
 
+    if (!/^(100|137|138)\d{6}$/.test(uid)) {
+      e.reply([segment.at(e.user_id), `非本服务器UID，请下载正版四叶草服`])
+      return
+    }
+
     let uuid = e.user_id
     let yamlfile = false
     const alluid = `${data}/group/${scenes}/alluid.yaml`
