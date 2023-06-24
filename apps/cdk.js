@@ -7,7 +7,7 @@ import common from '../../../lib/common/common.js'
 import plugin from '../../../lib/plugins/plugin.js'
 import { getmode, getserver, getuid, getpath, getcommand, getmail, getScenes } from './index.js'
 
-const { config, data } = await getpath()
+const { config, data, resources } = await getpath()
 let cdk0 = []
 let method
 let state = false
@@ -348,7 +348,7 @@ export class gm extends plugin {
         }
         const msg = e.msg.split('-')
         if (msg.length !== 6) {
-            const base64 = Buffer.from(fs.readFileSync(process.cwd() + '/plugins/Zyy-GM-plugin/resources/players/cdk-自定义.png')).toString('base64')
+            const base64 = Buffer.from(fs.readFileSync(resources + '/players/cdk-自定义.png')).toString('base64')
             await e.reply([segment.image(`base64://${base64}`)])
             e.reply("正确格式：\n自定义cdk-兑换类型-兑换码-总使用次数-单uid使用次数-对应命令")
             return
@@ -380,7 +380,7 @@ export class gm extends plugin {
         }
         const msg = e.msg.split('-')
         if (msg.length !== 5) {
-            const base64 = Buffer.from(fs.readFileSync(process.cwd() + '/plugins/Zyy-GM-plugin/resources/players/cdk-随机.png')).toString('base64')
+            const base64 = Buffer.from(fs.readFileSync(resources + '/players/cdk-随机.png')).toString('base64')
             await e.reply([segment.image(`base64://${base64}`)])
             e.reply("正确格式：\n随机cdk-兑换类型-生成数量-TXT前缀-对应命令")
             return

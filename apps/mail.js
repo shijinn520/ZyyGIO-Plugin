@@ -4,10 +4,10 @@ import Yaml from 'yaml'
 import crypto from 'crypto'
 import { mail } from './rule.js'
 import plugin from '../../../lib/plugins/plugin.js'
-import { getmode, getserver, getuid, getScenes, getmail, getadmin, getintercept } from './index.js'
+import { getmode, getserver, getuid, getScenes, getmail, getadmin, getintercept, getpath } from './index.js'
 
 let state = true
-let _path = process.cwd() + '/plugins/Zyy-GM-plugin'
+const { data, config } = await getpath()
 
 export class mails extends plugin {
     constructor() {
@@ -25,8 +25,8 @@ export class mails extends plugin {
         if (!mail) return
         const { gioadmin } = await getadmin(e)
         if (!e.isMaster && !gioadmin) {
-          const { intercept } = await getintercept(e)
-          if (!intercept) return
+            const { intercept } = await getintercept(e)
+            if (!intercept) return
         }
         const { uid } = await getuid(e)
         if (!uid) return
@@ -66,7 +66,7 @@ export class mails extends plugin {
         const item_limit_type = '1'
         const is_collectible = "false"
 
-        const cfg = Yaml.parse(fs.readFileSync(`${_path}/config/mail.yaml`, 'utf8'))
+        const cfg = Yaml.parse(fs.readFileSync(`${config}/mail.yaml`, 'utf8'))
         const msg = e.msg.split(' ')
         let uids
         let title = msg[1]
@@ -74,7 +74,7 @@ export class mails extends plugin {
         let item_list = msg[3]
         let filecontent = ''
 
-        const stream = fs.createReadStream(`${_path}/data/group/${scenes}/alluid.yaml`, 'utf8')
+        const stream = fs.createReadStream(`${data}/group/${scenes}/alluid.yaml`, 'utf8')
         stream.on('data', (chunk) => { filecontent += chunk })
         await new Promise((resolve, reject) => {
             stream.on('end', () => {

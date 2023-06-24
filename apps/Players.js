@@ -3,14 +3,15 @@ import Yaml from 'yaml'
 import { players } from './rule.js'
 import plugin from '../../../lib/plugins/plugin.js'
 import puppeteerRender from '../resources/render.js'
-import { getScenes, getmode, getadmin } from './index.js'
+import { getScenes, getmode, getadmin, getpath } from './index.js'
 
-let _path = process.cwd() + '/plugins/Zyy-GM-plugin/config'
-const helpPath = process.cwd() + `/plugins/Zyy-GM-plugin/resources/help`
-let helpList = []
-if (fs.existsSync(helpPath + "/index.json")) {
-    helpList = JSON.parse(fs.readFileSync(helpPath + "/index.json", "utf8")) || []
+let helplist = []
+const { config, resources } = await getpath()
+
+if (fs.existsSync(`${resources}/help/index.json`)) {
+    helplist = JSON.parse(fs.readFileSync(`${resources}/help/index.json`, "utf8")) || []
 }
+
 
 export class Player extends plugin {
     constructor() {
@@ -26,7 +27,7 @@ export class Player extends plugin {
 
     async 小钰帮助(e) {
         let helpGroup = []
-        helpList.forEach((group) => {
+        helplist.forEach((group) => {
             if (group.auth && group.auth === "master" && !this.e.isMaster) {
                 return
             }
@@ -39,7 +40,7 @@ export class Player extends plugin {
     }
 
     async 别名帮助(e) {
-        const base64 = Buffer.from(fs.readFileSync(process.cwd() + '/plugins/Zyy-GM-plugin/resources/players/help-alias.png')).toString('base64')
+        const base64 = Buffer.from(fs.readFileSync(resources + '/players/help-alias.png')).toString('base64')
         await e.reply(segment.image(`base64://${base64}`))
     }
 
@@ -47,7 +48,7 @@ export class Player extends plugin {
         const { mode } = await getmode(e)
         if (!mode) return
         if (mode !== false) {
-            const cfg = Yaml.parse(fs.readFileSync(_path + '/config.yaml', 'utf8'))
+            const cfg = Yaml.parse(fs.readFileSync(config + '/config.yaml', 'utf8'))
             const { value, scenes } = await getScenes(e)
             const uid = cfg[scenes].uid
             const keys = Object.keys(uid)
@@ -66,7 +67,7 @@ export class Player extends plugin {
     async 命令别名(e) {
         const { gm } = await getmode(e)
         if (!gm) return
-        const cfg = Yaml.parse(fs.readFileSync(_path + '/command.yaml', 'utf8'))
+        const cfg = Yaml.parse(fs.readFileSync(config + '/command.yaml', 'utf8'))
         const keys = Object.values(cfg).map(entry => entry.filter(obj => 'names' in obj).flatMap(obj => obj.names).join(' - '))
         const data = {
             keys: keys,
@@ -82,7 +83,7 @@ export class Player extends plugin {
     async 邮件别名(e) {
         const { mail } = await getmode(e)
         if (!mail) return
-        const cfg = Yaml.parse(fs.readFileSync(_path + '/mail.yaml', 'utf8'))
+        const cfg = Yaml.parse(fs.readFileSync(config + '/mail.yaml', 'utf8'))
         const keys = Object.values(cfg).map(entry => entry.filter(obj => 'names' in obj).flatMap(obj => obj.names).join(' - '))
         const data = {
             keys: keys,
@@ -113,7 +114,7 @@ export class Player extends plugin {
         const name = Array.isArray(alias) ? alias[0] : alias
         const oldcommand = msg.slice(2).join(' ')
         const newcommand = oldcommand.split('/').filter(Boolean).map(str => str.trim())
-        const cfg = Yaml.parse(fs.readFileSync(_path + '/command.yaml', 'utf8'))
+        const cfg = Yaml.parse(fs.readFileSync(config + '/command.yaml', 'utf8'))
 
         let state = false
         Object.values(cfg).forEach((value) => {
@@ -130,7 +131,7 @@ export class Player extends plugin {
             { command: newcommand }
         ]
 
-        fs.writeFileSync(_path + '/command.yaml', Yaml.stringify(cfg))
+        fs.writeFileSync(config + '/command.yaml', Yaml.stringify(cfg))
         e.reply([segment.at(e.user_id), `添加成功`])
     }
 
@@ -148,7 +149,7 @@ export class Player extends plugin {
         }
         const alias = msg[1].includes('/') ? msg[1].split('/') : [msg[1]]
         const name = Array.isArray(alias) ? alias[0] : alias
-        const cfg = Yaml.parse(fs.readFileSync(_path + '/mail.yaml', 'utf8'))
+        const cfg = Yaml.parse(fs.readFileSync(config + '/mail.yaml', 'utf8'))
         Object.values(cfg).forEach((value) => {
             const names = value[0]?.names || []
             if (names.some((n) => alias.includes(n))) {
@@ -171,7 +172,7 @@ export class Player extends plugin {
             }
         ]
 
-        fs.writeFileSync(_path + '/mail.yaml', Yaml.stringify(cfg))
+        fs.writeFileSync(config + '/mail.yaml', Yaml.stringify(cfg))
         e.reply([segment.at(e.user_id), `添加成功`])
     }
 
@@ -192,7 +193,7 @@ export class Player extends plugin {
         }
         const name = msg[1]
         const newname = msg[2].replace(/^\[|\]$/g, '')
-        const cfg = Yaml.parse(fs.readFileSync(_path + '/command.yaml', 'utf8'))
+        const cfg = Yaml.parse(fs.readFileSync(config + '/command.yaml', 'utf8'))
         let state = false
 
         for (const [key, value] of Object.entries(cfg)) {
@@ -212,7 +213,7 @@ export class Player extends plugin {
 
             if (key === name && !names.includes(newname)) {
                 names.push(newname)
-                fs.writeFileSync(_path + '/command.yaml', Yaml.stringify(cfg), 'utf8')
+                fs.writeFileSync(config + '/command.yaml', Yaml.stringify(cfg), 'utf8')
                 console.log(`已将 newname: ${newname} 添加到 ${key} 的 names 数组中`)
                 e.reply([segment.at(e.user_id), `成功啦\n现在可以使用   /${newname}`])
                 state = true
@@ -243,7 +244,7 @@ export class Player extends plugin {
         }
         const name = msg[1]
         const newname = msg[2].replace(/^\[|\]$/g, '')
-        const cfg = Yaml.parse(fs.readFileSync(_path + '/mail.yaml', 'utf8'))
+        const cfg = Yaml.parse(fs.readFileSync(config + '/mail.yaml', 'utf8'))
         let state = false
 
         for (const [key, value] of Object.entries(cfg)) {
@@ -263,7 +264,7 @@ export class Player extends plugin {
 
             if (key === name && !names.includes(newname)) {
                 names.push(newname)
-                fs.writeFileSync(_path + '/mail.yaml', Yaml.stringify(cfg), 'utf8')
+                fs.writeFileSync(config + '/mail.yaml', Yaml.stringify(cfg), 'utf8')
                 console.log(`已将 newname: ${newname} 添加到 ${key} 的 names 数组中`)
                 e.reply([segment.at(e.user_id), `成功啦\n现在可以使用   /${newname}`])
                 state = true
@@ -300,7 +301,7 @@ export class Player extends plugin {
             return
         }
         if (msg[0] === '查看命令') {
-            const cfg = Yaml.parse(fs.readFileSync(_path + '/command.yaml', 'utf8'))
+            const cfg = Yaml.parse(fs.readFileSync(config + '/command.yaml', 'utf8'))
 
             let key = ''
             for (const topKey in cfg) {
@@ -326,7 +327,7 @@ export class Player extends plugin {
         }
 
         if (msg[0] === '查看邮件') {
-            const cfg = Yaml.parse(fs.readFileSync(_path + '/mail.yaml', 'utf8'))
+            const cfg = Yaml.parse(fs.readFileSync(config + '/mail.yaml', 'utf8'))
 
             let key = ''
             for (const topKey in cfg) {
@@ -363,7 +364,7 @@ export class Player extends plugin {
             return
         }
 
-        const cfg = Yaml.parse(fs.readFileSync(_path + '/command.yaml', 'utf8'))
+        const cfg = Yaml.parse(fs.readFileSync(config + '/command.yaml', 'utf8'))
         let msg
         if (e.msg.includes('删除命令别名')) {
             msg = e.msg.replace('删除命令别名', '')
@@ -382,7 +383,7 @@ export class Player extends plugin {
         const alias = cfg[msg][0].names.join('/')
         const command = cfg[msg][1].command.join(' /')
         delete cfg[msg]
-        fs.writeFileSync(_path + '/command.yaml', Yaml.stringify(cfg), 'utf8')
+        fs.writeFileSync(config + '/command.yaml', Yaml.stringify(cfg), 'utf8')
         e.reply([segment.at(e.user_id), `\n已删除 ${msg}\n你可以通过指令重新添加此命令：\n添加命令 ${alias} /${command}`])
     }
 
@@ -396,7 +397,7 @@ export class Player extends plugin {
             return
         }
 
-        const cfg = Yaml.parse(fs.readFileSync(_path + '/mail.yaml', 'utf8'))
+        const cfg = Yaml.parse(fs.readFileSync(config + '/mail.yaml', 'utf8'))
         let msg
         if (e.msg.includes('删除邮件别名')) {
             msg = e.msg.replace('删除邮件别名', '')
@@ -417,7 +418,7 @@ export class Player extends plugin {
         const content = cfg[msg][2].content.replace(/\n/g, '\\n')
         const item_list = cfg[msg][3].item_list
         delete cfg[msg]
-        fs.writeFileSync(_path + '/mail.yaml', Yaml.stringify(cfg), 'utf8')
+        fs.writeFileSync(config + '/mail.yaml', Yaml.stringify(cfg), 'utf8')
         e.reply([segment.at(e.user_id), `\n已删除 ${msg}\n你可以通过指令重新添加此命令：\n添加邮件 ${alias} ${title} ${content} ${item_list}`])
     }
 

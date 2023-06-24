@@ -5,7 +5,7 @@ import { exec } from "child_process"
 import plugin from '../../../lib/plugins/plugin.js'
 import { getScenes, getmode, getpath, getadmin } from './index.js'
 
-const { data, config } = await getpath()
+const { _path, data, config } = await getpath()
 
 export class administrator extends plugin {
   constructor() {
@@ -489,7 +489,6 @@ export class administrator extends plugin {
 
   async 插件更新(e) {
     let local
-    const _path = process.cwd() + '/plugins/Zyy-GM-plugin/'
     e.reply("GM插件更新中...")
 
     exec("git pull --no-rebase", { cwd: `${_path}` }, function (error, stdout) {
@@ -551,7 +550,6 @@ export class administrator extends plugin {
 
   async 强制更新(e) {
     let local
-    const _path = process.cwd() + '/plugins/Zyy-GM-plugin/'
     e.reply("正在强制更新GM插件...")
 
     exec('git log -1 --format="%h %cd %s" --date=iso', { cwd: `${_path}` }, function (error, stdout) {
