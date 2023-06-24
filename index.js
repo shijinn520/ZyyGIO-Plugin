@@ -99,7 +99,7 @@ exec('git config --get remote.origin.url', (err, stdout, stderr) => {
     })
   }
   else if (github.includes(stdout.trim())) {
-    exec("git remote set-url origin https://gitee.com/Zyy955/ZyyGio-Plugin", (err, stdout, stderr) => {
+    exec("git remote set-url origin https://github.com/Zyy955/ZyyGio-Plugin", (err, stdout, stderr) => {
       if (err) {
         console.error(err)
         return
