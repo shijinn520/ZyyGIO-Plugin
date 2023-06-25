@@ -72,7 +72,7 @@ console.log('\x1b[36m%s\x1b[0m', '祝旅行者在提瓦特玩得开心哦~')
 console.log('\x1b[36m%s\x1b[0m', '-----------------------------')
 
 // 当前的远程仓库地址
-exec('git config --get remote.origin.url', (err, stdout, stderr) => {
+exec('git config --get remote.origin.url', { cwd: `${_path}` }, (err, stdout, stderr) => {
   if (err) {
     console.error(err)
     return
@@ -90,21 +90,21 @@ exec('git config --get remote.origin.url', (err, stdout, stderr) => {
   ]
 
   if (gitee.includes(stdout.trim())) {
-    exec("git remote set-url origin https://gitee.com/Zyy955/ZyyGio-Plugin", (err, stdout, stderr) => {
+    exec("git remote set-url origin https://gitee.com/Zyy955/ZyyGio-Plugin", { cwd: `${_path}` }, (err, stdout, stderr) => {
       if (err) {
         console.error(err)
         return
       }
-      console.log('Git 仓库源已成功修改！')
+      logger.mark('GIO插件：检测到旧的 Gitee 仓库源，已修改为最新的 Gitee 仓库！')
     })
   }
   else if (github.includes(stdout.trim())) {
-    exec("git remote set-url origin https://github.com/Zyy955/ZyyGio-Plugin", (err, stdout, stderr) => {
+    exec("git remote set-url origin https://github.com/Zyy955/ZyyGio-Plugin", { cwd: `${_path}` }, (err, stdout, stderr) => {
       if (err) {
         console.error(err)
         return
       }
-      console.log('Git 仓库源已成功修改！')
+      logger.mark('GIO插件：检测到旧的 Github 仓库源，已修改为最新的 Github 仓库！')
     })
   }
 })
