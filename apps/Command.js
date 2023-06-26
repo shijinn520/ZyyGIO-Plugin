@@ -7,7 +7,7 @@ import { commands } from './rule.js'
 import plugin from '../../../lib/plugins/plugin.js'
 import { getmode, getserver, getuid, getpath, getcommand, getmail, getadmin, getintercept } from './index.js'
 
-const { config } = await getpath()
+const { data, config } = await getpath()
 
 export class Command extends plugin {
   constructor() {
@@ -127,7 +127,7 @@ export class Command extends plugin {
   }
 }
 
-const _path = process.cwd() + '/plugins/Zyy-GM-plugin/data/user'
+const _path = data + '/user'
 schedule.scheduleJob('0 0 1 * *', async () => {
   try {
     const files = await fs.promises.readdir(_path)

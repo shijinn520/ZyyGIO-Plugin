@@ -5,14 +5,14 @@
 <details><summary>Gitee</summary>
 
  ```
-git remote set-url origin https://gitee.com/Zyy955/Zyy-GM-plugin.git && git pull
+git remote set-url origin https://gitee.com/Zyy955/ZyyGio-Plugin.git && git pull
 ```
 </details>
 
 <details><summary>Github</summary>
 
 ```
-git remote set-url origin https://github.com/Zyy955/Zyy-GM-plugin.git && git pull
+git remote set-url origin https://github.com/Zyy955/ZyyGio-Plugin.git && git pull
 ```
 </details>
 
@@ -34,16 +34,16 @@ git remote set-url origin https://github.com/Zyy955/Zyy-GM-plugin.git && git pul
 
 Gitee：
 ```
-git clone --depth 1 https://gitee.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugin
+git clone --depth 1 https://gitee.com/Zyy955/ZyyGio-Plugin ./plugins/ZyyGio-Plugin
 ```
 
 Github：
 ```
-git clone --depth 1 https://github.com/ZYY-Yu/Zyy-GM-plugin plugins/Zyy-GM-plugin
+git clone --depth 1 https://github.com/Zyy955/ZyyGio-Plugin ./plugins/ZyyGio-Plugin
 ```
 ## 温馨提示：
-* 初次使用需要先配置`Zyy-GM-plugin/config/server.yaml`
-* 如需使用`cdk-快捷生成`，请配置`Zyy-GM-plugin/config/cdk.yaml`
+* 初次使用需要先配置`ZyyGio-Plugin/config/server.yaml`
+* 如需使用`cdk-快捷生成`，请配置`ZyyGio-Plugin/config/cdk.yaml`
 
 ## 插件结构
 

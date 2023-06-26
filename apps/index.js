@@ -3,36 +3,19 @@ import Yaml from 'yaml'
 import moment from 'moment'
 import crypto from 'crypto'
 import fetch from 'node-fetch'
-let _path = process.cwd() + '/plugins/Zyy-GM-plugin'
 
-if (!fs.existsSync(_path + '/data')) {
-  fs.mkdirSync(_path + '/data')
-}
-if (!fs.existsSync(_path + '/data/group')) {
-  fs.mkdirSync(_path + '/data/group')
-}
-if (!fs.existsSync(_path + '/data/user')) {
-  fs.mkdirSync(_path + '/data/user')
-}
-if (!fs.existsSync(_path + '/config')) {
-  fs.mkdirSync(_path + '/config')
-}
+let _path = process.cwd() + '/plugins/ZyyGio-Plugin'
 
-const configfiles = (fs.readdirSync(`${_path}/default_config`))
-  .filter(file => !(fs.readdirSync(`${_path}/config`))
-    .includes(file) && !'请勿修改此文件夹下的任何文件.txt'.includes(file))
-
-configfiles.forEach(file => {
-  fs.copyFileSync(`${_path}/default_config/${file}`, `${_path}/config/${file}`)
-  logger.mark(`GM插件：缺少文件...创建完成(${file})`)
-})
-
+if (!fs.existsSync(_path)) {
+  _path = process.cwd() + '/plugins/Zyy-GM-plugin'
+}
 
 // 处理文件路径
 export async function getpath() {
-  const data = process.cwd() + '/plugins/Zyy-GM-plugin/data'
-  const config = process.cwd() + '/plugins/Zyy-GM-plugin/config'
-  return { data, config }
+  const data = _path + '/data'
+  const config = _path + '/config'
+  const resources = _path + '/resources'
+  return { _path, data, config, resources }
 }
 const { data, config } = await getpath()
 
@@ -241,7 +224,7 @@ export async function getcommand(e = {}, mode, msg) {
               if (retcode !== 0) {
                 logger.mark(`[error-command][${e.sender.card || e.sender.nickname}(${e.user_id}-${uid})][${e.msg}][${JSON.stringify(outcome).replace(/[{}]/g, '')}]`)
               }
-              let datamsg = outcome.data.msg
+              let datamsg = outcome.data?.msg || {}
               if (retcode === 0) {
                 newmsg.push(`成功：${datamsg}  ->  ${uid}`)
               }

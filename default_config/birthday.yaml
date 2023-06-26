@@ -1,0 +1,9 @@
+# 请勿手动修改此文件
+999:
+  mode: false
+  id: 999
+  ip: "192.168.1.1"
+  port: 22100
+  region: "dev_gio"
+  sign: ""
+  scenes: 123456789
