@@ -1,22 +1,5 @@
 使用`Yunzai`执行`hk4e`的GM指令
 
-### `2023年6月11日之前拉取的仓库请在插件根目录执行以下命令以获取最新的仓库地址`
-
-<details><summary>Gitee</summary>
-
- ```
-git remote set-url origin https://gitee.com/Zyy955/ZyyGio-Plugin.git && git pull
-```
-</details>
-
-<details><summary>Github</summary>
-
-```
-git remote set-url origin https://github.com/Zyy955/ZyyGio-Plugin.git && git pull
-```
-</details>
-
-
 ## 安装Yunzai
 
 * 根据自己的需求任选其一安装即可
@@ -85,6 +68,7 @@ GM指令：
 <开启|关闭><gm|GM>
 <开启|关闭><邮件>
 <开启|关闭><签到>
+<开启|关闭><生日>
 <开启|关闭><cdk|CDK>
 <开启|关闭><cdk|CDK><生成>
 <开启|关闭><ping|在线玩家>
@@ -95,6 +79,7 @@ GM指令：
 
 [/]<服务器>
 [/]<切换服务器><ID>
+[/]<切换生日服务器><ID>
 [/]<添加><UID|Uid|uid> <起始UID> <截止UID>
 
 [/]<gm|Gm|GM><更新>
