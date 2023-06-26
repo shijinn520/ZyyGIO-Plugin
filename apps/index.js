@@ -5,12 +5,19 @@ import crypto from 'crypto'
 import fetch from 'node-fetch'
 
 let _path = process.cwd() + '/plugins/ZyyGio-Plugin'
-
 if (!fs.existsSync(_path)) {
   _path = process.cwd() + '/plugins/Zyy-GM-plugin'
 }
 
-// 处理文件路径
+/**
+ * 获取路径
+ * @returns {Promise<{
+ * _path: "根目录路径",
+ * data: "data路径",
+ * config: "config路径",
+ * resources: "resources路径"
+ * }>}
+ */
 export async function getpath() {
   const data = _path + '/data'
   const config = _path + '/config'
@@ -19,7 +26,14 @@ export async function getpath() {
 }
 const { data, config } = await getpath()
 
-// 处理使用环境
+
+/**
+ * 场景相关
+ * @returns {Promise<{
+ * scenes: "当前场景ID",
+ * value: ["QQ私聊", "QQ群聊", "QQ频道私聊", "QQ频道群聊"]
+ * }>}
+ */
 export async function getScenes(e = {}) {
   let value = false
   let scenes = false
@@ -28,11 +42,11 @@ export async function getScenes(e = {}) {
     scenes = e.user_id
   }
   else if (e.sub_type === 'group') {
-    value = 'QQ频道-私聊'
+    value = 'QQ频道私聊'
     scenes = e.sender.group_id
   }
   else if (e.sub_type === 'channel') {
-    value = 'QQ频道-群聊'
+    value = 'QQ频道群聊'
     scenes = e.channel_id
   }
   else if (e.sub_type === 'normal') {
@@ -41,7 +55,7 @@ export async function getScenes(e = {}) {
         value = 'QQ群聊'
         scenes = e.group_id
       } else {
-        value = 'QQ频道-群聊'
+        value = 'QQ频道群聊'
         scenes = `${e.group_id}-${e.member.info.group_id}`
       }
     } else {
@@ -49,14 +63,25 @@ export async function getScenes(e = {}) {
       scenes = e.group_id
     }
   } else {
-    value = 'QQ频道-群聊'
+    value = 'QQ频道群聊'
     scenes = e.group_id
   }
   return { value, scenes }
 }
 
 
-// 处理功能状态  
+/**
+ * @param 功能状态
+ * @returns {Promise<{
+ * gm: "GM命令功能状态",
+ * mail: "邮件功能状态",
+ * birthday: "生日邮件功能状态",
+ * CheckIns: "签到功能状态",
+ * generatecdk: "生成cdk功能状态",
+ * cdk: "cdk兑换功能状态",
+ * ping: "在线玩家功能状态"
+ * }>}
+ */
 export async function getmode(e = {}) {
   const { value, scenes } = await getScenes(e)
   const file = `${data}/group/${scenes}/config.yaml`
@@ -76,7 +101,25 @@ export async function getmode(e = {}) {
 }
 
 
-// 处理server
+/**
+ * @param 请求参数
+ * @returns {Promise<{
+ * ip: "muip请求ip",
+ * port: "muip请求端口",
+ * region: "muip请求区服",
+ * sign: "muip请求签名",
+ * ticketping: "muip请求令牌",
+ * mailsender: "普通邮件发件人",
+ * CheckInssender: "每日签到-发件人",
+ * CheckInstitle: "每日签到-标题",
+ * CheckInscontent: "每日签到-内容",
+ * cdksender: "cdk兑换-发件人",
+ * cdktitle: "cdk兑换-标题",
+ * cdkcontent: "cdk兑换-内容",
+ * keycdk: "cdk生成-自定义加密key",
+ * groupcdk: "cdk生成-cdk使用群id",
+ * }>}
+ */
 export async function getserver(e = {}) {
   const { scenes } = await getScenes(e)
   const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
@@ -94,28 +137,27 @@ export async function getserver(e = {}) {
   }
   const timestamp = moment().format('YYYYMMDDHHmmss')
   const ticketping = (`Zyy${timestamp}`)
-  const mailsender = cfg.mail.sender //普通邮件发件人
-  const birthdaysender = cfg.birthday.sender //生日邮件发件人
-
-  const CheckInssender = cfg.CheckIns.sender //每日签到发件人
-  const CheckInstitle = cfg.CheckIns.title //每日签到标题
-  const CheckInscontent = cfg.CheckIns.content //每日签到内容
-
-  const cdksender = cfg.cdk.sender //cdk兑换发件人
-  const cdktitle = cfg.cdk.title //cdk兑换标题
-  const cdkcontent = cfg.cdk.content //cdk兑换内容
-
-  const keycdk = cfg.generatecdk.key //cdk兑换内容
+  const mailsender = cfg.mail.sender
+  const CheckInssender = cfg.CheckIns.sender
+  const CheckInstitle = cfg.CheckIns.title
+  const CheckInscontent = cfg.CheckIns.content
+  const cdktitle = cfg.cdk.title
+  const cdksender = cfg.cdk.sender
+  const cdkcontent = cfg.cdk.content
+  const keycdk = cfg.generatecdk.key
   const groupcdk = cfg.generatecdk.group
 
   return {
-    ip, port, region, sign, ticketping, mailsender, birthdaysender,
-    CheckInssender, CheckInstitle, CheckInscontent, cdksender, cdktitle, cdkcontent, keycdk, groupcdk
+    ip, port, region, sign, ticketping, mailsender, CheckInssender, CheckInstitle,
+    CheckInscontent, cdksender, cdktitle, cdkcontent, keycdk, groupcdk
   }
 }
 
 
-// 处理uid
+/**
+ * @param 玩家UID
+ * @returns {Promise<{ uid: "玩家UID" }>}
+ */
 export async function getuid(e = {}) {
   let uid = false
   const file = `${data}/user/${e.user_id}.yaml`
@@ -129,7 +171,10 @@ export async function getuid(e = {}) {
   return { uid }
 }
 
-// 管理员
+/**
+ * @param 服务器管理员
+ * @returns {Promise<{ gioadmin: "服务器管理员" }>}
+ */
 export async function getadmin(e = {}) {
   let gioadmin = false
   const file = `${data}/user/${e.user_id}.yaml`
@@ -142,6 +187,15 @@ export async function getadmin(e = {}) {
   return { gioadmin }
 }
 
+/**
+ * @param 黑白名单
+ * @returns {Promise<{ 
+ * intercept: [ 
+ * "白名单存在：msg存在白名单中，返回true，不存在返回false",
+ * "白名单不存在：msg存在黑名单中，返回false，不存在返回true"
+ * ]
+ * }>}
+ */
 export async function getintercept(e = {}) {
   let blocklist = ''
   let intercept = ''
@@ -167,10 +221,7 @@ export async function getintercept(e = {}) {
       logger.mark(`${e.msg} 不存在白名单中`)
     }
   }
-  /* 
-  白名单存在：msg存在白名单中，返回true，不存在返回false
-  白名单不存在：msg存在黑名单中，返回false，不存在返回true
-  */
+
   return { intercept }
 }
 
@@ -331,8 +382,8 @@ export async function getcommand(e = {}, mode, msg) {
 // 邮件
 export async function getmail(e = {}, mode, item) {
   const { scenes } = await getScenes(e)
-  const { ip, port, region, sign, ticketping, mailsender, birthdaysender,
-    CheckInssender, CheckInstitle, CheckInscontent, cdksender, cdktitle, cdkcontent } = await getserver(e)
+  const { ip, port, region, sign, ticketping, mailsender, CheckInssender,
+    CheckInstitle, CheckInscontent, cdksender, cdktitle, cdkcontent } = await getserver(e)
   const { uid } = await getuid(e)
   const mail = Yaml.parse(fs.readFileSync(`${config}/mail.yaml`, 'utf8'))
   const msg = (e.msg.replace(/&lt;color=([^&]+)&gt;([^&]+)&lt;\/color&gt;/g, '<color=$1>$2</color>')).split(' ')
@@ -363,9 +414,6 @@ export async function getmail(e = {}, mode, item) {
     }
   }
 
-  if (mode === "birthday") {
-    sender = birthdaysender
-  }
   if (mode === "CheckIns") {
     const CheckIns = Yaml.parse(fs.readFileSync(config + '/items.yaml', 'utf8'))
     const players = Yaml.parse(fs.readFileSync(`${data}/user/${e.user_id}.yaml`, 'utf8'))

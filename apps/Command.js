@@ -41,6 +41,30 @@ export class Command extends plugin {
     const { uid } = await getuid(e)
     if (!uid) return
 
+    if (e.msg.includes('give')) {
+      const randomReplies = [
+        "5q+r5peg6Ieq55+l5LmL5piO77yM5L2g6L+Z5Liq6KCi6LSn77yM5qC55pys5LiN5piv4oCcR3Jhc3NjdXR0ZXLigJ3vvIE=",
+        "6byg6ZuA5LmL6L6I77yM5ZOI5ZOI5ZOI77yM5L2g5piv5LiN5piv5YK75LqG77yf6L+Z5piO5pi+5LiN5piv4oCcR3Jhc3NjdXR0ZXLigJ3jgII=",
+        "5oqK5aS05L2O5LiL77yM55yf5piv5Liq55m955e077yM5L2g5Lul5Li66L+Z5piv4oCcR3Jhc3NjdXR0ZXLigJ3vvJ/nrJHmrbvkurrkuobvvIE=",
+        "5L2g6L+e5Z+65pys55qE6L6o5Yir6IO95Yqb6YO95rKh5pyJ5ZCX77yf6L+Z5LiN5piv4oCcR3Jhc3NjdXR0ZXLigJ3vvIzlv6tndW4=",
+        "5L2g5piv5LiN5piv6ISR6KKL6KKr6Zeo5aS55LqG77yf6L+Z5piO5pi+5LiN5piv4oCcR3Jhc3NjdXR0ZXLigJ3jgII=",
+        "b21nLOS9oOeeheeeheS9oOi/meeMquiEkeiii++8jOayoeedoemGkuWRou+8n+i/meWPr+S4jeaYr+KAnEdyYXNzY3V0dGVy4oCd",
+        "55yL55yL5L2g6L+Z5Liq55m955e077yM6L+Z5qC55pys5bCx5LiN56ym5ZCI4oCcR0lP4oCd55qE5ZG95Luk44CC",
+        "5L2g55yf5piv5Liq5aSn56yo6JuL77yM6L+Z5LiN5piv4oCcR3Jhc3NjdXR0ZXLigJ3vvIzov5jpnIDopoHmiJHlkYror4nkvaDlkJfvvJ8=",
+        "5bCx5Yet5L2g5Lmf6YWN55u06KeG5oiR77yM5Yir5YaN5Lii5Lq6546w55y85LqG77yM6L+Z5piO5piO5LiN5piv4oCcR3Jhc3NjdXR0ZXLigJ3jgII=",
+        "5ZOO5ZGA77yM5L2g55yf5piv5Liq5peg6I2v5Y+v5pWR55qE5YK755Oc77yM6L+Z5oCO5LmI5Y+v6IO95piv4oCcR3Jhc3NjdXR0ZXLigJ3vvJ8="
+      ]
+      if (e.isMaster || gioadmin) {
+        e.reply("omg，亲爱的，你怎么可以犯这种错误！这明明不是“Grasscutter”。")
+        return
+      } else {
+        const base64 = randomReplies[Math.floor(Math.random() * randomReplies.length)]
+        const newmsg = Buffer.from(base64, 'base64').toString('utf8')
+        e.reply([segment.at(e.user_id), newmsg])
+        return
+      }
+    }
+
     let msg = [e.msg.slice(e.msg.indexOf('/') + 1)]
     const cfg = Yaml.parse(fs.readFileSync(config + '/command.yaml', 'utf8'))
 
