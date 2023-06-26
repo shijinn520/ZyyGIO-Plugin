@@ -141,6 +141,7 @@ export async function getserver(e = {}) {
   const CheckInssender = cfg.CheckIns.sender
   const CheckInstitle = cfg.CheckIns.title
   const CheckInscontent = cfg.CheckIns.content
+  const cdktitle = cfg.cdk.title
   const cdksender = cfg.cdk.sender
   const cdkcontent = cfg.cdk.content
   const keycdk = cfg.generatecdk.key
