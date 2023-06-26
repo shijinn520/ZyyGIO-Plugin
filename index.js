@@ -90,7 +90,7 @@ exec('git config --get remote.origin.url', { cwd: `${_path}` }, (err, stdout, st
   ]
 
   if (gitee.includes(stdout.trim())) {
-    exec("git remote set-url origin https://gitee.com/Zyy955/ZyyGio-Plugin", { cwd: `${_path}` }, (err, stdout, stderr) => {
+    exec("git remote set-url origin https://gitee.com/Zyy955/ZyyGio-Plugin.git", { cwd: `${_path}` }, (err, stdout, stderr) => {
       if (err) {
         console.error(err)
         return
@@ -99,7 +99,7 @@ exec('git config --get remote.origin.url', { cwd: `${_path}` }, (err, stdout, st
     })
   }
   else if (github.includes(stdout.trim())) {
-    exec("git remote set-url origin https://github.com/Zyy955/ZyyGio-Plugin", { cwd: `${_path}` }, (err, stdout, stderr) => {
+    exec("git remote set-url origin https://github.com/Zyy955/ZyyGio-Plugin.git", { cwd: `${_path}` }, (err, stdout, stderr) => {
       if (err) {
         console.error(err)
         return

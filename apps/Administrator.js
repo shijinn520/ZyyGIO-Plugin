@@ -59,12 +59,27 @@ export class administrator extends plugin {
       }
     }
 
-    if (e.msg === "开启生日") {
+    if (e.msg === "开启生日" || e.msg === "开启生日推送") {
       if (cfg.birthday.mode === true) {
         e.reply("生日推送当前已经开启，无需重复开启")
         return
       }
       else {
+        const birthday = Yaml.parse(fs.readFileSync(config + '/birthday.yaml', 'utf8'))
+        if (birthday[scenes]) {
+          console.log("已存在对应的服务器配置，跳过创建")
+        } else {
+          birthday[scenes] = {
+            mode: true,
+            id: 99,
+            ip: "192.168.1.1",
+            port: 22100,
+            region: "dev_gio",
+            sign: ""
+          }
+          fs.writeFileSync(config + '/birthday.yaml', Yaml.stringify(birthday), 'utf8')
+          e.reply("当前为首次开启，请使用“切换生日服务器+ID”进行配置服务器")
+        }
         cfg.birthday.mode = true
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -184,12 +199,16 @@ export class administrator extends plugin {
       }
     }
 
-    if (e.msg === "关闭生日") {
+    if (e.msg === "关闭生日" || e.msg === "关闭生日推送") {
       if (cfg.birthday.mode === false) {
         e.reply("生日推送当前已经关闭，无需重复关闭")
         return
       }
       else {
+        const birthday = Yaml.parse(fs.readFileSync(config + '/birthday.yaml', 'utf8'))
+        birthday[scenes].mode = false
+        fs.writeFileSync(config + '/birthday.yaml', Yaml.stringify(birthday), 'utf8')
+
         cfg.birthday.mode = false
         fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
       }
@@ -419,7 +438,7 @@ export class administrator extends plugin {
     const list = []
     const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
     const server = Yaml.parse(fs.readFileSync(config + '/server.yaml', 'utf8'))
-    const id = parseInt(e.msg.replace(/切换服务器|\s|\W/g, '').replace(/[^0-9]/g, ''))
+    const id = parseInt(e.msg.replace(/\D/g, ''))
 
     function name(obj, value) {
       for (const key in obj) {
@@ -451,6 +470,59 @@ export class administrator extends plugin {
         list.push(element)
       })
       e.reply(`当前服务器列表:\n${list.join('\n')}\n通过【切换服务器+ID】进行切换`)
+    }
+    else {
+      e.reply("服务器ID错误")
+    }
+  }
+
+  async 切换生日邮件服务器(e) {
+    const { birthday } = await getmode(e)
+    if (!birthday) return
+    const { scenes } = await getScenes(e)
+    const cfg = Yaml.parse(fs.readFileSync(config + '/birthday.yaml', 'utf8'))
+    const server = Yaml.parse(fs.readFileSync(config + '/server.yaml', 'utf8'))
+    const id = parseInt(e.msg.replace(/\D/g, ''))
+
+    function name(obj, value) {
+      for (const key in obj) {
+        if (typeof obj[key] === 'object') {
+          if (obj[key].id === value) {
+            return key
+          } else {
+            const result = name(obj[key], value)
+            if (result) {
+              return key
+            }
+          }
+        }
+      }
+      return null
+    }
+
+    const servername = name(server, id)
+    if (servername) {
+      cfg[scenes].id = server[servername].server.id
+      cfg[scenes].ip = server[servername].server.ip
+      cfg[scenes].port = server[servername].server.port
+      cfg[scenes].region = server[servername].server.region
+      if (server[servername].server.signswitch === "true") {
+        cfg[scenes].sign = server[servername].server.sign
+      } else {
+        cfg[scenes].sign = ""
+      }
+      fs.writeFileSync(config + '/birthday.yaml', Yaml.stringify(cfg), 'utf8')
+      const list = []
+      Object.keys(server).forEach((key) => {
+        const servername = key
+        const serverid = server[key].server.id
+        let element = `${serverid}：${servername}`
+        if (serverid === cfg[scenes].id) {
+          element += " ✔️"
+        }
+        list.push(element)
+      })
+      e.reply(`当前生日邮件服务器列表:\n${list.join('\n')}\n通过【切换生日服务器+ID】进行切换`)
     }
     else {
       e.reply("服务器ID错误")

@@ -1,11 +1,11 @@
 export const admin = [
     {
-        reg: /^\/?开启(gm|邮件|签到|cdk|cdk生成|在线玩家|ping)$/gi,
+        reg: /^\/?开启(gm|邮件|签到|cdk|cdk生成|在线玩家|ping|生日(推送)?)$/gi,
         fnc: '开启功能',
         permission: 'master'
     },
     {
-        reg: /^\/?关闭(gm|邮件|签到|cdk|cdk生成|在线玩家|ping)$/gi,
+        reg: /^\/?关闭(gm|邮件|签到|cdk|cdk生成|在线玩家|ping|生日(推送)?)$/gi,
         fnc: '关闭功能',
         permission: 'master'
     },
@@ -26,6 +26,11 @@ export const admin = [
     {
         reg: '^\/?切换服务器(.*)$',
         fnc: '切换服务器',
+        permission: 'master'
+    },
+    {
+        reg: '^\/?切换生日(邮件)?服务器(.*)$',
+        fnc: '切换生日邮件服务器',
         permission: 'master'
     },
     {
