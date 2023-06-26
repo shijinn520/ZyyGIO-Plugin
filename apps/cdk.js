@@ -32,8 +32,10 @@ export class gm extends plugin {
         const msg = e.msg.replace(/兑换/g, '').trim()
         const file = `${data}/group/${scenes}/cdk/${msg}.yaml`
 
+        // 撤回消息防止别的玩家使用他人兑换码
+        e.group.recallMsg(e.message_id)
+
         if (!fs.existsSync(file)) {
-            e.group.recallMsg(e.message_id)
             e.reply([segment.at(e.user_id), `无效的兑换码!`])
             return
         }
@@ -46,7 +48,6 @@ export class gm extends plugin {
 
         if (uid in cfg.uid) {
             if (cfg.uid[uid] >= cfg.uidusagelimit) {
-                e.group.recallMsg(e.message_id)
                 e.reply([segment.at(e.user_id), `同一个兑换码单个uid使用次数达到上限!`])
                 return
             }
