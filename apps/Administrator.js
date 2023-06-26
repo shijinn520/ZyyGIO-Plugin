@@ -315,6 +315,22 @@ export class administrator extends plugin {
     const { gm, mail, birthday, CheckIns, generatecdk, cdk, ping } = await getmode(e)
     if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk && !ping) return
     const { scenes } = await getScenes(e)
+
+    if (e.msg.includes('绑架')) {
+      if (e.isMaster) {
+        e.reply("qaq，不可以绑架主人哦~")
+      } else if (gioadmin) {
+        e.reply("qaq，不可以绑架管理员哦~")
+      } else {
+        if (Math.random() < 0.5) {
+          e.reply("哼哼，绑架成功！这人是你的啦！")
+        } else {
+          e.reply("倒霉蛋，才不要被你绑架略略略！")
+        }
+      }
+      return
+    }
+
     let uid = e.msg.replace(/绑定|\s|\W/g, '').replace(/[^0-9]/g, '')
 
     if (!uid) {
