@@ -20,7 +20,7 @@ export const admin = [
         permission: 'master'
     },
     {
-        reg: '^\/?绑定(.*)$',
+        reg: '^\/?绑(定｜架)(.*)$',
         fnc: '绑定UID',
     },
     {
