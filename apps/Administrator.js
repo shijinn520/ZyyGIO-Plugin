@@ -655,7 +655,7 @@ export class administrator extends plugin {
       local = gitlog
     })
 
-    exec("git reset --hard origin/main", { cwd: `${_path}` }, function (error, stdout) {
+    exec("git reset --hard origin/syc", { cwd: `${_path}` }, function (error, stdout) {
       const hash = stdout.replace(/HEAD is now at /gi, '').split(' ')[0]
       if (hash === local[0]) {
         e.reply(`GM插件已经是最新版本...\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
