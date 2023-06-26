@@ -272,8 +272,7 @@ export async function getcommand(e = {}, mode, msg) {
                         }
                         console.log(`兑换码可使用次数为0，已删除文件：${file} `)
                       })
-                      e.group.recallMsg(e.message_id)
-                      e.reply([segment.at(e.user_id), "兑换成功"])
+                      e.reply([segment.at(e.user_id), `\n兑换成功\nUID：${uid}\n发放方式：在线GM发放\n备注：请直接查看对应物品、内容`])
                       return
                     }
 
@@ -284,21 +283,18 @@ export async function getcommand(e = {}, mode, msg) {
                       cfg.uid[uid] = Number(1)
                       cfg.used += 1
                       fs.writeFileSync(file, Yaml.stringify(cfg), 'utf8')
-                      e.group.recallMsg(e.message_id)
-                      e.reply([segment.at(e.user_id), "兑换成功"])
+                      e.reply([segment.at(e.user_id), `\n兑换成功\nUID：${uid}\n发放方式：在线GM发放\n备注：请直接查看对应物品、内容`])
                       return
                     }
                     if (uidstate === true) {
                       cfg.used += 1
                       cfg.uid[uid] = Number(cfg.uid[uid]) + 1
                       fs.writeFileSync(file, Yaml.stringify(cfg), 'utf8')
-                      e.group.recallMsg(e.message_id)
-                      e.reply([segment.at(e.user_id), "兑换成功"])
+                      e.reply([segment.at(e.user_id), `\n兑换成功\nUID：${uid}\n发放方式：在线GM发放\n备注：请直接查看对应物品、内容`])
                       return
                     }
                   }
                   else {
-                    e.group.recallMsg(e.message_id)
                     e.reply([segment.at(e.user_id), `\n兑换失败\n${fail.join('\n')}`])
                     return
                   }
@@ -327,7 +323,6 @@ export async function getcommand(e = {}, mode, msg) {
     .catch(error => {
       console.error(error)
       if (mode === "cdk") {
-        e.group.recallMsg(e.message_id)
       }
       e.reply([segment.at(e.user_id), `\nUID：${uid}\n走开，你都不在线 ￣へ￣`])
     })
@@ -514,8 +509,7 @@ export async function getmail(e = {}, mode, item) {
                       }
                       console.log(`兑换码可使用次数为0，已删除文件：${file} `)
                     })
-                    e.group.recallMsg(e.message_id)
-                    e.reply([segment.at(e.user_id), "兑换成功"])
+                    e.reply([segment.at(e.user_id), `\n兑换成功\nUID：${uid}\n发放方式：邮件发放\n备注：请在游戏内查看邮件`])
                     return
                   }
 
@@ -527,8 +521,7 @@ export async function getmail(e = {}, mode, item) {
                     cfg.uid[uid] = Number(1)
                     cfg.used += 1
                     fs.writeFileSync(file, Yaml.stringify(cfg), 'utf8')
-                    e.group.recallMsg(e.message_id)
-                    e.reply([segment.at(e.user_id), "兑换成功"])
+                    e.reply([segment.at(e.user_id), `\n兑换成功\nUID：${uid}\n发放方式：邮件发放\n备注：请在游戏内查看邮件`])
                     return
                   }
                   if (uidstate === true) {
@@ -537,8 +530,7 @@ export async function getmail(e = {}, mode, item) {
                     cfg.used += 1
                     cfg.uid[uid] = Number(cfg.uid[uid]) + 1
                     fs.writeFileSync(file, Yaml.stringify(cfg), 'utf8')
-                    e.group.recallMsg(e.message_id)
-                    e.reply([segment.at(e.user_id), "兑换成功"])
+                    e.reply([segment.at(e.user_id), `\n兑换成功\nUID：${uid}\n发放方式：邮件发放\n备注：请在游戏内查看邮件`])
                     return
                   }
                 }
@@ -569,13 +561,11 @@ export async function getmail(e = {}, mode, item) {
               }
               else if (retcode === 1312) {
                 if (mode === "cdk") {
-                  e.group.recallMsg(e.message_id)
                 }
                 e.reply([segment.at(e.user_id), `失败 -> 游戏货币超限`])
               }
               else if (retcode === 1316) {
                 if (mode === "cdk") {
-                  e.group.recallMsg(e.message_id)
                 }
                 e.reply([segment.at(e.user_id), `失败 -> 游戏货币超限`])
               }
