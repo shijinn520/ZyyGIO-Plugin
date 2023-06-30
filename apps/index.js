@@ -540,7 +540,7 @@ export async function getmail(e = {}, mode, item) {
                   players.total_signin_count = checkInSum
                   players.last_signin_time = getNow
                   fs.writeFileSync(file, Yaml.stringify(players))
-                  e.reply([segment.at(e.user_id), `\n签到成功\n当前UID：${parseInt(outcome.data.uid)}\n累计签到：${checkInSum} 天\n签到时间：${getNow} \n签到物品：${name}`])
+                  e.reply([segment.at(e.user_id), `\n签到成功\n当前UID：${parseInt(outcome.data.uid)}\n累计签到：${checkInSum} 天\n签到时间：${getNow}`])
                   return
                 }
 
