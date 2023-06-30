@@ -57,6 +57,11 @@ export const admin = [
         reg: /^\/?(gm强制更新|强制更新gm)$/gi,
         fnc: '强制更新',
         permission: 'master'
+    },
+    {
+        reg: /^\/?(一键)?((封|解)禁|(解除)?拉黑)(.*)$/g,
+        fnc: '封禁玩家',
+        permission: 'master'
     }
 ]
 
