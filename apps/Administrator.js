@@ -2,7 +2,7 @@
  * @Author: Zyy.小钰 1072411694@qq.com
  * @Date: 2023-06-21 20:01:21
  * @LastEditors: Zyy.小钰 1072411694@qq.com
- * @LastEditTime: 2023-06-30 21:14:58
+ * @LastEditTime: 2023-06-30 21:57:38
  * @FilePath: \Miao-Yunzai\plugins\Zyy-GM-plugin\apps\Administrator.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -702,7 +702,7 @@ export class administrator extends plugin {
         uid = [cfg.uid]
       }
     } else if (e.msg.includes("解")) {
-      end_time = end_time
+      end_time = begin_time
       uid = [uid.replace(/[^0-9]/g, "")]
       if (!e.at && !uid) {
         e.reply([segment.at(e.user_id), "...uid捏！你不发UID等下我把你禁了~"])
