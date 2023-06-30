@@ -693,7 +693,12 @@ export class administrator extends plugin {
         return
       }
       if (e.at) {
-        const cfg = Yaml.parse(fs.readFileSync(data + `/user/${e.at}.yaml`, 'utf8'))
+        const file = data + `/user/${e.at}.yaml`
+        if (!fs.existsSync(file)) {
+          e.reply([segment.at(e.user_id), "他没绑定过UID..."])
+          return
+        }
+        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
         uid = [cfg.uid]
       }
     } else if (e.msg.includes("解")) {
@@ -704,13 +709,23 @@ export class administrator extends plugin {
         return
       }
       if (e.at) {
-        const cfg = Yaml.parse(fs.readFileSync(data + `/user/${e.at}.yaml`, 'utf8'))
+        const file = data + `/user/${e.at}.yaml`
+        if (!fs.existsSync(file)) {
+          e.reply([segment.at(e.user_id), "他没绑定过UID..."])
+          return
+        }
+        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
         uid = [cfg.uid]
       }
     } else {
-      const msgs = uid.replace(/拉黑|绑定/g, '').trim().split(' ')
+      const msgs = uid.replace(/拉黑|封禁/g, '').trim().split(' ')
       if (msgs.length === 2 && e.at) {
-        const cfg = Yaml.parse(fs.readFileSync(data + `/user/${e.at}.yaml`, 'utf8'))
+        const file = data + `/user/${e.at}.yaml`
+        if (!fs.existsSync(file)) {
+          e.reply([segment.at(e.user_id), "他没绑定过UID..."])
+          return
+        }
+        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
         uid = [cfg.uid]
         time = msgs[0]
         msg = msgs[1]
