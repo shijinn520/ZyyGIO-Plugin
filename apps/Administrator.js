@@ -2,7 +2,7 @@
  * @Author: Zyy.小钰 1072411694@qq.com
  * @Date: 2023-06-21 20:01:21
  * @LastEditors: Zyy.小钰 1072411694@qq.com
- * @LastEditTime: 2023-06-30 21:14:58
+ * @LastEditTime: 2023-06-30 21:35:29
  * @FilePath: \Miao-Yunzai\plugins\Zyy-GM-plugin\apps\Administrator.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -714,7 +714,12 @@ export class administrator extends plugin {
         return
       }
       if (e.at) {
-        const cfg = Yaml.parse(fs.readFileSync(data + `/user/${e.at}.yaml`, 'utf8'))
+        const file = data + `/user/${e.at}.yaml`
+        if (!fs.existsSync(file)) {
+          e.reply([segment.at(e.user_id), "他没绑定过UID..."])
+          return
+        }
+        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
         uid = [cfg.uid]
       }
     } else if (e.msg.includes("解")) {
@@ -725,13 +730,23 @@ export class administrator extends plugin {
         return
       }
       if (e.at) {
-        const cfg = Yaml.parse(fs.readFileSync(data + `/user/${e.at}.yaml`, 'utf8'))
+        const file = data + `/user/${e.at}.yaml`
+        if (!fs.existsSync(file)) {
+          e.reply([segment.at(e.user_id), "他没绑定过UID..."])
+          return
+        }
+        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
         uid = [cfg.uid]
       }
     } else {
-      const msgs = uid.replace(/拉黑|绑定/g, '').trim().split(' ')
+      const msgs = uid.replace(/拉黑|封禁/g, '').trim().split(' ')
       if (msgs.length === 2 && e.at) {
-        const cfg = Yaml.parse(fs.readFileSync(data + `/user/${e.at}.yaml`, 'utf8'))
+        const file = data + `/user/${e.at}.yaml`
+        if (!fs.existsSync(file)) {
+          e.reply([segment.at(e.user_id), "他没绑定过UID..."])
+          return
+        }
+        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
         uid = [cfg.uid]
         time = msgs[0]
         msg = msgs[1]
