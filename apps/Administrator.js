@@ -1,9 +1,20 @@
+/*
+ * @Author: Zyy.小钰 1072411694@qq.com
+ * @Date: 2023-06-21 20:01:21
+ * @LastEditors: Zyy.小钰 1072411694@qq.com
+ * @LastEditTime: 2023-06-30 21:14:58
+ * @FilePath: \Miao-Yunzai\plugins\Zyy-GM-plugin\apps\Administrator.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import fs from 'fs'
 import Yaml from 'yaml'
+import crypto from 'crypto'
+import moment from 'moment'
+import fetch from 'node-fetch'
 import { admin } from './rule.js'
 import { exec } from "child_process"
 import plugin from '../../../lib/plugins/plugin.js'
-import { getScenes, getmode, getpath, getadmin } from './index.js'
+import { getScenes, getmode, getpath, getadmin, getserver } from './index.js'
 
 const { _path, data, config } = await getpath()
 
@@ -657,5 +668,155 @@ export class administrator extends plugin {
       })
     })
     return true
+  }
+
+  async 封禁玩家(e) {
+    const { gm, mail, birthday, CheckIns, generatecdk, cdk, ping } = await getmode(e)
+    if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk && !ping) return
+
+    let time
+    let uid = e.msg
+
+    /** 封禁显示文本 */
+    let msg = "数据异常，账号已被封禁..."
+
+    /** 封建时间=当前时间 */
+    const begin_time = moment().format('YYYY-MM-DD HH:mm:ss')
+
+    /** 解禁时间=当前时间+10年 */
+    let end_time = moment(begin_time).add(10, 'years').format('YYYY-MM-DD HH:mm:ss')
+
+    if (e.msg.includes("一键")) {
+      uid = [uid.replace(/[^0-9]/g, "")]
+      if (!e.at && !uid) {
+        e.reply([segment.at(e.user_id), "...uid捏！你不发UID等下我把你禁了~"])
+        return
+      }
+      if (e.at) {
+        const cfg = Yaml.parse(fs.readFileSync(data + `/user/${e.at}.yaml`, 'utf8'))
+        uid = [cfg.uid]
+      }
+    } else if (e.msg.includes("解")) {
+      end_time = end_time
+      uid = [uid.replace(/[^0-9]/g, "")]
+      if (!e.at && !uid) {
+        e.reply([segment.at(e.user_id), "...uid捏！你不发UID等下我把你禁了~"])
+        return
+      }
+      if (e.at) {
+        const cfg = Yaml.parse(fs.readFileSync(data + `/user/${e.at}.yaml`, 'utf8'))
+        uid = [cfg.uid]
+      }
+    } else {
+      const msgs = uid.replace(/拉黑|绑定/g, '').trim().split(' ')
+      if (msgs.length === 2 && e.at) {
+        const cfg = Yaml.parse(fs.readFileSync(data + `/user/${e.at}.yaml`, 'utf8'))
+        uid = [cfg.uid]
+        time = msgs[0]
+        msg = msgs[1]
+      } else if (msgs.length === 3) {
+        uid = [msgs[0]]
+        time = msgs[1]
+        msg = msgs[2]
+      } else {
+        e.reply("格式错误...\n格式1：封禁@玩家 90天 开挂\n格式2：封禁UID 90天 开挂\n\n温馨提示：\n封禁时长只支持(天|日|周|月|年)这些单位\n封禁理由请不要使用彩色文本，会导致请求错误...")
+        return
+      }
+
+      let duration = 0  // 获取需要增加的时间
+
+      // 替换中文为数字
+      time = time
+        .replace(/一/g, '1')
+        .replace(/二/g, '2')
+        .replace(/三/g, '3')
+        .replace(/四/g, '4')
+        .replace(/五/g, '5')
+        .replace(/六/g, '6')
+        .replace(/七/g, '7')
+        .replace(/八/g, '8')
+        .replace(/九/g, '9')
+        .replace(/十/g, '10')
+
+      // 将用户输入的时间转为毫秒
+      if (time.includes("天") || time.includes("日")) {
+        duration = parseInt(time) * 24 * 60 * 60 * 1000
+      } else if (time.includes("周")) {
+        duration = parseInt(time) * 7 * 24 * 60 * 60 * 1000
+      } else if (time.includes("月")) {
+        duration = parseInt(time) * 30 * 24 * 60 * 60 * 1000
+      } else if (time.includes("年")) {
+        duration = parseInt(time) * 365 * 24 * 60 * 60 * 1000
+      } else {
+        // 不存在以上时间单位，输出错误
+        e.reply("时间格式错误...\n格式1：封禁@玩家 90天 开挂\n格式2：封禁UID 90天 开挂\n\n温馨提示：\n封禁时长只支持(天|日|周|月|年)这些单位\n封禁理由请不要使用彩色文本，会导致请求错误...")
+        return
+      }
+      end_time = moment(begin_time).add(duration).format('YYYY-MM-DD HH:mm:ss')
+    }
+
+    const { ip, port, region, sign, ticketping } = await getserver(e)
+    const urls = []
+    uid.forEach(uid => {
+      const signingkey = { cmd: '1103', uid: uid, begin_time: begin_time, end_time: end_time, region: region, msg: msg, ticket: ticketping }
+      const base = Object.keys(signingkey).sort().map(key => `${key}=${signingkey[key]}`).join('&')
+      const newsign = `&sign=` + crypto.createHash('sha256').update(base + sign).digest('hex')
+      const url = `http://${ip}:${port}/api?${encodeURI(base)}${newsign}`
+      urls.push(url)
+    })
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      timeout: 1000
+    }
+
+    const fetchResults = [].concat(urls).map((url, index) => {
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => {
+          reject(new Error('超过1秒未响应，中断请求'))
+        }, 1000)
+      })
+
+      const fetchPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          fetch(url, options)
+            .then(response => resolve(response))
+            .catch(error => reject(error))
+        }, index * 150)
+      })
+      return Promise.race([fetchPromise, timeoutPromise])
+    })
+    Promise.all(fetchResults)
+      .then(responses => {
+        responses.forEach(response => {
+          if (response.ok) {
+            response.json()
+              .then(outcome => {
+                console.log("完整响应：", outcome)
+                const retcode = outcome.retcode
+                if (retcode === 0) {
+                  logger.mark(`[error-ban][${e.sender.card || e.sender.nickname}(${e.user_id}-${uid})][${e.msg}][${JSON.stringify(outcome).replace(/[{}]/g, '')}]`)
+                  if (e.msg.includes("解")) {
+                    e.reply([segment.at(e.user_id), `已解除玩家${uid}的封禁`])
+                  } else {
+                    e.reply([segment.at(e.user_id), `\n封禁成功\n封禁玩家：${uid}\n封禁原因：${msg}\n解禁时间：${end_time}`])
+                  }
+                }
+                else {
+                  logger.mark(`[error-ban][${e.sender.card || e.sender.nickname}(${e.user_id}-${uid})][${e.msg}][${JSON.stringify(outcome).replace(/[{}]/g, '')}]`)
+                  e.reply([segment.at(e.user_id), `\n失败 -> 请把此内容反馈给作者\nUID:${uid}\n反馈内容：\n${JSON.stringify(outcome)}`])
+                }
+              })
+          } else {
+            e.reply([segment.at(e.user_id), `请求错误，请前往控制台查看原因`])
+          }
+        })
+      })
+      .catch(error => {
+        console.error(error)
+        e.reply([segment.at(e.user_id), `请求错误，请前往控制台查看原因`])
+      })
   }
 }
