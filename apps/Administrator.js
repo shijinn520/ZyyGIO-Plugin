@@ -2,7 +2,7 @@
  * @Author: Zyy.小钰 1072411694@qq.com
  * @Date: 2023-06-21 20:01:21
  * @LastEditors: Zyy.小钰 1072411694@qq.com
- * @LastEditTime: 2023-06-30 21:35:29
+ * @LastEditTime: 2023-07-01 13:11:15
  * @FilePath: \Miao-Yunzai\plugins\Zyy-GM-plugin\apps\Administrator.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -723,10 +723,10 @@ export class administrator extends plugin {
         uid = [cfg.uid]
       }
     } else if (e.msg.includes("解")) {
-      end_time = end_time
+      end_time = moment(begin_time).add(2, 'seconds').format('YYYY-MM-DD HH:mm:ss')
       uid = [uid.replace(/[^0-9]/g, "")]
       if (!e.at && !uid) {
-        e.reply([segment.at(e.user_id), "...uid捏！你不发UID等下我把你禁了~"])
+        e.reply("格式错误...\n格式1：封禁@玩家 90天 开挂\n格式2：封禁UID 90天 开挂\n格式3：一键封禁@玩家\n格式4：一键封禁uid\n\n温馨提示：\n封禁时长只支持(天|日|周|月|年)这些单位\n封禁理由请不要使用彩色文本，会导致请求错误...")
         return
       }
       if (e.at) {
@@ -755,7 +755,7 @@ export class administrator extends plugin {
         time = msgs[1]
         msg = msgs[2]
       } else {
-        e.reply("格式错误...\n格式1：封禁@玩家 90天 开挂\n格式2：封禁UID 90天 开挂\n\n温馨提示：\n封禁时长只支持(天|日|周|月|年)这些单位\n封禁理由请不要使用彩色文本，会导致请求错误...")
+        e.reply("格式错误...\n格式1：封禁@玩家 90天 开挂\n格式2：封禁UID 90天 开挂\n格式3：一键封禁@玩家\n格式4：一键封禁uid\n\n温馨提示：\n封禁时长只支持(天|日|周|月|年)这些单位\n封禁理由请不要使用彩色文本，会导致请求错误...")
         return
       }
 
