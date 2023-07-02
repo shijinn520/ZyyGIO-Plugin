@@ -2,7 +2,7 @@
  * @Author: Zyy.小钰 1072411694@qq.com
  * @Date: 2023-06-21 20:01:21
  * @LastEditors: Zyy.小钰 1072411694@qq.com
- * @LastEditTime: 2023-07-01 13:11:15
+ * @LastEditTime: 2023-07-02 17:26:34
  * @FilePath: \Miao-Yunzai\plugins\Zyy-GM-plugin\apps\Administrator.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -345,7 +345,8 @@ export class administrator extends plugin {
     const { gm, mail, birthday, CheckIns, generatecdk, cdk, ping } = await getmode(e)
     if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk && !ping) return
     const { scenes } = await getScenes(e)
-
+    const { gioadmin } = await getadmin(e)
+    
     if (e.msg.includes('绑架')) {
       if (e.isMaster) {
         e.reply("qaq，不可以绑架主人哦~")
@@ -368,7 +369,7 @@ export class administrator extends plugin {
       return
     }
 
-    if (!/^(100|137|138)\d{6}$/.test(uid)) {
+    if (!/^(100|137|138)\d{6}$/.test(uid) && !e.isMaster && !gioadmin) {
       e.reply([segment.at(e.user_id), `非本服务器UID，请下载正版四叶草服`])
       return
     }
@@ -376,7 +377,6 @@ export class administrator extends plugin {
     let uuid = e.user_id
     let yamlfile = false
     const alluid = `${data}/group/${scenes}/alluid.yaml`
-    const { gioadmin } = await getadmin(e)
 
     if (e.isMaster || gioadmin) {
       if (e.at) {
