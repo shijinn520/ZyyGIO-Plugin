@@ -100,6 +100,13 @@ export class Player extends plugin {
         // 后续将使用逗号分割
         const { gm } = await getmode(e)
         if (!gm) return
+
+        const { gioadmin } = await getadmin(e)
+        if (!e.isMaster && !gioadmin) {
+            e.reply([segment.at(e.user_id), "只有管理员才能命令我qwq"])
+            return
+        }
+
         if (e.msg.split(' ').length < 3) {
             e.reply([segment.at(e.user_id), '格式错误\n正确的格式为：添加命令 别名名称 /指令1 /指令2\n示例：添加命令 货币 /mcoin 99 /hcoin 99'])
             return
@@ -138,6 +145,13 @@ export class Player extends plugin {
     async 添加邮件(e) {
         const { mail } = await getmode(e)
         if (!mail) return
+
+        const { gioadmin } = await getadmin(e)
+        if (!e.isMaster && !gioadmin) {
+            e.reply([segment.at(e.user_id), "只有管理员才能命令我qwq"])
+            return
+        }
+
         const msg = e.msg.split(' ')
         if (msg.length !== 5) {
             e.reply([segment.at(e.user_id), '格式错误\n正确的格式为：\n添加邮件 [别名 多个使用/分隔] 邮件标题 邮件内容 物品ID:数量,物品ID:数量\n\n示例：\n添加邮件 测试邮件 标题 内容 201:1,105003:1'])
