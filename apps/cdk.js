@@ -30,7 +30,11 @@ export class gm extends plugin {
         if (!uid) return
         const { scenes } = await getScenes(e) || {}
         const msg = e.msg.replace(/兑换/g, '').trim()
-        const file = `${data}/group/${scenes}/cdk/${msg}.yaml`
+
+        let file = `${data}/group/${scenes}/cdk/自定义/${msg}.yaml`
+        if (msg.length === 32) {
+            file = `${data}/group/${scenes}/cdk/批量生成/${msg}.yaml`
+        }
 
         // 撤回消息防止别的玩家使用他人兑换码
         e.group.recallMsg(e.message_id)
@@ -203,7 +207,7 @@ export class gm extends plugin {
         const { keycdk, groupcdk } = await getserver(e)
 
         if (cdk0[1] === "自定义") {
-            const file = `${data}/group/${groupcdk}/cdk/${cdk0[3]}.yaml`
+            const file = `${data}/group/${groupcdk}/cdk/自定义/${cdk0[3]}.yaml`
             if (fs.existsSync(file)) {
                 e.reply([segment.at(e.user_id), `兑换码${cdk0[3]}已经存在`])
                 cdk0 = []
@@ -254,7 +258,7 @@ export class gm extends plugin {
                 const filename = crypto.createHash('md5')
                     .update(currentTimestamp + keycdk + cdk0[5]).digest('hex')
 
-                const yamlfile = `${data}/group/${groupcdk}/cdk/${filename}.yaml`
+                const yamlfile = `${data}/group/${groupcdk}/cdk/批量生成/${filename}.yaml`
                 if (fs.existsSync(yamlfile)) {
                     console.error(`文件 ${yamlfile} 已存在`)
                     failwrite.push(filename)

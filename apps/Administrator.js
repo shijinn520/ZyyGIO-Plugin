@@ -2,7 +2,7 @@
  * @Author: Zyy.小钰 1072411694@qq.com
  * @Date: 2023-06-21 20:01:21
  * @LastEditors: Zyy.小钰 1072411694@qq.com
- * @LastEditTime: 2023-06-30 23:35:41
+ * @LastEditTime: 2023-07-04 16:36:17
  * @FilePath: \Miao-Yunzai\plugins\Zyy-GM-plugin\apps\Administrator.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -30,24 +30,36 @@ export class administrator extends plugin {
   }
 
   async 开启功能(e) {
-    let mode = false
     const { scenes } = await getScenes(e)
     const server = Yaml.parse(fs.readFileSync(config + '/server.yaml', 'utf8'))
 
-    if (fs.existsSync(`${data}/group/${scenes}`)) {
-      mode = true
-    }
+    /** 对应群聊配置文件夹的根路径 */
+    const file = `${data}/group/${scenes}`
 
-    if (mode === false) {
-      fs.mkdirSync(`${data}/group/${scenes}`)
-      const servervalues = Object.values(server)[0]
-      fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(servervalues))
-      fs.mkdirSync(`${data}/group/${scenes}/cdk`)
-      fs.mkdirSync(`${data}/group/${scenes}/txt`)
-      fs.writeFileSync(`${data}/group/${scenes}/alluid.yaml`, ' - "10001"\n')
+    /** 检测是否存在对应的配置文件夹，不存在则创建 */
+    if (!fs.existsSync(file)) {
+      fs.mkdirSync(file)
     }
-
+    if (!fs.existsSync(`${file}/config.yaml`)) {
+      fs.writeFileSync(`${file}/config.yaml`, Yaml.stringify(Object.values(server)[0]))
+    }
+    if (!fs.existsSync(`${file}/cdk`)) {
+      fs.mkdirSync(`${file}/cdk`)
+    }
+    if (!fs.existsSync(`${file}/cdk/自定义`)) {
+      fs.mkdirSync(`${file}/cdk/自定义`)
+    }
+    if (!fs.existsSync(`${file}/cdk/批量生成`)) {
+      fs.mkdirSync(`${file}/cdk/批量生成`)
+    }
+    if (!fs.existsSync(`${file}/txt`)) {
+      fs.mkdirSync(`${file}/txt`)
+    }
     const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
+    if (!fs.existsSync(`${data}/alluid/${cfg.server.ip}-${cfg.server.port}.yaml`)) {
+      fs.writeFileSync(`${data}/alluid/${cfg.server.ip}-${cfg.server.port}.yaml`, ' - "10001"\n')
+    }
+
     if (e.msg === "开启gm" || e.msg === "开启GM") {
       if (cfg.gm.mode === true) {
         e.reply("GM当前已经开启，无需重复开启")
@@ -352,54 +364,44 @@ export class administrator extends plugin {
       return
     }
 
+    /** 玩家UID */
     let uuid = e.user_id
-    let yamlfile = false
-    const alluid = `${data}/group/${scenes}/alluid.yaml`
+    const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
+    const alluid = `${data}/alluid/${cfg.server.ip}-${cfg.server.port}.yaml`
     const { gioadmin } = await getadmin(e)
 
+    /** 检测玩家是否为管理员 */
     if (e.isMaster || gioadmin) {
+      /** 存在at则修改玩家UID的值为被at的玩家 */
       if (e.at) {
         uuid = e.at
       }
     }
 
+    /** 用户配置路径 */
     const file = `${data}/user/${uuid}.yaml`
+    // 检测是否存在对应的配置文件
     if (fs.existsSync(file)) {
-      yamlfile = true
-    }
-
-    if (e.isMaster || gioadmin) {
-      if (!yamlfile) {
-        const admin = {
-          uid: uid,
-          Administrator: false,
-          total_signin_count: 0,
-          last_signin_time: "1999-12-12 00:00:00"
-        }
-        fs.writeFileSync(file, Yaml.stringify(admin))
-      }
-      if (yamlfile) {
+      // 检测是否为管理员
+      if (e.isMaster || gioadmin) {
         const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
         cfg.uid = uid
         fs.writeFileSync(file, Yaml.stringify(cfg))
-      }
-    }
-    else {
-      if (yamlfile) {
+      } else {
+        // 非管理员
         const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
         e.reply([segment.at(uuid), `\n当前已绑定的UID：${cfg.uid}\n如需换绑，请联系管理人员，请遵守规则哦`])
         return
       }
-
-      if (!yamlfile) {
-        const admin = {
-          uid: uid,
-          Administrator: false,
-          total_signin_count: 0,
-          last_signin_time: "1999-12-12 00:00:00"
-        }
-        fs.writeFileSync(`${data}/user/${this.e.user_id}.yaml`, Yaml.stringify(admin))
+    } else {
+      // 不存在配置文件
+      const admin = {
+        uid: uid,
+        Administrator: false,
+        total_signin_count: 0,
+        last_signin_time: "1999-12-12 00:00:00"
       }
+      fs.writeFileSync(file, Yaml.stringify(admin))
     }
 
     // 写入全服uid
@@ -544,7 +546,8 @@ export class administrator extends plugin {
     const { gm, mail, birthday, CheckIns, generatecdk, cdk } = await getmode(e)
     if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk) return
     const { scenes } = await getScenes(e)
-    const yamlfile = `${data}/group/${scenes}/alluid.yaml`
+    const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
+    const yamlfile = `${data}/alluid/${cfg.server.ip}-${cfg.server.port}.yaml`
     const msg = e.msg.split(' ')
     const start = parseInt(msg[1])
     const end = parseInt(msg[2])

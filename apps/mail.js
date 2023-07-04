@@ -66,7 +66,8 @@ export class mails extends plugin {
         let item_list = msg[3]
         let filecontent = ''
 
-        const stream = fs.createReadStream(`${data}/group/${scenes}/alluid.yaml`, 'utf8')
+        const config = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
+        const stream = fs.createReadStream(`${data}/alluid/${config.server.ip}-${config.server.port}.yaml`, 'utf8')
         stream.on('data', (chunk) => { filecontent += chunk })
         await new Promise((resolve, reject) => {
             stream.on('end', () => {
@@ -279,7 +280,8 @@ async function 生日邮件() {
             const content = birthday[keys].内容
             const item_list = birthday[keys].奖励
 
-            const stream = fs.createReadStream(`${data}/group/${key}/alluid.yaml`, 'utf8')
+            const config = Yaml.parse(fs.readFileSync(`${data}/group/${key}/config.yaml`, 'utf8'))
+            const stream = fs.createReadStream(`${data}/alluid/${config.server.ip}-${config.server.port}.yaml`, 'utf8')
             stream.on('data', (chunk) => { filecontent += chunk })
             await new Promise((resolve, reject) => {
                 stream.on('end', () => {
