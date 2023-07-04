@@ -24,6 +24,9 @@ if (!fs.existsSync(_path + '/data/group')) {
 if (!fs.existsSync(_path + '/data/user')) {
   fs.mkdirSync(_path + '/data/user')
 }
+if (!fs.existsSync(_path + '/data/alluid')) {
+  fs.mkdirSync(_path + '/data/alluid')
+}
 if (!fs.existsSync(_path + '/config')) {
   fs.mkdirSync(_path + '/config')
 }

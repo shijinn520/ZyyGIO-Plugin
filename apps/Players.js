@@ -148,7 +148,7 @@ export class Player extends plugin {
 
         const { gioadmin } = await getadmin(e)
         if (!e.isMaster && !gioadmin) {
-            e.reply([segment.at(e.user_id), "只有管理员才能命令我qwq"])
+            e.reply([segment.at(e.user_id), "只有管理员才能命令我(*/ω＼*)"])
             return
         }
 

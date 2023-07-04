@@ -5,7 +5,7 @@ import fetch from 'node-fetch'
 import schedule from 'node-schedule'
 import { commands } from './rule.js'
 import plugin from '../../../lib/plugins/plugin.js'
-import { getmode, getserver, getuid, getpath, getcommand, getmail, getadmin, getintercept } from './index.js'
+import { getmode, getserver, getuid, getpath, getcommand, getmail, getadmin, getintercept, getScenes } from './index.js'
 
 const { data, config } = await getpath()
 
@@ -25,6 +25,19 @@ export class Command extends plugin {
     if (!CheckIns) return
     const { uid } = await getuid(e)
     if (!uid) return
+
+    const { scenes } = await getScenes(e)
+    const file = `${data}/user/${e.user_id}.yaml`
+    const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
+
+    /** 检测玩家在当前群聊是否存在配置 */
+    if (!cfg.hasOwnProperty(scenes)) {
+      cfg[scenes] = {
+        total_signin_count: 3,
+        last_signin_time: "2023-07-03 00:00:01"
+      }
+      fs.writeFileSync(file, Yaml.stringify(cfg), 'utf8')
+    }
 
     const mode = "CheckIns"
     getmail(e, mode)
