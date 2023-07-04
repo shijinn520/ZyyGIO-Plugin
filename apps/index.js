@@ -420,8 +420,8 @@ export async function getmail(e = {}, mode, item) {
     // 得到今天时间
     const getNow = new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' ')
 
-    const logTime = players.last_signin_time
-    let checkInSum = players.total_signin_count
+    const logTime = players[scenes].last_signin_time
+    let checkInSum = players[scenes].total_signin_count
     // 对比用户上次签到时间
     if (logTime.slice(0, 10) === getNow.slice(0, 10)) {
       e.reply([segment.at(e.user_id), `\n今日已签到\n累计签到：${checkInSum} 天\n签到时间：${logTime}`])
@@ -535,10 +535,10 @@ export async function getmail(e = {}, mode, item) {
                   const CheckIns = Yaml.parse(fs.readFileSync(config + '/items.yaml', 'utf8'))
                   const players = Yaml.parse(fs.readFileSync(file, 'utf8'))
                   const getNow = new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' ')
-                  let checkInSum = players.total_signin_count + 1
+                  let checkInSum = players[scenes].total_signin_count + 1
                   const name = CheckIns.CheckIns[checkInSum].name
-                  players.total_signin_count = checkInSum
-                  players.last_signin_time = getNow
+                  players[scenes].total_signin_count = checkInSum
+                  players[scenes].last_signin_time = getNow
                   fs.writeFileSync(file, Yaml.stringify(players))
                   e.reply([segment.at(e.user_id), `\n签到成功\n当前UID：${parseInt(outcome.data.uid)}\n累计签到：${checkInSum} 天\n签到时间：${getNow} \n签到物品：${name}`])
                   return
