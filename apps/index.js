@@ -314,7 +314,7 @@ export async function getcommand(e = {}, mode, msg) {
                     let uidstate = false
                     const name = e.msg.replace(/兑换/g, '').trim()
                     let file = `${data}/group/${scenes}/cdk/自定义/${name}.yaml`
-                    if (msg.length === 32) {
+                    if (name.length === 32) {
                       file = `${data}/group/${scenes}/cdk/批量生成/${name}.yaml`
                     }
                     const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
