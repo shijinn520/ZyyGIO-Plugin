@@ -3,12 +3,7 @@ import { exec } from "child_process"
 
 let ret = []
 let apps = {}
-let appfile = './plugins/ZyyGio-Plugin'
 let _path = process.cwd() + '/plugins/ZyyGio-Plugin'
-
-if (!fs.existsSync(process.cwd() + appfile)) {
-  appfile = './plugins/Zyy-GM-plugin'
-}
 
 if (!fs.existsSync(_path)) {
   _path = process.cwd() + '/plugins/Zyy-GM-plugin'
@@ -51,7 +46,7 @@ console.log('\x1b[36m%s\x1b[0m', 'Hi~这里是Zyy.小钰！')
 console.log('\x1b[2m%s\x1b[0m', '---------------------')
 
 //加载插件
-const files = fs.readdirSync(`${appfile}/apps`).filter(file => file.endsWith('.js'))
+const files = fs.readdirSync(`${_path}/apps`).filter(file => file.endsWith('.js'))
 
 
 files.forEach((file) => {
