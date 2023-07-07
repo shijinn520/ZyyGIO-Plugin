@@ -64,7 +64,7 @@ export async function getScenes(e = {}) {
     }
   } else {
     value = 'QQ频道群聊'
-    scenes = e.group_id
+    scenes = e.group_id.replace("qg_", "")
   }
   return { value, scenes }
 }
@@ -375,7 +375,7 @@ export async function getcommand(e = {}, mode, msg) {
       })
     })
     .catch(error => {
-      console.error(error)
+      console.error(error.message)
       if (mode === "cdk") {
       }
       e.reply([segment.at(e.user_id), `\nUID：${uid}\n走开，你都不在线 ￣へ￣`])
