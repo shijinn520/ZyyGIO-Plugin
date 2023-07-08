@@ -2,7 +2,7 @@
  * @Author: Zyy.小钰 1072411694@qq.com
  * @Date: 2023-06-21 20:01:21
  * @LastEditors: Zyy.小钰 1072411694@qq.com
- * @LastEditTime: 2023-07-09 00:34:59
+ * @LastEditTime: 2023-07-09 05:11:57
  * @FilePath: \Miao-Yunzai\plugins\Zyy-GM-plugin\apps\Administrator.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -584,9 +584,14 @@ export class administrator extends plugin {
     let local
     e.reply("GM插件更新中...")
 
-    exec("git pull --no-rebase", { cwd: `${_path}` }, function (error, stdout) {
+    let cmd = 'git pull --no-rebase'
+    if (e.msg.includes("强制")) {
+      cmd = 'git reset --hard origin/main'
+    }
+    const log = 'git log -1 --format="%h %cd %s" --date=iso'
+    exec(cmd, { cwd: `${_path}` }, function (error, stdout) {
       if (/Already up[ -]to[ -]date/.test(stdout)) {
-        exec('git log -1 --format="%h %cd %s" --date=iso', { cwd: `${_path}` }, function (error, stdout) {
+        exec(log, { cwd: `${_path}` }, function (error, stdout) {
           if (error) {
             console.error(`exec error: ${error}`)
             return
@@ -611,8 +616,7 @@ export class administrator extends plugin {
             .replace(/Aborting/gi, '中止')
           e.reply(`存在冲突：\n${Error}\n` + '请解决冲突后再更新，或者执行 强制更新GM，放弃本地修改')
           return
-        }
-        if (/Failed to connect|unable to access|CONFLICT/.test(error.message)) {
+        } else {
           const Error = error.message
             .replace(/Command failed/gi, '命令失败')
             .replace(/fatal: unable to access/gi, '致命：无法访问')
@@ -626,7 +630,7 @@ export class administrator extends plugin {
           return
         }
       }
-      exec('git log -1 --format="%h %cd %s" --date=iso', { cwd: `${_path}` }, function (error, stdout) {
+      exec(log, { cwd: `${_path}` }, function (error, stdout) {
         if (error) {
           console.error(`exec error: ${error}`)
           return
@@ -637,47 +641,6 @@ export class administrator extends plugin {
         e.reply(`更新成功...\n请手动重启...\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
       })
     })
-
-    return true
-  }
-
-  async 强制更新(e) {
-    let local
-    e.reply("正在强制更新GM插件...")
-
-    exec('git log -1 --format="%h %cd %s" --date=iso', { cwd: `${_path}` }, function (error, stdout) {
-      if (error) {
-        console.error(`exec error: ${error}`)
-        return
-      }
-
-      const gitlog = stdout.split(' ')
-      local = gitlog
-    })
-
-    exec("git reset --hard origin/main", { cwd: `${_path}` }, function (error, stdout) {
-      const hash = stdout.replace(/HEAD is now at /gi, '').split(' ')[0]
-      if (hash === local[0]) {
-        e.reply(`GM插件已经是最新版本...\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
-        return
-      }
-      if (error) {
-        console.log(`未知错误：\n`, error)
-        return
-      }
-
-      exec('git log -1 --format="%h %cd %s" --date=iso', { cwd: `${_path}` }, function (error, stdout) {
-        if (error) {
-          console.error(`exec error: ${error}`)
-          return
-        }
-
-        const gitlog = stdout.split(' ')
-        local = gitlog
-        e.reply(`强制更新完成，请手动重启\n最新更新时间：${local[1] + ' ' + local[2]}\n最新提交信息：${local.slice(4).join(' ')}`)
-      })
-    })
-    return true
   }
 
   async 封禁玩家(e) {
