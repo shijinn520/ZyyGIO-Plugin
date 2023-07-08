@@ -49,13 +49,8 @@ export const admin = [
         permission: 'master'
     },
     {
-        reg: /^\/?(gm更新|更新gm)$/gi,
+        reg: /^#gio(强制)?更新$/gi,
         fnc: '插件更新',
-        permission: 'master'
-    },
-    {
-        reg: /^\/?(gm强制更新|强制更新gm)$/gi,
-        fnc: '强制更新',
         permission: 'master'
     },
     {
