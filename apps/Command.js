@@ -27,7 +27,7 @@ export class Command extends plugin {
     if (!uid) return
 
     const { scenes } = await getScenes(e)
-    const file = `${data}/user/${e.user_id}.yaml`
+    const file = `${data}/user/${e.user_id.replace("qg_", "")}.yaml`
     const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
 
     /** 检测玩家在当前群聊是否存在配置 */

@@ -438,6 +438,6 @@ export class Player extends plugin {
 
     async 查看ID(e) {
         const { scenes, value } = await getScenes(e)
-        e.reply(`当前${value}ID：${scenes}\n您的个人ID：${e.user_id}`)
+        e.reply(`当前${value}ID：${scenes}\n您的个人ID：${e.user_id.replace("qg_", "")}`)
     }
 }
