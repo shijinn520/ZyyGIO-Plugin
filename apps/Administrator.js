@@ -2,7 +2,7 @@
  * @Author: Zyy.小钰 1072411694@qq.com
  * @Date: 2023-06-21 20:01:21
  * @LastEditors: Zyy.小钰 1072411694@qq.com
- * @LastEditTime: 2023-07-02 17:26:34
+ * @LastEditTime: 2023-07-09 00:26:11
  * @FilePath: \Miao-Yunzai\plugins\Zyy-GM-plugin\apps\Administrator.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -358,7 +358,7 @@ export class administrator extends plugin {
     if (!gm && !mail && !birthday && !CheckIns && !generatecdk && !cdk && !ping) return
     const { scenes } = await getScenes(e)
     const { gioadmin } = await getadmin(e)
-    
+
     if (e.msg.includes('绑架')) {
       if (e.isMaster) {
         e.reply("qaq，不可以绑架主人哦~")
@@ -425,6 +425,11 @@ export class administrator extends plugin {
         }
       }
       fs.writeFileSync(file, Yaml.stringify(admin))
+    }
+
+    /** 添加检测防止机器人崩溃 */
+    if (!fs.existsSync(alluid)) {
+      fs.writeFileSync(alluid, ' - "10001"\n')
     }
 
     // 写入全服uid
