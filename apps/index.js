@@ -637,6 +637,7 @@ export async function getmail(e = {}, mode, item) {
       })
     })
     .catch(error => {
-      fail.push(error)
+      console.error(error)
+      e.reply([segment.at(e.user_id), `发生未知错误，请重试`])
     })
 }
