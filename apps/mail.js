@@ -101,7 +101,7 @@ export class mails extends plugin {
             }
         }
 
-        const batchSize = 100 // 每批次发送的请求数量
+        const batchSize = 200 // 每批次发送的请求数量
         const interval = 500 // 发送请求的时间间隔
         const messages = []
         const succ = []
@@ -228,7 +228,7 @@ export class mails extends plugin {
                         this.reply(`全服邮件发送中...\n玩家数量：${uids.length}\n请求成功：${messages.length}\n请求失败：${errorCount}\n发送成功：${succ.length}\n发送失败:${fail.length}`)
                     }
                     responseCount = 0
-                    await new Promise(resolve => setTimeout(resolve, 10000)) // 等待10秒钟
+                    await new Promise(resolve => setTimeout(resolve, 5000)) // 等待10秒钟
                 }
             } catch (error) {
                 logger.mark(`请求错误:`, error)
