@@ -375,7 +375,7 @@ export async function getcommand(e = {}, mode, msg) {
       })
     })
     .catch(error => {
-      console.error(error)
+      console.error(error.message)
       if (mode === "cdk") {
       }
       e.reply([segment.at(e.user_id), `\nUID：${uid}\n走开，你都不在线 ￣へ￣`])
@@ -637,6 +637,7 @@ export async function getmail(e = {}, mode, item) {
       })
     })
     .catch(error => {
-      fail.push(error)
+      console.error(error.message)
+      e.reply([segment.at(e.user_id), `发生未知错误，请重试`])
     })
 }
