@@ -26,6 +26,11 @@ export async function getpath() {
 }
 const { data, config } = await getpath()
 
+/**网页cdk生成文件转发至QQ群 */
+export async function gettxt(txtfile = {}) {
+  console.log(txtfile)
+  Bot.pickGroup("279942511").fs.upload(txtfile)
+}
 
 /**
  * 场景相关
