@@ -214,6 +214,7 @@ export async function getintercept(e = {}) {
     intercept = !((new RegExp(`^.*(${blocklist})\\.*`)).test(e.msg))
     if (!intercept) {
       logger.mark(`${e.msg} 存在黑名单中`)
+      e.reply([segment.at(e.user_id), "已被管理员禁用"])
     }
   }
   else {

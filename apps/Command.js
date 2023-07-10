@@ -89,6 +89,12 @@ export class Command extends plugin {
         break
       }
     }
+
+    if (msg.includes("clear all") && !e.isMaster) {
+      e.reply(segment.at(e.user_id), "[clear all] 已经被禁用")
+      return
+    }
+
     const mode = "gm"
     getcommand(e, mode, msg)
   }
