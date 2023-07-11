@@ -312,7 +312,7 @@ export async function getcommand(e = {}, mode, msg) {
                   // 如果存在多个请求，哪怕失败多个，只要成功一个都会被判定为成功
                   if (newmsg.length > 0) {
                     let uidstate = false
-                    const name = e.msg.replace(/兑换/g, '').trim()
+                    const name = e.msg.replace(/兑换|\/兑换/g, '').trim()
                     let file = `${data}/group/${scenes}/cdk/自定义/${name}.yaml`
                     if (name.length === 32) {
                       file = `${data}/group/${scenes}/cdk/批量生成/${name}.yaml`
@@ -549,7 +549,7 @@ export async function getmail(e = {}, mode, item) {
 
                 if (mode = "cdk") {
                   let uidstate = false
-                  const msg = e.msg.replace(/兑换/g, '').trim()
+                  const msg = e.msg.replace(/兑换|\/兑换/g, '').trim()
                   let file = `${data}/group/${scenes}/cdk/自定义/${msg}.yaml`
                   if (msg.length === 32) {
                     file = `${data}/group/${scenes}/cdk/批量生成/${msg}.yaml`
