@@ -29,7 +29,7 @@ export class gm extends plugin {
         const { uid } = await getuid(e)
         if (!uid) return
         const { scenes } = await getScenes(e) || {}
-        const msg = e.msg.replace(/兑换/g, '').trim()
+        const msg = e.msg.replace(/兑换|\/兑换/g, '').trim()
 
         let file = `${data}/group/${scenes}/cdk/自定义/${msg}.yaml`
         if (msg.length === 32) {
