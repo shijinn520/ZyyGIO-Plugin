@@ -313,7 +313,7 @@ export class administrator extends plugin {
 
 
   async 设置管理员(e) {
-    const file = `${data}/user/${e.at.replace("qg_", "")}.yaml`
+    const file = `${data}/user/${e.at.toString().replace("qg_", "")}.yaml`
     if (fs.existsSync(file)) {
       const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
       if (cfg.Administrator) {
@@ -337,7 +337,7 @@ export class administrator extends plugin {
   }
 
   async 解除管理员(e) {
-    const file = `${data}/user/${e.at.replace("qg_", "")}.yaml`
+    const file = `${data}/user/${e.at.toString().replace("qg_", "")}.yaml`
     if (fs.existsSync(file)) {
       const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
       if (!cfg.Administrator) {
@@ -387,7 +387,7 @@ export class administrator extends plugin {
     }
 
     /** 玩家UID */
-    let uuid = e.user_id.replace("qg_", "")
+    let uuid = e.user_id.toString().replace("qg_", "")
     const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
     const alluid = `${data}/alluid/${cfg.server.ip}-${cfg.server.port}.yaml`
 
@@ -395,7 +395,7 @@ export class administrator extends plugin {
     if (e.isMaster || gioadmin) {
       /** 存在at则修改玩家UID的值为被at的玩家 */
       if (e.at) {
-        uuid = e.at.replace("qg_", "")
+        uuid = e.at.toString().replace("qg_", "")
       }
     }
 
@@ -687,7 +687,7 @@ export class administrator extends plugin {
         return
       }
       if (e.at) {
-        const file = data + `/user/${e.at.replace("qg_", "")}.yaml`
+        const file = data + `/user/${e.at.toString().replace("qg_", "")}.yaml`
         if (!fs.existsSync(file)) {
           e.reply([segment.at(e.user_id), "他没绑定过UID..."])
           return
@@ -703,7 +703,7 @@ export class administrator extends plugin {
         return
       }
       if (e.at) {
-        const file = data + `/user/${e.at.replace("qg_", "")}.yaml`
+        const file = data + `/user/${e.at.toString().replace("qg_", "")}.yaml`
         if (!fs.existsSync(file)) {
           e.reply([segment.at(e.user_id), "他没绑定过UID..."])
           return
@@ -714,7 +714,7 @@ export class administrator extends plugin {
     } else {
       const msgs = uid.replace(/拉黑|封禁/g, '').trim().split(' ')
       if (msgs.length === 2 && e.at) {
-        const file = data + `/user/${e.at.replace("qg_", "")}.yaml`
+        const file = data + `/user/${e.at.toString().replace("qg_", "")}.yaml`
         if (!fs.existsSync(file)) {
           e.reply([segment.at(e.user_id), "他没绑定过UID..."])
           return
@@ -806,7 +806,7 @@ export class administrator extends plugin {
                 console.log("完整响应：", outcome)
                 const retcode = outcome.retcode
                 if (retcode === 0) {
-                  logger.mark(`[error-ban][${e.sender.card || e.sender.nickname}(${e.user_id.replace("qg_", "")}-${uid})][${e.msg}][${JSON.stringify(outcome).replace(/[{}]/g, '')}]`)
+                  logger.mark(`[error-ban][${e.sender.card || e.sender.nickname}(${e.user_id.toString().replace("qg_", "")}-${uid})][${e.msg}][${JSON.stringify(outcome).replace(/[{}]/g, '')}]`)
                   if (e.msg.includes("解")) {
                     e.reply([segment.at(e.user_id), `已解除玩家${uid}的封禁`])
                   } else {
@@ -814,7 +814,7 @@ export class administrator extends plugin {
                   }
                 }
                 else {
-                  logger.mark(`[error-ban][${e.sender.card || e.sender.nickname}(${e.user_id.replace("qg_", "")}-${uid})][${e.msg}][${JSON.stringify(outcome).replace(/[{}]/g, '')}]`)
+                  logger.mark(`[error-ban][${e.sender.card || e.sender.nickname}(${e.user_id.toString().replace("qg_", "")}-${uid})][${e.msg}][${JSON.stringify(outcome).replace(/[{}]/g, '')}]`)
                   e.reply([segment.at(e.user_id), `\n失败 -> 请把此内容反馈给作者\nUID:${uid}\n反馈内容：\n${JSON.stringify(outcome)}`])
                 }
               })

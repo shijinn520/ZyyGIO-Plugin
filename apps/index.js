@@ -165,7 +165,7 @@ export async function getserver(e = {}) {
  */
 export async function getuid(e = {}) {
   let uid = false
-  const file = `${data}/user/${e.user_id.replace("qg_", "")}.yaml`
+  const file = `${data}/user/${e.user_id.toString().replace("qg_", "")}.yaml`
   if (!fs.existsSync(file)) {
     e.reply([segment.at(e.user_id), "\n清先绑定UID\n格式：绑定+UID\n举例：绑定100001"])
   }
@@ -182,7 +182,7 @@ export async function getuid(e = {}) {
  */
 export async function getadmin(e = {}) {
   let gioadmin = false
-  const file = `${data}/user/${e.user_id.replace("qg_", "")}.yaml`
+  const file = `${data}/user/${e.user_id.toString().replace("qg_", "")}.yaml`
   if (fs.existsSync(file)) {
     const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
     if (cfg.Administrator) {
@@ -279,7 +279,7 @@ export async function getcommand(e = {}, mode, msg) {
             .then(outcome => {
               const retcode = outcome.retcode
               if (retcode !== 0) {
-                logger.mark(`[error-command][${e.sender.card || e.sender.nickname}(${e.user_id.replace("qg_", "")}-${uid})][${e.msg}][${JSON.stringify(outcome).replace(/[{}]/g, '')}]`)
+                logger.mark(`[error-command][${e.sender.card || e.sender.nickname}(${e.user_id.toString().replace("qg_", "")}-${uid})][${e.msg}][${JSON.stringify(outcome).replace(/[{}]/g, '')}]`)
               }
               let datamsg = outcome.data?.msg || {}
               if (retcode === 0) {
@@ -425,7 +425,7 @@ export async function getmail(e = {}, mode, item) {
 
   if (mode === "CheckIns") {
     const CheckIns = Yaml.parse(fs.readFileSync(config + '/items.yaml', 'utf8'))
-    const players = Yaml.parse(fs.readFileSync(`${data}/user/${e.user_id.replace("qg_", "")}.yaml`, 'utf8'))
+    const players = Yaml.parse(fs.readFileSync(`${data}/user/${e.user_id.toString().replace("qg_", "")}.yaml`, 'utf8'))
     // 得到今天时间
     const getNow = new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' ')
 
@@ -531,7 +531,7 @@ export async function getmail(e = {}, mode, item) {
             .then(outcome => {
               const retcode = outcome.retcode
               if (retcode !== 0) {
-                logger.mark(`[error-mail][${e.sender.card || e.sender.nickname}(${e.user_id.replace("qg_", "")}-${uid})][${e.msg}][${JSON.stringify(outcome).replace(/[{}]/g, '')}]`)
+                logger.mark(`[error-mail][${e.sender.card || e.sender.nickname}(${e.user_id.toString().replace("qg_", "")}-${uid})][${e.msg}][${JSON.stringify(outcome).replace(/[{}]/g, '')}]`)
               }
               if (retcode === 0) {
                 if (mode === "mail") {
@@ -540,7 +540,7 @@ export async function getmail(e = {}, mode, item) {
                 }
 
                 if (mode === "CheckIns") {
-                  const file = `${data}/user/${e.user_id.replace("qg_", "")}.yaml`
+                  const file = `${data}/user/${e.user_id.toString().replace("qg_", "")}.yaml`
                   const CheckIns = Yaml.parse(fs.readFileSync(config + '/items.yaml', 'utf8'))
                   const players = Yaml.parse(fs.readFileSync(file, 'utf8'))
                   const getNow = new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' ')
