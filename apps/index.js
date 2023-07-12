@@ -225,6 +225,7 @@ export async function getintercept(e = {}) {
     intercept = (new RegExp(`^.*(${blocklist})\\.*`)).test(e.msg)
     if (!intercept) {
       logger.mark(`${e.msg} 不存在白名单中`)
+      e.reply([segment.at(e.user_id), "管理员没有开启这个指令"])
     }
   }
 

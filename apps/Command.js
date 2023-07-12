@@ -91,7 +91,7 @@ export class Command extends plugin {
     }
 
     if (msg.includes("clear all") && !e.isMaster) {
-      e.reply(segment.at(e.user_id), "[clear all] 已经被禁用")
+      e.reply([segment.at(e.user_id), "[clear all] 已经被禁用"])
       return
     }
 
