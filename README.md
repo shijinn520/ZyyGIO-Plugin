@@ -41,24 +41,17 @@ config：
 | other.yaml   | 黑白名单      |
 | server.yaml  | 服务器配置     |
 
+`/config/alias/command.yaml`：此文件是GM的自定义别名，必须存在，并且优先级高于`/config/alias/command`文件夹里面的任何一项
+`/config/alias/command`：存放更多别名，可自行添加或者删除，格式必须一致，如果跟`command.yaml`内的别名存在冲突，会被`command.yaml`覆盖
 
-## 效果展示：
 
-在线玩家：
 
-![在线玩家示例](https://i.328888.xyz/2023/05/13/iuRFgt.png)
 
-GM指令：
 
-![别名指令示例](https://i.328888.xyz/2023/04/30/iKq4VU.png)
-![普通指令示例](https://i.328888.xyz/2023/04/30/iKqAbv.png)
-![添加命令示例](https://i.328888.xyz/2023/05/13/iuRGKJ.png)
 
-邮件：
 
-![邮件别名示例](https://i.328888.xyz/2023/04/30/iKYK3N.png)
-![普通指令示例](https://i.328888.xyz/2023/04/30/iKqUQy.png)
-![添加邮件示例](https://i.328888.xyz/2023/05/13/iuRhUc.png)
+
+
 
 
 

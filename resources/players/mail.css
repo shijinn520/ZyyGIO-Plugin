@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'sr';
-  src: url(./sr.ttf) format('truetype');
+  src: url(./alias.ttf) format('truetype');
 }
 
 html * {
@@ -17,10 +17,11 @@ body {
 
 .container {
   padding: 0px 20px 10px 20px;
-  background: url(../help/image/bg.jpg) top left repeat-y;
+  background: url(./alias.jpg) top left repeat-y;
   background-size: 100% auto;
   width: 830px;
 }
+
 
 .info_box .title {
   padding-top: 150px;
@@ -46,34 +47,41 @@ body {
   background: rgba(35, 38, 57, 0.8);
 }
 
-.td {
+
+/* 详细别名指令 */
+.aliaslist {
   color: #4e5769;
-  flex-basis: calc(50% - 2%);
+  flex-basis: calc(33% - 2%);
   text-align: center;
-  border-radius: 15px;
+  border-radius: 6px;
   margin-top: 2px;
   margin-bottom: 2px;
   padding: 5px 15px;
   overflow: hidden;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
   background: #cbc4be;
-  font-size: 15px;
+  font-size: 1px;
   font-family: 'sr', sans-serif;
 }
 
-.author {
-  display: block;
-  font-size: 16px;
-  line-height: 24px;
-  color: #eee;
-  text-align: center;
-  padding-left: 20px
-}
-
-.description {
+/* 居中副标题 by */
+.aliasTitle {
   display: block;
   font-size: 16px;
   line-height: 24px;
   padding-left: 20px;
   color: #ceb78b;
+  text-align: left;
+  width: 100%;
+}
+
+/* by */
+.by {
+  display: block;
+  font-size: 16px;
+  line-height: 24px;
+  padding-left: 20px;
+  color: #ceb78b;
+  text-align: center;
+  width: 100%;
 }

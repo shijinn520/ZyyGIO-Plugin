@@ -1,14 +1,18 @@
 import fs from 'fs'
+import Yaml from 'yaml'
 import { exec } from "child_process"
 
 let ret = []
 let apps = {}
-let _path = process.cwd() + '/plugins/ZyyGio-Plugin'
+let _path = process.cwd()
 
-if (!fs.existsSync(_path)) {
-  _path = process.cwd() + '/plugins/Zyy-GM-plugin'
+if (fs.existsSync(`${_path}/plugins/ZyyGio-Plugin`)) {
+  _path = `${_path}/plugins/ZyyGio-Plugin`
+} else if (fs.existsSync(`${_path}/plugins/Zyy-GM-plugin`)) {
+  _path = `${_path}/plugins/Zyy-GM-plugin`
+} else {
+  _path = `${_path}/plugins/ZhiYu-plugin`
 }
-
 
 if (!fs.existsSync(_path + '/data')) {
   fs.mkdirSync(_path + '/data')
@@ -26,14 +30,46 @@ if (!fs.existsSync(_path + '/config')) {
   fs.mkdirSync(_path + '/config')
 }
 
-const configfiles = (fs.readdirSync(`${_path}/default_config`))
-  .filter(file => !(fs.readdirSync(`${_path}/config`))
+const configfiles = (fs.readdirSync(`${_path}/config/default/config`))
+  .filter(file => !(fs.readdirSync(`${_path}/config/config`))
     .includes(file) && !'请勿修改此文件夹下的任何文件.txt'.includes(file))
 
 configfiles.forEach(file => {
-  fs.copyFileSync(`${_path}/default_config/${file}`, `${_path}/config/${file}`)
+  fs.copyFileSync(`${_path}/config/default_config/${file}`, `${_path}/config/config/${file}`)
   logger.mark(`GIO插件：缺少文件...创建完成(${file})`)
 })
+
+/** 定义全局变量ZhiYu */
+global.ZhiYu = {
+  _path: _path,
+  apps: `${_path}/apps`,
+  config: `${_path}/config/config`,
+  data: `${_path}/data`,
+  resources: `${_path}/resources`,
+  alias: {},
+  AliasList: `${_path}/config/alias`,
+  Yzversion: JSON.parse(fs.readFileSync(`${process.cwd()}/package.json`, 'utf8')).version,
+  version: "0.0.6"
+}
+
+const aliasPath = `${_path}/config/alias`
+
+try {
+  const alias = {}
+  /** 每个系统加载的顺序可能不一致，得到的可能不一致，重复的键名会被后加载的覆盖 */
+  fs.readdirSync(aliasPath).forEach((file) => {
+    if (file.endsWith('.yaml')) {
+      const cfgpath = `${aliasPath}/${file}`
+      const cfg = Yaml.parse(fs.readFileSync(cfgpath, 'utf8'))
+      Object.assign(alias, cfg)
+    }
+  })
+  /*   const oldcfg = Yaml.parse(fs.readFileSync(global.ZhiYu.config + '/command.yaml', 'utf8'))
+    Object.assign(alias, oldcfg) */
+  global.ZhiYu.alias = alias
+} catch (e) {
+  console.error(`无法读取配置文件夹 ${aliasPath}:`, e)
+}
 
 
 if (!global.segment) {

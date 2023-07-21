@@ -2,50 +2,34 @@ import fs from 'fs'
 import http from 'http'
 import Yaml from 'yaml'
 import crypto from 'crypto'
-import { mail } from './rule.js'
 import schedule from 'node-schedule'
-import plugin from '../../../lib/plugins/plugin.js'
-import { getmode, getserver, getuid, getScenes, getmail, getadmin, getintercept, getpath } from './index.js'
+import { GetUser, GetServer, GetState } from './request.js'
 
 let state = true
-const { data, config } = await getpath()
+const { data, config } = global.ZhiYu
 
 export class mails extends plugin {
     constructor() {
         super({
-            name: 'mail',
+            name: 'zhiyu-plugin',
             dsc: '邮件相关',
             event: 'message',
             priority: -100,
-            rule: mail
+            rule: [
+                {
+                    reg: '^\/?全服邮件 (.*)$',
+                    fnc: '全服邮件'
+                }
+            ]
         })
     }
-
-    async 邮件(e) {
-        const { mail } = await getmode(e)
-        if (!mail) return
-        const { gioadmin } = await getadmin(e)
-        if (!e.isMaster && !gioadmin) {
-            const { intercept } = await getintercept(e)
-            if (!intercept) return
-        }
-        const { uid } = await getuid(e)
-        if (!uid) return
-        const mode = "mail"
-        getmail(e, mode)
-
-    }
-
+    /** qwq改的头疼，就这样吧 */
     async 全服邮件(e) {
-        // 全服邮件需要单独处理并发请求...不弄整合了...
-        const { mail } = await getmode(e)
-        if (!mail) {
-            console.log("邮件功能未开启")
-            return
-        }
-        const { scenes } = await getScenes(e)
-        const { gioadmin } = await getadmin(e)
-        if (!gioadmin && !e.isMaster) {
+        const { scenes, GioAdmin } = GetUser(e)
+        const { Mail } = GetState(scenes)
+        if (!Mail) return
+
+        if (!GioAdmin && !e.isMaster) {
             e.reply(`只有管理大大才能命令我哦~\n(*/ω＼*)`)
             return
         }
@@ -56,7 +40,7 @@ export class mails extends plugin {
 
         state = false
         e.reply([segment.at(e.user_id), `正在执行...预计需要10-20分钟...`])
-        const { ip, port, region, sign, ticketping, mailsender } = await getserver(e)
+        const { ip, port, region, sign, ticket, MailSender } = await GetServer(e)
 
         const cfg = Yaml.parse(fs.readFileSync(`${config}/mail.yaml`, 'utf8'))
         const msg = e.msg.split(' ')
@@ -82,7 +66,6 @@ export class mails extends plugin {
             })
         })
 
-        let foundTemplate = false
         for (const key in cfg) {
             const obj = cfg[key]
             const names = obj[0].names
@@ -90,14 +73,12 @@ export class mails extends plugin {
                 title = obj[1].title
                 content = obj[2].content
                 item_list = obj[3].item_list
-                foundTemplate = true
                 break
-            }
-        }
-        if (!foundTemplate) {
-            if (msg.length < 4) {
-                e.reply([segment.at(e.user_id), `邮件格式错误\n\n格式：全服邮件 [标题] [内容] [ID:数量,ID:数量]\n举例：邮件 测试 你好 201:1`])
-                return
+            } else {
+                if (msg.length < 4) {
+                    e.reply([segment.at(e.user_id), `邮件格式错误\n\n格式：全服邮件 [标题] [内容] [ID:数量,ID:数量]\n举例：邮件 测试 你好 201:1`])
+                    return
+                }
             }
         }
 
@@ -125,9 +106,9 @@ export class mails extends plugin {
                     item_list: item_list,
                     source_type: '0',
                     tag: '0',
-                    sender: mailsender,
+                    sender: MailSender,
                     title: title,
-                    ticket: ticketping,
+                    ticket: ticket,
                 }
                 const url = Object.keys(original)
                     .sort()

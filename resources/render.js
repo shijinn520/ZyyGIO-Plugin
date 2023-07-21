@@ -3,10 +3,12 @@ import lodash from 'lodash'
 import Data from './Data.js'
 import puppeteer from '../../../lib/puppeteer/puppeteer.js'
 
-let plugin = 'ZyyGio-Plugin'
+let plugin = 'ZhiYu-plugin'
 
 if (fs.existsSync(process.cwd() + '/plugins/Zyy-GM-plugin')) {
   plugin = 'Zyy-GM-plugin'
+} else if (fs.existsSync(process.cwd() + '/plugins/ZyyGio-Plugin')) {
+  plugin = 'ZyyGio-Plugin'
 }
 
 export async function render(app = '', tpl = '', data = {}, imgType = 'jpeg') {

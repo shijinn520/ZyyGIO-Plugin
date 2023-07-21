@@ -1,31 +1,77 @@
 import fs from 'fs'
 import Yaml from 'yaml'
-import { players } from './rule.js'
-import plugin from '../../../lib/plugins/plugin.js'
 import puppeteerRender from '../resources/render.js'
-import { getScenes, getmode, getadmin, getpath } from './index.js'
+import {
+    ComputeGM,
+    ComputeMail,
+    Request,
+    GetServer,
+    GetUser,
+    GetState,
+    GetPassList
+} from './request.js'
 
-let helplist = []
-const { config, resources } = await getpath()
+const { data, AliasList, config, resources, Yzversion, version } = global.ZhiYu
+let helplist = JSON.parse(fs.readFileSync(`${resources}/help/index.json`, "utf8")) || []
 
-if (fs.existsSync(`${resources}/help/index.json`)) {
-    helplist = JSON.parse(fs.readFileSync(`${resources}/help/index.json`, "utf8")) || []
-}
-
-
-export class Player extends plugin {
+export class ZhiYu extends plugin {
     constructor() {
         super({
-            name: 'Players',
+            name: 'zhiyu-plugin',
             dsc: '一些通用功能',
             event: 'message',
             priority: -100,
-            rule: players
+            rule: [
+                {
+                    reg: /^\/?(帮助|help)$/,
+                    fnc: 'help',
+                },
+                {
+                    reg: /^\/?(.*)别名(列表)?$/,
+                    fnc: 'aliasList',
+                },
+                {
+                    reg: /^\/?添加命令 (.*)$/,
+                    fnc: '添加命令',
+                },
+                {
+                    reg: /^\/?添加邮件 (.*)$/,
+                    fnc: '添加邮件',
+                },
+                {
+                    reg: /^\/?别名列表$/,
+                    fnc: '别名帮助',
+                },
+                {
+                    reg: /^\/?查看(命令|邮件)(.*)$/,
+                    fnc: '查看别名信息'
+                },
+                {
+                    reg: /^\/?添加命令别名(.*)$/,
+                    fnc: '添加命令别名'
+                },
+                {
+                    reg: /^\/?添加邮件别名(.*)$/,
+                    fnc: '添加邮件别名'
+                },
+                {
+                    reg: /^\/?删除命令(.*)$/,
+                    fnc: '删除命令别名'
+                },
+                {
+                    reg: /^\/?删除邮件(.*)$/,
+                    fnc: '删除邮件别名'
+                },
+                {
+                    reg: /^\/?我的id$/gi,
+                    fnc: '查看ID'
+                }
+            ]
         })
     }
 
 
-    async 小钰帮助(e) {
+    async help(e) {
         let helpGroup = []
         helplist.forEach((group) => {
             if (group.auth && group.auth === "master" && !this.e.isMaster) {
@@ -39,89 +85,81 @@ export class Player extends plugin {
         return e.reply(res)
     }
 
-    async 别名帮助(e) {
-        const base64 = Buffer.from(fs.readFileSync(resources + '/players/help-alias.png')).toString('base64')
-        await e.reply(segment.image(`base64://${base64}`))
-    }
-
-    async 玩家列表(e) {
-        const { mode } = await getmode(e)
-        if (!mode) return
-        if (mode !== false) {
-            const cfg = Yaml.parse(fs.readFileSync(config + '/config.yaml', 'utf8'))
-            const { value, scenes } = await getScenes(e)
-            const uid = cfg[scenes].uid
-            const keys = Object.keys(uid)
-            const values = Object.values(uid).map(obj => JSON.stringify(obj).replace(/[{}"]/g, ''))
-            const data = {
-                keys: keys,
-                values: values,
-                title: '玩家列表',
-                description1: `当前${value}所有已绑定UID的玩家`
-            }
-            const res = await puppeteerRender.render('players', 'index', data)
-            return e.reply(res)
-        }
-    }
-
-    async 命令别名(e) {
-        const { gm } = await getmode(e)
+    async aliasList(e) {
+        const { gm } = basic(e)
         if (!gm) return
-        const cfg = Yaml.parse(fs.readFileSync(config + '/command.yaml', 'utf8'))
-        const keys = Object.values(cfg).map(entry => entry.filter(obj => 'names' in obj).flatMap(obj => obj.names).join(' - '))
-        const data = {
-            keys: keys,
-            values: '',
-            title: '命令别名',
-            description1: `结构解析：多个别名使用“-”分隔,并不是所有的单元都是一个别名`,
-            description2: `使用方法：在需要使用的别名前面加上“/”`
-        }
-        const res = await puppeteerRender.render('players', 'index', data)
-        return e.reply(res)
-    }
 
-    async 邮件别名(e) {
-        const { mail } = await getmode(e)
-        if (!mail) return
-        const cfg = Yaml.parse(fs.readFileSync(config + '/mail.yaml', 'utf8'))
-        const keys = Object.values(cfg).map(entry => entry.filter(obj => 'names' in obj).flatMap(obj => obj.names).join(' - '))
-        const data = {
-            keys: keys,
-            values: '',
-            title: '邮件别名',
-            description1: `结构解析：多个别名使用“-”分隔,并不是所有的单元都是一个别名`,
-            description2: `使用方法：在需要使用的别名前面加上“邮件 ”，记得带空格`
+        const msg = e.msg.replace(/\/|列表|别名/g, "")
+        const YamlFiles = fs.readdirSync(`${AliasList}/command`).filter(file => file.toLowerCase()
+            .endsWith('.yaml')).map(file => file.slice(0, -5) + '别名')
+        YamlFiles.push("自定义别名")
+        if (e.msg.includes("列表")) {
+            e.reply(`使用方法：\n发送以下任意指令即可查看对应别名\n\n别名列表：\n${YamlFiles.join('\n')}`)
+            return
         }
-        const res = await puppeteerRender.render('players', 'index', data)
-        return e.reply(res)
+
+        const file = `${AliasList}/command/${msg}.yaml`
+        let data = {
+            aliasTitle: "全部别名指令列表",
+            aliasName: "别名指令",
+            exegesisA: `使用：下方名称前面加上/`,
+            exegesisB: `温馨提示：[Q - Q无限充能] 这样是多个别名`,
+            exegesisC: `使用举例：/Q 或者 /Q无限充能 都可以达到一个效果`,
+            YamlFiles: YamlFiles,
+            title: `${msg}别名指令`,
+            list: {},
+            Yzversion: Yzversion,
+            version: version
+        }
+
+        if (fs.existsSync(file)) {
+            const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
+            const list = Object.values(cfg).map(entry => entry.filter(obj => 'names' in obj).flatMap(obj => obj.names).join(' - '))
+
+            data.list = list
+            const res = await puppeteerRender.render('players', 'alias', data)
+            return e.reply(res)
+        } else if (e.msg.includes("邮件")) {
+            const cfg = Yaml.parse(fs.readFileSync(`${AliasList}/mail/mail.yaml`, 'utf8'))
+            const list = Object.values(cfg).map(entry => entry.filter(obj => 'names' in obj).flatMap(obj => obj.names).join(' - '))
+
+            data.aliasTitle = "邮件别名指令列表"
+            data.exegesisA = `使用：下方名称前面加上[邮件 ] 注意空格`
+            data.exegesisB = `温馨提示：[神瞳 - 神瞳大礼包] 这样是多个别名`
+            data.exegesisC = `使用举例：[邮件 神瞳] 或者 [邮件 神瞳大礼包] 都可以达到一个效果`
+            data.title = `邮件别名指令`
+            data.list = list
+
+            const res = await puppeteerRender.render('players', 'mail', data)
+            return e.reply(res)
+        } else if (e.msg.includes("自定义")) {
+            const cfg = Yaml.parse(fs.readFileSync(`${AliasList}/command.yaml`, 'utf8'))
+            const list = Object.values(cfg).map(entry => entry.filter(obj => 'names' in obj).flatMap(obj => obj.names).join(' - '))
+
+            data.list = list
+
+            const res = await puppeteerRender.render('players', 'alias', data)
+            return e.reply(res)
+        } else {
+            e.reply("无此别名，请使用“别名列表”进行查看已有别名文件")
+            return
+        }
     }
 
     async 添加命令(e) {
-        // 后续将使用逗号分割
-        const { gm } = await getmode(e)
-        if (!gm) return
+        const { scenes, GioAdmin } = await GetUser(e)
+        if (!(await GetState(scenes)).GM) return
 
-        const { gioadmin } = await getadmin(e)
-        if (!e.isMaster && !gioadmin) {
+
+        if (!e.isMaster && !GioAdmin) {
             e.reply([segment.at(e.user_id), "只有管理员才能命令我qwq"])
             return
         }
 
-        if (e.msg.split(' ').length < 3) {
-            e.reply([segment.at(e.user_id), '格式错误\n正确的格式为：添加命令 别名名称 /指令1 /指令2\n示例：添加命令 货币 /mcoin 99 /hcoin 99'])
-            return
-        }
-        if (e.msg.split(' ')[2].indexOf('/') === -1) {
-            e.reply([segment.at(e.user_id), '格式错误\n正确的格式为：添加命令 别名名称 /指令1 /指令2\n示例：添加命令 货币 /mcoin 99 /hcoin 99'])
-            return
-        }
-
-        const msg = e.msg.split(' ')
-        const alias = msg[1].includes('/') ? msg[1].split('/') : [msg[1]]
-        const name = Array.isArray(alias) ? alias[0] : alias
-        const oldcommand = msg.slice(2).join(' ')
-        const newcommand = oldcommand.split('/').filter(Boolean).map(str => str.trim())
-        const cfg = Yaml.parse(fs.readFileSync(config + '/command.yaml', 'utf8'))
+        const msg = e.msg.replace(/，/g, ",").split(' ')
+        const alias = msg[1].split(',') || [msg[1]]
+        const command = msg.slice(2).join(' ').split(',') || [msg.slice(2).join(' ')]
+        const cfg = Yaml.parse(fs.readFileSync(AliasList + '/command.yaml', 'utf8'))
 
         let state = false
         Object.values(cfg).forEach((value) => {
@@ -133,21 +171,20 @@ export class Player extends plugin {
             }
         })
         if (state) return
-        cfg[name] = [
+        cfg[alias[0]] = [
             { names: alias },
-            { command: newcommand }
+            { command: command }
         ]
 
-        fs.writeFileSync(config + '/command.yaml', Yaml.stringify(cfg))
+        fs.writeFileSync(AliasList + '/command.yaml', Yaml.stringify(cfg))
         e.reply([segment.at(e.user_id), `添加成功`])
     }
 
     async 添加邮件(e) {
-        const { mail } = await getmode(e)
+        const { mail, GioAdmin } = basic(e)
         if (!mail) return
 
-        const { gioadmin } = await getadmin(e)
-        if (!e.isMaster && !gioadmin) {
+        if (!e.isMaster && !GioAdmin) {
             e.reply([segment.at(e.user_id), "只有管理员才能命令我(*/ω＼*)"])
             return
         }
@@ -191,11 +228,10 @@ export class Player extends plugin {
     }
 
     async 添加命令别名(e) {
-        const { gm } = await getmode(e)
+        const { gm, GioAdmin } = basic(e)
         if (!gm) return
 
-        const { gioadmin } = await getadmin(e)
-        if (!gioadmin && !e.isMaster) {
+        if (!GioAdmin && !e.isMaster) {
             e.reply(`只有管理大大才能命令我哦~\n(*/ω＼*)`)
             return
         }
@@ -242,11 +278,10 @@ export class Player extends plugin {
     }
 
     async 添加邮件别名(e) {
-        const { mail } = await getmode(e)
+        const { mail, GioAdmin } = basic(e)
         if (!mail) return
 
-        const { gioadmin } = await getadmin(e)
-        if (!gioadmin && !e.isMaster) {
+        if (!GioAdmin && !e.isMaster) {
             e.reply(`只有管理大大才能命令我哦~\n(*/ω＼*)`)
             return
         }
@@ -293,7 +328,7 @@ export class Player extends plugin {
     }
 
     async 查看别名信息(e) {
-        const { gm, mail } = await getmode(e)
+        const { gm, mail } = basic(e)
         if (!gm && !mail) return
         let msg
         if (e.msg.includes('别名')) {
@@ -370,10 +405,10 @@ export class Player extends plugin {
     }
 
     async 删除命令别名(e) {
-        const { gm } = await getmode(e)
+        const { gm, GioAdmin } = basic(e)
         if (!gm) return
-        const { gioadmin } = await getadmin(e)
-        if (!gioadmin && !e.isMaster) {
+
+        if (!GioAdmin && !e.isMaster) {
             e.reply(`只有管理大大才能命令我哦~\n(*/ω＼*)`)
             return
         }
@@ -402,11 +437,10 @@ export class Player extends plugin {
     }
 
     async 删除邮件别名(e) {
-        const { mail } = await getmode(e)
+        const { mail, GioAdmin } = basic(e)
         if (!mail) return
 
-        const { gioadmin } = await getadmin(e)
-        if (!gioadmin && !e.isMaster) {
+        if (!GioAdmin && !e.isMaster) {
             e.reply(`只有管理大大才能命令我哦~\n(*/ω＼*)`)
             return
         }
@@ -437,7 +471,40 @@ export class Player extends plugin {
     }
 
     async 查看ID(e) {
-        const { scenes, value } = await getScenes(e)
-        e.reply(`当前${value}ID：${scenes}\n您的个人ID：${e.user_id.toString().replace("qg_", "")}`)
+        const { scenes } = basic(e)
+        e.reply(`当前群聊场景ID：${scenes}\n您的个人ID：${e.user_id.toString().replace("qg_", "")}`)
     }
 }
+
+
+function basic(e) {
+    let gm = false
+    let uid = false
+    let mail = false
+    let GioAdmin = false
+
+    const trss = e.group_id.toString().replace("qg_", "")
+    const scenes = e.group_name === "频道插件" ? `${e.group_id}-${e.member.info.group_id}` : trss
+    const file = `${data}/user/${e.user_id.toString().replace("qg_", "")}.yaml`
+
+    if (!fs.existsSync(file)) {
+        e.reply([segment.at(e.user_id), "\n清先绑定UID\n格式：绑定+UID\n举例：绑定100001"])
+    }
+    else {
+        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
+        uid = cfg.uid
+        GioAdmin = cfg.Administrator ? true : false
+    }
+
+    const Groupcfg = `${data}/group/${scenes}/config.yaml`
+
+    if (!fs.existsSync(Groupcfg)) {
+        console.log(`\x1b[31m[ZhiYu]当前群聊 ${scenes} 未初始化\x1b[0m`)
+    }
+
+    const cfg = Yaml.parse(fs.readFileSync(Groupcfg, 'utf8'))
+    gm = cfg.GM.状态 ? true : false
+    mail = cfg.邮件.状态 ? true : false
+    return { scenes, GioAdmin, gm, mail }
+}
+

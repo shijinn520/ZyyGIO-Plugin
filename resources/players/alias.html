@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <link rel="preload" href="{{_res_path}}/players/alias.ttf" as="font" crossorigin>
+  <link rel="stylesheet" type="text/css" href="{{_res_path}}/players/alias.css" />
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="info_box">
+      <div class="title">{{title}}</div>
+    </div>
+
+    <div class="cont-box">
+      <div class="aliasTitle">{{aliasTitle}}</div>
+      {{each YamlFiles key}}
+      <div class="list">
+        <strong>{{key}}</strong>
+      </div>
+      {{/each}}
+    </div>
+
+    <div class="cont-box">
+      <div class="aliasTitle">{{aliasName}}</div>
+      <div class="exegesis">{{exegesisA}}</div>
+      <div class="exegesis">{{exegesisB}}</div>
+      <div class="aliasTitle">{{exegesisC}}</div>
+      {{each list key}}
+      <div class="aliaslist">
+        <strong>{{key}}</strong>
+      </div>
+      {{/each}}
+    </div>
+
+    <div class="cont-box">
+      <div class="aliasTitle">Created By Yunzai-Bot{{Yzversion}} & zhiyu-plugin{{version}}</div>
+    </div>
+  </div>
+</body>
+
+</html>
