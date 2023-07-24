@@ -2,6 +2,8 @@ import fs from 'fs'
 import Yaml from 'yaml'
 import crypto from 'crypto'
 import moment from 'moment'
+import { cdk } from './regex.js'
+import { GetUser, GetState } from './app.js'
 import common from '../../../lib/common/common.js'
 
 const { config, data, resources } = global.ZhiYu
@@ -14,71 +16,55 @@ export class ZhiYu extends plugin {
             dsc: '兑换码',
             event: 'message',
             priority: -100,
-            rule: [
-                {
-                    reg: /^\/?生成cdk$/gi,
-                    fnc: '生成兑换码'
-                },
-                {
-                    reg: /^\/?快捷生成(?!列表)(.*)$/,
-                    fnc: '快捷生成cdk'
-                },
-                {
-                    reg: /^\/?快捷生成列表$/,
-                    fnc: '快捷生成cdk列表'
-                },
-                {
-                    reg: /^\/?自定义cdk(.*)$/gi,
-                    fnc: '一键生成自定义cdk'
-                },
-                {
-                    reg: /^\/?随机cdk(.*)$/gi,
-                    fnc: '一键生成随机cdk'
-                }
-
-            ]
+            rule: cdk
         })
     }
 
-    async 快捷生成cdk列表(e) {
-        if (!GetCDK(e)) return
-        const file = `${config}/cdk.yaml`
-        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
-        e.reply(`${Object.keys(cfg).join('\n')}`)
+    async FastAddCdk(e) {
+        const { scenes, GioAdmin } = await GetUser(e)
+        const { addCdk, CDK } = await GetState(scenes)
+        if (!addCdk && !CDK) return
+        if (!e.isMaster && !GioAdmin) return
+
+        if (e.msg.includes("#快捷生成列表")) {
+            const file = `${config}/cdk.yaml`
+            const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
+            e.reply(`${Object.keys(cfg).join('\n')}`)
+        } else {
+            const msg = e.msg.replace(/#快捷生成/, "")
+            const file = `${config}/cdk.yaml`
+            const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
+
+            if (!(cfg[msg])) {
+                e.reply([segment.at(e.user_id), `\n${msg} 不存在\n发送“快捷生成列表”查看已有的`])
+                return
+            }
+
+            const content = cfg[msg].split('-')
+            if (content[0] !== '邮件' && content[0] !== '命令') {
+                return e.reply("兑换类型不正确，请检查")
+            }
+            cdks = [
+                "开始生成",
+                "随机",
+                content[0].replace("邮件", "mail").replace("命令", "command"),
+                content[1],
+                msg,
+                content[2].replace("，", ",").replace("：", ":")
+            ]
+            AddCdk(e)
+        }
     }
 
-    async 快捷生成cdk(e) {
-        if (!GetCDK(e)) return
-        const msg = e.msg.replace("快捷生成", "")
-        const file = `${config}/cdk.yaml`
-        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
+    async addCustomizeCdk(e) {
+        const { scenes, GioAdmin } = await GetUser(e)
+        const { addCdk, CDK } = await GetState(scenes)
+        if (!addCdk && !CDK) return
+        if (!e.isMaster && !GioAdmin) return
 
-        if (!(cfg[msg])) {
-            e.reply([segment.at(e.user_id), `\n${msg} 不存在\n发送“快捷生成列表”查看已有的`])
-            return
-        }
-
-        const content = cfg[msg].split('-')
-        if (content[0] !== '邮件' && content[0] !== '命令') {
-            e.reply("兑换类型不正确，请检查")
-            return
-        }
-        cdks = [
-            "开始生成",
-            "随机",
-            content[0].replace("邮件", "mail").replace("命令", "command"),
-            content[1],
-            msg,
-            content[2].replace("，", ",").replace("：", ":")
-        ]
-        GenerateCDK(e)
-    }
-
-    async 一键生成自定义cdk(e) {
-        if (!GetCDK(e)) return
         const msg = e.msg.split('-')
         if (msg.length !== 6) {
-            const base64 = Buffer.from(fs.readFileSync(resources + '/players/cdk-自定义.png')).toString('base64')
+            const base64 = Buffer.from(fs.readFileSync(resources + '/cdk/cdk-自定义.png')).toString('base64')
             await e.reply([segment.image(`base64://${base64}`)])
             e.reply("正确格式：\n自定义cdk-兑换类型-兑换码-总使用次数-单uid使用次数-对应命令")
             return
@@ -97,14 +83,18 @@ export class ZhiYu extends plugin {
             msg[4],
             msg[5].replace("，", ",").replace("：", ":")
         ]
-        GenerateCDK(e)
+        AddCdk(e)
     }
 
-    async 一键生成随机cdk(e) {
-        if (!GetCDK(e)) return
+    async addRandomCdk(e) {
+        const { scenes, GioAdmin } = await GetUser(e)
+        const { addCdk, CDK } = await GetState(scenes)
+        if (!addCdk && !CDK) return
+        if (!e.isMaster && !GioAdmin) return
+
         const msg = e.msg.split('-')
         if (msg.length !== 5) {
-            const base64 = Buffer.from(fs.readFileSync(resources + '/players/cdk-随机.png')).toString('base64')
+            const base64 = Buffer.from(fs.readFileSync(resources + '/cdk/cdk-随机.png')).toString('base64')
             await e.reply([segment.image(`base64://${base64}`)])
             e.reply("正确格式：\n随机cdk-兑换类型-生成数量-TXT前缀-对应命令")
             return
@@ -122,18 +112,75 @@ export class ZhiYu extends plugin {
             msg[3],
             msg[4].replace("，", ",").replace("：", ":")
         ]
-        GenerateCDK(e)
+        AddCdk(e)
     }
 
-    async 生成cdk帮助(e) {
-        e.reply(`目前有4种生成方式：\n1.快捷生成\n2.自定义cdk\n3.随机cdk\n4.生成cdk(上下文)\n\n第一种需要配置好 cdk.yaml，随后快捷生成+名称\n第二种发送“自定义cdk”即可查看使用指南\n第三张发送“随机cdk”即可查看使用指南\n第四种直接发送“生成cdk”，跟着提示走即可`)
+    async delCdk(e) {
+        const { scenes, GioAdmin } = await GetUser(e)
+        const { addCdk, CDK } = await GetState(scenes)
+        if (!addCdk && !CDK) return
+        if (!e.isMaster && !GioAdmin) return
+
+        const data = `${global.ZhiYu.data}/group/${scenes}/cdk`
+        const msg = e.msg.replace(/#删除兑换码/g, "").trim()
+        let file = `${data}/自定义/${msg}.yaml`
+        if (msg.length === 32) {
+            file = `${data}/批量生成/${msg}.yaml`
+        }
+
+        try {
+            fs.accessSync(file, fs.constants.F_OK)
+            fs.unlinkSync(file)
+            e.reply([segment.at(e.user_id), "删除成功"])
+        } catch (err) {
+            if (err.code === 'ENOENT') {
+                e.reply([segment.at(e.user_id), "兑换码不存在"])
+            } else {
+                e.reply([segment.at(e.user_id), "兑换码删除失败:", err])
+            }
+        }
+    }
+
+    async lookCdk(e) {
+        const { scenes, GioAdmin } = await GetUser(e)
+        const { addCdk, CDK } = await GetState(scenes)
+        if (!addCdk && !CDK) return
+        if (!e.isMaster && !GioAdmin) return
+
+        const data = `${global.ZhiYu.data}/group/${scenes}/cdk`
+        const msg = e.msg.replace(/#查看兑换码/g, "").trim()
+        let file = `${data}/自定义/${msg}.yaml`
+        if (msg.length === 32) {
+            file = `${data}/批量生成/${msg}.yaml`
+        }
+
+        try {
+            fs.accessSync(file, fs.constants.F_OK)
+            const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
+            const redeemlimit = `总可使用次数：${cfg.redeemlimit}`
+            const uidusagelimit = `个人可使用次数：${cfg.uidusagelimit}`
+            const createtime = `生成时间：${cfg.createtime}`
+            const actiontype = `兑换方式：${cfg.actiontype}`
+            const command = `对应命令：${cfg.command}`
+            const used = `已使用次数：${cfg.used}`
+            e.reply(`${msg}详情\n${redeemlimit}\n${uidusagelimit}\n${createtime}\n${actiontype}\n${command}\n${used}`)
+        } catch (err) {
+            if (err.code === 'ENOENT') {
+                e.reply([segment.at(e.user_id), "兑换码不存在"])
+            } else {
+                e.reply([segment.at(e.user_id), "解析失败：", err])
+            }
+        }
     }
 }
 
-async function GenerateCDK(e) {
-    const scenes = await Scenes(e)
+
+async function AddCdk(e) {
+    const trss = e.group_id.toString().replace("qg_", "")
+    const scenes = e.group_name === "频道插件" ? `${e.group_id}-${e.member.info.group_id}` : trss
+
     const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
-    const Group = cfg.generatecdk.group
+    const Group = cfg.addCdk.group
 
     if (cdks[1] === "自定义") {
         const file = `${data}/group/${Group}/cdk/自定义/${cdks[3]}.yaml`
@@ -175,7 +222,7 @@ async function GenerateCDK(e) {
         }
         const succwrite = []
         const failwrite = []
-        const key = cfg.generatecdk.key
+        const key = cfg.addCdk.key
 
         for (let i = 0; i < cdks[3]; i++) {
             const currentTimestamp = Date.now() + i // 使用递增的时间戳以防止重复                
@@ -229,26 +276,4 @@ async function GenerateCDK(e) {
         cdks = []
         return
     }
-}
-
-/** 生成CDK的状态单独处理 */
-function GetCDK(e) {
-    const scenes = Scenes(e)
-    let CDK = false
-    const Groupcfg = `${data}/group/${scenes}/config.yaml`
-    if (!fs.existsSync(Groupcfg)) {
-        console.log(`\x1b[31m[ZhiYu]当前群聊 ${scenes} 未初始化\x1b[0m`)
-    } else {
-        const cfg = Yaml.parse(fs.readFileSync(Groupcfg, 'utf8'))
-        CDK = cfg.生成cdk.开关 ? true : false
-    }
-
-    return CDK
-}
-
-/** QWQ我自己玩 */
-function Scenes(e) {
-    const trss = e.group_id.toString().replace("qg_", "")
-    const scenes = e.group_name === "频道插件" ? `${e.group_id}-${e.member.info.group_id}` : trss
-    return scenes
 }

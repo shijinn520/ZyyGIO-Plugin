@@ -1,66 +1,19 @@
-/*
- * @Author: Zyy.小钰 1072411694@qq.com
- * @Date: 2023-06-21 20:01:21
- * @LastEditors: Zyy.小钰 1072411694@qq.com
- * @LastEditTime: 2023-07-20 16:16:35
- * @FilePath: \Miao-Yunzai\plugins\Zyy-GM-plugin\apps\Administrator.js
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
 import fs from 'fs'
 import Yaml from 'yaml'
+import { admin } from './regex.js'
 import { exec } from 'child_process'
-import { GetUser, GetState } from './request.js'
+import { GetUser, GetState } from './app.js'
 
 const { _path, data, config } = global.ZhiYu
 
-export class admin extends plugin {
+export class ZhiYu extends plugin {
   constructor() {
     super({
       name: 'zhiyu-plugin',
       dsc: '初始化对应功能',
       event: 'message',
-      priority: -100,
-      rule: [
-        {
-          reg: /^\#(开启|关闭).*$/gi,
-          fnc: 'AppsList',
-          permission: 'master'
-        },
-        {
-          reg: /^\/?(设置|绑定|解绑|解除)管理$/,
-          fnc: 'manage',
-          permission: 'master'
-        },
-        {
-          reg: /^\/?绑定(.*)$/,
-          fnc: '绑定UID',
-        },
-        {
-          reg: /^\#切换服务器(.*)$/,
-          fnc: '切换服务器',
-          permission: 'master'
-        },
-        {
-          reg: /^\#服务器$/,
-          fnc: 'ServerList',
-          permission: 'master'
-        },
-        {
-          reg: /^\#添加uid(.*)$/gi,
-          fnc: '添加UID',
-          permission: 'master'
-        },
-        {
-          reg: /^\#(功能列表|当前功能)$/,
-          fnc: 'AppStatus',
-          permission: 'master'
-        },
-        {
-          reg: /^#gio(强制)?更新$/gi,
-          fnc: '插件更新',
-          permission: 'master'
-        }
-      ]
+      priority: -200,
+      rule: admin
     })
   }
 
@@ -154,7 +107,7 @@ export class admin extends plugin {
       ]
 
       for (const action of actions) {
-        if (action.message.includes(e.msg)) {
+        if (action.message.includes(e.msg.replace(/#/, ""))) {
           const { feature, cfgkey } = action
           if (e.msg.includes("开启")) {
             if (cfg[cfgkey].状态 === true) {
@@ -177,11 +130,9 @@ export class admin extends plugin {
               return
             }
           }
-        } else {
-          e.reply(`无此功能`)
         }
       }
-
+      e.reply(`无此功能`)
     }
   }
 
@@ -221,7 +172,7 @@ export class admin extends plugin {
     const mail = cfg.邮件.状态 ? "✔️" : "关闭"
     const birthday = cfg.生日邮件.状态 ? "✔️" : "关闭"
     const CheckIns = cfg.签到.状态 ? "✔️" : "关闭"
-    const generatecdk = cfg.生成cdk.状态 ? "✔️" : "关闭"
+    const addCdk = cfg.生成cdk.状态 ? "✔️" : "关闭"
     const cdk = cfg.兑换码.状态 ? "✔️" : "关闭"
     const state = cfg.在线玩家.状态 ? "✔️" : "关闭"
     const UID = cfg.UID.状态 ? "✔️" : "关闭"
@@ -236,7 +187,7 @@ export class admin extends plugin {
       }
     }
 
-    e.reply(`功能列表：\nGM：${gm}\n邮件：${mail}\n生日推送：${birthday}\n每日签到：${CheckIns}\ncdk生成：${generatecdk}\ncdk：${cdk}\n在线玩家：${state}\n绑定UID：${UID}\n封禁玩家：${Ban}\n\n当前环境ID：${scenes}\n当前服务器ID：${id}\n当前服务器名称：${name}`)
+    e.reply(`功能列表：\nGM：${gm}\n邮件：${mail}\n生日推送：${birthday}\n每日签到：${CheckIns}\ncdk生成：${addCdk}\ncdk：${cdk}\n在线玩家：${state}\n绑定UID：${UID}\n封禁玩家：${Ban}\n\n当前环境ID：${scenes}\n当前服务器ID：${id}\n当前服务器名称：${name}`)
   }
 
   /** 管理员相关 */
@@ -249,15 +200,13 @@ export class admin extends plugin {
     if (!fs.existsSync(file)) {
       const admin = {
         uid: 0,
-        Administrator: false,
-        total_signin_count: 0,
-        last_signin_time: "1999-12-12 00:00:00"
+        Administrator: false
       }
       fs.writeFileSync(file, Yaml.stringify(admin))
     }
     const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
 
-    if (["设置", "绑定"].includes(e.msg)) {
+    if (/设置|绑定/.test(e.msg)) {
       if (cfg.Administrator) {
         e.reply(`已经是管理了哦(*^▽^*)`)
         return
@@ -276,25 +225,24 @@ export class admin extends plugin {
     }
   }
 
-  async 绑定UID(e) {
-    const { scenes, gioadmin } = await GetUser(e)
+  async personalUID(e) {
+    const { scenes, GioAdmin } = await GetUser(e)
     const { UID } = await GetState(scenes)
     if (!UID) {
-      if (e.isMaster || gioadmin) {
+      if (e.isMaster || GioAdmin) {
         e.reply(`\x1b[31m[ZhiYu]当前群聊 ${scenes} UID绑定功能 未初始化或已关闭\x1b[0m`)
       }
       return
     }
 
-    const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
     const uid = e.msg.replace(/[^0-9]/g, '')
+    const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
 
     /** 检测UID是否为空 */
     if (!uid) return
 
-    /** 读取设置的正则进行检测是否符合规则 */
     const regex = new RegExp(cfg.UID.正则)
-    if (!regex.test(uid) && !e.isMaster && !gioadmin) {
+    if (!regex.test(uid) && !e.isMaster && !GioAdmin) {
       e.reply([segment.at(e.user_id), cfg.UID.提示])
       return
     }
@@ -304,7 +252,7 @@ export class admin extends plugin {
     const alluid = `${data}/alluid/${cfg.server.ip}-${cfg.server.port}.yaml`
 
     /** 检测玩家是否为管理员  存在at则修改玩家id为被at的玩家 */
-    if ((e.isMaster || gioadmin) && e.at) {
+    if ((e.isMaster || GioAdmin) && e.at) {
       user = e.at
     }
 
@@ -314,7 +262,7 @@ export class admin extends plugin {
     if (fs.existsSync(file)) {
       const UserCfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
 
-      if (e.isMaster || gioadmin) {
+      if (e.isMaster || GioAdmin) {
         UserCfg.uid = uid
         fs.writeFileSync(file, Yaml.stringify(UserCfg))
       } else {
@@ -357,8 +305,8 @@ export class admin extends plugin {
 
   async ServerList(e) {
     const { scenes } = await GetUser(e)
-    const { GM, Mail, birthday, CheckIns, generatecdk, CDK, State, UID, Ban } = await GetState(scenes)
-    if (!GM && !Mail && !birthday && !CheckIns && !generatecdk && !CDK && !State && !UID && !Ban) return
+    const { GM, Mail, birthday, CheckIns, addCdk, CDK, State, UID, Ban } = await GetState(scenes)
+    if (!GM && !Mail && !birthday && !CheckIns && !addCdk && !CDK && !State && !UID && !Ban) return
 
     const list = []
     const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
@@ -385,8 +333,8 @@ export class admin extends plugin {
 
   async 切换服务器(e) {
     const { scenes } = await GetUser(e)
-    const { GM, Mail, birthday, CheckIns, generatecdk, CDK, State, UID, Ban } = await GetState(scenes)
-    if (!GM && !Mail && !birthday && !CheckIns && !generatecdk && !CDK && !State && !UID && !Ban) return
+    const { GM, Mail, birthday, CheckIns, addCdk, CDK, State, UID, Ban } = await GetState(scenes)
+    if (!GM && !Mail && !birthday && !CheckIns && !addCdk && !CDK && !State && !UID && !Ban) return
 
     const list = []
     const file = `${data}/group/${scenes}/config.yaml`
@@ -452,7 +400,7 @@ export class admin extends plugin {
     }
   }
 
-  async 添加UID(e) {
+  async addUID(e) {
     const { scenes } = await GetUser(e)
     const { UID } = await GetState(scenes)
     if (!UID) return
@@ -484,7 +432,7 @@ export class admin extends plugin {
     })
   }
 
-  async 插件更新(e) {
+  async update(e) {
     let local
     e.reply("GM插件更新中...")
 

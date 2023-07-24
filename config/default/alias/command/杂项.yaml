@@ -1,0 +1,680 @@
+传说钥匙:
+  - names:
+      - 传说钥匙
+  - command:
+      - item add 107 500
+天体推演:
+  - names:
+      - 天体推演
+  - command:
+      - item add 108 500
+熄星能量:
+  - names:
+      - 熄星能量
+  - command:
+      - item add 109 500
+熄星精粹:
+  - names:
+      - 熄星精粹
+  - command:
+      - item add 110 500
+微光精粹:
+  - names:
+      - 微光精粹
+  - command:
+      - item add 111 500
+温暖精粹:
+  - names:
+      - 温暖精粹
+  - command:
+      - item add 112 500
+奇迹精粹:
+  - names:
+      - 奇迹精粹
+  - command:
+      - item add 113 500
+铁钱:
+  - names:
+      - 铁钱
+  - command:
+      - item add 114 500
+平安玉符:
+  - names:
+      - 平安玉符
+  - command:
+      - item add 115 500
+节庆热度:
+  - names:
+      - 节庆热度
+  - command:
+      - item add 156 500
+奇术符:
+  - names:
+      - 奇术符
+  - command:
+      - item add 117 500
+庆典巡回券:
+  - names:
+      - 庆典巡回券
+  - command:
+      - item add 118 500
+奇趣协力券:
+  - names:
+      - 奇趣协力券
+  - command:
+      - item add 119 500
+纯水真心:
+  - names:
+      - 纯水真心
+  - command:
+      - item add 120 500
+信任值:
+  - names:
+      - 信任值
+  - command:
+      - item add 121 500
+碎果数据:
+  - names:
+      - 碎果数据
+  - command:
+      - item add 122 500
+迷踪币:
+  - names:
+      - 迷踪币
+  - command:
+      - item add 123 500
+亮闪闪的漂流物:
+  - names:
+      - 亮闪闪的漂流物
+  - command:
+      - item add 124 500
+迷你羽球:
+  - names:
+      - 迷你羽球
+  - command:
+      - item add 125 500
+神秘齿轮:
+  - names:
+      - 神秘齿轮
+  - command:
+      - item add 126 500
+鸣雷霰子:
+  - names:
+      - 鸣雷霰子
+  - command:
+      - item add 127 500
+鸣雷纯晶:
+  - names:
+      - 鸣雷纯晶
+  - command:
+      - item add 128 500
+弈棋术经验:
+  - names:
+      - 弈棋术经验
+  - command:
+      - item add 129 500
+灵妙玉符:
+  - names:
+      - 灵妙玉符
+  - command:
+      - item add 130 500
+逐月节节庆热度:
+  - names:
+      - 逐月节节庆热度
+  - command:
+      - item add 131 500
+残悴之式札:
+  - names:
+      - 残悴之式札
+  - command:
+      - item add 132 500
+虚损之拓本:
+  - names:
+      - 虚损之拓本
+  - command:
+      - item add 133 500
+朽裂之庚牌:
+  - names:
+      - 朽裂之庚牌
+  - command:
+      - item add 134 500
+踏雪章:
+  - names:
+      - 踏雪章
+  - command:
+      - item add 135 500
+克险章:
+  - names:
+      - 克险章
+  - command:
+      - item add 136 500
+逢福玉符:
+  - names:
+      - 逢福玉符
+  - command:
+      - item add 137 500
+完璧玉符:
+  - names:
+      - 完璧玉符
+  - command:
+      - item add 138 500
+降魔玉符:
+  - names:
+      - 降魔玉符
+  - command:
+      - item add 139 500
+幽蕴砺石:
+  - names:
+      - 幽蕴砺石
+  - command:
+      - item add 140 500
+花簇簇的漂流物:
+  - names:
+      - 花簇簇的漂流物
+  - command:
+      - item add 141 500
+战策碎珀:
+  - names:
+      - 战策碎珀
+  - command:
+      - item add 142 500
+巧思手记:
+  - names:
+      - 巧思手记
+  - command:
+      - item add 143 500
+随想草稿:
+  - names:
+      - 随想草稿
+  - command:
+      - item add 144 500
+古铁钱:
+  - names:
+      - 古铁钱
+  - command:
+      - item add 145 500
+牌手经验:
+  - names:
+      - 牌手经验
+  - command:
+      - item add 146 500
+营业收入:
+  - names:
+      - 营业收入
+  - command:
+      - item add 148 500
+可用资金:
+  - names:
+      - 可用资金
+  - command:
+      - item add 149 500
+巧策灵感:
+  - names:
+      - 巧策灵感
+  - command:
+      - item add 150 500
+蘑菇宝钱:
+  - names:
+      - 蘑菇宝钱
+  - command:
+      - item add 151 500
+灵蕈奖章:
+  - names:
+      - 灵蕈奖章
+  - command:
+      - item add 152 500
+绮碎斑晶:
+  - names:
+      - 绮碎斑晶
+  - command:
+      - item add 153 500
+试胆会的票券:
+  - names:
+      - 试胆会的票券
+  - command:
+      - item add 155 500
+逐花券:
+  - names:
+      - 逐花券
+  - command:
+      - item add 157 500
+游乐会热度:
+  - names:
+      - 游乐会热度
+  - command:
+      - item add 158 500
+庆典券:
+  - names:
+      - 庆典券
+  - command:
+      - item add 159 500
+妙骰券:
+  - names:
+      - 妙骰券
+  - command:
+      - item add 160 500
+幸运牌币(废弃):
+  - names:
+      - 幸运牌币(废弃)
+  - command:
+      - item add 205 500
+原粹精珀(废弃):
+  - names:
+      - 原粹精珀(废弃)
+  - command:
+      - item add 210 500
+原粹树脂(废弃):
+  - names:
+      - 原粹树脂(废弃)
+  - command:
+      - item add 211 500
+珍珠纪行·初稿:
+  - names:
+      - 珍珠纪行·初稿
+  - command:
+      - item add 1201 500
+空月祝福·新月:
+  - names:
+      - 空月祝福·新月
+  - command:
+      - item add 1202 500
+新名撰聿:
+  - names:
+      - 新名撰聿
+  - command:
+      - item add 1301 500
+测试随机宝箱:
+  - names:
+      - 测试随机宝箱
+  - command:
+      - item add 3001 500
+测试固定宝箱:
+  - names:
+      - 测试固定宝箱
+  - command:
+      - item add 3002 500
+角色卡扭蛋:
+  - names:
+      - 角色卡扭蛋
+  - command:
+      - item add 3003 500
+纸条:
+  - names:
+      - 纸条
+  - command:
+      - item add 100003 500
+掠夺的货物:
+  - names:
+      - 掠夺的货物
+  - command:
+      - item add 100004 500
+丘丘人解药:
+  - names:
+      - 丘丘人解药
+  - command:
+      - item add 100006 500
+攀爬终点花环:
+  - names:
+      - 攀爬终点花环
+  - command:
+      - item add 100007 500
+飞行终点花环:
+  - names:
+      - 飞行终点花环
+  - command:
+      - item add 100009 500
+飞行冠军奖杯:
+  - names:
+      - 飞行冠军奖杯
+  - command:
+      - item add 100010 500
+深赤之石:
+  - names:
+      - 深赤之石
+  - command:
+      - item add 101007 500
+精锻用杂矿:
+  - names:
+      - 精锻用杂矿
+  - command:
+      - item add 104011 500
+精锻用良矿:
+  - names:
+      - 精锻用良矿
+  - command:
+      - item add 104012 500
+元素晶尘:
+  - names:
+      - 元素晶尘
+  - command:
+      - item add 107002 500
+冒险宝藏包:
+  - names:
+      - 冒险宝藏包
+  - command:
+      - item add 107004 500
+飞天大御剑宝箱:
+  - names:
+      - 飞天大御剑宝箱
+  - command:
+      - item add 107005 500
+逐月符:
+  - names:
+      - 逐月符
+  - command:
+      - item add 107015 500
+对局邀请函:
+  - names:
+      - 对局邀请函
+  - command:
+      - item add 107020 500
+幸运牌币:
+  - names:
+      - 幸运牌币
+  - command:
+      - item add 107021 500
+净光翎:
+  - names:
+      - 净光翎
+  - command:
+      - item add 107022 500
+漂亮的小结晶:
+  - names:
+      - 漂亮的小结晶
+  - command:
+      - item add 111020 500
+漂亮的中结晶:
+  - names:
+      - 漂亮的中结晶
+  - command:
+      - item add 111021 500
+漂亮的大结晶:
+  - names:
+      - 漂亮的大结晶
+  - command:
+      - item add 111022 500
+果酿饵:
+  - names:
+      - 果酿饵
+  - command:
+      - item add 111023 500
+赤糜饵:
+  - names:
+      - 赤糜饵
+  - command:
+      - item add 111024 500
+蠕虫假饵:
+  - names:
+      - 蠕虫假饵
+  - command:
+      - item add 111025 500
+飞蝇假饵:
+  - names:
+      - 飞蝇假饵
+  - command:
+      - item add 111026 500
+荧草饵:
+  - names:
+      - 荧草饵
+  - command:
+      - item add 111027 500
+甘露饵:
+  - names:
+      - 甘露饵
+  - command:
+      - item add 111028 500
+香气四溢的调料:
+  - names:
+      - 香气四溢的调料
+  - command:
+      - item add 141115 500
+霜噬碎屑:
+  - names:
+      - 霜噬碎屑
+  - command:
+      - item add 200101 500
+霜噬结晶:
+  - names:
+      - 霜噬结晶
+  - command:
+      - item add 200102 500
+林野钓竿:
+  - names:
+      - 林野钓竿
+  - command:
+      - item add 200900 500
+风缠:
+  - names:
+      - 风缠
+  - command:
+      - item add 200901 500
+愿者:
+  - names:
+      - 愿者
+  - command:
+      - item add 200902 500
+鸣川鹈饲:
+  - names:
+      - 鸣川鹈饲
+  - command:
+      - item add 200903 500
+长绳系月:
+  - names:
+      - 长绳系月
+  - command:
+      - item add 200904 500
+盘缘:
+  - names:
+      - 盘缘
+  - command:
+      - item add 200905 500
+森林书:
+  - names:
+      - 森林书
+  - command:
+      - item add 220055 500
+试验型超燃灯:
+  - names:
+      - 试验型超燃灯
+  - command:
+      - item add 220060 500
+赤沙石板:
+  - names:
+      - 赤沙石板
+  - command:
+      - item add 220069 500
+说明:风神瞳共鸣石:
+  - names:
+      - 说明:风神瞳共鸣石
+  - command:
+      - item add 221001 500
+说明:岩神瞳共鸣石:
+  - names:
+      - 说明:岩神瞳共鸣石
+  - command:
+      - item add 221002 500
+图谱:岩之寻宝罗盘:
+  - names:
+      - 图谱:岩之寻宝罗盘
+  - command:
+      - item add 221003 500
+图谱:捕风瓶:
+  - names:
+      - 图谱:捕风瓶
+  - command:
+      - item add 221004 500
+说明:口袋锚点:
+  - names:
+      - 说明:口袋锚点
+  - command:
+      - item add 221005 500
+图谱:寻仙的美食家:
+  - names:
+      - 图谱:寻仙的美食家
+  - command:
+      - item add 221006 500
+说明:浓缩树脂:
+  - names:
+      - 说明:浓缩树脂
+  - command:
+      - item add 221007 500
+图谱:叁零式·便携营养袋:
+  - names:
+      - 图谱:叁零式·便携营养袋
+  - command:
+      - item add 221008 500
+图谱:风之寻宝罗盘:
+  - names:
+      - 图谱:风之寻宝罗盘
+  - command:
+      - item add 221009 500
+雪葬之都的记忆:
+  - names:
+      - 雪葬之都的记忆
+  - command:
+      - item add 221010 500
+忍冬之树的记忆:
+  - names:
+      - 忍冬之树的记忆
+  - command:
+      - item add 221011 500
+图谱:龙脊长枪:
+  - names:
+      - 图谱:龙脊长枪
+  - command:
+      - item add 221012 500
+柴门家传的名刀图谱:
+  - names:
+      - 柴门家传的名刀图谱
+  - command:
+      - item add 221013 500
+图谱:桂木斩长正:
+  - names:
+      - 图谱:桂木斩长正
+  - command:
+      - item add 221014 500
+图谱:喜多院十文字:
+  - names:
+      - 图谱:喜多院十文字
+  - command:
+      - item add 221015 500
+图谱:破魔之弓:
+  - names:
+      - 图谱:破魔之弓
+  - command:
+      - item add 221016 500
+图谱:放热瓶:
+  - names:
+      - 图谱:放热瓶
+  - command:
+      - item add 221017 500
+附有记忆的面具:
+  - names:
+      - 附有记忆的面具
+  - command:
+      - item add 221018 500
+关于森林王的故事:
+  - names:
+      - 关于森林王的故事
+  - command:
+      - item add 221019 500
+关于沙漠的故事:
+  - names:
+      - 关于沙漠的故事
+  - command:
+      - item add 221020 500
+关于王的侍从的故事:
+  - names:
+      - 关于王的侍从的故事
+  - command:
+      - item add 221021 500
+关于月光的故事:
+  - names:
+      - 关于月光的故事
+  - command:
+      - item add 221022 500
+关于异兆的故事:
+  - names:
+      - 关于异兆的故事
+  - command:
+      - item add 221023 500
+说明:雷神瞳共鸣石:
+  - names:
+      - 说明:雷神瞳共鸣石
+  - command:
+      - item add 221032 500
+图谱:雷之寻宝罗盘:
+  - names:
+      - 图谱:雷之寻宝罗盘
+  - command:
+      - item add 221034 500
+配方:果酿饵:
+  - names:
+      - 配方:果酿饵
+  - command:
+      - item add 221035 500
+配方:赤糜饵:
+  - names:
+      - 配方:赤糜饵
+  - command:
+      - item add 221036 500
+配方:蠕虫假饵:
+  - names:
+      - 配方:蠕虫假饵
+  - command:
+      - item add 221037 500
+配方:飞蝇假饵:
+  - names:
+      - 配方:飞蝇假饵
+  - command:
+      - item add 221038 500
+配方:甘露饵:
+  - names:
+      - 配方:甘露饵
+  - command:
+      - item add 221039 500
+说明:草神瞳共鸣石:
+  - names:
+      - 说明:草神瞳共鸣石
+  - command:
+      - item add 221057 500
+图谱:草之寻宝罗盘:
+  - names:
+      - 图谱:草之寻宝罗盘
+  - command:
+      - item add 221058 500
+绘绮之枕印:
+  - names:
+      - 绘绮之枕印
+  - command:
+      - item add 222001 500
+烟林之真果:
+  - names:
+      - 烟林之真果
+  - command:
+      - item add 222002 500
+初级牌手徽章:
+  - names:
+      - 初级牌手徽章
+  - command:
+      - item add 339901 500
+高级牌手徽章:
+  - names:
+      - 高级牌手徽章
+  - command:
+      - item add 339902 500
+专家牌手徽章:
+  - names:
+      - 专家牌手徽章
+  - command:
+      - item add 339903 500
+大师牌手徽章:
+  - names:
+      - 大师牌手徽章
+  - command:
+      - item add 339904 500
+传说牌手徽章:
+  - names:
+      - 传说牌手徽章
+  - command:
+      - item add 339905 500

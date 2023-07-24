@@ -1,0 +1,80 @@
+桦木:
+  - names:
+      - 桦木
+  - command:
+      - item add 101301 500
+萃华木:
+  - names:
+      - 萃华木
+  - command:
+      - item add 101302 500
+松木:
+  - names:
+      - 松木
+  - command:
+      - item add 101303 500
+却砂木:
+  - names:
+      - 却砂木
+  - command:
+      - item add 101304 500
+竹节:
+  - names:
+      - 竹节
+  - command:
+      - item add 101305 500
+垂香木:
+  - names:
+      - 垂香木
+  - command:
+      - item add 101307 500
+杉木:
+  - names:
+      - 杉木
+  - command:
+      - item add 101308 500
+梦见木:
+  - names:
+      - 梦见木
+  - command:
+      - item add 101309 500
+枫木:
+  - names:
+      - 枫木
+  - command:
+      - item add 101310 500
+孔雀木:
+  - names:
+      - 孔雀木
+  - command:
+      - item add 101311 500
+御伽木:
+  - names:
+      - 御伽木
+  - command:
+      - item add 101312 500
+辉木:
+  - names:
+      - 辉木
+  - command:
+      - item add 101313 500
+业果木:
+  - names:
+      - 业果木
+  - command:
+      - item add 101314 500
+证悟木:
+  - names:
+      - 证悟木
+  - command:
+      - item add 101315 500
+刺葵木:
+  - names:
+      - 刺葵木
+  - command:
+      - item add 101316 500
+柽木:
+  - names:
+      - 柽木
+  - command:
+      - item add 101317 500

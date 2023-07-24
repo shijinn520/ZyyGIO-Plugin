@@ -1,0 +1,81 @@
+下雨天:
+  - names:
+      - 下雨天
+  - command:
+      - weather rain
+晴天:
+  - names:
+      - 晴天
+  - command:
+      - weather sun
+雨天:
+  - names:
+      - 雨天
+  - command:
+      - weather rain
+炎热:
+  - names:
+      - 炎热
+  - command:
+      - weather hot
+cloud:
+  - names:
+      - cloud
+  - command:
+      - weather cloud
+雷雨:
+  - names:
+      - 雷雨
+  - command:
+      - weather thuner
+多云:
+  - names:
+      - 多云
+  - command:
+      - weather cloud
+暴风雨:
+  - names:
+      - 暴风雨
+  - command:
+      - weather storm
+闪电:
+  - names:
+      - 闪电
+  - command:
+      - weather lightning
+雪天:
+  - names:
+      - 雪天
+      - 下雪
+  - command:
+      - weather snow
+严寒:
+  - names:
+      - 严寒
+  - command:
+      - weather freeze
+霜冻:
+  - names:
+      - 霜冻
+  - command:
+      - weather frost
+冰天雪地:
+  - names:
+      - 冰天雪地
+  - command:
+      - weather ice
+薄雾:
+  - names:
+      - 薄雾
+  - command:
+      - weather mist
+大雾:
+  - names:
+      - 大雾
+  - command:
+      - weather fog
+沙漠:
+  - names:
+      - 沙漠
+  - command:
+      - weather desert

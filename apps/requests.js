@@ -3,7 +3,7 @@ import http from 'http'
 import Yaml from 'yaml'
 import crypto from 'crypto'
 import schedule from 'node-schedule'
-import { GetUser, GetServer, GetState } from './request.js'
+import { GetUser, GetServer, GetState } from './app.js'
 
 let state = true
 const { data, config } = global.ZhiYu

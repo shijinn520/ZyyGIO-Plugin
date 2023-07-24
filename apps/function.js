@@ -1,15 +1,9 @@
 import fs from 'fs'
 import Yaml from 'yaml'
 import schedule from 'node-schedule'
-import {
-  ComputeGM,
-  ComputeMail,
-  Request,
-  GetServer,
-  GetUser,
-  GetState,
-  GetPassList
-} from './request.js'
+import { construct } from './regex.js'
+import { ComputeGM, ComputeMail, Request } from './request.js'
+import { GetServer, GetUser, GetState, GetPassList } from './app.js'
 
 const { data, config } = global.ZhiYu
 
@@ -20,37 +14,7 @@ export class ZhiYu extends plugin {
       dsc: '构建请求参数',
       event: 'message',
       priority: -50,
-      rule: [
-        {
-          reg: '^\/?签到$',
-          fnc: '签到'
-        },
-        {
-          reg: '^/(.*)$',
-          fnc: 'GM命令'
-        },
-        {
-          reg: /^\/?兑换(.*)$/,
-          fnc: '兑换码'
-        },
-        {
-          reg: '^\/?(ping|在线玩家|在线人数|状态)$',
-          fnc: '服务器状态',
-        },
-        {
-          reg: '^\/?(子区|子服)$',
-          fnc: '子区',
-        },
-        {
-          reg: '^\/?邮件 (.*)$',
-          fnc: '邮件'
-        },
-        {
-          reg: /^\/?(一键|解除)?封禁(.*)$/g,
-          fnc: '封禁玩家',
-          permission: 'master'
-        }
-      ]
+      rule: construct
     })
   }
 
@@ -133,11 +97,11 @@ export class ZhiYu extends plugin {
         }
       }
     }
+    
     /** 黑白名单 */
-    const { intercept } = await GetPassList(e.msg)
-    if (!e.isMaster && !GioAdmin) {
-      if (!intercept) return
-    }
+    const { blacklists, intercept } = await GetPassList(e, GioAdmin, item_list)
+    if (!e.isMaster && !blacklists) return
+    if (!e.isMaster && !GioAdmin && !intercept) return
 
     const now = Math.floor(Date.now() / 1000)
     const expire_time = (now + (30 * 24 * 60 * 60)).toString()
@@ -148,34 +112,54 @@ export class ZhiYu extends plugin {
     Request(e, mode, urls, uid)
   }
 
-  async GM命令(e) {
+  async GMCommand(e) {
     const { scenes, uid, GioAdmin } = await GetUser(e)
     const { GM } = await GetState(scenes)
     if (!GM || !uid) return
 
-    /** 黑白名单 */
-    let state = true
-    const { intercept } = await GetPassList(e.msg)
-
     let msg = [e.msg.slice(e.msg.indexOf('/') + 1)]
-    /** 加载全局变量中的别名 */
-    // const cfg = global.ZhiYu.alias
-    for (const key in global.ZhiYu.alias) {
-      const obj = global.ZhiYu.alias[key]
-      const names = obj[0].names
-      if (names && names.includes(msg[0])) {
-        msg = obj[1].command
-        if (!(e.isMaster || GioAdmin) && !intercept) {
-          state = false
-        }
-        break
+    if (!e.msg.includes("/")) {
+      const newmsg = e.msg.replace(/[\u4e00-\u9fff]+/g, '')
+      if (!newmsg) {
+        return e.reply("不存在的任务id")
       }
-    }
 
-    /** 未通过黑白名单停止代码 */
-    if (!state && !intercept) {
-      state = true
-      return
+      const commands = {
+        "添加任务": `quest accept ${newmsg}`,
+        "完成任务": `quest finish ${newmsg}`,
+        "清除父任务": `quest clear father ${newmsg}`,
+        "完成父任务": `quest finish father ${newmsg}`
+      }
+
+      if (Object.keys(commands).some(keyword => e.msg.includes(keyword))) {
+        const newcommands = Object.keys(commands).find(keyword => e.msg.includes(keyword))
+        msg = [commands[newcommands]]
+      } else {
+        return e.reply("未知错误，请检查指令")
+      }
+    } else {
+      /** 变量全局变量中的别名 寻找匹配的值 */
+      for (const key in global.ZhiYu.list) {
+        const obj = global.ZhiYu.list[key]
+        const names = obj[0].names
+        if (names && names.includes(msg[0])) {
+          msg = obj[1].command
+          break
+        }
+      }
+
+      /** 非管理员判断是否命令是否存在黑名单中 */
+      for (const key in msg) {
+        const value = msg[key]
+        const { blacklists, intercept } = await GetPassList(e, GioAdmin, value)
+        if (!e.isMaster && !blacklists) return
+        if (!e.isMaster && !GioAdmin && !intercept) return
+      }
+
+      /** 未找到匹配的值后还是中文后停止请求... */
+      if (/[\u4e00-\u9fff]/.test(msg[0])) {
+        return e.reply([segment.at(e.user_id), `无此别名，请使用[#别名列表]查看已有别名`])
+      }
     }
 
     const urls = []
@@ -273,7 +257,7 @@ export class ZhiYu extends plugin {
     Request(e, mode, urls)
 
   }
-  
+
   async 子区(e) {
     const { scenes } = await GetUser(e)
     const { State } = await GetState(scenes)

@@ -1,0 +1,100 @@
+"2942095588":
+  - names:
+      - 2942095588
+  - command:
+      - item add 2800
+元素能量球(火):
+  - names:
+      - 元素能量球(火)
+  - command:
+      - item add 2001
+元素能量球(水):
+  - names:
+      - 元素能量球(水)
+  - command:
+      - item add 2002
+元素能量球(草):
+  - names:
+      - 元素能量球(草)
+  - command:
+      - item add 2003
+元素能量球(电):
+  - names:
+      - 元素能量球(电)
+  - command:
+      - item add 2004
+元素能量球(风):
+  - names:
+      - 元素能量球(风)
+  - command:
+      - item add 2005
+元素能量球(冰):
+  - names:
+      - 元素能量球(冰)
+  - command:
+      - item add 2006
+元素能量球(岩):
+  - names:
+      - 元素能量球(岩)
+  - command:
+      - item add 2007
+元素能量球(全):
+  - names:
+      - 元素能量球(全)
+  - command:
+      - item add 2008
+原子能量球(火):
+  - names:
+      - 原子能量球(火)
+  - command:
+      - item add 2017
+原子能量球(水):
+  - names:
+      - 原子能量球(水)
+  - command:
+      - item add 2018
+原子能量球(草):
+  - names:
+      - 原子能量球(草)
+  - command:
+      - item add 2019
+原子能量球(电):
+  - names:
+      - 原子能量球(电)
+  - command:
+      - item add 2020
+原子能量球(风):
+  - names:
+      - 原子能量球(风)
+  - command:
+      - item add 2021
+原子能量球(冰):
+  - names:
+      - 原子能量球(冰)
+  - command:
+      - item add 2022
+原子能量球(岩):
+  - names:
+      - 原子能量球(岩)
+  - command:
+      - item add 2023
+原子能量球(全):
+  - names:
+      - 原子能量球(全)
+  - command:
+      - item add 2024
+任务用-超量原子能量球(全):
+  - names:
+      - 任务用-超量原子能量球(全)
+  - command:
+      - item add 2025
+时间碎片(玩法道具):
+  - names:
+      - 时间碎片(玩法道具)
+  - command:
+      - item add 2027
+任务用-元素蜜囊原子能量球:
+  - names:
+      - 任务用-元素蜜囊原子能量球
+  - command:
+      - item add 2029

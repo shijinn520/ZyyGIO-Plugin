@@ -1,17 +1,7 @@
-/*
- * @Author: Zyy.小钰 1072411694@qq.com
- * @Date: 2023-07-17 16:42:35
- * @LastEditors: Zyy.小钰 1072411694@qq.com
- * @LastEditTime: 2023-07-19 23:33:49
- * @FilePath: \Yunzai\plugins\ZhiYu-plugin\apps\request.js
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
 import fs from 'fs'
 import Yaml from 'yaml'
-import moment from 'moment'
 import crypto from 'crypto'
 import fetch from 'node-fetch'
-
 const { data, config } = global.ZhiYu
 
 /** 构建自定义请求参数，计算sign */
@@ -89,6 +79,7 @@ export async function Request(e = {}, mode, urls = [], uid) {
     Promise.all(fetchResults)
         .then(responses => {
             responses.forEach(response => {
+                1202
                 if (response.ok) {
                     response.json()
                         .then(outcome => {
@@ -99,21 +90,32 @@ export async function Request(e = {}, mode, urls = [], uid) {
                             let datamsg = outcome.data?.msg || {}
 
                             const ErrorCode = {
-                                4: `又不在线，再发我顺着网线打死你！╭(╯^╰)╮`,
+                                4: "又不在线，再发我顺着网线打死你！╭(╯^╰)╮",
                                 17: `\n失败 -> 账户不存在\nuid：${uid}`,
+                                104: `失败：${datamsg}  ->  ${uid}\n原因：无此角色...`,
+                                105: "失败 -> 无法删除角色，请勿将角色放置队伍中...",
+                                609: `失败：${datamsg}  ->  ${uid}\n原因：物品数量不足`,
                                 617: `失败：${datamsg}  ->  ${uid}\n原因：数量超出限制`,
+                                626: `失败：${datamsg}  ->  ${uid}\n原因：货币超出限制`,
                                 627: `失败：${datamsg}  ->  ${uid}\n原因：数量超出限制`,
+                                640: `失败：${datamsg}  ->  ${uid}\n原因：数量超出限制`,
+                                642: "失败 -> 装备超过限制",
+                                647: "失败 -> 返回物品数量为0",
+                                661: "失败 -> 树脂超过限制",
+                                860: `失败：${datamsg}  ->  ${uid}\n原因：活动已关闭`,
                                 1002: `失败 -> ${outcome.msg.replace(/para error/g, '段落错误')}`,
-                                1003: `失败，服务器验证签名错误`,
-                                1010: `失败，服务器区服不匹配`,
-                                1117: `失败 -> 未达到副本要求等级`,
-                                1202: `失败 -> 处于多人模式非房主`,
-                                1311: `失败 -> 禁止发送「创世结晶」`,
-                                1312: `失败 -> 游戏货币超限`,
-                                1316: `失败 -> 游戏货币超限`,
-                                2006: `失败 -> 禁止重复发送邮件`,
-                                2028: `失败 -> 邮件日期设置错误，请修改[expire_time`,
-                                8002: `失败，传说钥匙超过限制`,
+                                1003: "失败，服务器验证签名错误",
+                                1010: "失败，服务器区服不匹配",
+                                1117: "失败 -> 未达到副本要求等级",
+                                1202: "失败 -> 处于多人模式非房主",
+                                1311: "失败 -> 禁止发送「创世结晶」",
+                                1312: "失败 -> 游戏货币超限",
+                                1313: "失败 -> 超出邮件发送货币限制",
+                                1315: "失败 -> 超出邮件发送角色限制",
+                                1316: "失败 -> 游戏货币超限",
+                                2006: "失败 -> 禁止重复发送邮件",
+                                2028: "失败 -> 邮件日期设置错误，请修改「expire_time」",
+                                8002: "失败，传说钥匙超过限制",
                                 "-1": "", // 添加空字符串作为默认处理消息
                             }
 
@@ -199,7 +201,7 @@ function SubService(cfg) {
     return `game数量：${Object.keys(games).length}\n详细人数：\n${players}`
 }
 
-/** 通用 */
+/** 通用状态处理 */
 function restall(e, succ, fail) {
     if (succ.length === 0) {
         return [segment.at(e.user_id), `\n${fail.join('\n')}`]
@@ -276,152 +278,3 @@ function Banned(msg) {
     return Reply
 }
 
-
-
-
-
-/** 插件功能状态 */
-export async function GetState(scenes) {
-    const Groupcfg = `${data}/group/${scenes}/config.yaml`
-    let GM = false
-    let Mail = false
-    let birthday = false
-    let CheckIns = false
-    let generatecdk = false
-    let CDK = false
-    let State = false
-    let UID = false
-    let Ban = false
-
-    if (!fs.existsSync(Groupcfg)) {
-        console.log(`\x1b[31m[ZhiYu]当前群聊 ${scenes} 未初始化\x1b[0m`)
-    } else {
-        const cfg = Yaml.parse(fs.readFileSync(Groupcfg, 'utf8'))
-        GM = cfg.GM.状态 ? true : false
-        Mail = cfg.邮件.状态 ? true : false
-        birthday = cfg.生日邮件.状态 ? true : false
-        CheckIns = cfg.签到.状态 ? true : false
-        generatecdk = cfg.生成cdk.状态 ? true : false
-        CDK = cfg.兑换码.状态 ? true : false
-        State = cfg.在线玩家.状态 ? true : false
-        UID = cfg.UID.状态 ? true : false
-        Ban = cfg.封禁.状态 ? true : false
-    }
-
-    return { GM, Mail, birthday, CheckIns, generatecdk, CDK, State, UID, Ban }
-}
-
-
-/**
- * qwq生成各种请求参数~
- * @returns {Promise<{
-* ticket: "muip请求令牌",
-* MailSender: "普通邮件发件人",
-* CheckInSender: "每日签到-发件人",
-* CheckInTitle: "每日签到-标题",
-* CheckInContent: "每日签到-内容",
-* CreateKey: "生成cdk密钥",
-* CreateGroup: "cdk使用的群聊",
-* CdkSender: "cdk兑换-发件人",
-* CdkTitle: "cdk兑换-标题",
-* CdkContent: "cdk兑换-内容"
-* }>}
-*/
-export async function GetServer(e = {}) {
-    const trss = e.group_id.toString().replace("qg_", "")
-    const scenes = e.group_name === "频道插件" ? `${e.group_id}-${e.member.info.group_id}` : trss
-
-    let ip = false
-    let port = false
-    let region = false
-    let sign = false
-    let ticket = false
-    let MailSender = false
-    let CheckInSender = false
-    let CheckInTitle = false
-    let CheckInContent = false
-    let CreateKey = false
-    let CreateGroup = false
-    let CdkSender = false
-    let CdkTitle = false
-    let CdkContent = false
-    let regex = false
-    let BanTitle = false
-    let BanTime = false
-
-    const file = `${data}/group/${scenes}/config.yaml`
-    if (fs.existsSync(file)) {
-        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
-        ip = cfg.server.ip
-        port = cfg.server.port
-        region = cfg.server.region
-        sign = cfg.server.sign
-        ticket = `Zyy955${moment().format('YYYYMMDDHHmmss')}`
-        MailSender = cfg.邮件.发件人
-        CheckInSender = cfg.签到.发件人
-        CheckInTitle = cfg.签到.标题
-        CheckInContent = cfg.签到.内容
-        CreateKey = cfg.生成cdk.key
-        CreateGroup = cfg.生成cdk.群聊id
-        CdkTitle = cfg.兑换码.标题
-        CdkSender = cfg.兑换码.发件人
-        CdkContent = cfg.兑换码.内容
-        BanTitle = cfg.封禁文案
-        BanTime = cfg.默认封禁时间
-    }
-
-    return {
-        ip, port, region, sign, ticket, MailSender, CheckInSender, CheckInTitle,
-        CheckInContent, CreateKey, CreateGroup, CdkSender, CdkTitle, CdkContent, BanTitle, BanTime
-    }
-}
-
-/** 用户管理 */
-export async function GetUser(e = {}) {
-    let uid = false
-    let GioAdmin = false
-
-    const trss = e.group_id.toString().replace("qg_", "")
-    const scenes = e.group_name === "频道插件" ? `${e.group_id}-${e.member.info.group_id}` : trss
-    const file = `${data}/user/${e.user_id.toString().replace("qg_", "")}.yaml`
-
-    if (!fs.existsSync(file)) {
-        e.reply([segment.at(e.user_id), "\n清先绑定UID\n格式：绑定+UID\n举例：绑定100001"])
-    }
-    else {
-        const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
-        uid = cfg.uid
-        GioAdmin = cfg.Administrator ? true : false
-    }
-    return { scenes, uid, GioAdmin }
-}
-
-/** 黑白名单 */
-export async function GetPassList(msg) {
-    let blocklist = ''
-    let intercept = ''
-
-    const other = Yaml.parse(fs.readFileSync(`${config}/other.yaml`, 'utf8'))
-    if (!other.whitelist || other.whitelist.length === 0) {
-        for (let i = 0; i < other.blacklist.length; i++) {
-            blocklist += `(${other.blacklist[i].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})|`
-        }
-        blocklist = blocklist.slice(0, -1)
-        intercept = !((new RegExp(`^.*(${blocklist})\\.*`)).test(msg))
-        if (!intercept) {
-            logger.mark(`${msg} 存在黑名单中`)
-        }
-    }
-    else {
-        for (let i = 0; i < other.whitelist.length; i++) {
-            blocklist += `(${other.whitelist[i].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})|`
-        }
-        blocklist = blocklist.slice(0, -1)
-        intercept = (new RegExp(`^.*(${blocklist})\\.*`)).test(msg)
-        if (!intercept) {
-            logger.mark(`${msg} 不存在白名单中`)
-        }
-    }
-
-    return { intercept }
-}
