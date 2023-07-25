@@ -6,7 +6,7 @@ import schedule from 'node-schedule'
 import { GetUser, GetServer, GetState } from './app.js'
 
 let state = true
-const { data, config } = global.ZhiYu
+const { data, config, alias } = global.ZhiYu
 
 export class mails extends plugin {
     constructor() {
@@ -42,7 +42,7 @@ export class mails extends plugin {
         e.reply([segment.at(e.user_id), `正在执行...预计需要10-20分钟...`])
         const { ip, port, region, sign, ticket, MailSender } = await GetServer(e)
 
-        const cfg = Yaml.parse(fs.readFileSync(`${config}/mail.yaml`, 'utf8'))
+        const cfg = Yaml.parse(fs.readFileSync(`${alias}/mail/mail.yaml`, 'utf8'))
         const msg = e.msg.split(' ')
         let uids
         let title = msg[1]
