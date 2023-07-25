@@ -113,11 +113,26 @@ export async function GetUser(e = {}) {
         if (!e.msg.includes("绑定")) {
             e.reply([segment.at(e.user_id), "\n请先绑定UID\n格式：绑定+UID\n举例：绑定100001"])
         }
-    }
-    else {
+    } else {
+        const group_id = [
+            "qg_1369845330226814621-590788843", // gm
+            "qg_1369845330226814621-590787809", // 绑定
+            "qg_1369845330226814621-590787024", // 签到
+        ]
         const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
-        uid = cfg.uid
-        GioAdmin = cfg.Administrator ? true : false
+        if (group_id.includes(e.group_id)) {
+            if (!cfg.live_uid) {
+                if (!e.msg.includes("绑定")) {
+                    e.reply([segment.at(e.user_id), "\n请先绑定UID\n格式：绑定+UID\n举例：绑定100001"])
+                }
+            } else {
+                uid = cfg.live_uid
+                GioAdmin = cfg.Administrator ? true : false
+            }
+        } else {
+            uid = cfg.uid
+            GioAdmin = cfg.Administrator ? true : false
+        }
     }
     return { scenes, uid, GioAdmin }
 }
@@ -165,4 +180,9 @@ export async function GetPassList(e, GioAdmin, msg) {
     }
 
     return { blacklists, intercept }
+}
+
+/**网页cdk生成文件转发至QQ群 */
+export async function Gettxt(txtfile) {
+  return Bot.pickGroup("279942511").fs.upload(txtfile)
 }
