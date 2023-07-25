@@ -226,8 +226,6 @@ export class ZhiYu extends plugin {
   }
 
   async personalUID(e) {
-    // 171开头为1.6live玩家
-    // 100 137开头为3.4玩家
     const { scenes, GioAdmin } = await GetUser(e)
     const { UID } = await GetState(scenes)
     if (!UID) {
@@ -238,11 +236,71 @@ export class ZhiYu extends plugin {
     }
 
     const uid = e.msg.replace(/[^0-9]/g, '')
-    if (uid.includes("171")) {
-      e.reply(live(e, uid, scenes, GioAdmin))
-    } else {
-      e.reply(client(e, uid, scenes, GioAdmin))
+    const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
+
+    /** 检测UID是否为空 */
+    if (!uid) return
+
+    const regex = new RegExp(cfg.UID.正则)
+    if (!regex.test(uid) && !e.isMaster && !GioAdmin) {
+      e.reply([segment.at(e.user_id), cfg.UID.提示])
+      return
     }
+
+    /** 玩家群聊ID */
+    let user = e.user_id
+    const alluid = `${data}/alluid/${cfg.server.ip}-${cfg.server.port}.yaml`
+
+    /** 检测玩家是否为管理员  存在at则修改玩家id为被at的玩家 */
+    if ((e.isMaster || GioAdmin) && e.at) {
+      user = e.at
+    }
+
+    /** 用户配置路径 */
+    const file = `${data}/user/${user.toString().replace("qg_", "")}.yaml`
+    // 检测是否存在对应的配置文件
+    if (fs.existsSync(file)) {
+      const UserCfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
+
+      if (e.isMaster || GioAdmin) {
+        UserCfg.uid = uid
+        fs.writeFileSync(file, Yaml.stringify(UserCfg))
+      } else {
+        // 非管理员
+        e.reply([segment.at(user), `\n当前已绑定的UID：${UserCfg.uid}\n如需换绑，请联系管理人员，请遵守规则哦`])
+        return
+      }
+    } else {
+      // 不存在配置文件
+      const NewUser = {
+        uid: uid,
+        Administrator: false
+      }
+      fs.writeFileSync(file, Yaml.stringify(NewUser))
+    }
+
+    /** 添加检测防止崩溃 */
+    if (!fs.existsSync(alluid)) {
+      fs.writeFileSync(alluid, ' - "0"\n')
+    }
+
+    // 写入全服uid
+    const existingstrings = []
+    const readstream = fs.createReadStream(alluid, { encoding: 'utf8' })
+    readstream.on('data', (chunk) => {
+      existingstrings.push(chunk)
+    })
+    readstream.on('end', () => {
+      const existingArray = Yaml.parse(existingstrings.join(''))
+      const isUidExists = existingArray.includes(uid)
+
+      if (!isUidExists) {
+        const stream = fs.createWriteStream(alluid, { flags: 'a' })
+        stream.write(` - "${parseInt(uid)}"\n`)
+        stream.end()
+      }
+    })
+    e.reply([segment.at(user), `绑定成功\n你的UID为：${uid}`])
   }
 
   async ServerList(e) {
@@ -436,155 +494,4 @@ export class ZhiYu extends plugin {
       })
     })
   }
-}
-
-/** 1.6 */
-function live(e, uuid, scenes, GioAdmin) {
-  const uid = uuid
-
-  if (!/^171\d{6}$/.test(uid) && !(e.isMaster || GioAdmin)) {
-    return [segment.at(e.user_id), "UID不符合规则，请检查UID位数"]
-  }
-
-  const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
-  /** 玩家群聊ID */
-  let user = e.user_id
-
-  /** 检测玩家是否为管理员  存在at则修改玩家id为被at的玩家 */
-  if ((e.isMaster || GioAdmin) && e.at) {
-    user = e.at
-  }
-
-  /** 用户配置路径 */
-  const file = `${data}/user/${user.toString().replace("qg_", "")}.yaml`
-  // 检测是否存在对应的配置文件
-  if (fs.existsSync(file)) {
-    const UserCfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
-    const livekey = "live_uid"
-    // 检查是否存在目标键
-    if (!(livekey in UserCfg)) {
-      UserCfg[livekey] = uid
-      fs.writeFileSync(file, Yaml.stringify(UserCfg), 'utf8')
-    } else if (UserCfg[livekey] === "0") {
-      /** 等于0则代表存在配置没有绑定过 */
-      UserCfg[livekey] = uid
-      fs.writeFileSync(file, Yaml.stringify(UserCfg), 'utf8')
-    } else {
-      /** 不等于0代表存在uid 判断是否管理 */
-      if (e.isMaster || GioAdmin) {
-        UserCfg[livekey] = uid
-        fs.writeFileSync(file, Yaml.stringify(UserCfg), 'utf8')
-      } else {
-        /** 非管理员 */
-        return [segment.at(user), `\n当前已绑定的UID：${UserCfg[livekey]}\n如需换绑，请联系管理人员，请遵守规则哦`]
-      }
-    }
-  } else {
-    /** 不存在配置默认把3.4的uid设置为0 */
-    const NewUser = {
-      uid: "0",
-      live_uid: uid,
-      Administrator: false
-    }
-
-    fs.writeFileSync(file, Yaml.stringify(NewUser), 'utf8')
-  }
-
-  /** 添加检测防止崩溃 1.6live单独配置全服uid */
-  const alluid = `${data}/alluid/1.6live_${cfg.server.ip}-${cfg.server.port}.yaml`
-  if (!fs.existsSync(alluid)) {
-    fs.writeFileSync(alluid, ' - "0"\n')
-  }
-
-  // 写入全服uid
-  const existingstrings = []
-  const readstream = fs.createReadStream(alluid, { encoding: 'utf8' })
-  readstream.on('data', (chunk) => {
-    existingstrings.push(chunk)
-  })
-  readstream.on('end', () => {
-    const existingArray = Yaml.parse(existingstrings.join(''))
-    const isUidExists = existingArray.includes(uid)
-
-    if (!isUidExists) {
-      const stream = fs.createWriteStream(alluid, { flags: 'a' })
-      stream.write(` - "${parseInt(uid)}"\n`)
-      stream.end()
-    }
-  })
-  return [segment.at(user), `绑定成功\n你的UID为：${uid}`]
-}
-
-/** 3.4 */
-function client(e, uuid, scenes, GioAdmin) {
-  const uid = uuid
-  const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
-
-  const regex = new RegExp(cfg.UID.正则)
-  if (!regex.test(uid) && !e.isMaster && !GioAdmin) {
-    return [segment.at(e.user_id), cfg.UID.提示]
-  }
-
-  /** 玩家群聊ID */
-  let user = e.user_id
-
-  /** 检测玩家是否为管理员  存在at则修改玩家id为被at的玩家 */
-  if ((e.isMaster || GioAdmin) && e.at) {
-    user = e.at
-  }
-
-  /** 用户配置路径 */
-  const file = `${data}/user/${user.toString().replace("qg_", "")}.yaml`
-  // 检测是否存在对应的配置文件
-  if (fs.existsSync(file)) {
-    const UserCfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
-
-    if (UserCfg.uid === "0") {
-      /** 等于0则代表存在配置没有绑定过 */
-      UserCfg.uid = uid
-      fs.writeFileSync(file, Yaml.stringify(UserCfg), 'utf8')
-    } else {
-      /** 不等于0代表存在uid 判断是否管理 */
-      if (e.isMaster || GioAdmin) {
-        UserCfg.uid = uid
-        fs.writeFileSync(file, Yaml.stringify(UserCfg), 'utf8')
-      } else {
-        /** 非管理员 */
-        return [segment.at(user), `\n当前已绑定的UID：${UserCfg.uid}\n如需换绑，请联系管理人员，请遵守规则哦`]
-      }
-    }
-  } else {
-    /** 不存在配置默认把3.4的uid设置为0 */
-    const NewUser = {
-      uid: uid,
-      live_uid: "0",
-      Administrator: false
-    }
-
-    fs.writeFileSync(file, Yaml.stringify(NewUser), 'utf8')
-  }
-
-  /** 添加检测防止崩溃 */
-  const alluid = `${data}/alluid/${cfg.server.ip}-${cfg.server.port}.yaml`
-  if (!fs.existsSync(alluid)) {
-    fs.writeFileSync(alluid, ' - "0"\n')
-  }
-
-  // 写入全服uid
-  const existingstrings = []
-  const readstream = fs.createReadStream(alluid, { encoding: 'utf8' })
-  readstream.on('data', (chunk) => {
-    existingstrings.push(chunk)
-  })
-  readstream.on('end', () => {
-    const existingArray = Yaml.parse(existingstrings.join(''))
-    const isUidExists = existingArray.includes(uid)
-
-    if (!isUidExists) {
-      const stream = fs.createWriteStream(alluid, { flags: 'a' })
-      stream.write(` - "${parseInt(uid)}"\n`)
-      stream.end()
-    }
-  })
-  return [segment.at(user), `绑定成功\n你的UID为：${uid}`]
 }

@@ -5,8 +5,3 @@ config/Quest
 data/alluid/*.yaml
 data/group
 data/user/*.yaml
-node_modules
-package.json
-package-lock.json
-webCDK
-apps/webCDK.js
