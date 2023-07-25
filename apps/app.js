@@ -90,8 +90,8 @@ export async function GetServer(e = {}) {
         CdkTitle = cfg.兑换码.标题
         CdkSender = cfg.兑换码.发件人
         CdkContent = cfg.兑换码.内容
-        BanTitle = cfg.封禁文案
-        BanTime = cfg.默认封禁时间
+        BanTitle = cfg.封禁.封禁文案
+        BanTime = cfg.封禁.封禁时间
     }
 
     return {

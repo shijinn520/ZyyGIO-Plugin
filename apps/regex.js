@@ -90,7 +90,7 @@ export const construct = [
         fnc: '邮件'
     },
     {
-        reg: /^\/?(一键|解除)?封禁.+$/g,
+        reg: /^#(封|解)禁.+$/g,
         fnc: '封禁玩家',
         permission: 'master'
     }

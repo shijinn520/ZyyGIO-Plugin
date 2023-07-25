@@ -123,7 +123,7 @@ export async function Request(e = {}, mode, urls = [], uid) {
                                 const modelist = {
                                     "在线玩家": () => e.reply(ping(outcome.data)),
                                     "子服": () => e.reply(SubService(outcome.data)),
-                                    "封禁": () => e.reply(Banned(uid)),
+                                    "封禁": () => e.reply(Banned(e, uid)),
                                     "邮件": () => succ.push(`成功  ->  ${uid}`),
                                 }
 
@@ -216,7 +216,7 @@ function restall(e, succ, fail) {
 function cdk(e, succ, fail, scenes, uid) {
     /** 如果储存成功跟失败的数组同时存在值，只要成功一个都算兑换成功(一般很少发生) */
     if (succ.length > 0) {
-        const name = msg.replace(/兑换|\/兑换/g, '').trim()
+        const name = e.msg.replace(/兑换|\/兑换/g, '').trim()
 
         let file = `${data}/group/${scenes}/cdk/自定义/${name}.yaml`
         if (name.length === 32) {
@@ -269,11 +269,10 @@ function checkins(e, scenes, uid) {
 }
 
 /** 封禁玩家 */
-function Banned(msg) {
-    const uid = msg.replace(/[^0-9]/g, "")
-    let Reply = [segment.at(e.user_id), `成功封禁玩家${uid}`]
-    if (msg.includes("解")) {
-        Reply = [segment.at(e.user_id), `已解除玩家 ${uid} 的封禁`]
+function Banned(e, signkey) {
+    let Reply = [segment.at(e.user_id), `\n封禁成功\n封禁玩家：${signkey.uid}\n封禁原因：${signkey.msg}\n解禁时间：${signkey.end_time}`]
+    if (e.msg.includes("解")) {
+        Reply = [segment.at(e.user_id), `已解除玩家 ${signkey.uid} 的封禁`]
     }
     return Reply
 }

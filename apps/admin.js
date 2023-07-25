@@ -62,7 +62,7 @@ export class ZhiYu extends plugin {
       e.reply("温馨提示：请使用 [切换服务器+ID] 进行配置默认服务器")
     }
 
-    if (["开启CDK生成", "开启Cdk生成", "开启cdk生成"].includes(e.msg)) {
+    if (["#开启CDK生成", "#开启Cdk生成", "#开启cdk生成"].includes(e.msg)) {
       if (cfg.生成cdk.状态 === true) {
         e.reply("CDK生成当前已经开启，无需重复开启")
         return
@@ -156,7 +156,7 @@ export class ZhiYu extends plugin {
     cfg.生成cdk.群聊id = allfolder[this.e.message[0].text - 1]
 
     fs.writeFileSync(file, Yaml.stringify(cfg))
-    this.reply(`成功开启\n可使用指令：生成cdk\n当前群聊：${scenes}\ncdk兑换群聊：${cfg.生成cdk.group}`)
+    this.reply(`成功开启\n可使用指令：生成cdk\n当前群聊：${scenes}\ncdk兑换群聊：${cfg.生成cdk.群聊id}`)
     this.finish('CreateCDK')
   }
 

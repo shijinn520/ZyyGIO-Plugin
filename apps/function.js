@@ -1,5 +1,6 @@
 import fs from 'fs'
 import Yaml from 'yaml'
+import moment from 'moment'
 import schedule from 'node-schedule'
 import { construct } from './regex.js'
 import { ComputeGM, ComputeMail, Request } from './request.js'
@@ -97,7 +98,7 @@ export class ZhiYu extends plugin {
         }
       }
     }
-    
+
     /** 黑白名单 */
     const { blacklists, intercept } = await GetPassList(e, GioAdmin, item_list)
     if (!e.isMaster && !blacklists) return
@@ -234,7 +235,7 @@ export class ZhiYu extends plugin {
       const sender = CdkSender
       const item_list = cfg.command
 
-      const { request } = await ComputeMail(uid, region, content,
+      const request = await ComputeMail(uid, region, content,
         expire_time, item_list, sender, title, ticket, sign)
 
       const urls = [`http://${ip}:${port}/api?${request}`]
@@ -284,12 +285,11 @@ export class ZhiYu extends plugin {
       return
     }
 
-    /** 得到用户默认封禁文案 */
-    const msg = await GetServer(e).BanTitle
+    const { BanTitle, BanTime } = await GetServer(e)
     /** 封建时间=当前时间 */
     const begin_time = moment().format('YYYY-MM-DD HH:mm:ss')
     /** 得到用户自定义的默认封禁时间 */
-    let time = await GetServer(e).BanTime
+    let time = BanTime
 
     const chineseToNumber = {
       一: '1', 二: '2', 三: '3', 四: '4', 五: '5',
@@ -321,14 +321,14 @@ export class ZhiYu extends plugin {
     const { ip, port, region, sign, ticket } = await GetServer(e)
     const signkey = {
       cmd: '1103', uid: uid, begin_time: begin_time,
-      end_time: end_time, region: region, msg: msg, ticket: ticket
+      end_time: end_time, region: region, msg: BanTitle, ticket: ticket
     }
 
     const request = await ComputeGM(signkey, sign)
     const urls = [`http://${ip}:${port}/api?${request}`]
 
     const mode = "封禁"
-    Request(e, mode, urls, e.msg)
+    Request(e, mode, urls, signkey)
   }
 
 }
