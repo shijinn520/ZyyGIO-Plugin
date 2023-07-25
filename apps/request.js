@@ -195,9 +195,16 @@ function ping(cfg) {
 function SubService(cfg) {
     const games = cfg.gameserver_player_num
     const players = Object.entries(games)
-        .map(([key, value]) => `${parseFloat(key)}：${value}`)
-        .sort((a, b) => parseFloat(b.split('：')[0]) - parseFloat(a.split('：')[0]))
-        .join('\n')
+        .map(([key, value]) => ({ key, value }))
+        .sort((a, b) => {
+            const keyA = a.key.split('.').map(parseFloat)
+            const keyB = b.key.split('.').map(parseFloat)
+            for (let i = 0; i < Math.min(keyA.length, keyB.length); i++) {
+                if (keyA[i] !== keyB[i]) return keyA[i] - keyB[i]
+            }
+            return keyA.length - keyB.length
+        })
+        .map(({ key, value }) => `${key}：${value}`).join('\n')
     return `game数量：${Object.keys(games).length}\n详细人数：\n${players}`
 }
 
