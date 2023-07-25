@@ -1,0 +1,750 @@
+蘑菇:
+  - names:
+      - 蘑菇
+  - command:
+      - item add 100011 500
+甜甜花:
+  - names:
+      - 甜甜花
+  - command:
+      - item add 100012 500
+胡萝卜:
+  - names:
+      - 胡萝卜
+  - command:
+      - item add 100013 500
+白萝卜:
+  - names:
+      - 白萝卜
+  - command:
+      - item add 100014 500
+金鱼草:
+  - names:
+      - 金鱼草
+  - command:
+      - item add 100015 500
+薄荷:
+  - names:
+      - 薄荷
+  - command:
+      - item add 100016 500
+小麦:
+  - names:
+      - 小麦
+  - command:
+      - item add 100017 500
+卷心菜:
+  - names:
+      - 卷心菜
+  - command:
+      - item add 100018 500
+天原银莲:
+  - names:
+      - 天原银莲
+  - command:
+      - item add 100019 500
+松果:
+  - names:
+      - 松果
+  - command:
+      - item add 100020 500
+钩钩果:
+  - names:
+      - 钩钩果
+  - command:
+      - item add 100021 500
+落落莓:
+  - names:
+      - 落落莓
+  - command:
+      - item add 100022 500
+塞西莉亚花:
+  - names:
+      - 塞西莉亚花
+  - command:
+      - item add 100023 500
+风车菊:
+  - names:
+      - 风车菊
+  - command:
+      - item add 100024 500
+慕风蘑菇:
+  - names:
+      - 慕风蘑菇
+  - command:
+      - item add 100025 500
+莲蓬:
+  - names:
+      - 莲蓬
+  - command:
+      - item add 100026 500
+绝云椒椒:
+  - names:
+      - 绝云椒椒
+  - command:
+      - item add 100027 500
+夜泊石:
+  - names:
+      - 夜泊石
+  - command:
+      - item add 100028 500
+霓裳花:
+  - names:
+      - 霓裳花
+  - command:
+      - item add 100029 500
+琉璃百合:
+  - names:
+      - 琉璃百合
+  - command:
+      - item add 100030 500
+清心:
+  - names:
+      - 清心
+  - command:
+      - item add 100031 500
+马尾:
+  - names:
+      - 马尾
+  - command:
+      - item add 100032 500
+星螺:
+  - names:
+      - 星螺
+  - command:
+      - item add 100033 500
+琉璃袋:
+  - names:
+      - 琉璃袋
+  - command:
+      - item add 100034 500
+树莓:
+  - names:
+      - 树莓
+  - command:
+      - item add 100051 500
+冰雾花花朵:
+  - names:
+      - 冰雾花花朵
+  - command:
+      - item add 100052 500
+烈焰花花蕊:
+  - names:
+      - 烈焰花花蕊
+  - command:
+      - item add 100053 500
+电气水晶:
+  - names:
+      - 电气水晶
+  - command:
+      - item add 100054 500
+小灯草:
+  - names:
+      - 小灯草
+  - command:
+      - item add 100055 500
+嘟嘟莲:
+  - names:
+      - 嘟嘟莲
+  - command:
+      - item add 100056 500
+蒲公英籽:
+  - names:
+      - 蒲公英籽
+  - command:
+      - item add 100057 500
+石珀:
+  - names:
+      - 石珀
+  - command:
+      - item add 100058 500
+兽肉:
+  - names:
+      - 兽肉
+  - command:
+      - item add 100061 500
+鸟蛋:
+  - names:
+      - 鸟蛋
+  - command:
+      - item add 100062 500
+松茸:
+  - names:
+      - 松茸
+  - command:
+      - item add 100063 500
+禽肉:
+  - names:
+      - 禽肉
+  - command:
+      - item add 100064 500
+蝴蝶翅膀:
+  - names:
+      - 蝴蝶翅膀
+  - command:
+      - item add 100072 500
+螃蟹:
+  - names:
+      - 螃蟹
+  - command:
+      - item add 100073 500
+蟹黄:
+  - names:
+      - 蟹黄
+  - command:
+      - item add 100074 500
+盐:
+  - names:
+      - 盐
+  - command:
+      - item add 100075 500
+洋葱:
+  - names:
+      - 洋葱
+  - command:
+      - item add 100076 500
+胡椒:
+  - names:
+      - 胡椒
+  - command:
+      - item add 100077 500
+牛奶:
+  - names:
+      - 牛奶
+  - command:
+      - item add 100078 500
+番茄:
+  - names:
+      - 番茄
+  - command:
+      - item add 100079 500
+土豆:
+  - names:
+      - 土豆
+  - command:
+      - item add 100080 500
+青蛙:
+  - names:
+      - 青蛙
+  - command:
+      - item add 100081 500
+发光髓:
+  - names:
+      - 发光髓
+  - command:
+      - item add 100082 500
+蜥蜴尾巴:
+  - names:
+      - 蜥蜴尾巴
+  - command:
+      - item add 100083 500
+鱼肉:
+  - names:
+      - 鱼肉
+  - command:
+      - item add 100084 500
+晶核:
+  - names:
+      - 晶核
+  - command:
+      - item add 100085 500
+豆腐:
+  - names:
+      - 豆腐
+  - command:
+      - item add 100088 500
+杏仁:
+  - names:
+      - 杏仁
+  - command:
+      - item add 100089 500
+鳅鳅宝玉:
+  - names:
+      - 鳅鳅宝玉
+  - command:
+      - item add 100090 500
+竹笋:
+  - names:
+      - 竹笋
+  - command:
+      - item add 100091 500
+稻米:
+  - names:
+      - 稻米
+  - command:
+      - item add 100092 500
+虾仁:
+  - names:
+      - 虾仁
+  - command:
+      - item add 100093 500
+冷鲜肉:
+  - names:
+      - 冷鲜肉
+  - command:
+      - item add 100094 500
+鳗肉:
+  - names:
+      - 鳗肉
+  - command:
+      - item add 100095 500
+秃秃豆:
+  - names:
+      - 秃秃豆
+  - command:
+      - item add 100096 500
+神秘的肉:
+  - names:
+      - 神秘的肉
+  - command:
+      - item add 100097 500
+咖啡豆:
+  - names:
+      - 咖啡豆
+  - command:
+      - item add 100098 500
+铁块:
+  - names:
+      - 铁块
+  - command:
+      - item add 101001 500
+白铁块:
+  - names:
+      - 白铁块
+  - command:
+      - item add 101002 500
+水晶块:
+  - names:
+      - 水晶块
+  - command:
+      - item add 101003 500
+魔晶块:
+  - names:
+      - 魔晶块
+  - command:
+      - item add 101004 500
+星银矿石:
+  - names:
+      - 星银矿石
+  - command:
+      - item add 101006 500
+紫晶块:
+  - names:
+      - 紫晶块
+  - command:
+      - item add 101008 500
+北陆单手剑原胚:
+  - names:
+      - 北陆单手剑原胚
+  - command:
+      - item add 101101 500
+北陆弓原胚:
+  - names:
+      - 北陆弓原胚
+  - command:
+      - item add 101102 500
+北陆双手剑原胚:
+  - names:
+      - 北陆双手剑原胚
+  - command:
+      - item add 101103 500
+北陆法器原胚:
+  - names:
+      - 北陆法器原胚
+  - command:
+      - item add 101104 500
+北陆长柄武器原胚:
+  - names:
+      - 北陆长柄武器原胚
+  - command:
+      - item add 101105 500
+央陆单手剑原胚:
+  - names:
+      - 央陆单手剑原胚
+  - command:
+      - item add 101111 500
+央陆弓原胚:
+  - names:
+      - 央陆弓原胚
+  - command:
+      - item add 101112 500
+央陆双手剑原胚:
+  - names:
+      - 央陆双手剑原胚
+  - command:
+      - item add 101113 500
+央陆法器原胚:
+  - names:
+      - 央陆法器原胚
+  - command:
+      - item add 101114 500
+央陆长柄武器原胚:
+  - names:
+      - 央陆长柄武器原胚
+  - command:
+      - item add 101115 500
+鬼兜虫:
+  - names:
+      - 鬼兜虫
+  - command:
+      - item add 101201 500
+绯樱绣球:
+  - names:
+      - 绯樱绣球
+  - command:
+      - item add 101202 500
+晶化骨髓:
+  - names:
+      - 晶化骨髓
+  - command:
+      - item add 101203 500
+血斛:
+  - names:
+      - 血斛
+  - command:
+      - item add 101204 500
+鸣草:
+  - names:
+      - 鸣草
+  - command:
+      - item add 101205 500
+海灵芝:
+  - names:
+      - 海灵芝
+  - command:
+      - item add 101206 500
+珊瑚真珠:
+  - names:
+      - 珊瑚真珠
+  - command:
+      - item add 101207 500
+天云草实:
+  - names:
+      - 天云草实
+  - command:
+      - item add 101208 500
+幽灯蕈:
+  - names:
+      - 幽灯蕈
+  - command:
+      - item add 101209 500
+海草:
+  - names:
+      - 海草
+  - command:
+      - item add 101210 500
+堇瓜:
+  - names:
+      - 堇瓜
+  - command:
+      - item add 101211 500
+树王圣体菇:
+  - names:
+      - 树王圣体菇
+  - command:
+      - item add 101213 500
+帕蒂沙兰:
+  - names:
+      - 帕蒂沙兰
+  - command:
+      - item add 101214 500
+月莲:
+  - names:
+      - 月莲
+  - command:
+      - item add 101215 500
+香辛果:
+  - names:
+      - 香辛果
+  - command:
+      - item add 101216 500
+劫波莲:
+  - names:
+      - 劫波莲
+  - command:
+      - item add 101217 500
+墩墩桃:
+  - names:
+      - 墩墩桃
+  - command:
+      - item add 101218 500
+须弥蔷薇:
+  - names:
+      - 须弥蔷薇
+  - command:
+      - item add 101219 500
+赤念果:
+  - names:
+      - 赤念果
+  - command:
+      - item add 101220 500
+枣椰:
+  - names:
+      - 枣椰
+  - command:
+      - item add 101221 500
+沙脂蛹:
+  - names:
+      - 沙脂蛹
+  - command:
+      - item add 101222 500
+悼灵花:
+  - names:
+      - 悼灵花
+  - command:
+      - item add 101223 500
+万相石:
+  - names:
+      - 万相石
+  - command:
+      - item add 101224 500
+圣金虫:
+  - names:
+      - 圣金虫
+  - command:
+      - item add 101225 500
+毗波耶:
+  - names:
+      - 毗波耶
+  - command:
+      - item add 101228 500
+布匹:
+  - names:
+      - 布匹
+  - command:
+      - item add 101401 500
+红色染料:
+  - names:
+      - 红色染料
+  - command:
+      - item add 101402 500
+黄色染料:
+  - names:
+      - 黄色染料
+  - command:
+      - item add 101403 500
+蓝色染料:
+  - names:
+      - 蓝色染料
+  - command:
+      - item add 101404 500
+面粉:
+  - names:
+      - 面粉
+  - command:
+      - item add 110001 500
+奶油:
+  - names:
+      - 奶油
+  - command:
+      - item add 110002 500
+熏禽肉:
+  - names:
+      - 熏禽肉
+  - command:
+      - item add 110003 500
+黄油:
+  - names:
+      - 黄油
+  - command:
+      - item add 110004 500
+火腿:
+  - names:
+      - 火腿
+  - command:
+      - item add 110005 500
+糖:
+  - names:
+      - 糖
+  - command:
+      - item add 110006 500
+果酱:
+  - names:
+      - 果酱
+  - command:
+      - item add 110008 500
+奶酪:
+  - names:
+      - 奶酪
+  - command:
+      - item add 110009 500
+培根:
+  - names:
+      - 培根
+  - command:
+      - item add 110010 500
+香肠:
+  - names:
+      - 香肠
+  - command:
+      - item add 110011 500
+熏鱼:
+  - names:
+      - 熏鱼
+  - command:
+      - item add 110012 500
+鱼干:
+  - names:
+      - 鱼干
+  - command:
+      - item add 110013 500
+香辛料:
+  - names:
+      - 香辛料
+  - command:
+      - item add 110014 500
+花鳉:
+  - names:
+      - 花鳉
+  - command:
+      - item add 131000 500
+琉璃花鳉:
+  - names:
+      - 琉璃花鳉
+  - command:
+      - item add 131001 500
+甜甜花鳉:
+  - names:
+      - 甜甜花鳉
+  - command:
+      - item add 131002 500
+蓝染花鳉:
+  - names:
+      - 蓝染花鳉
+  - command:
+      - item add 131003 500
+擒霞客:
+  - names:
+      - 擒霞客
+  - command:
+      - item add 131004 500
+水晶宴:
+  - names:
+      - 水晶宴
+  - command:
+      - item add 131005 500
+肺棘鱼:
+  - names:
+      - 肺棘鱼
+  - command:
+      - item add 131006 500
+斗棘鱼:
+  - names:
+      - 斗棘鱼
+  - command:
+      - item add 131007 500
+鸩棘鱼:
+  - names:
+      - 鸩棘鱼
+  - command:
+      - item add 131008 500
+赤魔王:
+  - names:
+      - 赤魔王
+  - command:
+      - item add 131009 500
+雪中君:
+  - names:
+      - 雪中君
+  - command:
+      - item add 131010 500
+金赤假龙:
+  - names:
+      - 金赤假龙
+  - command:
+      - item add 131011 500
+锖假龙:
+  - names:
+      - 锖假龙
+  - command:
+      - item add 131012 500
+流纹褐蝶鱼:
+  - names:
+      - 流纹褐蝶鱼
+  - command:
+      - item add 131013 500
+流纹京紫蝶鱼:
+  - names:
+      - 流纹京紫蝶鱼
+  - command:
+      - item add 131014 500
+流纹茶蝶鱼:
+  - names:
+      - 流纹茶蝶鱼
+  - command:
+      - item add 131015 500
+长生仙:
+  - names:
+      - 长生仙
+  - command:
+      - item add 131016 500
+雷鸣仙:
+  - names:
+      - 雷鸣仙
+  - command:
+      - item add 131017 500
+炮鲀:
+  - names:
+      - 炮鲀
+  - command:
+      - item add 131019 500
+苦炮鲀:
+  - names:
+      - 苦炮鲀
+  - command:
+      - item add 131020 500
+迪芙妲鳐:
+  - names:
+      - 迪芙妲鳐
+  - command:
+      - item add 131021 500
+佛玛洛鳐:
+  - names:
+      - 佛玛洛鳐
+  - command:
+      - item add 131022 500
+真果角鲀:
+  - names:
+      - 真果角鲀
+  - command:
+      - item add 131023 500
+沉波蜜桃:
+  - names:
+      - 沉波蜜桃
+  - command:
+      - item add 131024 500
+吹沙角鲀:
+  - names:
+      - 吹沙角鲀
+  - command:
+      - item add 131025 500
+暮云角鲀:
+  - names:
+      - 暮云角鲀
+  - command:
+      - item add 131026 500
+青金斧枪鱼:
+  - names:
+      - 青金斧枪鱼
+  - command:
+      - item add 131027 500
+翡玉斧枪鱼:
+  - names:
+      - 翡玉斧枪鱼
+  - command:
+      - item add 131028 500
+灯纸纤维:
+  - names:
+      - 灯纸纤维
+  - command:
+      - item add 200001 500
+灯芯绒材:
+  - names:
+      - 灯芯绒材
+  - command:
+      - item add 200002 500
+浮生石片:
+  - names:
+      - 浮生石片
+  - command:
+      - item add 200003 500

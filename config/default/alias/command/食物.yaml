@@ -1,0 +1,2725 @@
+苹果:
+  - names:
+      - 苹果
+  - command:
+      - item add 100001 500
+日落果:
+  - names:
+      - 日落果
+  - command:
+      - item add 100002 500
+星蕈:
+  - names:
+      - 星蕈
+  - command:
+      - item add 101212 500
+活化的星蕈:
+  - names:
+      - 活化的星蕈
+  - command:
+      - item add 101226 500
+枯焦的星蕈:
+  - names:
+      - 枯焦的星蕈
+  - command:
+      - item add 101227 500
+奇怪的渔人吐司:
+  - names:
+      - 奇怪的渔人吐司
+  - command:
+      - item add 108001 500
+渔人吐司:
+  - names:
+      - 渔人吐司
+  - command:
+      - item add 108002 500
+美味的渔人吐司:
+  - names:
+      - 美味的渔人吐司
+  - command:
+      - item add 108003 500
+奇怪的提瓦特煎蛋:
+  - names:
+      - 奇怪的提瓦特煎蛋
+  - command:
+      - item add 108004 500
+提瓦特煎蛋:
+  - names:
+      - 提瓦特煎蛋
+  - command:
+      - item add 108005 500
+美味的提瓦特煎蛋:
+  - names:
+      - 美味的提瓦特煎蛋
+  - command:
+      - item add 108006 500
+奇怪的烤肉排:
+  - names:
+      - 奇怪的烤肉排
+  - command:
+      - item add 108007 500
+烤肉排:
+  - names:
+      - 烤肉排
+  - command:
+      - item add 108008 500
+美味的烤肉排:
+  - names:
+      - 美味的烤肉排
+  - command:
+      - item add 108009 500
+侦察骑士烤肉！:
+  - names:
+      - 侦察骑士烤肉！
+  - command:
+      - item add 108010 500
+奇怪的野菇鸡肉串:
+  - names:
+      - 奇怪的野菇鸡肉串
+  - command:
+      - item add 108011 500
+野菇鸡肉串:
+  - names:
+      - 野菇鸡肉串
+  - command:
+      - item add 108012 500
+美味的野菇鸡肉串:
+  - names:
+      - 美味的野菇鸡肉串
+  - command:
+      - item add 108013 500
+果香串烤:
+  - names:
+      - 果香串烤
+  - command:
+      - item add 108014 500
+奇怪的火火肉酱面:
+  - names:
+      - 奇怪的火火肉酱面
+  - command:
+      - item add 108015 500
+火火肉酱面:
+  - names:
+      - 火火肉酱面
+  - command:
+      - item add 108016 500
+美味的火火肉酱面:
+  - names:
+      - 美味的火火肉酱面
+  - command:
+      - item add 108017 500
+魔法肉酱面:
+  - names:
+      - 魔法肉酱面
+  - command:
+      - item add 108018 500
+奇怪的萝卜时蔬汤:
+  - names:
+      - 奇怪的萝卜时蔬汤
+  - command:
+      - item add 108019 500
+萝卜时蔬汤:
+  - names:
+      - 萝卜时蔬汤
+  - command:
+      - item add 108020 500
+美味的萝卜时蔬汤:
+  - names:
+      - 美味的萝卜时蔬汤
+  - command:
+      - item add 108021 500
+奇怪的庄园烤松饼:
+  - names:
+      - 奇怪的庄园烤松饼
+  - command:
+      - item add 108022 500
+庄园烤松饼:
+  - names:
+      - 庄园烤松饼
+  - command:
+      - item add 108023 500
+美味的庄园烤松饼:
+  - names:
+      - 美味的庄园烤松饼
+  - command:
+      - item add 108024 500
+奇怪的炸萝卜丸子:
+  - names:
+      - 奇怪的炸萝卜丸子
+  - command:
+      - item add 108025 500
+炸萝卜丸子:
+  - names:
+      - 炸萝卜丸子
+  - command:
+      - item add 108026 500
+美味的炸萝卜丸子:
+  - names:
+      - 美味的炸萝卜丸子
+  - command:
+      - item add 108027 500
+奇怪的满足沙拉:
+  - names:
+      - 奇怪的满足沙拉
+  - command:
+      - item add 108028 500
+满足沙拉:
+  - names:
+      - 满足沙拉
+  - command:
+      - item add 108029 500
+美味的满足沙拉:
+  - names:
+      - 美味的满足沙拉
+  - command:
+      - item add 108030 500
+奇怪的甜甜花酿鸡:
+  - names:
+      - 奇怪的甜甜花酿鸡
+  - command:
+      - item add 108031 500
+甜甜花酿鸡:
+  - names:
+      - 甜甜花酿鸡
+  - command:
+      - item add 108032 500
+美味的甜甜花酿鸡:
+  - names:
+      - 美味的甜甜花酿鸡
+  - command:
+      - item add 108033 500
+奇怪的北地烟熏鸡:
+  - names:
+      - 奇怪的北地烟熏鸡
+  - command:
+      - item add 108034 500
+北地烟熏鸡:
+  - names:
+      - 北地烟熏鸡
+  - command:
+      - item add 108035 500
+美味的北地烟熏鸡:
+  - names:
+      - 美味的北地烟熏鸡
+  - command:
+      - item add 108036 500
+奇怪的白汁时蔬烩肉:
+  - names:
+      - 奇怪的白汁时蔬烩肉
+  - command:
+      - item add 108037 500
+白汁时蔬烩肉:
+  - names:
+      - 白汁时蔬烩肉
+  - command:
+      - item add 108038 500
+美味的白汁时蔬烩肉:
+  - names:
+      - 美味的白汁时蔬烩肉
+  - command:
+      - item add 108039 500
+辣味时蔬烩肉:
+  - names:
+      - 辣味时蔬烩肉
+  - command:
+      - item add 108040 500
+奇怪的烤蘑菇披萨:
+  - names:
+      - 奇怪的烤蘑菇披萨
+  - command:
+      - item add 108041 500
+烤蘑菇披萨:
+  - names:
+      - 烤蘑菇披萨
+  - command:
+      - item add 108042 500
+美味的烤蘑菇披萨:
+  - names:
+      - 美味的烤蘑菇披萨
+  - command:
+      - item add 108043 500
+提神醒脑披萨:
+  - names:
+      - 提神醒脑披萨
+  - command:
+      - item add 108044 500
+奇怪的蒙德土豆饼:
+  - names:
+      - 奇怪的蒙德土豆饼
+  - command:
+      - item add 108045 500
+蒙德土豆饼:
+  - names:
+      - 蒙德土豆饼
+  - command:
+      - item add 108046 500
+美味的蒙德土豆饼:
+  - names:
+      - 美味的蒙德土豆饼
+  - command:
+      - item add 108047 500
+爪爪土豆饼:
+  - names:
+      - 爪爪土豆饼
+  - command:
+      - item add 108048 500
+奇怪的嘟嘟莲海鲜羹:
+  - names:
+      - 奇怪的嘟嘟莲海鲜羹
+  - command:
+      - item add 108049 500
+嘟嘟莲海鲜羹:
+  - names:
+      - 嘟嘟莲海鲜羹
+  - command:
+      - item add 108050 500
+美味的嘟嘟莲海鲜羹:
+  - names:
+      - 美味的嘟嘟莲海鲜羹
+  - command:
+      - item add 108051 500
+奇怪的黄油松茸:
+  - names:
+      - 奇怪的黄油松茸
+  - command:
+      - item add 108052 500
+黄油松茸:
+  - names:
+      - 黄油松茸
+  - command:
+      - item add 108053 500
+美味的黄油松茸:
+  - names:
+      - 美味的黄油松茸
+  - command:
+      - item add 108054 500
+奇怪的堆高高:
+  - names:
+      - 奇怪的堆高高
+  - command:
+      - item add 108055 500
+堆高高:
+  - names:
+      - 堆高高
+  - command:
+      - item add 108056 500
+美味的堆高高:
+  - names:
+      - 美味的堆高高
+  - command:
+      - item add 108057 500
+蒙德往事:
+  - names:
+      - 蒙德往事
+  - command:
+      - item add 108058 500
+奇怪的冷肉拼盘:
+  - names:
+      - 奇怪的冷肉拼盘
+  - command:
+      - item add 108059 500
+冷肉拼盘:
+  - names:
+      - 冷肉拼盘
+  - command:
+      - item add 108060 500
+美味的冷肉拼盘:
+  - names:
+      - 美味的冷肉拼盘
+  - command:
+      - item add 108061 500
+奇怪的蜜酱胡萝卜煎肉:
+  - names:
+      - 奇怪的蜜酱胡萝卜煎肉
+  - command:
+      - item add 108062 500
+蜜酱胡萝卜煎肉:
+  - names:
+      - 蜜酱胡萝卜煎肉
+  - command:
+      - item add 108063 500
+美味的蜜酱胡萝卜煎肉:
+  - names:
+      - 美味的蜜酱胡萝卜煎肉
+  - command:
+      - item add 108064 500
+奇怪的蟹黄火腿焗时蔬:
+  - names:
+      - 奇怪的蟹黄火腿焗时蔬
+  - command:
+      - item add 108065 500
+蟹黄火腿焗时蔬:
+  - names:
+      - 蟹黄火腿焗时蔬
+  - command:
+      - item add 108066 500
+美味的蟹黄火腿焗时蔬:
+  - names:
+      - 美味的蟹黄火腿焗时蔬
+  - command:
+      - item add 108067 500
+奇怪的翡玉什锦袋:
+  - names:
+      - 奇怪的翡玉什锦袋
+  - command:
+      - item add 108068 500
+翡玉什锦袋:
+  - names:
+      - 翡玉什锦袋
+  - command:
+      - item add 108069 500
+美味的翡玉什锦袋:
+  - names:
+      - 美味的翡玉什锦袋
+  - command:
+      - item add 108070 500
+奇怪的中原杂碎:
+  - names:
+      - 奇怪的中原杂碎
+  - command:
+      - item add 108071 500
+中原杂碎:
+  - names:
+      - 中原杂碎
+  - command:
+      - item add 108072 500
+美味的中原杂碎:
+  - names:
+      - 美味的中原杂碎
+  - command:
+      - item add 108073 500
+奇怪的水煮黑背鲈:
+  - names:
+      - 奇怪的水煮黑背鲈
+  - command:
+      - item add 108074 500
+水煮黑背鲈:
+  - names:
+      - 水煮黑背鲈
+  - command:
+      - item add 108075 500
+美味的水煮黑背鲈:
+  - names:
+      - 美味的水煮黑背鲈
+  - command:
+      - item add 108076 500
+奇怪的松鼠鱼:
+  - names:
+      - 奇怪的松鼠鱼
+  - command:
+      - item add 108077 500
+松鼠鱼:
+  - names:
+      - 松鼠鱼
+  - command:
+      - item add 108078 500
+美味的松鼠鱼:
+  - names:
+      - 美味的松鼠鱼
+  - command:
+      - item add 108079 500
+奇怪的杏仁豆腐:
+  - names:
+      - 奇怪的杏仁豆腐
+  - command:
+      - item add 108080 500
+杏仁豆腐:
+  - names:
+      - 杏仁豆腐
+  - command:
+      - item add 108081 500
+美味的杏仁豆腐:
+  - names:
+      - 美味的杏仁豆腐
+  - command:
+      - item add 108082 500
+奇怪的香嫩椒椒鸡:
+  - names:
+      - 奇怪的香嫩椒椒鸡
+  - command:
+      - item add 108083 500
+香嫩椒椒鸡:
+  - names:
+      - 香嫩椒椒鸡
+  - command:
+      - item add 108084 500
+美味的香嫩椒椒鸡:
+  - names:
+      - 美味的香嫩椒椒鸡
+  - command:
+      - item add 108085 500
+奇怪的珍珠翡翠白玉汤:
+  - names:
+      - 奇怪的珍珠翡翠白玉汤
+  - command:
+      - item add 108086 500
+珍珠翡翠白玉汤:
+  - names:
+      - 珍珠翡翠白玉汤
+  - command:
+      - item add 108087 500
+美味的珍珠翡翠白玉汤:
+  - names:
+      - 美味的珍珠翡翠白玉汤
+  - command:
+      - item add 108088 500
+奇怪的松茸酿肉卷:
+  - names:
+      - 奇怪的松茸酿肉卷
+  - command:
+      - item add 108089 500
+松茸酿肉卷:
+  - names:
+      - 松茸酿肉卷
+  - command:
+      - item add 108090 500
+美味的松茸酿肉卷:
+  - names:
+      - 美味的松茸酿肉卷
+  - command:
+      - item add 108091 500
+奇怪的摩拉肉:
+  - names:
+      - 奇怪的摩拉肉
+  - command:
+      - item add 108092 500
+摩拉肉:
+  - names:
+      - 摩拉肉
+  - command:
+      - item add 108093 500
+美味的摩拉肉:
+  - names:
+      - 美味的摩拉肉
+  - command:
+      - item add 108094 500
+奇怪的蒙德烤鱼:
+  - names:
+      - 奇怪的蒙德烤鱼
+  - command:
+      - item add 108095 500
+蒙德烤鱼:
+  - names:
+      - 蒙德烤鱼
+  - command:
+      - item add 108096 500
+美味的蒙德烤鱼:
+  - names:
+      - 美味的蒙德烤鱼
+  - command:
+      - item add 108097 500
+奇怪的爆炒肉片:
+  - names:
+      - 奇怪的爆炒肉片
+  - command:
+      - item add 108098 500
+爆炒肉片:
+  - names:
+      - 爆炒肉片
+  - command:
+      - item add 108099 500
+美味的爆炒肉片:
+  - names:
+      - 美味的爆炒肉片
+  - command:
+      - item add 108100 500
+奇怪的黄金蟹:
+  - names:
+      - 奇怪的黄金蟹
+  - command:
+      - item add 108101 500
+黄金蟹:
+  - names:
+      - 黄金蟹
+  - command:
+      - item add 108102 500
+美味的黄金蟹:
+  - names:
+      - 美味的黄金蟹
+  - command:
+      - item add 108103 500
+奇怪的水晶虾:
+  - names:
+      - 奇怪的水晶虾
+  - command:
+      - item add 108104 500
+水晶虾:
+  - names:
+      - 水晶虾
+  - command:
+      - item add 108105 500
+美味的水晶虾:
+  - names:
+      - 美味的水晶虾
+  - command:
+      - item add 108106 500
+奇怪的烤吃虎鱼:
+  - names:
+      - 奇怪的烤吃虎鱼
+  - command:
+      - item add 108107 500
+烤吃虎鱼:
+  - names:
+      - 烤吃虎鱼
+  - command:
+      - item add 108108 500
+美味的烤吃虎鱼:
+  - names:
+      - 美味的烤吃虎鱼
+  - command:
+      - item add 108109 500
+奇怪的风神杂烩菜:
+  - names:
+      - 奇怪的风神杂烩菜
+  - command:
+      - item add 108110 500
+风神杂烩菜:
+  - names:
+      - 风神杂烩菜
+  - command:
+      - item add 108111 500
+美味的风神杂烩菜:
+  - names:
+      - 美味的风神杂烩菜
+  - command:
+      - item add 108112 500
+真·风神杂烩菜:
+  - names:
+      - 真·风神杂烩菜
+  - command:
+      - item add 108113 500
+至高的智慧(生活):
+  - names:
+      - 至高的智慧(生活)
+  - command:
+      - item add 108114 500
+鱼香吐司:
+  - names:
+      - 鱼香吐司
+  - command:
+      - item add 108115 500
+提瓦特焦蛋:
+  - names:
+      - 提瓦特焦蛋
+  - command:
+      - item add 108116 500
+祝圣交响乐:
+  - names:
+      - 祝圣交响乐
+  - command:
+      - item add 108117 500
+厚云朵松饼:
+  - names:
+      - 厚云朵松饼
+  - command:
+      - item add 108118 500
+奇怪的莲子禽蛋羹:
+  - names:
+      - 奇怪的莲子禽蛋羹
+  - command:
+      - item add 108119 500
+莲子禽蛋羹:
+  - names:
+      - 莲子禽蛋羹
+  - command:
+      - item add 108120 500
+美味的莲子禽蛋羹:
+  - names:
+      - 美味的莲子禽蛋羹
+  - command:
+      - item add 108121 500
+奇怪的仙跳墙:
+  - names:
+      - 奇怪的仙跳墙
+  - command:
+      - item add 108122 500
+仙跳墙:
+  - names:
+      - 仙跳墙
+  - command:
+      - item add 108123 500
+美味的仙跳墙:
+  - names:
+      - 美味的仙跳墙
+  - command:
+      - item add 108124 500
+奇怪的金丝虾球:
+  - names:
+      - 奇怪的金丝虾球
+  - command:
+      - item add 108125 500
+金丝虾球:
+  - names:
+      - 金丝虾球
+  - command:
+      - item add 108126 500
+美味的金丝虾球:
+  - names:
+      - 美味的金丝虾球
+  - command:
+      - item add 108127 500
+奇怪的轻策农家菜:
+  - names:
+      - 奇怪的轻策农家菜
+  - command:
+      - item add 108128 500
+轻策农家菜:
+  - names:
+      - 轻策农家菜
+  - command:
+      - item add 108129 500
+美味的轻策农家菜:
+  - names:
+      - 美味的轻策农家菜
+  - command:
+      - item add 108130 500
+奇怪的来来菜:
+  - names:
+      - 奇怪的来来菜
+  - command:
+      - item add 108131 500
+来来菜:
+  - names:
+      - 来来菜
+  - command:
+      - item add 108132 500
+美味的来来菜:
+  - names:
+      - 美味的来来菜
+  - command:
+      - item add 108133 500
+绝对不是下酒菜:
+  - names:
+      - 绝对不是下酒菜
+  - command:
+      - item add 108134 500
+万民堂水煮鱼:
+  - names:
+      - 万民堂水煮鱼
+  - command:
+      - item add 108135 500
+江湖百味:
+  - names:
+      - 江湖百味
+  - command:
+      - item add 108136 500
+美梦:
+  - names:
+      - 美梦
+  - command:
+      - item add 108137 500
+炝炒肉片:
+  - names:
+      - 炝炒肉片
+  - command:
+      - item add 108138 500
+乾坤摩拉肉:
+  - names:
+      - 乾坤摩拉肉
+  - command:
+      - item add 108139 500
+没有未来菜:
+  - names:
+      - 没有未来菜
+  - command:
+      - item add 108140 500
+奇怪的山珍热卤面:
+  - names:
+      - 奇怪的山珍热卤面
+  - command:
+      - item add 108141 500
+山珍热卤面:
+  - names:
+      - 山珍热卤面
+  - command:
+      - item add 108142 500
+美味的山珍热卤面:
+  - names:
+      - 美味的山珍热卤面
+  - command:
+      - item add 108143 500
+山珍凉卤面:
+  - names:
+      - 山珍凉卤面
+  - command:
+      - item add 108144 500
+绝境求生烤鱼:
+  - names:
+      - 绝境求生烤鱼
+  - command:
+      - item add 108145 500
+伍玖叁式营养餐:
+  - names:
+      - 伍玖叁式营养餐
+  - command:
+      - item add 108146 500
+圣水:
+  - names:
+      - 圣水
+  - command:
+      - item add 108147 500
+大碗茶:
+  - names:
+      - 大碗茶
+  - command:
+      - item add 108148 500
+冰钩钩果汁:
+  - names:
+      - 冰钩钩果汁
+  - command:
+      - item add 108149 500
+树莓薄荷饮:
+  - names:
+      - 树莓薄荷饮
+  - command:
+      - item add 108150 500
+苹果酿:
+  - names:
+      - 苹果酿
+  - command:
+      - item add 108151 500
+奇怪的腌笃鲜:
+  - names:
+      - 奇怪的腌笃鲜
+  - command:
+      - item add 108152 500
+腌笃鲜:
+  - names:
+      - 腌笃鲜
+  - command:
+      - item add 108153 500
+美味的腌笃鲜:
+  - names:
+      - 美味的腌笃鲜
+  - command:
+      - item add 108154 500
+奇怪的扣三丝:
+  - names:
+      - 奇怪的扣三丝
+  - command:
+      - item add 108155 500
+扣三丝:
+  - names:
+      - 扣三丝
+  - command:
+      - item add 108156 500
+美味的扣三丝:
+  - names:
+      - 美味的扣三丝
+  - command:
+      - item add 108157 500
+奇怪的天枢肉:
+  - names:
+      - 奇怪的天枢肉
+  - command:
+      - item add 108158 500
+天枢肉:
+  - names:
+      - 天枢肉
+  - command:
+      - item add 108159 500
+美味的天枢肉:
+  - names:
+      - 美味的天枢肉
+  - command:
+      - item add 108160 500
+奇怪的莲花酥:
+  - names:
+      - 奇怪的莲花酥
+  - command:
+      - item add 108161 500
+莲花酥:
+  - names:
+      - 莲花酥
+  - command:
+      - item add 108162 500
+美味的莲花酥:
+  - names:
+      - 美味的莲花酥
+  - command:
+      - item add 108163 500
+奇怪的月亮派:
+  - names:
+      - 奇怪的月亮派
+  - command:
+      - item add 108164 500
+月亮派:
+  - names:
+      - 月亮派
+  - command:
+      - item add 108165 500
+美味的月亮派:
+  - names:
+      - 美味的月亮派
+  - command:
+      - item add 108166 500
+奇怪的冒险家蛋堡:
+  - names:
+      - 奇怪的冒险家蛋堡
+  - command:
+      - item add 108167 500
+冒险家蛋堡:
+  - names:
+      - 冒险家蛋堡
+  - command:
+      - item add 108168 500
+美味的冒险家蛋堡:
+  - names:
+      - 美味的冒险家蛋堡
+  - command:
+      - item add 108169 500
+奇怪的北地苹果焖肉:
+  - names:
+      - 奇怪的北地苹果焖肉
+  - command:
+      - item add 108170 500
+北地苹果焖肉:
+  - names:
+      - 北地苹果焖肉
+  - command:
+      - item add 108171 500
+美味的北地苹果焖肉:
+  - names:
+      - 美味的北地苹果焖肉
+  - command:
+      - item add 108172 500
+文火慢炖腌笃鲜:
+  - names:
+      - 文火慢炖腌笃鲜
+  - command:
+      - item add 108173 500
+摇·滚·鸡！:
+  - names:
+      - 摇·滚·鸡！
+  - command:
+      - item add 108174 500
+极致一钓:
+  - names:
+      - 极致一钓
+  - command:
+      - item add 108175 500
+奇怪的蟹黄豆腐:
+  - names:
+      - 奇怪的蟹黄豆腐
+  - command:
+      - item add 108176 500
+蟹黄豆腐:
+  - names:
+      - 蟹黄豆腐
+  - command:
+      - item add 108177 500
+美味的蟹黄豆腐:
+  - names:
+      - 美味的蟹黄豆腐
+  - command:
+      - item add 108178 500
+奇怪的明月蛋:
+  - names:
+      - 奇怪的明月蛋
+  - command:
+      - item add 108179 500
+明月蛋:
+  - names:
+      - 明月蛋
+  - command:
+      - item add 108180 500
+美味的明月蛋:
+  - names:
+      - 美味的明月蛋
+  - command:
+      - item add 108181 500
+奇怪的干锅腊肉:
+  - names:
+      - 奇怪的干锅腊肉
+  - command:
+      - item add 108182 500
+干锅腊肉:
+  - names:
+      - 干锅腊肉
+  - command:
+      - item add 108183 500
+美味的干锅腊肉:
+  - names:
+      - 美味的干锅腊肉
+  - command:
+      - item add 108184 500
+奇怪的干炒鱼河:
+  - names:
+      - 奇怪的干炒鱼河
+  - command:
+      - item add 108185 500
+干炒鱼河:
+  - names:
+      - 干炒鱼河
+  - command:
+      - item add 108186 500
+美味的干炒鱼河:
+  - names:
+      - 美味的干炒鱼河
+  - command:
+      - item add 108187 500
+奇怪的素鲍鱼:
+  - names:
+      - 奇怪的素鲍鱼
+  - command:
+      - item add 108188 500
+素鲍鱼:
+  - names:
+      - 素鲍鱼
+  - command:
+      - item add 108189 500
+美味的素鲍鱼:
+  - names:
+      - 美味的素鲍鱼
+  - command:
+      - item add 108190 500
+奇怪的岩港三鲜:
+  - names:
+      - 奇怪的岩港三鲜
+  - command:
+      - item add 108191 500
+岩港三鲜:
+  - names:
+      - 岩港三鲜
+  - command:
+      - item add 108192 500
+美味的岩港三鲜:
+  - names:
+      - 美味的岩港三鲜
+  - command:
+      - item add 108193 500
+奇怪的清炒虾仁:
+  - names:
+      - 奇怪的清炒虾仁
+  - command:
+      - item add 108194 500
+清炒虾仁:
+  - names:
+      - 清炒虾仁
+  - command:
+      - item add 108195 500
+美味的清炒虾仁:
+  - names:
+      - 美味的清炒虾仁
+  - command:
+      - item add 108196 500
+奇怪的米窝窝:
+  - names:
+      - 奇怪的米窝窝
+  - command:
+      - item add 108197 500
+米窝窝:
+  - names:
+      - 米窝窝
+  - command:
+      - item add 108198 500
+美味的米窝窝:
+  - names:
+      - 美味的米窝窝
+  - command:
+      - item add 108199 500
+幽幽大行军:
+  - names:
+      - 幽幽大行军
+  - command:
+      - item add 108200 500
+奇怪的四方和平:
+  - names:
+      - 奇怪的四方和平
+  - command:
+      - item add 108201 500
+四方和平:
+  - names:
+      - 四方和平
+  - command:
+      - item add 108202 500
+美味的四方和平:
+  - names:
+      - 美味的四方和平
+  - command:
+      - item add 108203 500
+奇怪的稠汁蔬菜炖肉:
+  - names:
+      - 奇怪的稠汁蔬菜炖肉
+  - command:
+      - item add 108204 500
+稠汁蔬菜炖肉:
+  - names:
+      - 稠汁蔬菜炖肉
+  - command:
+      - item add 108205 500
+美味的稠汁蔬菜炖肉:
+  - names:
+      - 美味的稠汁蔬菜炖肉
+  - command:
+      - item add 108206 500
+奇怪的黄油煎鱼:
+  - names:
+      - 奇怪的黄油煎鱼
+  - command:
+      - item add 108207 500
+黄油煎鱼:
+  - names:
+      - 黄油煎鱼
+  - command:
+      - item add 108208 500
+美味的黄油煎鱼:
+  - names:
+      - 美味的黄油煎鱼
+  - command:
+      - item add 108209 500
+奇怪的绝云锅巴:
+  - names:
+      - 奇怪的绝云锅巴
+  - command:
+      - item add 108210 500
+绝云锅巴:
+  - names:
+      - 绝云锅巴
+  - command:
+      - item add 108211 500
+美味的绝云锅巴:
+  - names:
+      - 美味的绝云锅巴
+  - command:
+      - item add 108212 500
+盛世太平:
+  - names:
+      - 盛世太平
+  - command:
+      - item add 108213 500
+林之梦:
+  - names:
+      - 林之梦
+  - command:
+      - item add 108214 500
+海灯节特色烤吃虎鱼:
+  - names:
+      - 海灯节特色烤吃虎鱼
+  - command:
+      - item add 108215 500
+海灯节特色炸萝卜丸子:
+  - names:
+      - 海灯节特色炸萝卜丸子
+  - command:
+      - item add 108216 500
+海灯节特色禽蛋羹:
+  - names:
+      - 海灯节特色禽蛋羹
+  - command:
+      - item add 108217 500
+海灯节特色白玉汤:
+  - names:
+      - 海灯节特色白玉汤
+  - command:
+      - item add 108218 500
+海灯节特色热卤面:
+  - names:
+      - 海灯节特色热卤面
+  - command:
+      - item add 108219 500
+海灯节特色来来菜:
+  - names:
+      - 海灯节特色来来菜
+  - command:
+      - item add 108220 500
+海灯节特色扣三丝:
+  - names:
+      - 海灯节特色扣三丝
+  - command:
+      - item add 108221 500
+奇怪的鲜虾脆薯盏:
+  - names:
+      - 奇怪的鲜虾脆薯盏
+  - command:
+      - item add 108222 500
+鲜虾脆薯盏:
+  - names:
+      - 鲜虾脆薯盏
+  - command:
+      - item add 108223 500
+美味的鲜虾脆薯盏:
+  - names:
+      - 美味的鲜虾脆薯盏
+  - command:
+      - item add 108224 500
+奇怪的薄荷果冻:
+  - names:
+      - 奇怪的薄荷果冻
+  - command:
+      - item add 108225 500
+薄荷果冻:
+  - names:
+      - 薄荷果冻
+  - command:
+      - item add 108226 500
+美味的薄荷果冻:
+  - names:
+      - 美味的薄荷果冻
+  - command:
+      - item add 108227 500
+奇怪的凉拌薄荷:
+  - names:
+      - 奇怪的凉拌薄荷
+  - command:
+      - item add 108228 500
+凉拌薄荷:
+  - names:
+      - 凉拌薄荷
+  - command:
+      - item add 108229 500
+美味的凉拌薄荷:
+  - names:
+      - 美味的凉拌薄荷
+  - command:
+      - item add 108230 500
+奇怪的兽肉薄荷卷:
+  - names:
+      - 奇怪的兽肉薄荷卷
+  - command:
+      - item add 108231 500
+兽肉薄荷卷:
+  - names:
+      - 兽肉薄荷卷
+  - command:
+      - item add 108232 500
+美味的兽肉薄荷卷:
+  - names:
+      - 美味的兽肉薄荷卷
+  - command:
+      - item add 108233 500
+审判的晚宴:
+  - names:
+      - 审判的晚宴
+  - command:
+      - item add 108234 500
+奇怪的大黄金吮指鸡:
+  - names:
+      - 奇怪的大黄金吮指鸡
+  - command:
+      - item add 108235 500
+大黄金吮指鸡:
+  - names:
+      - 大黄金吮指鸡
+  - command:
+      - item add 108236 500
+美味的大黄金吮指鸡:
+  - names:
+      - 美味的大黄金吮指鸡
+  - command:
+      - item add 108237 500
+奇怪的脆脆鸡腿堡:
+  - names:
+      - 奇怪的脆脆鸡腿堡
+  - command:
+      - item add 108238 500
+脆脆鸡腿堡:
+  - names:
+      - 脆脆鸡腿堡
+  - command:
+      - item add 108239 500
+美味的脆脆鸡腿堡:
+  - names:
+      - 美味的脆脆鸡腿堡
+  - command:
+      - item add 108240 500
+奇怪的香浓土豆泥:
+  - names:
+      - 奇怪的香浓土豆泥
+  - command:
+      - item add 108241 500
+香浓土豆泥:
+  - names:
+      - 香浓土豆泥
+  - command:
+      - item add 108242 500
+美味的香浓土豆泥:
+  - names:
+      - 美味的香浓土豆泥
+  - command:
+      - item add 108243 500
+自有方圆:
+  - names:
+      - 自有方圆
+  - command:
+      - item add 108244 500
+骇浪派:
+  - names:
+      - 骇浪派
+  - command:
+      - item add 108245 500
+奇怪的鸡豆花:
+  - names:
+      - 奇怪的鸡豆花
+  - command:
+      - item add 108246 500
+鸡豆花:
+  - names:
+      - 鸡豆花
+  - command:
+      - item add 108247 500
+美味的鸡豆花:
+  - names:
+      - 美味的鸡豆花
+  - command:
+      - item add 108248 500
+奇怪的金枪鱼寿司:
+  - names:
+      - 奇怪的金枪鱼寿司
+  - command:
+      - item add 108249 500
+金枪鱼寿司:
+  - names:
+      - 金枪鱼寿司
+  - command:
+      - item add 108250 500
+美味的金枪鱼寿司:
+  - names:
+      - 美味的金枪鱼寿司
+  - command:
+      - item add 108251 500
+奇怪的三彩团子:
+  - names:
+      - 奇怪的三彩团子
+  - command:
+      - item add 108252 500
+三彩团子:
+  - names:
+      - 三彩团子
+  - command:
+      - item add 108253 500
+美味的三彩团子:
+  - names:
+      - 美味的三彩团子
+  - command:
+      - item add 108254 500
+奇怪的饭团:
+  - names:
+      - 奇怪的饭团
+  - command:
+      - item add 108255 500
+饭团:
+  - names:
+      - 饭团
+  - command:
+      - item add 108256 500
+美味的饭团:
+  - names:
+      - 美味的饭团
+  - command:
+      - item add 108257 500
+奇怪的刺身拼盘:
+  - names:
+      - 奇怪的刺身拼盘
+  - command:
+      - item add 108258 500
+刺身拼盘:
+  - names:
+      - 刺身拼盘
+  - command:
+      - item add 108259 500
+美味的刺身拼盘:
+  - names:
+      - 美味的刺身拼盘
+  - command:
+      - item add 108260 500
+奇怪的兽骨拉面:
+  - names:
+      - 奇怪的兽骨拉面
+  - command:
+      - item add 108261 500
+兽骨拉面:
+  - names:
+      - 兽骨拉面
+  - command:
+      - item add 108262 500
+美味的兽骨拉面:
+  - names:
+      - 美味的兽骨拉面
+  - command:
+      - item add 108263 500
+奇怪的鸟蛋烧:
+  - names:
+      - 奇怪的鸟蛋烧
+  - command:
+      - item add 108264 500
+鸟蛋烧:
+  - names:
+      - 鸟蛋烧
+  - command:
+      - item add 108265 500
+美味的鸟蛋烧:
+  - names:
+      - 美味的鸟蛋烧
+  - command:
+      - item add 108266 500
+奇怪的干烧香鱼:
+  - names:
+      - 奇怪的干烧香鱼
+  - command:
+      - item add 108267 500
+干烧香鱼:
+  - names:
+      - 干烧香鱼
+  - command:
+      - item add 108268 500
+美味的干烧香鱼:
+  - names:
+      - 美味的干烧香鱼
+  - command:
+      - item add 108269 500
+奇怪的黄油蟹蟹:
+  - names:
+      - 奇怪的黄油蟹蟹
+  - command:
+      - item add 108270 500
+黄油蟹蟹:
+  - names:
+      - 黄油蟹蟹
+  - command:
+      - item add 108271 500
+美味的黄油蟹蟹:
+  - names:
+      - 美味的黄油蟹蟹
+  - command:
+      - item add 108272 500
+奇怪的串串三味:
+  - names:
+      - 奇怪的串串三味
+  - command:
+      - item add 108273 500
+串串三味:
+  - names:
+      - 串串三味
+  - command:
+      - item add 108274 500
+美味的串串三味:
+  - names:
+      - 美味的串串三味
+  - command:
+      - item add 108275 500
+奇怪的味噌汤:
+  - names:
+      - 奇怪的味噌汤
+  - command:
+      - item add 108276 500
+味噌汤:
+  - names:
+      - 味噌汤
+  - command:
+      - item add 108277 500
+美味的味噌汤:
+  - names:
+      - 美味的味噌汤
+  - command:
+      - item add 108278 500
+奇怪的渡来禽肉:
+  - names:
+      - 奇怪的渡来禽肉
+  - command:
+      - item add 108279 500
+渡来禽肉:
+  - names:
+      - 渡来禽肉
+  - command:
+      - item add 108280 500
+美味的渡来禽肉:
+  - names:
+      - 美味的渡来禽肉
+  - command:
+      - item add 108281 500
+奇怪的绯樱饼:
+  - names:
+      - 奇怪的绯樱饼
+  - command:
+      - item add 108282 500
+绯樱饼:
+  - names:
+      - 绯樱饼
+  - command:
+      - item add 108283 500
+美味的绯樱饼:
+  - names:
+      - 美味的绯樱饼
+  - command:
+      - item add 108284 500
+奇怪的绀田煮:
+  - names:
+      - 奇怪的绀田煮
+  - command:
+      - item add 108285 500
+绀田煮:
+  - names:
+      - 绀田煮
+  - command:
+      - item add 108286 500
+美味的绀田煮:
+  - names:
+      - 美味的绀田煮
+  - command:
+      - item add 108287 500
+奇怪的市井杂煮:
+  - names:
+      - 奇怪的市井杂煮
+  - command:
+      - item add 108288 500
+市井杂煮:
+  - names:
+      - 市井杂煮
+  - command:
+      - item add 108289 500
+美味的市井杂煮:
+  - names:
+      - 美味的市井杂煮
+  - command:
+      - item add 108290 500
+奇怪的什锦炒面:
+  - names:
+      - 奇怪的什锦炒面
+  - command:
+      - item add 108291 500
+什锦炒面:
+  - names:
+      - 什锦炒面
+  - command:
+      - item add 108292 500
+美味的什锦炒面:
+  - names:
+      - 美味的什锦炒面
+  - command:
+      - item add 108293 500
+奇怪的蟹黄壳壳烧:
+  - names:
+      - 奇怪的蟹黄壳壳烧
+  - command:
+      - item add 108294 500
+蟹黄壳壳烧:
+  - names:
+      - 蟹黄壳壳烧
+  - command:
+      - item add 108295 500
+美味的蟹黄壳壳烧:
+  - names:
+      - 美味的蟹黄壳壳烧
+  - command:
+      - item add 108296 500
+奇怪的绯樱天妇罗:
+  - names:
+      - 奇怪的绯樱天妇罗
+  - command:
+      - item add 108297 500
+绯樱天妇罗:
+  - names:
+      - 绯樱天妇罗
+  - command:
+      - item add 108298 500
+美味的绯樱天妇罗:
+  - names:
+      - 美味的绯樱天妇罗
+  - command:
+      - item add 108299 500
+红炉一点雪:
+  - names:
+      - 红炉一点雪
+  - command:
+      - item add 108300 500
+雨奇晴好:
+  - names:
+      - 雨奇晴好
+  - command:
+      - item add 108301 500
+夏祭游鱼:
+  - names:
+      - 夏祭游鱼
+  - command:
+      - item add 108302 500
+头晕回避术・改:
+  - names:
+      - 头晕回避术・改
+  - command:
+      - item add 108303 500
+特制风味烤蘑菇披萨:
+  - names:
+      - 特制风味烤蘑菇披萨
+  - command:
+      - item add 108304 500
+团子牛奶:
+  - names:
+      - 团子牛奶
+  - command:
+      - item add 108305 500
+奇怪的米饭布丁:
+  - names:
+      - 奇怪的米饭布丁
+  - command:
+      - item add 108306 500
+米饭布丁:
+  - names:
+      - 米饭布丁
+  - command:
+      - item add 108307 500
+美味的米饭布丁:
+  - names:
+      - 美味的米饭布丁
+  - command:
+      - item add 108308 500
+奇怪的红烩兽肉:
+  - names:
+      - 奇怪的红烩兽肉
+  - command:
+      - item add 108309 500
+红烩兽肉:
+  - names:
+      - 红烩兽肉
+  - command:
+      - item add 108310 500
+美味的红烩兽肉:
+  - names:
+      - 美味的红烩兽肉
+  - command:
+      - item add 108311 500
+奇怪的文心豆腐:
+  - names:
+      - 奇怪的文心豆腐
+  - command:
+      - item add 108312 500
+文心豆腐:
+  - names:
+      - 文心豆腐
+  - command:
+      - item add 108313 500
+美味的文心豆腐:
+  - names:
+      - 美味的文心豆腐
+  - command:
+      - item add 108314 500
+奇怪的辣肉窝窝头:
+  - names:
+      - 奇怪的辣肉窝窝头
+  - command:
+      - item add 108315 500
+辣肉窝窝头:
+  - names:
+      - 辣肉窝窝头
+  - command:
+      - item add 108316 500
+美味的辣肉窝窝头:
+  - names:
+      - 美味的辣肉窝窝头
+  - command:
+      - item add 108317 500
+奇怪的活力喵饭:
+  - names:
+      - 奇怪的活力喵饭
+  - command:
+      - item add 108318 500
+活力喵饭:
+  - names:
+      - 活力喵饭
+  - command:
+      - item add 108319 500
+美味的活力喵饭:
+  - names:
+      - 美味的活力喵饭
+  - command:
+      - item add 108320 500
+奇怪的甜虾寿司:
+  - names:
+      - 奇怪的甜虾寿司
+  - command:
+      - item add 108321 500
+甜虾寿司:
+  - names:
+      - 甜虾寿司
+  - command:
+      - item add 108322 500
+美味的甜虾寿司:
+  - names:
+      - 美味的甜虾寿司
+  - command:
+      - item add 108323 500
+奇怪的鸟蛋寿司:
+  - names:
+      - 奇怪的鸟蛋寿司
+  - command:
+      - item add 108324 500
+鸟蛋寿司:
+  - names:
+      - 鸟蛋寿司
+  - command:
+      - item add 108325 500
+美味的鸟蛋寿司:
+  - names:
+      - 美味的鸟蛋寿司
+  - command:
+      - item add 108326 500
+奇怪的蛋包饭:
+  - names:
+      - 奇怪的蛋包饭
+  - command:
+      - item add 108327 500
+蛋包饭:
+  - names:
+      - 蛋包饭
+  - command:
+      - item add 108328 500
+美味的蛋包饭:
+  - names:
+      - 美味的蛋包饭
+  - command:
+      - item add 108329 500
+奇怪的日落鲷鱼烧:
+  - names:
+      - 奇怪的日落鲷鱼烧
+  - command:
+      - item add 108330 500
+日落鲷鱼烧:
+  - names:
+      - 日落鲷鱼烧
+  - command:
+      - item add 108331 500
+美味的日落鲷鱼烧:
+  - names:
+      - 美味的日落鲷鱼烧
+  - command:
+      - item add 108332 500
+奇怪的多多烧:
+  - names:
+      - 奇怪的多多烧
+  - command:
+      - item add 108333 500
+多多烧:
+  - names:
+      - 多多烧
+  - command:
+      - item add 108334 500
+美味的多多烧:
+  - names:
+      - 美味的多多烧
+  - command:
+      - item add 108335 500
+奇怪的蒲烧鳗肉:
+  - names:
+      - 奇怪的蒲烧鳗肉
+  - command:
+      - item add 108336 500
+蒲烧鳗肉:
+  - names:
+      - 蒲烧鳗肉
+  - command:
+      - item add 108337 500
+美味的蒲烧鳗肉:
+  - names:
+      - 美味的蒲烧鳗肉
+  - command:
+      - item add 108338 500
+饱腹感凝胶:
+  - names:
+      - 饱腹感凝胶
+  - command:
+      - item add 108339 500
+奇策:
+  - names:
+      - 奇策
+  - command:
+      - item add 108340 500
+永恒的信仰:
+  - names:
+      - 永恒的信仰
+  - command:
+      - item add 108341 500
+奇怪的鲜鱼炖萝卜:
+  - names:
+      - 奇怪的鲜鱼炖萝卜
+  - command:
+      - item add 108342 500
+鲜鱼炖萝卜:
+  - names:
+      - 鲜鱼炖萝卜
+  - command:
+      - item add 108343 500
+美味的鲜鱼炖萝卜:
+  - names:
+      - 美味的鲜鱼炖萝卜
+  - command:
+      - item add 108344 500
+奇怪的若竹煮:
+  - names:
+      - 奇怪的若竹煮
+  - command:
+      - item add 108345 500
+若竹煮:
+  - names:
+      - 若竹煮
+  - command:
+      - item add 108346 500
+美味的若竹煮:
+  - names:
+      - 美味的若竹煮
+  - command:
+      - item add 108347 500
+奇怪的树莓水馒头:
+  - names:
+      - 奇怪的树莓水馒头
+  - command:
+      - item add 108348 500
+树莓水馒头:
+  - names:
+      - 树莓水馒头
+  - command:
+      - item add 108349 500
+美味的树莓水馒头:
+  - names:
+      - 美味的树莓水馒头
+  - command:
+      - item add 108350 500
+奇怪的荞麦面:
+  - names:
+      - 奇怪的荞麦面
+  - command:
+      - item add 108351 500
+荞麦面:
+  - names:
+      - 荞麦面
+  - command:
+      - item add 108352 500
+美味的荞麦面:
+  - names:
+      - 美味的荞麦面
+  - command:
+      - item add 108353 500
+暖意:
+  - names:
+      - 暖意
+  - command:
+      - item add 108354 500
+奇怪的鳗肉茶泡饭:
+  - names:
+      - 奇怪的鳗肉茶泡饭
+  - command:
+      - item add 108355 500
+鳗肉茶泡饭:
+  - names:
+      - 鳗肉茶泡饭
+  - command:
+      - item add 108356 500
+美味的鳗肉茶泡饭:
+  - names:
+      - 美味的鳗肉茶泡饭
+  - command:
+      - item add 108357 500
+奇怪的五宝腌菜:
+  - names:
+      - 奇怪的五宝腌菜
+  - command:
+      - item add 108358 500
+五宝腌菜:
+  - names:
+      - 五宝腌菜
+  - command:
+      - item add 108359 500
+美味的五宝腌菜:
+  - names:
+      - 美味的五宝腌菜
+  - command:
+      - item add 108360 500
+奇怪的绯樱虾仙贝:
+  - names:
+      - 奇怪的绯樱虾仙贝
+  - command:
+      - item add 108361 500
+绯樱虾仙贝:
+  - names:
+      - 绯樱虾仙贝
+  - command:
+      - item add 108362 500
+美味的绯樱虾仙贝:
+  - names:
+      - 美味的绯樱虾仙贝
+  - command:
+      - item add 108363 500
+强者之道:
+  - names:
+      - 强者之道
+  - command:
+      - item add 108364 500
+常胜传说:
+  - names:
+      - 常胜传说
+  - command:
+      - item add 108365 500
+奇怪的丰年有余:
+  - names:
+      - 奇怪的丰年有余
+  - command:
+      - item add 108366 500
+丰年有余:
+  - names:
+      - 丰年有余
+  - command:
+      - item add 108367 500
+美味的丰年有余:
+  - names:
+      - 美味的丰年有余
+  - command:
+      - item add 108368 500
+奇怪的龙须面:
+  - names:
+      - 奇怪的龙须面
+  - command:
+      - item add 108369 500
+龙须面:
+  - names:
+      - 龙须面
+  - command:
+      - item add 108370 500
+美味的龙须面:
+  - names:
+      - 美味的龙须面
+  - command:
+      - item add 108371 500
+连心面:
+  - names:
+      - 连心面
+  - command:
+      - item add 108372 500
+云遮玉:
+  - names:
+      - 云遮玉
+  - command:
+      - item add 108373 500
+奇怪的山家烧:
+  - names:
+      - 奇怪的山家烧
+  - command:
+      - item add 108374 500
+山家烧:
+  - names:
+      - 山家烧
+  - command:
+      - item add 108375 500
+美味的山家烧:
+  - names:
+      - 美味的山家烧
+  - command:
+      - item add 108376 500
+奇怪的乌冬面:
+  - names:
+      - 奇怪的乌冬面
+  - command:
+      - item add 108377 500
+乌冬面:
+  - names:
+      - 乌冬面
+  - command:
+      - item add 108378 500
+美味的乌冬面:
+  - names:
+      - 美味的乌冬面
+  - command:
+      - item add 108379 500
+福内乌冬:
+  - names:
+      - 福内乌冬
+  - command:
+      - item add 108380 500
+奇怪的炸肉排三明治:
+  - names:
+      - 奇怪的炸肉排三明治
+  - command:
+      - item add 108381 500
+炸肉排三明治:
+  - names:
+      - 炸肉排三明治
+  - command:
+      - item add 108382 500
+美味的炸肉排三明治:
+  - names:
+      - 美味的炸肉排三明治
+  - command:
+      - item add 108383 500
+奇怪的紫苑云霓:
+  - names:
+      - 奇怪的紫苑云霓
+  - command:
+      - item add 108384 500
+紫苑云霓:
+  - names:
+      - 紫苑云霓
+  - command:
+      - item add 108385 500
+美味的紫苑云霓:
+  - names:
+      - 美味的紫苑云霓
+  - command:
+      - item add 108386 500
+静寂闲雅:
+  - names:
+      - 静寂闲雅
+  - command:
+      - item add 108387 500
+蛋包饭圆舞曲:
+  - names:
+      - 蛋包饭圆舞曲
+  - command:
+      - item add 108388 500
+沾露虾仁:
+  - names:
+      - 沾露虾仁
+  - command:
+      - item add 108389 500
+唯一的真相:
+  - names:
+      - 唯一的真相
+  - command:
+      - item add 108390 500
+奇怪的黄油鸡:
+  - names:
+      - 奇怪的黄油鸡
+  - command:
+      - item add 108391 500
+黄油鸡:
+  - names:
+      - 黄油鸡
+  - command:
+      - item add 108392 500
+美味的黄油鸡:
+  - names:
+      - 美味的黄油鸡
+  - command:
+      - item add 108393 500
+奇怪的烤肉卷:
+  - names:
+      - 奇怪的烤肉卷
+  - command:
+      - item add 108394 500
+烤肉卷:
+  - names:
+      - 烤肉卷
+  - command:
+      - item add 108395 500
+美味的烤肉卷:
+  - names:
+      - 美味的烤肉卷
+  - command:
+      - item add 108396 500
+奇怪的雨林沙拉:
+  - names:
+      - 奇怪的雨林沙拉
+  - command:
+      - item add 108397 500
+雨林沙拉:
+  - names:
+      - 雨林沙拉
+  - command:
+      - item add 108398 500
+美味的雨林沙拉:
+  - names:
+      - 美味的雨林沙拉
+  - command:
+      - item add 108399 500
+奇怪的马萨拉芝士球:
+  - names:
+      - 奇怪的马萨拉芝士球
+  - command:
+      - item add 108400 500
+马萨拉芝士球:
+  - names:
+      - 马萨拉芝士球
+  - command:
+      - item add 108401 500
+美味的马萨拉芝士球:
+  - names:
+      - 美味的马萨拉芝士球
+  - command:
+      - item add 108402 500
+奇怪的杂菇荟萃:
+  - names:
+      - 奇怪的杂菇荟萃
+  - command:
+      - item add 108403 500
+杂菇荟萃:
+  - names:
+      - 杂菇荟萃
+  - command:
+      - item add 108404 500
+美味的杂菇荟萃:
+  - names:
+      - 美味的杂菇荟萃
+  - command:
+      - item add 108405 500
+奇怪的口袋饼:
+  - names:
+      - 奇怪的口袋饼
+  - command:
+      - item add 108406 500
+口袋饼:
+  - names:
+      - 口袋饼
+  - command:
+      - item add 108407 500
+美味的口袋饼:
+  - names:
+      - 美味的口袋饼
+  - command:
+      - item add 108408 500
+奇怪的绿汁脆球:
+  - names:
+      - 奇怪的绿汁脆球
+  - command:
+      - item add 108409 500
+绿汁脆球:
+  - names:
+      - 绿汁脆球
+  - command:
+      - item add 108410 500
+美味的绿汁脆球:
+  - names:
+      - 美味的绿汁脆球
+  - command:
+      - item add 108411 500
+奇怪的薄荷豆汤:
+  - names:
+      - 奇怪的薄荷豆汤
+  - command:
+      - item add 108412 500
+薄荷豆汤:
+  - names:
+      - 薄荷豆汤
+  - command:
+      - item add 108413 500
+美味的薄荷豆汤:
+  - names:
+      - 美味的薄荷豆汤
+  - command:
+      - item add 108414 500
+奇怪的兽米香香:
+  - names:
+      - 奇怪的兽米香香
+  - command:
+      - item add 108415 500
+兽米香香:
+  - names:
+      - 兽米香香
+  - command:
+      - item add 108416 500
+美味的兽米香香:
+  - names:
+      - 美味的兽米香香
+  - command:
+      - item add 108417 500
+奇怪的米圆塔:
+  - names:
+      - 奇怪的米圆塔
+  - command:
+      - item add 108418 500
+米圆塔:
+  - names:
+      - 米圆塔
+  - command:
+      - item add 108419 500
+美味的米圆塔:
+  - names:
+      - 美味的米圆塔
+  - command:
+      - item add 108420 500
+奇怪的兰巴德鱼卷:
+  - names:
+      - 奇怪的兰巴德鱼卷
+  - command:
+      - item add 108421 500
+兰巴德鱼卷:
+  - names:
+      - 兰巴德鱼卷
+  - command:
+      - item add 108422 500
+美味的兰巴德鱼卷:
+  - names:
+      - 美味的兰巴德鱼卷
+  - command:
+      - item add 108423 500
+奇怪的咖喱虾:
+  - names:
+      - 奇怪的咖喱虾
+  - command:
+      - item add 108424 500
+咖喱虾:
+  - names:
+      - 咖喱虾
+  - command:
+      - item add 108425 500
+美味的咖喱虾:
+  - names:
+      - 美味的咖喱虾
+  - command:
+      - item add 108426 500
+奇怪的唐杜尔烤鸡:
+  - names:
+      - 奇怪的唐杜尔烤鸡
+  - command:
+      - item add 108427 500
+唐杜尔烤鸡:
+  - names:
+      - 唐杜尔烤鸡
+  - command:
+      - item add 108428 500
+美味的唐杜尔烤鸡:
+  - names:
+      - 美味的唐杜尔烤鸡
+  - command:
+      - item add 108429 500
+奇怪的土豆船:
+  - names:
+      - 奇怪的土豆船
+  - command:
+      - item add 108430 500
+土豆船:
+  - names:
+      - 土豆船
+  - command:
+      - item add 108431 500
+美味的土豆船:
+  - names:
+      - 美味的土豆船
+  - command:
+      - item add 108432 500
+奇怪的奶酱鲜鱼:
+  - names:
+      - 奇怪的奶酱鲜鱼
+  - command:
+      - item add 108433 500
+奶酱鲜鱼:
+  - names:
+      - 奶酱鲜鱼
+  - command:
+      - item add 108434 500
+美味的奶酱鲜鱼:
+  - names:
+      - 美味的奶酱鲜鱼
+  - command:
+      - item add 108435 500
+巡林官精选:
+  - names:
+      - 巡林官精选
+  - command:
+      - item add 108436 500
+憧憬:
+  - names:
+      - 憧憬
+  - command:
+      - item add 108437 500
+摩拉急速来:
+  - names:
+      - 摩拉急速来
+  - command:
+      - item add 108438 500
+奇怪的肉肉烤蘑菇披萨:
+  - names:
+      - 奇怪的肉肉烤蘑菇披萨
+  - command:
+      - item add 108439 500
+肉肉烤蘑菇披萨:
+  - names:
+      - 肉肉烤蘑菇披萨
+  - command:
+      - item add 108440 500
+美味的肉肉烤蘑菇披萨:
+  - names:
+      - 美味的肉肉烤蘑菇披萨
+  - command:
+      - item add 108441 500
+奇怪的日落莓莓茶:
+  - names:
+      - 奇怪的日落莓莓茶
+  - command:
+      - item add 108442 500
+日落莓莓茶:
+  - names:
+      - 日落莓莓茶
+  - command:
+      - item add 108443 500
+美味的日落莓莓茶:
+  - names:
+      - 美味的日落莓莓茶
+  - command:
+      - item add 108444 500
+奇怪的奶香菌菇脆塔:
+  - names:
+      - 奇怪的奶香菌菇脆塔
+  - command:
+      - item add 108445 500
+奶香菌菇脆塔:
+  - names:
+      - 奶香菌菇脆塔
+  - command:
+      - item add 108446 500
+美味的奶香菌菇脆塔:
+  - names:
+      - 美味的奶香菌菇脆塔
+  - command:
+      - item add 108447 500
+奇怪的椰炭饼:
+  - names:
+      - 奇怪的椰炭饼
+  - command:
+      - item add 108448 500
+椰炭饼:
+  - names:
+      - 椰炭饼
+  - command:
+      - item add 108449 500
+美味的椰炭饼:
+  - names:
+      - 美味的椰炭饼
+  - command:
+      - item add 108450 500
+奇怪的千层酥酥:
+  - names:
+      - 奇怪的千层酥酥
+  - command:
+      - item add 108451 500
+千层酥酥:
+  - names:
+      - 千层酥酥
+  - command:
+      - item add 108452 500
+美味的千层酥酥:
+  - names:
+      - 美味的千层酥酥
+  - command:
+      - item add 108453 500
+奇怪的枣椰蜜糖:
+  - names:
+      - 奇怪的枣椰蜜糖
+  - command:
+      - item add 108454 500
+枣椰蜜糖:
+  - names:
+      - 枣椰蜜糖
+  - command:
+      - item add 108455 500
+美味的枣椰蜜糖:
+  - names:
+      - 美味的枣椰蜜糖
+  - command:
+      - item add 108456 500
+奇怪的帕蒂沙兰布丁:
+  - names:
+      - 奇怪的帕蒂沙兰布丁
+  - command:
+      - item add 108457 500
+帕蒂沙兰布丁:
+  - names:
+      - 帕蒂沙兰布丁
+  - command:
+      - item add 108458 500
+美味的帕蒂沙兰布丁:
+  - names:
+      - 美味的帕蒂沙兰布丁
+  - command:
+      - item add 108459 500
+奇怪的阿如拌饭:
+  - names:
+      - 奇怪的阿如拌饭
+  - command:
+      - item add 108460 500
+阿如拌饭:
+  - names:
+      - 阿如拌饭
+  - command:
+      - item add 108461 500
+美味的阿如拌饭:
+  - names:
+      - 美味的阿如拌饭
+  - command:
+      - item add 108462 500
+奇怪的假日果酿:
+  - names:
+      - 奇怪的假日果酿
+  - command:
+      - item add 108463 500
+假日果酿:
+  - names:
+      - 假日果酿
+  - command:
+      - item add 108464 500
+美味的假日果酿:
+  - names:
+      - 美味的假日果酿
+  - command:
+      - item add 108465 500
+婆娑一舞:
+  - names:
+      - 婆娑一舞
+  - command:
+      - item add 108466 500
+决斗之魂:
+  - names:
+      - 决斗之魂
+  - command:
+      - item add 108467 500
+关怀备至:
+  - names:
+      - 关怀备至
+  - command:
+      - item add 108468 500
+气泡酸莓汁:
+  - names:
+      - 气泡酸莓汁
+  - command:
+      - item add 108469 500
+奇怪的蔷薇奶糊:
+  - names:
+      - 奇怪的蔷薇奶糊
+  - command:
+      - item add 108470 500
+蔷薇奶糊:
+  - names:
+      - 蔷薇奶糊
+  - command:
+      - item add 108471 500
+美味的蔷薇奶糊:
+  - names:
+      - 美味的蔷薇奶糊
+  - command:
+      - item add 108472 500
+安眠奢想:
+  - names:
+      - 安眠奢想
+  - command:
+      - item add 108473 500
+哈瓦玛玛兹:
+  - names:
+      - 哈瓦玛玛兹
+  - command:
+      - item add 108474 500
+奇怪的萨巴桑炸角:
+  - names:
+      - 奇怪的萨巴桑炸角
+  - command:
+      - item add 108475 500
+萨巴桑炸角:
+  - names:
+      - 萨巴桑炸角
+  - command:
+      - item add 108476 500
+美味的萨巴桑炸角:
+  - names:
+      - 美味的萨巴桑炸角
+  - command:
+      - item add 108477 500
+古法秘制椰炭饼:
+  - names:
+      - 古法秘制椰炭饼
+  - command:
+      - item add 108478 500
+真味茶泡饭:
+  - names:
+      - 真味茶泡饭
+  - command:
+      - item add 108479 500
+奇怪的萨布兹炖肉:
+  - names:
+      - 奇怪的萨布兹炖肉
+  - command:
+      - item add 108480 500
+萨布兹炖肉:
+  - names:
+      - 萨布兹炖肉
+  - command:
+      - item add 108481 500
+美味的萨布兹炖肉:
+  - names:
+      - 美味的萨布兹炖肉
+  - command:
+      - item add 108482 500
+奇怪的秘香肉团:
+  - names:
+      - 奇怪的秘香肉团
+  - command:
+      - item add 108483 500
+秘香肉团:
+  - names:
+      - 秘香肉团
+  - command:
+      - item add 108484 500
+美味的秘香肉团:
+  - names:
+      - 美味的秘香肉团
+  - command:
+      - item add 108485 500
+理想情况:
+  - names:
+      - 理想情况
+  - command:
+      - item add 108486 500
+轻策家常菜:
+  - names:
+      - 轻策家常菜
+  - command:
+      - item add 108487 500
+鳄鱼肉干:
+  - names:
+      - 鳄鱼肉干
+  - command:
+      - item add 108488 500
+奇怪的蜜金泡果:
+  - names:
+      - 奇怪的蜜金泡果
+  - command:
+      - item add 108489 500
+蜜金泡果:
+  - names:
+      - 蜜金泡果
+  - command:
+      - item add 108490 500
+美味的蜜金泡果:
+  - names:
+      - 美味的蜜金泡果
+  - command:
+      - item add 108491 500
+奇怪的镀金锅:
+  - names:
+      - 奇怪的镀金锅
+  - command:
+      - item add 108492 500
+镀金锅:
+  - names:
+      - 镀金锅
+  - command:
+      - item add 108493 500
+美味的镀金锅:
+  - names:
+      - 美味的镀金锅
+  - command:
+      - item add 108494 500
+奇怪的超级至尊披萨:
+  - names:
+      - 奇怪的超级至尊披萨
+  - command:
+      - item add 108495 500
+超级至尊披萨:
+  - names:
+      - 超级至尊披萨
+  - command:
+      - item add 108496 500
+美味的超级至尊披萨:
+  - names:
+      - 美味的超级至尊披萨
+  - command:
+      - item add 108497 500
+奇怪的薄荷曼果茶:
+  - names:
+      - 奇怪的薄荷曼果茶
+  - command:
+      - item add 108498 500
+薄荷曼果茶:
+  - names:
+      - 薄荷曼果茶
+  - command:
+      - item add 108499 500
+美味的薄荷曼果茶:
+  - names:
+      - 美味的薄荷曼果茶
+  - command:
+      - item add 108500 500
+炽金之锅:
+  - names:
+      - 炽金之锅
+  - command:
+      - item add 108501 500
+测绘员蛋堡:
+  - names:
+      - 测绘员蛋堡
+  - command:
+      - item add 108502 500
+奇怪的脆饼珐提:
+  - names:
+      - 奇怪的脆饼珐提
+  - command:
+      - item add 108503 500
+脆饼珐提:
+  - names:
+      - 脆饼珐提
+  - command:
+      - item add 108504 500
+美味的脆饼珐提:
+  - names:
+      - 美味的脆饼珐提
+  - command:
+      - item add 108505 500
+奇怪的琼玉果汤:
+  - names:
+      - 奇怪的琼玉果汤
+  - command:
+      - item add 108506 500
+琼玉果汤:
+  - names:
+      - 琼玉果汤
+  - command:
+      - item add 108507 500
+美味的琼玉果汤:
+  - names:
+      - 美味的琼玉果汤
+  - command:
+      - item add 108508 500
+悉心一作:
+  - names:
+      - 悉心一作
+  - command:
+      - item add 108509 500
+清热降火汤:
+  - names:
+      - 清热降火汤
+  - command:
+      - item add 108510 500
+耐热药剂:
+  - names:
+      - 耐热药剂
+  - command:
+      - item add 111006 500
+防潮药剂:
+  - names:
+      - 防潮药剂
+  - command:
+      - item add 111007 500
+耐寒药剂:
+  - names:
+      - 耐寒药剂
+  - command:
+      - item add 111008 500
+防风药剂:
+  - names:
+      - 防风药剂
+  - command:
+      - item add 111009 500
+绝缘药剂:
+  - names:
+      - 绝缘药剂
+  - command:
+      - item add 111010 500
+防尘药剂:
+  - names:
+      - 防尘药剂
+  - command:
+      - item add 111011 500
+治草药剂:
+  - names:
+      - 治草药剂
+  - command:
+      - item add 111012 500
+烈火精油:
+  - names:
+      - 烈火精油
+  - command:
+      - item add 111013 500
+激流精油:
+  - names:
+      - 激流精油
+  - command:
+      - item add 111014 500
+霜劫精油:
+  - names:
+      - 霜劫精油
+  - command:
+      - item add 111015 500
+狂风精油:
+  - names:
+      - 狂风精油
+  - command:
+      - item add 111016 500
+惊雷精油:
+  - names:
+      - 惊雷精油
+  - command:
+      - item add 111017 500
+磐石精油:
+  - names:
+      - 磐石精油
+  - command:
+      - item add 111018 500
+丛林精油:
+  - names:
+      - 丛林精油
+  - command:
+      - item add 111019 500
+香气四溢的烤肉排:
+  - names:
+      - 香气四溢的烤肉排
+  - command:
+      - item add 141099 500
+香气四溢的蒙德烤鱼:
+  - names:
+      - 香气四溢的蒙德烤鱼
+  - command:
+      - item add 141100 500
+香气四溢的北地烟熏鸡:
+  - names:
+      - 香气四溢的北地烟熏鸡
+  - command:
+      - item add 141101 500
+香气四溢的野菇鸡肉串:
+  - names:
+      - 香气四溢的野菇鸡肉串
+  - command:
+      - item add 141102 500
+香气四溢的满足沙拉:
+  - names:
+      - 香气四溢的满足沙拉
+  - command:
+      - item add 141103 500
+香气四溢的蟹黄火腿焗时蔬:
+  - names:
+      - 香气四溢的蟹黄火腿焗时蔬
+  - command:
+      - item add 141104 500
+香气四溢的蜜酱胡萝卜煎肉:
+  - names:
+      - 香气四溢的蜜酱胡萝卜煎肉
+  - command:
+      - item add 141105 500
+香气四溢的渔人吐司:
+  - names:
+      - 香气四溢的渔人吐司
+  - command:
+      - item add 141106 500
+香气四溢的炸萝卜丸子:
+  - names:
+      - 香气四溢的炸萝卜丸子
+  - command:
+      - item add 141107 500
+香气四溢的庄园烤松饼:
+  - names:
+      - 香气四溢的庄园烤松饼
+  - command:
+      - item add 141108 500
+香气四溢的萝卜时蔬汤:
+  - names:
+      - 香气四溢的萝卜时蔬汤
+  - command:
+      - item add 141109 500
+香气四溢的烤蘑菇披萨:
+  - names:
+      - 香气四溢的烤蘑菇披萨
+  - command:
+      - item add 141110 500
+香气四溢的冷肉拼盘:
+  - names:
+      - 香气四溢的冷肉拼盘
+  - command:
+      - item add 141111 500
+香气四溢的嘟嘟莲海鲜羹:
+  - names:
+      - 香气四溢的嘟嘟莲海鲜羹
+  - command:
+      - item add 141112 500
+香气四溢的薄荷果冻:
+  - names:
+      - 香气四溢的薄荷果冻
+  - command:
+      - item add 141113 500
+香气四溢的黄油煎鱼:
+  - names:
+      - 香气四溢的黄油煎鱼
+  - command:
+      - item add 141114 500

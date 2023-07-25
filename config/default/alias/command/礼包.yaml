@@ -1,0 +1,285 @@
+新手礼包:
+  - names:
+      - 新手礼包
+  - command:
+      - item add 115001
+角色养成包一(全平台):
+  - names:
+      - 角色养成包一(全平台)
+  - command:
+      - item add 115002
+角色养成包二(IOS):
+  - names:
+      - 角色养成包二(IOS)
+  - command:
+      - item add 115003
+角色养成包三(Android):
+  - names:
+      - 角色养成包三(Android)
+  - command:
+      - item add 115004
+武器养成包一(PS4):
+  - names:
+      - 武器养成包一(PS4)
+  - command:
+      - item add 115005
+武器养成包二(PC):
+  - names:
+      - 武器养成包二(PC)
+  - command:
+      - item add 115006
+武器养成包三(PC，AN):
+  - names:
+      - 武器养成包三(PC，AN)
+  - command:
+      - item add 115007
+突破养成包一(IOS，PS4):
+  - names:
+      - 突破养成包一(IOS，PS4)
+  - command:
+      - item add 115008
+突破养成包二:
+  - names:
+      - 突破养成包二
+  - command:
+      - item add 115009
+启程补给包:
+  - names:
+      - 启程补给包
+  - command:
+      - item add 115010
+远行补给包:
+  - names:
+      - 远行补给包
+  - command:
+      - item add 115011
+游历补给包:
+  - names:
+      - 游历补给包
+  - command:
+      - item add 115012
+奇珍分享包:
+  - names:
+      - 奇珍分享包
+  - command:
+      - item add 115013
+角色突破自选-高级:
+  - names:
+      - 角色突破自选-高级
+  - command:
+      - item add 115014
+角色突破自选-超级:
+  - names:
+      - 角色突破自选-超级
+  - command:
+      - item add 115015
+天赋书自选-低级:
+  - names:
+      - 天赋书自选-低级
+  - command:
+      - item add 115016
+美德分享包:
+  - names:
+      - 美德分享包
+  - command:
+      - item add 115017
+天赋书自选-高级:
+  - names:
+      - 天赋书自选-高级
+  - command:
+      - item add 115018
+冒险助力补给包:
+  - names:
+      - 冒险助力补给包
+  - command:
+      - item add 115019
+冒险助力矿材包:
+  - names:
+      - 冒险助力矿材包
+  - command:
+      - item add 115020
+冒险助力特供包:
+  - names:
+      - 冒险助力特供包
+  - command:
+      - item add 115021
+冒险助力教材包:
+  - names:
+      - 冒险助力教材包
+  - command:
+      - item add 115022
+冒险助力淬炼包:
+  - names:
+      - 冒险助力淬炼包
+  - command:
+      - item add 115023
+材料分享包:
+  - names:
+      - 材料分享包
+  - command:
+      - item add 115024
+良材分享包:
+  - names:
+      - 良材分享包
+  - command:
+      - item add 115025
+武器突破自选-高级:
+  - names:
+      - 武器突破自选-高级
+  - command:
+      - item add 115026
+武器突破自选-超级:
+  - names:
+      - 武器突破自选-超级
+  - command:
+      - item add 115027
+食谱集·异世寻味:
+  - names:
+      - 食谱集·异世寻味
+  - command:
+      - item add 115028
+冒险助推矿材包:
+  - names:
+      - 冒险助推矿材包
+  - command:
+      - item add 115029
+冒险特供补给包:
+  - names:
+      - 冒险特供补给包
+  - command:
+      - item add 115030
+北陆原胚之匣:
+  - names:
+      - 北陆原胚之匣
+  - command:
+      - item add 115031
+冒险助力分享包:
+  - names:
+      - 冒险助力分享包
+  - command:
+      - item add 115032
+冒险旺季特供包:
+  - names:
+      - 冒险旺季特供包
+  - command:
+      - item add 115034
+咲耶的特别园艺搭配包:
+  - names:
+      - 咲耶的特别园艺搭配包
+  - command:
+      - item add 115035
+社奉行的赠礼:
+  - names:
+      - 社奉行的赠礼
+  - command:
+      - item add 115037
+精致的摆设赠礼:
+  - names:
+      - 精致的摆设赠礼
+  - command:
+      - item add 115038
+奇妙的摆设赠品:
+  - names:
+      - 奇妙的摆设赠品
+  - command:
+      - item add 115039
+央陆原胚之匣:
+  - names:
+      - 央陆原胚之匣
+  - command:
+      - item add 115040
+纪行经验:
+  - names:
+      - 纪行经验
+  - command:
+      - item add 116001
+纪行宝匣:
+  - names:
+      - 纪行宝匣
+  - command:
+      - item add 116002
+BP三选一测试礼包:
+  - names:
+      - BP三选一测试礼包
+  - command:
+      - item add 116003
+风土的指引:
+  - names:
+      - 风土的指引
+  - command:
+      - item add 116004
+风土的哲学:
+  - names:
+      - 风土的哲学
+  - command:
+      - item add 116005
+岩间的指引:
+  - names:
+      - 岩间的指引
+  - command:
+      - item add 116006
+岩间的哲学:
+  - names:
+      - 岩间的哲学
+  - command:
+      - item add 116007
+BP免费高级礼包:
+  - names:
+      - BP免费高级礼包
+  - command:
+      - item add 116008
+BP付费高级礼包:
+  - names:
+      - BP付费高级礼包
+  - command:
+      - item add 116009
+霄雷的指引:
+  - names:
+      - 霄雷的指引
+  - command:
+      - item add 116010
+霄雷的哲学:
+  - names:
+      - 霄雷的哲学
+  - command:
+      - item add 116011
+茵草的指引:
+  - names:
+      - 茵草的指引
+  - command:
+      - item add 116012
+茵草的哲学:
+  - names:
+      - 茵草的哲学
+  - command:
+      - item add 116013
+深秘圣物匣·三等:
+  - names:
+      - 深秘圣物匣·三等
+  - command:
+      - item add 117001
+深秘圣物匣·二等:
+  - names:
+      - 深秘圣物匣·二等
+  - command:
+      - item add 117012
+深秘圣物匣·一等:
+  - names:
+      - 深秘圣物匣·一等
+  - command:
+      - item add 117013
+圣遗物之匣·流浪乐团与角斗士:
+  - names:
+      - 圣遗物之匣·流浪乐团与角斗士
+  - command:
+      - item add 117004
+圣遗物宝匣·流浪乐团与角斗士:
+  - names:
+      - 圣遗物宝匣·流浪乐团与角斗士
+  - command:
+      - item add 117005
+给旅行者的小蛋糕:
+  - names:
+      - 给旅行者的小蛋糕
+  - command:
+      - item add 118006

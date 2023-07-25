@@ -1,0 +1,325 @@
+风神瞳共鸣石:
+  - names:
+      - 风神瞳共鸣石
+  - command:
+      - item add 220001
+岩神瞳共鸣石:
+  - names:
+      - 岩神瞳共鸣石
+  - command:
+      - item add 220002
+岩之寻宝罗盘:
+  - names:
+      - 岩之寻宝罗盘
+  - command:
+      - item add 220003
+捕风瓶:
+  - names:
+      - 捕风瓶
+  - command:
+      - item add 220004
+口袋锚点:
+  - names:
+      - 口袋锚点
+  - command:
+      - item add 220005
+寻仙的美食家:
+  - names:
+      - 寻仙的美食家
+  - command:
+      - item add 220006
+叁零式·便携营养袋:
+  - names:
+      - 叁零式·便携营养袋
+  - command:
+      - item add 220008
+风之寻宝罗盘:
+  - names:
+      - 风之寻宝罗盘
+  - command:
+      - item add 220009
+寻宝仙灵:
+  - names:
+      - 寻宝仙灵
+  - command:
+      - item add 220061
+迷你仙灵·露草:
+  - names:
+      - 迷你仙灵·露草
+  - command:
+      - item add 220014
+迷你仙灵·薄红:
+  - names:
+      - 迷你仙灵·薄红
+  - command:
+      - item add 220015
+迷你仙灵·郁金:
+  - names:
+      - 迷你仙灵·郁金
+  - command:
+      - item add 220016
+放热瓶:
+  - names:
+      - 放热瓶
+  - command:
+      - item add 220017
+留影机:
+  - names:
+      - 留影机
+  - command:
+      - item add 220018
+奇特的留影机:
+  - names:
+      - 奇特的留影机
+  - command:
+      - item add 220019
+特制的留影机:
+  - names:
+      - 特制的留影机
+  - command:
+      - item add 220020
+参量质变仪:
+  - names:
+      - 参量质变仪
+  - command:
+      - item add 220021
+好奇的嫣朵拉:
+  - names:
+      - 好奇的嫣朵拉
+  - command:
+      - item add 220022
+嫣朵拉:
+  - names:
+      - 嫣朵拉
+  - command:
+      - item add 220023
+风花节纪念气球:
+  - names:
+      - 风花节纪念气球
+  - command:
+      - item add 220024
+风物之诗琴:
+  - names:
+      - 风物之诗琴
+  - command:
+      - item add 220025
+尘歌壶:
+  - names:
+      - 尘歌壶
+  - command:
+      - item add 220026
+风佑之羽球:
+  - names:
+      - 风佑之羽球
+  - command:
+      - item add 220027
+浪船修理工具箱:
+  - names:
+      - 浪船修理工具箱
+  - command:
+      - item add 220028
+准准爆弹:
+  - names:
+      - 准准爆弹
+  - command:
+      - item add 220029
+飘飘爆弹:
+  - names:
+      - 飘飘爆弹
+  - command:
+      - item add 220030
+烫烫爆弹:
+  - names:
+      - 烫烫爆弹
+  - command:
+      - item add 220031
+雷神瞳共鸣石:
+  - names:
+      - 雷神瞳共鸣石
+  - command:
+      - item add 220032
+化种匣:
+  - names:
+      - 化种匣
+  - command:
+      - item add 220033
+雷之寻宝罗盘:
+  - names:
+      - 雷之寻宝罗盘
+  - command:
+      - item add 220034
+红羽团扇:
+  - names:
+      - 红羽团扇
+  - command:
+      - item add 220035
+留念镜:
+  - names:
+      - 留念镜
+  - command:
+      - item add 220036
+迷你仙灵·紫苑:
+  - names:
+      - 迷你仙灵·紫苑
+  - command:
+      - item add 220038
+奇特的羽毛:
+  - names:
+      - 奇特的羽毛
+  - command:
+      - item add 220040
+？？？:
+  - names:
+      - ？？？
+  - command:
+      - item add 220041
+阿叶夏混沌勘探器:
+  - names:
+      - 阿叶夏混沌勘探器
+  - command:
+      - item add 220042
+四方八方之网:
+  - names:
+      - 四方八方之网
+  - command:
+      - item add 220043
+镜花之琴:
+  - names:
+      - 镜花之琴
+  - command:
+      - item add 220044
+式小将:
+  - names:
+      - 式小将
+  - command:
+      - item add 220045
+四方之网:
+  - names:
+      - 四方之网
+  - command:
+      - item add 220046
+烟花筒:
+  - names:
+      - 烟花筒
+  - command:
+      - item add 220047
+流明石触媒:
+  - names:
+      - 流明石触媒
+  - command:
+      - item add 220048
+睦疏之匣:
+  - names:
+      - 睦疏之匣
+  - command:
+      - item add 220049
+荒泷·盛世豪鼓:
+  - names:
+      - 荒泷·盛世豪鼓
+  - command:
+      - item add 220051
+素材收集器:
+  - names:
+      - 素材收集器
+  - command:
+      - item add 220052
+苦舍桓:
+  - names:
+      - 苦舍桓
+  - command:
+      - item add 220071
+秘典之盒:
+  - names:
+      - 秘典之盒
+  - command:
+      - item add 220056
+草神瞳共鸣石:
+  - names:
+      - 草神瞳共鸣石
+  - command:
+      - item add 220057
+草之寻宝罗盘:
+  - names:
+      - 草之寻宝罗盘
+  - command:
+      - item add 220058
+王树瑞佑:
+  - names:
+      - 王树瑞佑
+  - command:
+      - item add 220059
+迷你仙灵·苔绿:
+  - names:
+      - 迷你仙灵·苔绿
+  - command:
+      - item add 220062
+精致的留影机:
+  - names:
+      - 精致的留影机
+  - command:
+      - item add 220063
+芭努的智慧:
+  - names:
+      - 芭努的智慧
+  - command:
+      - item add 220064
+鱼线稳定器:
+  - names:
+      - 鱼线稳定器
+  - command:
+      - item add 220065
+老旧的诗琴:
+  - names:
+      - 老旧的诗琴
+  - command:
+      - item add 220066
+蹦蹦庆典拉炮:
+  - names:
+      - 蹦蹦庆典拉炮
+  - command:
+      - item add 220067
+清冽水沫留影机:
+  - names:
+      - 清冽水沫留影机
+  - command:
+      - item add 220070
+魔瓶镇灵·利露帕尔:
+  - names:
+      - 魔瓶镇灵·利露帕尔
+  - command:
+      - item add 220072
+意智宝珠:
+  - names:
+      - 意智宝珠
+  - command:
+      - item add 220073
+缥锦机关·留云:
+  - names:
+      - 缥锦机关·留云
+  - command:
+      - item add 220074
+野踪罗盘:
+  - names:
+      - 野踪罗盘
+  - command:
+      - item add 220075
+斯露莎:
+  - names:
+      - 斯露莎
+  - command:
+      - item add 220079
+留影机·风花:
+  - names:
+      - 留影机·风花
+  - command:
+      - item add 220077
+绮筵之鼓:
+  - names:
+      - 绮筵之鼓
+  - command:
+      - item add 220078
+寻物锚针:
+  - names:
+      - 寻物锚针
+  - command:
+      - item add 220080

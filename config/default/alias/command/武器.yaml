@@ -1,0 +1,857 @@
+无锋剑:
+  - names:
+      - 无锋剑
+  - command:
+      - equip add 11101 90 6 5
+银剑:
+  - names:
+      - 银剑
+  - command:
+      - equip add 11201 90 6 5
+冷刃:
+  - names:
+      - 冷刃
+  - command:
+      - equip add 11301 90 6 5
+黎明神剑:
+  - names:
+      - 黎明神剑
+  - command:
+      - equip add 11302 90 6 5
+旅行剑:
+  - names:
+      - 旅行剑
+  - command:
+      - equip add 11303 90 6 5
+暗铁剑:
+  - names:
+      - 暗铁剑
+  - command:
+      - equip add 11304 90 6 5
+吃虎鱼刀:
+  - names:
+      - 吃虎鱼刀
+  - command:
+      - equip add 11305 90 6 5
+飞天御剑:
+  - names:
+      - 飞天御剑
+  - command:
+      - equip add 11306 90 6 5
+西风剑:
+  - names:
+      - 西风剑
+  - command:
+      - equip add 11401 90 6 5
+笛剑:
+  - names:
+      - 笛剑
+  - command:
+      - equip add 11402 90 6 5
+祭礼剑:
+  - names:
+      - 祭礼剑
+  - command:
+      - equip add 11403 90 6 5
+宗室长剑:
+  - names:
+      - 宗室长剑
+  - command:
+      - equip add 11404 90 6 5
+匣里龙吟:
+  - names:
+      - 匣里龙吟
+  - command:
+      - equip add 11405 90 6 5
+试作斩岩:
+  - names:
+      - 试作斩岩
+  - command:
+      - equip add 11406 90 6 5
+铁蜂刺:
+  - names:
+      - 铁蜂刺
+  - command:
+      - equip add 11407 90 6 5
+黑岩长剑:
+  - names:
+      - 黑岩长剑
+  - command:
+      - equip add 11408 90 6 5
+黑剑:
+  - names:
+      - 黑剑
+  - command:
+      - equip add 11409 90 6 5
+暗巷闪光:
+  - names:
+      - 暗巷闪光
+  - command:
+      - equip add 11410 90 6 5
+降临之剑:
+  - names:
+      - 降临之剑
+  - command:
+      - equip add 11412 90 6 5
+腐殖之剑:
+  - names:
+      - 腐殖之剑
+      - 腐蚀
+  - command:
+      - equip add 11413 90 6 5
+天目影打刀:
+  - names:
+      - 天目影打刀
+      - 天目
+  - command:
+      - equip add 11414 90 6 5
+辰砂之纺锤:
+  - names:
+      - 辰砂之纺锤
+  - command:
+      - equip add 11415 90 6 5
+笼钓瓶一心:
+  - names:
+      - 笼钓瓶一心
+  - command:
+      - equip add 11416 90 6 5
+原木刀:
+  - names:
+      - 原木刀
+  - command:
+      - equip add 11417 90 6 5
+西福斯的月光:
+  - names:
+      - 西福斯的月光
+  - command:
+      - equip add 11418 90 6 5
+一心传名刀:
+  - names:
+      - 一心传名刀
+  - command:
+      - equip add 11421 90 6 5
+东花坊时雨:
+  - names:
+      - 东花坊时雨
+  - command:
+      - equip add 11422 90 6 5
+风鹰剑:
+  - names:
+      - 风鹰剑
+  - command:
+      - equip add 11501 90 6 5
+天空之刃:
+  - names:
+      - 天空之刃
+  - command:
+      - equip add 11502 90 6 5
+苍古自由之誓:
+  - names:
+      - 苍古自由之誓
+      - 苍古
+      - 万叶专武
+  - command:
+      - equip add 11503 90 6 5
+斫峰之刃:
+  - names:
+      - 斫峰之刃
+      - 盾剑
+  - command:
+      - equip add 11504 90 6 5
+磐岩结绿:
+  - names:
+      - 磐岩结绿
+      - 绿剑
+  - command:
+      - equip add 11505 90 6 5
+雾切之回光:
+  - names:
+      - 雾切之回光
+      - 雾切
+  - command:
+      - equip add 11509 90 6 5
+波乱月白经津:
+  - names:
+      - 波乱月白经津
+      - 波乱
+      - 绫人专武
+  - command:
+      - equip add 11510 90 6 5
+圣显之钥:
+  - names:
+      - 圣显之钥
+      - 妮露专武
+  - command:
+      - equip add 11511 90 6 5
+裁叶萃光:
+  - names:
+      - 裁叶萃光
+      - 裁叶
+      - 海森专武
+  - command:
+      - equip add 11512 90 6 5
+训练大剑:
+  - names:
+      - 训练大剑
+  - command:
+      - equip add 12101 90 6 5
+佣兵重剑:
+  - names:
+      - 佣兵重剑
+  - command:
+      - equip add 12201 90 6 5
+铁影阔剑:
+  - names:
+      - 铁影阔剑
+  - command:
+      - equip add 12301 90 6 5
+沐浴龙血的剑:
+  - names:
+      - 沐浴龙血的剑
+  - command:
+      - equip add 12302 90 6 5
+白铁大剑:
+  - names:
+      - 白铁大剑
+  - command:
+      - equip add 12303 90 6 5
+石英大剑:
+  - names:
+      - 石英大剑
+  - command:
+      - equip add 12304 90 6 5
+以理服人:
+  - names:
+      - 以理服人
+  - command:
+      - equip add 12305 90 6 5
+飞天大御剑:
+  - names:
+      - 飞天大御剑
+  - command:
+      - equip add 12306 90 6 5
+西风大剑:
+  - names:
+      - 西风大剑
+  - command:
+      - equip add 12401 90 6 5
+钟剑:
+  - names:
+      - 钟剑
+  - command:
+      - equip add 12402 90 6 5
+祭礼大剑:
+  - names:
+      - 祭礼大剑
+  - command:
+      - equip add 12403 90 6 5
+宗室大剑:
+  - names:
+      - 宗室大剑
+  - command:
+      - equip add 12404 90 6 5
+雨裁:
+  - names:
+      - 雨裁
+  - command:
+      - equip add 12405 90 6 5
+试作古华:
+  - names:
+      - 试作古华
+  - command:
+      - equip add 12406 90 6 5
+白影剑:
+  - names:
+      - 白影剑
+  - command:
+      - equip add 12407 90 6 5
+黑岩斩刀:
+  - names:
+      - 黑岩斩刀
+  - command:
+      - equip add 12408 90 6 5
+螭骨剑:
+  - names:
+      - 螭骨剑
+      - 螭骨
+  - command:
+      - equip add 12409 90 6 5
+千岩古剑:
+  - names:
+      - 千岩古剑
+  - command:
+      - equip add 12410 90 6 5
+雪葬的星银:
+  - names:
+      - 雪葬的星银
+      - 雪葬
+  - command:
+      - equip add 12411 90 6 5
+衔珠海皇:
+  - names:
+      - 衔珠海皇
+      - 咸鱼
+      - 咸鱼大剑
+  - command:
+      - equip add 12412 90 6 5
+桂木斩长正:
+  - names:
+      - 桂木斩长正
+  - command:
+      - equip add 12414 90 6 5
+玛海菈的水色:
+  - names:
+      - 玛海菈的水色
+  - command:
+      - equip add 12415 90 6 5
+恶王丸:
+  - names:
+      - 恶王丸
+  - command:
+      - equip add 12416 90 6 5
+森林王器:
+  - names:
+      - 森林王器
+  - command:
+      - equip add 12417 90 6 5
+饰铁之花:
+  - names:
+      - 饰铁之花
+  - command:
+      - equip add 12418 90 6 5
+天空之傲:
+  - names:
+      - 天空之傲
+  - command:
+      - equip add 12501 90 6 5
+狼的末路:
+  - names:
+      - 狼的末路
+      - 狼末
+      - 迪卢克专武
+  - command:
+      - equip add 12502 90 6 5
+松籁响起之时:
+  - names:
+      - 松籁响起之时
+      - 松籁
+      - 优菈专武
+  - command:
+      - equip add 12503 90 6 5
+无工之剑:
+  - names:
+      - 无工之剑
+      - 吴工
+      - 蜈蚣
+  - command:
+      - equip add 12504 90 6 5
+赤角石溃杵:
+  - names:
+      - 赤角石溃杵
+      - 赤角
+      - 一斗专武
+  - command:
+      - equip add 12510 90 6 5
+苇海信标:
+  - names:
+      - 苇海信标
+  - command:
+      - equip add 12511 90 6 5
+新手长枪:
+  - names:
+      - 新手长枪
+  - command:
+      - equip add 13101 90 6 5
+铁尖枪:
+  - names:
+      - 铁尖枪
+  - command:
+      - equip add 13201 90 6 5
+白缨枪:
+  - names:
+      - 白缨枪
+  - command:
+      - equip add 13301 90 6 5
+钺矛:
+  - names:
+      - 钺矛
+  - command:
+      - equip add 13302 90 6 5
+黑缨枪:
+  - names:
+      - 黑缨枪
+  - command:
+      - equip add 13303 90 6 5
+旗杆:
+  - names:
+      - 旗杆
+  - command:
+      - equip add 13304 90 6 5
+匣里灭辰:
+  - names:
+      - 匣里灭辰
+  - command:
+      - equip add 13401 90 6 5
+试作星镰:
+  - names:
+      - 试作星镰
+  - command:
+      - equip add 13402 90 6 5
+流月针:
+  - names:
+      - 流月针
+  - command:
+      - equip add 13403 90 6 5
+黑岩刺枪:
+  - names:
+      - 黑岩刺枪
+  - command:
+      - equip add 13404 90 6 5
+决斗之枪:
+  - names:
+      - 决斗之枪
+  - command:
+      - equip add 13405 90 6 5
+千岩长枪:
+  - names:
+      - 千岩长枪
+  - command:
+      - equip add 13406 90 6 5
+西风长枪:
+  - names:
+      - 西风长枪
+  - command:
+      - equip add 13407 90 6 5
+宗室猎枪:
+  - names:
+      - 宗室猎枪
+  - command:
+      - equip add 13408 90 6 5
+龙脊长枪:
+  - names:
+      - 龙脊长枪
+  - command:
+      - equip add 13409 90 6 5
+喜多院十文字:
+  - names:
+      - 喜多院十文字
+  - command:
+      - equip add 13414 90 6 5
+渔获:
+  - names:
+      - 渔获
+      - 鱼叉
+  - command:
+      - equip add 13415 90 6 5
+断浪长鳍:
+  - names:
+      - 断浪长鳍
+      - 断浪
+  - command:
+      - equip add 13416 90 6 5
+贯月矢:
+  - names:
+      - 贯月矢
+  - command:
+      - equip add 13417 90 6 5
+风信之锋:
+  - names:
+      - 风信之锋
+  - command:
+      - equip add 13419 90 6 5
+护摩之杖:
+  - names:
+      - 护摩之杖
+      - 护摩
+  - command:
+      - equip add 13501 90 6 5
+天空之脊:
+  - names:
+      - 天空之脊
+  - command:
+      - equip add 13502 90 6 5
+贯虹之槊:
+  - names:
+      - 贯虹之槊
+      - 贯虹
+      - 盾枪
+  - command:
+      - equip add 13504 90 6 5
+和璞鸢:
+  - names:
+      - 和璞鸢
+      - 鸟枪
+  - command:
+      - equip add 13505 90 6 5
+息灾:
+  - names:
+      - 息灾
+  - command:
+      - equip add 13507 90 6 5
+薙草之稻光:
+  - names:
+      - 薙草之稻光
+      - 薙草
+      - 薙刀
+      - 雷神专武
+  - command:
+      - equip add 13509 90 6 5
+赤沙之杖:
+  - names:
+      - 赤沙之杖
+      - 赤沙
+  - command:
+      - equip add 13511 90 6 5
+学徒笔记:
+  - names:
+      - 学徒笔记
+  - command:
+      - equip add 14101 90 6 5
+口袋魔导书:
+  - names:
+      - 口袋魔导书
+  - command:
+      - equip add 14201 90 6 5
+魔导绪论:
+  - names:
+      - 魔导绪论
+  - command:
+      - equip add 14301 90 6 5
+讨龙英杰谭:
+  - names:
+      - 讨龙英杰谭
+      - 讨龙
+  - command:
+      - equip add 14302 90 6 5
+异世界行记:
+  - names:
+      - 异世界行记
+  - command:
+      - equip add 14303 90 6 5
+翡玉法球:
+  - names:
+      - 翡玉法球
+  - command:
+      - equip add 14304 90 6 5
+甲级宝珏:
+  - names:
+      - 甲级宝珏
+  - command:
+      - equip add 14305 90 6 5
+琥珀玥:
+  - names:
+      - 琥珀玥
+  - command:
+      - equip add 14306 90 6 5
+西风秘典:
+  - names:
+      - 西风秘典
+  - command:
+      - equip add 14401 90 6 5
+流浪乐章:
+  - names:
+      - 流浪乐章
+      - 赌狗乐章
+  - command:
+      - equip add 14402 90 6 5
+祭礼残章:
+  - names:
+      - 祭礼残章
+  - command:
+      - equip add 14403 90 6 5
+宗室秘法录:
+  - names:
+      - 宗室秘法录
+  - command:
+      - equip add 14404 90 6 5
+匣里日月:
+  - names:
+      - 匣里日月
+  - command:
+      - equip add 14405 90 6 5
+试作金珀:
+  - names:
+      - 试作金珀
+  - command:
+      - equip add 14406 90 6 5
+万国诸海图谱:
+  - names:
+      - 万国诸海图谱
+  - command:
+      - equip add 14407 90 6 5
+黑岩绯玉:
+  - names:
+      - 黑岩绯玉
+  - command:
+      - equip add 14408 90 6 5
+昭心:
+  - names:
+      - 昭心
+  - command:
+      - equip add 14409 90 6 5
+暗巷的酒与诗:
+  - names:
+      - 暗巷的酒与诗
+  - command:
+      - equip add 14410 90 6 5
+忍冬之果:
+  - names:
+      - 忍冬之果
+  - command:
+      - equip add 14412 90 6 5
+嘟嘟可故事集:
+  - names:
+      - 嘟嘟可故事集
+  - command:
+      - equip add 14413 90 6 5
+白辰之环:
+  - names:
+      - 白辰之环
+  - command:
+      - equip add 14414 90 6 5
+证誓之明瞳:
+  - names:
+      - 证誓之明瞳
+  - command:
+      - equip add 14415 90 6 5
+流浪的晚星:
+  - names:
+      - 流浪的晚星
+  - command:
+      - equip add 14416 90 6 5
+盈满之实:
+  - names:
+      - 盈满之实
+  - command:
+      - equip add 14417 90 6 5
+天空之卷:
+  - names:
+      - 天空之卷
+  - command:
+      - equip add 14501 90 6 5
+四风原典:
+  - names:
+      - 四风原典
+  - command:
+      - equip add 14502 90 6 5
+尘世之锁:
+  - names:
+      - 尘世之锁
+  - command:
+      - equip add 14504 90 6 5
+碧落之珑:
+  - names:
+      - 碧落之珑
+      - 白术专武
+  - command:
+      - equip add 14505 90 6 5
+不灭月华:
+  - names:
+      - 不灭月华
+      - 心海专武
+  - command:
+      - equip add 14506 90 6 5
+神乐之真意:
+  - names:
+      - 神乐之真意
+      - 神乐
+      - 神子专武
+  - command:
+      - equip add 14509 90 6 5
+千夜浮梦:
+  - names:
+      - 千夜浮梦
+      - 千夜
+      - 草神专武
+      - 纳西妲专武
+  - command:
+      - equip add 14511 90 6 5
+图莱杜拉的回忆:
+  - names:
+      - 图莱杜拉的回忆
+      - 流浪者专武
+      - 散兵专武
+  - command:
+      - equip add 14512 90 6 5
+猎弓:
+  - names:
+      - 猎弓
+  - command:
+      - equip add 15101 90 6 5
+历练的猎弓:
+  - names:
+      - 历练的猎弓
+  - command:
+      - equip add 15201 90 6 5
+鸦羽弓:
+  - names:
+      - 鸦羽弓
+  - command:
+      - equip add 15301 90 6 5
+神射手之誓:
+  - names:
+      - 神射手之誓
+  - command:
+      - equip add 15302 90 6 5
+反曲弓:
+  - names:
+      - 反曲弓
+  - command:
+      - equip add 15303 90 6 5
+弹弓:
+  - names:
+      - 弹弓
+  - command:
+      - equip add 15304 90 6 5
+信使:
+  - names:
+      - 信使
+  - command:
+      - equip add 15305 90 6 5
+黑檀弓:
+  - names:
+      - 黑檀弓
+  - command:
+      - equip add 15306 90 6 5
+西风猎弓:
+  - names:
+      - 西风猎弓
+  - command:
+      - equip add 15401 90 6 5
+绝弦:
+  - names:
+      - 绝弦
+  - command:
+      - equip add 15402 90 6 5
+祭礼弓:
+  - names:
+      - 祭礼弓
+  - command:
+      - equip add 15403 90 6 5
+宗室长弓:
+  - names:
+      - 宗室长弓
+  - command:
+      - equip add 15404 90 6 5
+弓藏:
+  - names:
+      - 弓藏
+  - command:
+      - equip add 15405 90 6 5
+试作澹月:
+  - names:
+      - 试作澹月
+  - command:
+      - equip add 15406 90 6 5
+钢轮弓:
+  - names:
+      - 钢轮弓
+  - command:
+      - equip add 15407 90 6 5
+黑岩战弓:
+  - names:
+      - 黑岩战弓
+  - command:
+      - equip add 15408 90 6 5
+苍翠猎弓:
+  - names:
+      - 苍翠猎弓
+  - command:
+      - equip add 15409 90 6 5
+暗巷猎手:
+  - names:
+      - 暗巷猎手
+  - command:
+      - equip add 15410 90 6 5
+落霞:
+  - names:
+      - 落霞
+  - command:
+      - equip add 15411 90 6 5
+幽夜华尔兹:
+  - names:
+      - 幽夜华尔兹
+  - command:
+      - equip add 15412 90 6 5
+风花之颂:
+  - names:
+      - 风花之颂
+  - command:
+      - equip add 15413 90 6 5
+破魔之弓:
+  - names:
+      - 破魔之弓
+      - 破魔
+  - command:
+      - equip add 15414 90 6 5
+掠食者:
+  - names:
+      - 掠食者
+  - command:
+      - equip add 15415 90 6 5
+曚云之月:
+  - names:
+      - 曚云之月
+  - command:
+      - equip add 15416 90 6 5
+王下近侍:
+  - names:
+      - 王下近侍
+  - command:
+      - equip add 15417 90 6 5
+竭泽:
+  - names:
+      - 竭泽
+  - command:
+      - equip add 15418 90 6 5
+鹮穿之喙:
+  - names:
+      - 鹮穿之喙
+  - command:
+      - equip add 15419 90 6 5
+天空之翼:
+  - names:
+      - 天空之翼
+  - command:
+      - equip add 15501 90 6 5
+阿莫斯之弓:
+  - names:
+      - 阿莫斯之弓
+      - 阿莫斯
+      - 甘雨专武
+  - command:
+      - equip add 15502 90 6 5
+终末嗟叹之诗:
+  - names:
+      - 终末嗟叹之诗
+      - 终末
+  - command:
+      - equip add 15503 90 6 5
+冬极白星:
+  - names:
+      - 冬极白星
+      - 冬极
+      - 公子专武
+  - command:
+      - equip add 15507 90 6 5
+若水:
+  - names:
+      - 若水
+      - 夜阑专武
+      - 夜兰专武
+  - command:
+      - equip add 15508 90 6 5
+飞雷之弦振:
+  - names:
+      - 飞雷之弦振
+      - 飞雷
+      - 宵宫专武
+  - command:
+      - equip add 15509 90 6 5
+猎人之径:
+  - names:
+      - 猎人之径
+      - 绿弓
+      - 提纳里专武
+  - command:
+      - equip add 15511 90 6 5

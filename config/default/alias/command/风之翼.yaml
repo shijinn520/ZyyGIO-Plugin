@@ -1,0 +1,51 @@
+初始之翼:
+  - names:
+      - 初始之翼
+  - command:
+      - item add 140001
+守候之翼:
+  - names:
+      - 守候之翼
+  - command:
+      - item add 140002
+降临之翼:
+  - names:
+      - 降临之翼
+  - command:
+      - item add 140003
+苍天清风之翼:
+  - names:
+      - 苍天清风之翼
+  - command:
+      - item add 140004
+金琮天行之翼:
+  - names:
+      - 金琮天行之翼
+  - command:
+      - item add 140005
+雪隐之翼:
+  - names:
+      - 雪隐之翼
+  - command:
+      - item add 140006
+飨宴之翼:
+  - names:
+      - 飨宴之翼
+      - 社死之翼
+  - command:
+      - item add 140007
+雷腾云奔之翼:
+  - names:
+      - 雷腾云奔之翼
+  - command:
+      - item add 140008
+星汉灿烂之翼:
+  - names:
+      - 星汉灿烂之翼
+  - command:
+      - item add 140009
+森郁花繁之翼:
+  - names:
+      - 森郁花繁之翼
+  - command:
+      - item add 140010

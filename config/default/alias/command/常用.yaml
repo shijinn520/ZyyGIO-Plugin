@@ -1,0 +1,241 @@
+星尘:
+  - names:
+      - 星尘
+  - command:
+      - item add 103 500
+星辉:
+  - names:
+      - 星辉
+  - command:
+      - item add 104 500
+角色经验:
+  - names:
+      - 角色经验
+      - 经验
+  - command:
+      - item add 101 500
+冒险阅历:
+  - names:
+      - 冒险阅历
+  - command:
+      - item add 102 500
+好感经验:
+  - names:
+      - 好感经验
+  - command:
+      - item add 105 500
+原粹树脂:
+  - names:
+      - 原粹树脂
+  - command:
+      - item add 106 500
+
+原石:
+  - names:
+      - 原石
+  - command:
+      - item add 201 500
+摩拉:
+  - names:
+      - 摩拉
+  - command:
+      - item add 202 50000000
+# 结晶不能这么加-.-
+# 创世结晶:
+#   - names:
+#       - 创世结晶
+#   - command:
+#       - item add 203 500
+洞天宝钱:
+  - names:
+      - 洞天宝钱
+  - command:
+      - item add 204 500
+无主的星辉:
+  - names:
+      - 无主的星辉
+  - command:
+      - item add 221 500
+无主的星尘:
+  - names:
+      - 无主的星尘
+  - command:
+      - item add 222 500
+纠缠之缘:
+  - names:
+      - 纠缠之缘
+      - 纠缠
+  - command:
+      - item add 223 500
+相遇之缘:
+  - names:
+      - 相遇之缘
+      - 相遇
+  - command:
+      - item add 224 500
+火之印:
+  - names:
+      - 火之印
+  - command:
+      - item add 301 500
+水之印:
+  - names:
+      - 水之印
+  - command:
+      - item add 302 500
+草之印:
+  - names:
+      - 草之印
+  - command:
+      - item add 303 500
+雷之印:
+  - names:
+      - 雷之印
+  - command:
+      - item add 304 500
+风之印:
+  - names:
+      - 风之印
+  - command:
+      - item add 305 500
+冰之印:
+  - names:
+      - 冰之印
+  - command:
+      - item add 306 500
+岩之印:
+  - names:
+      - 岩之印
+  - command:
+      - item add 307 500
+声望经验·稻妻:
+  - names:
+      - 声望经验·稻妻
+      - 稻妻声望
+  - command:
+      - item add 314 500
+声望经验·蒙德:
+  - names:
+      - 声望经验·蒙德
+      - 蒙德声望
+  - command:
+      - item add 315 500
+声望经验·须弥:
+  - names:
+      - 声望经验·须弥
+      - 须弥声望
+  - command:
+      - item add 316 500
+声望经验·璃月:
+  - names:
+      - 声望经验·璃月
+      - 璃月声望
+  - command:
+      - item add 317 500
+精锻用魔矿:
+  - names:
+      - 精锻用魔矿
+      - 魔矿
+  - command:
+      - item add 104013 500
+嬗变之尘:
+  - names:
+      - 嬗变之尘
+  - command:
+      - item add 104201 500
+祝圣油膏:
+  - names:
+      - 祝圣油膏
+  - command:
+      - item add 105002 500
+祝圣精华:
+  - names:
+      - 祝圣精华
+  - command:
+      - item add 105003 500
+散失的风神瞳:
+  - names:
+      - 散失的风神瞳
+      - 风神瞳
+  - command:
+      - item add 107001 500
+散失的岩神瞳:
+  - names:
+      - 散失的岩神瞳
+      - 岩神瞳
+  - command:
+      - item add 107003 500
+蒙德地灵龛之钥:
+  - names:
+      - 蒙德地灵龛之钥
+  - command:
+      - item add 107006 500
+璃月地灵龛之钥:
+  - names:
+      - 璃月地灵龛之钥
+  - command:
+      - item add 107007 500
+稻妻地灵龛之钥:
+  - names:
+      - 稻妻地灵龛之钥
+  - command:
+      - item add 107008 500
+脆弱树脂:
+  - names:
+      - 脆弱树脂
+  - command:
+      - item add 107009 500
+绯红玉髓:
+  - names:
+      - 绯红玉髓
+  - command:
+      - item add 107010 500
+须臾树脂:
+  - names:
+      - 须臾树脂
+  - command:
+      - item add 107012 500
+仙速瓶:
+  - names:
+      - 仙速瓶
+  - command:
+      - item add 107013 500
+散失的雷神瞳:
+  - names:
+      - 散失的雷神瞳
+      - 雷神瞳
+  - command:
+      - item add 107014 500
+流明晶石:
+  - names:
+      - 流明晶石
+      - 流明石
+  - command:
+      - item add 107016 500
+散失的草神瞳:
+  - names:
+      - 散失的草神瞳
+      - 草神瞳
+  - command:
+      - item add 107017 500
+须弥地灵龛之钥:
+  - names:
+      - 须弥地灵龛之钥
+  - command:
+      - item add 107018 500
+异梦溶媒:
+  - names:
+      - 异梦溶媒
+  - command:
+      - item add 113021 500
+霄灯:
+  - names:
+      - 霄灯
+  - command:
+      - item add 200004 500
+浓缩树脂:
+  - names:
+      - 浓缩树脂
+      - 浓缩
+  - command:
+      - item add 220007 500

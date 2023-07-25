@@ -1,0 +1,720 @@
+食谱道具:
+  - names:
+      - 食谱道具
+  - command:
+      - item add 109000
+食谱:野菇鸡肉串:
+  - names:
+      - 食谱:野菇鸡肉串
+  - command:
+      - item add 109101
+食谱:渔人吐司:
+  - names:
+      - 食谱:渔人吐司
+  - command:
+      - item add 109102
+食谱:火火肉酱面:
+  - names:
+      - 食谱:火火肉酱面
+  - command:
+      - item add 109103
+食谱:甜甜花酿鸡:
+  - names:
+      - 食谱:甜甜花酿鸡
+  - command:
+      - item add 109104
+食谱:嘟嘟莲海鲜羹:
+  - names:
+      - 食谱:嘟嘟莲海鲜羹
+  - command:
+      - item add 109106
+食谱:黄油松茸:
+  - names:
+      - 食谱:黄油松茸
+  - command:
+      - item add 109107
+食谱:提瓦特煎蛋:
+  - names:
+      - 食谱:提瓦特煎蛋
+  - command:
+      - item add 109201
+食谱:北地烟熏鸡:
+  - names:
+      - 食谱:北地烟熏鸡
+  - command:
+      - item add 109202
+食谱:白汁时蔬烩肉:
+  - names:
+      - 食谱:白汁时蔬烩肉
+  - command:
+      - item add 109203
+食谱:冷肉拼盘:
+  - names:
+      - 食谱:冷肉拼盘
+  - command:
+      - item add 109204
+食谱:蜜酱胡萝卜煎肉:
+  - names:
+      - 食谱:蜜酱胡萝卜煎肉
+  - command:
+      - item add 109205
+食谱:蟹黄火腿焗时蔬:
+  - names:
+      - 食谱:蟹黄火腿焗时蔬
+  - command:
+      - item add 109206
+食谱:烤蘑菇披萨:
+  - names:
+      - 食谱:烤蘑菇披萨
+  - command:
+      - item add 109207
+食谱:烤肉排:
+  - names:
+      - 食谱:烤肉排
+  - command:
+      - item add 109301
+食谱:萝卜时蔬汤:
+  - names:
+      - 食谱:萝卜时蔬汤
+  - command:
+      - item add 109302
+食谱:蒙德土豆饼:
+  - names:
+      - 食谱:蒙德土豆饼
+  - command:
+      - item add 109303
+食谱:堆高高:
+  - names:
+      - 食谱:堆高高
+  - command:
+      - item add 109304
+食谱:庄园烤松饼:
+  - names:
+      - 食谱:庄园烤松饼
+  - command:
+      - item add 109401
+食谱:炸萝卜丸子:
+  - names:
+      - 食谱:炸萝卜丸子
+  - command:
+      - item add 109402
+食谱:满足沙拉:
+  - names:
+      - 食谱:满足沙拉
+  - command:
+      - item add 109403
+食谱:翡玉什锦袋:
+  - names:
+      - 食谱:翡玉什锦袋
+  - command:
+      - item add 109404
+食谱:蒙德烤鱼:
+  - names:
+      - 食谱:蒙德烤鱼
+  - command:
+      - item add 109405
+食谱:摩拉肉:
+  - names:
+      - 食谱:摩拉肉
+  - command:
+      - item add 109406
+食谱:爆炒肉片:
+  - names:
+      - 食谱:爆炒肉片
+  - command:
+      - item add 109407
+食谱:杏仁豆腐:
+  - names:
+      - 食谱:杏仁豆腐
+  - command:
+      - item add 109408
+食谱:香嫩椒椒鸡:
+  - names:
+      - 食谱:香嫩椒椒鸡
+  - command:
+      - item add 109409
+食谱:珍珠翡翠白玉汤:
+  - names:
+      - 食谱:珍珠翡翠白玉汤
+  - command:
+      - item add 109410
+食谱:松茸酿肉卷:
+  - names:
+      - 食谱:松茸酿肉卷
+  - command:
+      - item add 109411
+食谱:中原杂碎:
+  - names:
+      - 食谱:中原杂碎
+  - command:
+      - item add 109412
+食谱:水煮黑背鲈:
+  - names:
+      - 食谱:水煮黑背鲈
+  - command:
+      - item add 109413
+食谱:松鼠鱼:
+  - names:
+      - 食谱:松鼠鱼
+  - command:
+      - item add 109414
+食谱:黄金蟹:
+  - names:
+      - 食谱:黄金蟹
+  - command:
+      - item add 109415
+食谱:水晶虾:
+  - names:
+      - 食谱:水晶虾
+  - command:
+      - item add 109416
+食谱:烤吃虎鱼:
+  - names:
+      - 食谱:烤吃虎鱼
+  - command:
+      - item add 109417
+食谱:风神杂烩菜:
+  - names:
+      - 食谱:风神杂烩菜
+  - command:
+      - item add 109418
+食谱:莲子禽蛋羹:
+  - names:
+      - 食谱:莲子禽蛋羹
+  - command:
+      - item add 109419
+食谱:仙跳墙:
+  - names:
+      - 食谱:仙跳墙
+  - command:
+      - item add 109420
+食谱:金丝虾球:
+  - names:
+      - 食谱:金丝虾球
+  - command:
+      - item add 109421
+食谱:轻策农家菜:
+  - names:
+      - 食谱:轻策农家菜
+  - command:
+      - item add 109422
+食谱:来来菜:
+  - names:
+      - 食谱:来来菜
+  - command:
+      - item add 109423
+食谱:山珍热卤面:
+  - names:
+      - 食谱:山珍热卤面
+  - command:
+      - item add 109424
+食谱:腌笃鲜:
+  - names:
+      - 食谱:腌笃鲜
+  - command:
+      - item add 109425
+食谱:扣三丝:
+  - names:
+      - 食谱:扣三丝
+  - command:
+      - item add 109426
+食谱:天枢肉:
+  - names:
+      - 食谱:天枢肉
+  - command:
+      - item add 109427
+食谱:莲花酥:
+  - names:
+      - 食谱:莲花酥
+  - command:
+      - item add 109428
+食谱:月亮派:
+  - names:
+      - 食谱:月亮派
+  - command:
+      - item add 109429
+食谱:冒险家蛋堡:
+  - names:
+      - 食谱:冒险家蛋堡
+  - command:
+      - item add 109430
+食谱:北地苹果焖肉:
+  - names:
+      - 食谱:北地苹果焖肉
+  - command:
+      - item add 109431
+食谱:蟹黄豆腐:
+  - names:
+      - 食谱:蟹黄豆腐
+  - command:
+      - item add 109432
+食谱:明月蛋:
+  - names:
+      - 食谱:明月蛋
+  - command:
+      - item add 109433
+食谱:干锅腊肉:
+  - names:
+      - 食谱:干锅腊肉
+  - command:
+      - item add 109434
+食谱:干炒鱼河:
+  - names:
+      - 食谱:干炒鱼河
+  - command:
+      - item add 109435
+食谱:素鲍鱼:
+  - names:
+      - 食谱:素鲍鱼
+  - command:
+      - item add 109436
+食谱:岩港三鲜:
+  - names:
+      - 食谱:岩港三鲜
+  - command:
+      - item add 109437
+食谱:清炒虾仁:
+  - names:
+      - 食谱:清炒虾仁
+  - command:
+      - item add 109438
+食谱:米窝窝:
+  - names:
+      - 食谱:米窝窝
+  - command:
+      - item add 109439
+食谱:稠汁蔬菜炖肉:
+  - names:
+      - 食谱:稠汁蔬菜炖肉
+  - command:
+      - item add 109440
+食谱:黄油煎鱼:
+  - names:
+      - 食谱:黄油煎鱼
+  - command:
+      - item add 109441
+食谱:四方和平:
+  - names:
+      - 食谱:四方和平
+  - command:
+      - item add 109442
+食谱:绝云锅巴:
+  - names:
+      - 食谱:绝云锅巴
+  - command:
+      - item add 109443
+食谱:鲜虾脆薯盏:
+  - names:
+      - 食谱:鲜虾脆薯盏
+  - command:
+      - item add 109444
+食谱:薄荷果冻:
+  - names:
+      - 食谱:薄荷果冻
+  - command:
+      - item add 109445
+食谱:凉拌薄荷:
+  - names:
+      - 食谱:凉拌薄荷
+  - command:
+      - item add 109446
+食谱:兽肉薄荷卷:
+  - names:
+      - 食谱:兽肉薄荷卷
+  - command:
+      - item add 109447
+食谱:大黄金吮指鸡:
+  - names:
+      - 食谱:大黄金吮指鸡
+  - command:
+      - item add 109448
+食谱:脆脆鸡腿堡:
+  - names:
+      - 食谱:脆脆鸡腿堡
+  - command:
+      - item add 109449
+食谱:香浓土豆泥:
+  - names:
+      - 食谱:香浓土豆泥
+  - command:
+      - item add 109450
+食谱:鸡豆花:
+  - names:
+      - 食谱:鸡豆花
+  - command:
+      - item add 109451
+食谱:金枪鱼寿司:
+  - names:
+      - 食谱:金枪鱼寿司
+  - command:
+      - item add 109452
+食谱:三彩团子:
+  - names:
+      - 食谱:三彩团子
+  - command:
+      - item add 109453
+食谱:饭团:
+  - names:
+      - 食谱:饭团
+  - command:
+      - item add 109454
+食谱:刺身拼盘:
+  - names:
+      - 食谱:刺身拼盘
+  - command:
+      - item add 109455
+食谱:兽骨拉面:
+  - names:
+      - 食谱:兽骨拉面
+  - command:
+      - item add 109456
+食谱:鸟蛋烧:
+  - names:
+      - 食谱:鸟蛋烧
+  - command:
+      - item add 109457
+食谱:干烧香鱼:
+  - names:
+      - 食谱:干烧香鱼
+  - command:
+      - item add 109458
+食谱:黄油蟹蟹:
+  - names:
+      - 食谱:黄油蟹蟹
+  - command:
+      - item add 109459
+食谱:串串三味:
+  - names:
+      - 食谱:串串三味
+  - command:
+      - item add 109460
+食谱:味噌汤:
+  - names:
+      - 食谱:味噌汤
+  - command:
+      - item add 109461
+食谱:渡来禽肉:
+  - names:
+      - 食谱:渡来禽肉
+  - command:
+      - item add 109462
+食谱:绯樱饼:
+  - names:
+      - 食谱:绯樱饼
+  - command:
+      - item add 109463
+食谱:绀田煮:
+  - names:
+      - 食谱:绀田煮
+  - command:
+      - item add 109464
+食谱:市井杂煮:
+  - names:
+      - 食谱:市井杂煮
+  - command:
+      - item add 109465
+食谱:什锦炒面:
+  - names:
+      - 食谱:什锦炒面
+  - command:
+      - item add 109466
+食谱:蟹黄壳壳烧:
+  - names:
+      - 食谱:蟹黄壳壳烧
+  - command:
+      - item add 109467
+食谱:绯樱天妇罗:
+  - names:
+      - 食谱:绯樱天妇罗
+  - command:
+      - item add 109468
+食谱:米饭布丁:
+  - names:
+      - 食谱:米饭布丁
+  - command:
+      - item add 109469
+食谱:红烩兽肉:
+  - names:
+      - 食谱:红烩兽肉
+  - command:
+      - item add 109470
+食谱:文心豆腐:
+  - names:
+      - 食谱:文心豆腐
+  - command:
+      - item add 109471
+食谱:辣肉窝窝头:
+  - names:
+      - 食谱:辣肉窝窝头
+  - command:
+      - item add 109472
+食谱:活力喵饭:
+  - names:
+      - 食谱:活力喵饭
+  - command:
+      - item add 109473
+食谱:甜虾寿司:
+  - names:
+      - 食谱:甜虾寿司
+  - command:
+      - item add 109474
+食谱:鸟蛋寿司:
+  - names:
+      - 食谱:鸟蛋寿司
+  - command:
+      - item add 109475
+食谱:蛋包饭:
+  - names:
+      - 食谱:蛋包饭
+  - command:
+      - item add 109476
+食谱:日落鲷鱼烧:
+  - names:
+      - 食谱:日落鲷鱼烧
+  - command:
+      - item add 109477
+食谱:多多烧:
+  - names:
+      - 食谱:多多烧
+  - command:
+      - item add 109478
+食谱:蒲烧鳗肉:
+  - names:
+      - 食谱:蒲烧鳗肉
+  - command:
+      - item add 109479
+食谱:鲜鱼炖萝卜:
+  - names:
+      - 食谱:鲜鱼炖萝卜
+  - command:
+      - item add 109480
+食谱:若竹煮:
+  - names:
+      - 食谱:若竹煮
+  - command:
+      - item add 109481
+食谱:树莓水馒头:
+  - names:
+      - 食谱:树莓水馒头
+  - command:
+      - item add 109482
+食谱:荞麦面:
+  - names:
+      - 食谱:荞麦面
+  - command:
+      - item add 109483
+食谱:鳗肉茶泡饭:
+  - names:
+      - 食谱:鳗肉茶泡饭
+  - command:
+      - item add 109484
+食谱:五宝腌菜:
+  - names:
+      - 食谱:五宝腌菜
+  - command:
+      - item add 109485
+食谱:绯樱虾仙贝:
+  - names:
+      - 食谱:绯樱虾仙贝
+  - command:
+      - item add 109486
+食谱:丰年有余:
+  - names:
+      - 食谱:丰年有余
+  - command:
+      - item add 109487
+食谱:龙须面:
+  - names:
+      - 食谱:龙须面
+  - command:
+      - item add 109488
+食谱:山家烧:
+  - names:
+      - 食谱:山家烧
+  - command:
+      - item add 109489
+食谱:乌冬面:
+  - names:
+      - 食谱:乌冬面
+  - command:
+      - item add 109490
+食谱:炸肉排三明治:
+  - names:
+      - 食谱:炸肉排三明治
+  - command:
+      - item add 109491
+食谱:紫苑云霓:
+  - names:
+      - 食谱:紫苑云霓
+  - command:
+      - item add 109492
+食谱:黄油鸡:
+  - names:
+      - 食谱:黄油鸡
+  - command:
+      - item add 109493
+食谱:烤肉卷:
+  - names:
+      - 食谱:烤肉卷
+  - command:
+      - item add 109494
+食谱:雨林沙拉:
+  - names:
+      - 食谱:雨林沙拉
+  - command:
+      - item add 109495
+食谱:马萨拉芝士球:
+  - names:
+      - 食谱:马萨拉芝士球
+  - command:
+      - item add 109496
+食谱:杂菇荟萃:
+  - names:
+      - 食谱:杂菇荟萃
+  - command:
+      - item add 109497
+食谱:口袋饼:
+  - names:
+      - 食谱:口袋饼
+  - command:
+      - item add 109498
+食谱:绿汁脆球:
+  - names:
+      - 食谱:绿汁脆球
+  - command:
+      - item add 109499
+食谱:薄荷豆汤:
+  - names:
+      - 食谱:薄荷豆汤
+  - command:
+      - item add 109500
+食谱:兽米香香:
+  - names:
+      - 食谱:兽米香香
+  - command:
+      - item add 109501
+食谱:米圆塔:
+  - names:
+      - 食谱:米圆塔
+  - command:
+      - item add 109502
+食谱:兰巴德鱼卷:
+  - names:
+      - 食谱:兰巴德鱼卷
+  - command:
+      - item add 109503
+食谱:咖喱虾:
+  - names:
+      - 食谱:咖喱虾
+  - command:
+      - item add 109504
+食谱:唐杜尔烤鸡:
+  - names:
+      - 食谱:唐杜尔烤鸡
+  - command:
+      - item add 109505
+食谱:土豆船:
+  - names:
+      - 食谱:土豆船
+  - command:
+      - item add 109506
+食谱:奶酱鲜鱼:
+  - names:
+      - 食谱:奶酱鲜鱼
+  - command:
+      - item add 109507
+食谱:肉肉烤蘑菇披萨:
+  - names:
+      - 食谱:肉肉烤蘑菇披萨
+  - command:
+      - item add 109508
+食谱:日落莓莓茶:
+  - names:
+      - 食谱:日落莓莓茶
+  - command:
+      - item add 109509
+食谱:奶香菌菇脆塔:
+  - names:
+      - 食谱:奶香菌菇脆塔
+  - command:
+      - item add 109510
+食谱:椰炭饼:
+  - names:
+      - 食谱:椰炭饼
+  - command:
+      - item add 109511
+食谱:千层酥酥:
+  - names:
+      - 食谱:千层酥酥
+  - command:
+      - item add 109512
+食谱:枣椰蜜糖:
+  - names:
+      - 食谱:枣椰蜜糖
+  - command:
+      - item add 109513
+食谱:帕蒂沙兰布丁:
+  - names:
+      - 食谱:帕蒂沙兰布丁
+  - command:
+      - item add 109514
+食谱:阿如拌饭:
+  - names:
+      - 食谱:阿如拌饭
+  - command:
+      - item add 109515
+食谱:假日果酿:
+  - names:
+      - 食谱:假日果酿
+  - command:
+      - item add 109516
+食谱:蔷薇奶糊:
+  - names:
+      - 食谱:蔷薇奶糊
+  - command:
+      - item add 109517
+食谱:萨巴桑炸角:
+  - names:
+      - 食谱:萨巴桑炸角
+  - command:
+      - item add 109518
+食谱:萨布兹炖肉:
+  - names:
+      - 食谱:萨布兹炖肉
+  - command:
+      - item add 109519
+食谱:秘香肉团:
+  - names:
+      - 食谱:秘香肉团
+  - command:
+      - item add 109520
+食谱:蜜金泡果:
+  - names:
+      - 食谱:蜜金泡果
+  - command:
+      - item add 109521
+食谱:镀金锅:
+  - names:
+      - 食谱:镀金锅
+  - command:
+      - item add 109522
+食谱:超级至尊披萨:
+  - names:
+      - 食谱:超级至尊披萨
+  - command:
+      - item add 109523
+食谱:薄荷曼果茶:
+  - names:
+      - 食谱:薄荷曼果茶
+  - command:
+      - item add 109524
+食谱:脆饼珐提:
+  - names:
+      - 食谱:脆饼珐提
+  - command:
+      - item add 109525
+食谱:琼玉果汤:
+  - names:
+      - 食谱:琼玉果汤
+  - command:
+      - item add 109526

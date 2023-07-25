@@ -1,0 +1,316 @@
+"45":
+  - names:
+      - "45"
+  - command:
+      - player level 45
+"60":
+  - names:
+      - "60"
+      - 60级
+  - command:
+      - player level 60
+"90":
+  - names:
+      - "90"
+  - command:
+      - break 6
+      - skill all 10
+      - talent unlock all
+      - level 90
+      - item add 105 99999
+无限体力:
+  - names:
+      - 无限体力
+      - 体力
+      - 无线体力
+  - command:
+      - stamina infinite on
+无限体力off:
+  - names:
+      - 无限体力off
+      - 体力off
+      - 体力关
+  - command:
+      - stamina infinite off
+Q充能:
+  - names:
+      - Q充能
+      - q
+      - Q
+  - command:
+      - energy infinite on
+Q充能off:
+  - names:
+      - Q充能off
+      - q充能off
+      - Q充能关
+      - q充能关
+  - command:
+      - energy infinite off
+玩家无敌:
+  - names:
+      - 玩家无敌
+      - 无敌
+  - command:
+      - wudi global avatar on
+无敌关:
+  - names:
+      - 无敌关
+      - 玩家无敌关
+      - 玩家无敌off
+      - 无敌off
+  - command:
+      - wudi global avatar off
+怪物无敌:
+  - names:
+      - 怪物无敌
+  - command:
+      - wudi global monster on
+怪物无敌关:
+  - names:
+      - 怪物无敌关
+      - 怪物无敌off
+  - command:
+      - wudi global monster off
+解锁命座:
+  - names:
+      - 解锁命座
+      - 解锁命之座
+  - command:
+      - talent unlock all
+全神瞳:
+  - names:
+      - 全神瞳
+      - 所有神瞳
+  - command:
+      - item add 107001 1000
+      - item add 107003 1000
+      - item add 107014 1000
+      - item add 107017 1000
+结晶:
+  - names:
+      - 结晶
+      - 创世结晶
+  - command:
+      - mcoin 99999
+原石:
+  - names:
+      - 原石
+  - command:
+      - hcoin 99999
+洞天宝钱:
+  - names:
+      - 洞天宝钱
+      - 家园币
+  - command:
+      - home_coin 99999
+奶:
+  - names:
+      - 奶
+      - 回血
+      - hp
+  - command:
+      - revive
+杀怪:
+  - names:
+      - 杀怪
+      - 清怪
+      - 清图
+  - command:
+      - kill monster all
+祝圣精华:
+  - names:
+      - 祝圣精华
+  - command:
+      - item add 105003 5000
+魔女:
+  - names:
+      - 魔女
+  - command:
+      - equip add 23361 1 15008 501241 6 501031 1 501201 1 501221 1
+      - equip add 23365 1 10002 501231 1 501241 1 501201 1 501221 6
+      - equip add 23362 1 10003 501031 1 501241 1 501221 1 501201 6
+      - equip add 23364 1 10001 501241 1 501031 1 501201 6 501221 1
+      - equip add 23363 1 30960 501031 1 501231 1 501241 6 501221 1
+删除安柏:
+  - names:
+      - 删除安柏
+  - command:
+      - avatar del 10000021
+七印礼:
+  - names:
+      - 七印礼
+  - command:
+      - item add 301 1314
+      - item add 302 1314
+      - item add 303 1314
+      - item add 304 1314
+      - item add 305 1314
+      - item add 306 1314
+      - item add 307 1314
+降级:
+  - names:
+      - 降级
+  - command:
+      - player level 1
+璃月钥匙:
+  - names:
+      - 璃月钥匙
+  - command:
+      - item add 107007 20
+蒙德钥匙:
+  - names:
+      - 蒙德钥匙
+  - command:
+      - item add 107006 20
+稻妻钥匙:
+  - names:
+      - 稻妻钥匙
+  - command:
+      - item add 107008 20
+仙速瓶:
+  - names:
+      - 仙速瓶
+  - command:
+      - item add 107013 50
+重登:
+  - names:
+      - 重登
+  - command:
+      - kick
+全声望:
+  - names:
+      - 全声望
+      - 声望
+      - 声望满级
+  - command:
+      - item add 314 9999
+      - item add 315 9999
+      - item add 316 9999
+      - item add 317 9999
+经验书:
+  - names:
+      - 经验书
+  - command:
+      - item add 104003 5000
+英雄经验书:
+  - names:
+      - 英雄经验书
+  - command:
+      - item add 104003 5000
+罗盘四件套:
+  - names:
+      - 罗盘四件套
+  - command:
+      - item add 220003 1
+      - item add 220009 1
+      - item add 220034 1
+      - item add 220058 1
+共鸣石四件套:
+  - names:
+      - 共鸣石四件套
+  - command:
+      - item add 220001 20
+      - item add 220002 20
+      - item add 220032 20
+      - item add 220057 20
+生日快乐:
+  - names:
+      - 生日快乐
+  - command:
+      - item add 118001 520
+      - item add 118002 520
+      - item add 118003 520
+      - item add 118004 520
+      - item add 118005 520
+      - item add 118006 520
+全矿物:
+  - names:
+      - 全矿物
+  - command:
+      - item add 101001 6666
+      - item add 101002 6666
+      - item add 101003 6666
+      - item add 101004 6666
+      - item add 101006 6666
+      - item add 101008 6666
+      - item add 100028 6666
+      - item add 100058 6666
+良才分享:
+  - names:
+      - 良才分享
+  - command:
+      - item add 104303 100
+      - item add 104306 100
+      - item add 104309 100
+      - item add 104312 100
+      - item add 104315 100
+      - item add 104318 100
+      - item add 104319 666
+      - item add 104322 100
+      - item add 104325 100
+      - item add 104328 100
+      - item add 104331 100
+      - item add 104334 100
+      - item add 104337 100
+解锁尘歌壶:
+  - names:
+      - 解锁尘歌壶
+  - command:
+      - quest accept 1100811
+      - quest finish 1100811
+摩拉:
+  - names:
+      - 摩拉
+  - command:
+      - item add 202 99999999
+全部角色:
+  - names:
+      - 全部角色
+  - command:
+      - item add avatar all
+      - kick 12
+解锁地图:
+  - names:
+      - 解锁地图
+      - 解锁神像
+      - 解锁锚点
+  - command:
+      - area 3 all
+      - point 3 all
+自杀:
+  - names:
+      - 自杀
+      - 紫砂
+  - command:
+      - kill self
+解锁多人模式:
+  - names:
+      - 解锁多人模式
+  - command:
+      - quest accept 30904
+清空武器:
+  - names:
+      - 清空武器
+  - command:
+      - item clear weapon
+清空圣遗物:
+  - names:
+      - 清空圣遗物
+  - command:
+      - item clear relic
+清空物品:
+  - names:
+      - 清空物品
+  - command:
+      - item clear
+解锁渊下宫:
+  - names:
+      - 解锁渊下宫
+  - command:
+      - point 5 all
+解锁层岩:
+  - names:
+      - 解锁层岩
+  - command:
+      - point 6 all

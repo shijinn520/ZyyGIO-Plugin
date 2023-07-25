@@ -1,0 +1,785 @@
+原神·印象:
+  - names:
+      - 原神·印象
+  - command:
+      - item add 210001
+纪行·捕风:
+  - names:
+      - 纪行·捕风
+  - command:
+      - item add 210002
+安柏·兔兔:
+  - names:
+      - 安柏·兔兔
+  - command:
+      - item add 210003
+可莉·爆弹:
+  - names:
+      - 可莉·爆弹
+  - command:
+      - item add 210004
+迪卢克·燃烧:
+  - names:
+      - 迪卢克·燃烧
+  - command:
+      - item add 210005
+雷泽·奔狼:
+  - names:
+      - 雷泽·奔狼
+  - command:
+      - item add 210006
+温迪·天青:
+  - names:
+      - 温迪·天青
+  - command:
+      - item add 210007
+琴·风向:
+  - names:
+      - 琴·风向
+  - command:
+      - item add 210008
+芭芭拉·流淌:
+  - names:
+      - 芭芭拉·流淌
+  - command:
+      - item add 210009
+凯亚·孔雀:
+  - names:
+      - 凯亚·孔雀
+  - command:
+      - item add 210010
+丽莎·沙漏:
+  - names:
+      - 丽莎·沙漏
+  - command:
+      - item add 210011
+砂糖·创生:
+  - names:
+      - 砂糖·创生
+  - command:
+      - item add 210012
+菲谢尔·夜鸦:
+  - names:
+      - 菲谢尔·夜鸦
+  - command:
+      - item add 210013
+诺艾尔·守护:
+  - names:
+      - 诺艾尔·守护
+  - command:
+      - item add 210014
+莫娜·天星:
+  - names:
+      - 莫娜·天星
+  - command:
+      - item add 210015
+班尼特·认可:
+  - names:
+      - 班尼特·认可
+  - command:
+      - item add 210016
+香菱·出锅:
+  - names:
+      - 香菱·出锅
+  - command:
+      - item add 210017
+行秋·雨虹:
+  - names:
+      - 行秋·雨虹
+  - command:
+      - item add 210018
+七七·冷藏:
+  - names:
+      - 七七·冷藏
+  - command:
+      - item add 210019
+刻晴·雷楔:
+  - names:
+      - 刻晴·雷楔
+  - command:
+      - item add 210020
+成就·游遍:
+  - names:
+      - 成就·游遍
+  - command:
+      - item add 210021
+成就·殊技:
+  - names:
+      - 成就·殊技
+  - command:
+      - item add 210022
+成就·侠行:
+  - names:
+      - 成就·侠行
+  - command:
+      - item add 210023
+蒙德·风吟:
+  - names:
+      - 蒙德·风吟
+  - command:
+      - item add 210024
+璃月·岩寂:
+  - names:
+      - 璃月·岩寂
+  - command:
+      - item add 210025
+成就·虹色:
+  - names:
+      - 成就·虹色
+  - command:
+      - item add 210026
+成就·强弓:
+  - names:
+      - 成就·强弓
+  - command:
+      - item add 210027
+成就·挑战:
+  - names:
+      - 成就·挑战
+  - command:
+      - item add 210028
+成就·深秘:
+  - names:
+      - 成就·深秘
+  - command:
+      - item add 210029
+成就·山民:
+  - names:
+      - 成就·山民
+  - command:
+      - item add 210030
+成就·雪乡:
+  - names:
+      - 成就·雪乡
+  - command:
+      - item add 210031
+成就·合扇:
+  - names:
+      - 成就·合扇
+  - command:
+      - item add 210032
+成就·相逢:
+  - names:
+      - 成就·相逢
+  - command:
+      - item add 210033
+凝光·凤仪:
+  - names:
+      - 凝光·凤仪
+  - command:
+      - item add 210038
+北斗·拔锚:
+  - names:
+      - 北斗·拔锚
+  - command:
+      - item add 210039
+重云·灵刃:
+  - names:
+      - 重云·灵刃
+  - command:
+      - item add 210040
+成就·挑战·其二:
+  - names:
+      - 成就·挑战·其二
+  - command:
+      - item add 210041
+纪行·熄星:
+  - names:
+      - 纪行·熄星
+  - command:
+      - item add 210042
+迪奥娜·呜喵:
+  - names:
+      - 迪奥娜·呜喵
+  - command:
+      - item add 210043
+钟离·天星:
+  - names:
+      - 钟离·天星
+  - command:
+      - item add 210044
+辛焱·唱罢:
+  - names:
+      - 辛焱·唱罢
+  - command:
+      - item add 210045
+公子·魔装:
+  - names:
+      - 公子·魔装
+  - command:
+      - item add 210046
+蒙德·英名:
+  - names:
+      - 蒙德·英名
+  - command:
+      - item add 210047
+蒙德·祝愿:
+  - names:
+      - 蒙德·祝愿
+  - command:
+      - item add 210048
+璃月·千帆:
+  - names:
+      - 璃月·千帆
+  - command:
+      - item add 210049
+璃月·云间:
+  - names:
+      - 璃月·云间
+  - command:
+      - item add 210050
+成就·挑战·其三:
+  - names:
+      - 成就·挑战·其三
+  - command:
+      - item add 210051
+成就·雪峰:
+  - names:
+      - 成就·雪峰
+  - command:
+      - item add 210052
+甘雨·麟迹:
+  - names:
+      - 甘雨·麟迹
+  - command:
+      - item add 210053
+阿贝多·阳花:
+  - names:
+      - 阿贝多·阳花
+  - command:
+      - item add 210054
+纪行·白垩:
+  - names:
+      - 纪行·白垩
+  - command:
+      - item add 210055
+忍冬·古树:
+  - names:
+      - 忍冬·古树
+  - command:
+      - item add 210056
+庆典·无相:
+  - names:
+      - 庆典·无相
+  - command:
+      - item add 210057
+魈·傩面:
+  - names:
+      - 魈·傩面
+  - command:
+      - item add 210058
+胡桃·安神:
+  - names:
+      - 胡桃·安神
+  - command:
+      - item add 210059
+纪行·明霄:
+  - names:
+      - 纪行·明霄
+  - command:
+      - item add 210060
+庆典·灯昼:
+  - names:
+      - 庆典·灯昼
+  - command:
+      - item add 210061
+庆典·棋谭:
+  - names:
+      - 庆典·棋谭
+  - command:
+      - item add 210062
+罗莎莉亚·苦役:
+  - names:
+      - 罗莎莉亚·苦役
+  - command:
+      - item add 210063
+纪行·风花:
+  - names:
+      - 纪行·风花
+  - command:
+      - item add 210064
+庆典·盛宴:
+  - names:
+      - 庆典·盛宴
+  - command:
+      - item add 210065
+庆典·光鳞:
+  - names:
+      - 庆典·光鳞
+  - command:
+      - item add 210066
+庆典·慧果:
+  - names:
+      - 庆典·慧果
+  - command:
+      - item add 210067
+庆典·躲猫:
+  - names:
+      - 庆典·躲猫
+  - command:
+      - item add 210068
+烟绯·公正:
+  - names:
+      - 烟绯·公正
+  - command:
+      - item add 210069
+优菈·冰印:
+  - names:
+      - 优菈·冰印
+  - command:
+      - item add 210070
+纪行·绕尘:
+  - names:
+      - 纪行·绕尘
+  - command:
+      - item add 210071
+成就·壶歌:
+  - names:
+      - 成就·壶歌
+  - command:
+      - item add 210072
+枫原万叶·秋山椛狩:
+  - names:
+      - 枫原万叶·秋山椛狩
+  - command:
+      - item add 210073
+纪行·盛夏:
+  - names:
+      - 纪行·盛夏
+  - command:
+      - item add 210074
+成就·旅居:
+  - names:
+      - 成就·旅居
+  - command:
+      - item add 210075
+庆典·浩瀚:
+  - names:
+      - 庆典·浩瀚
+  - command:
+      - item add 210076
+庆典·魔球:
+  - names:
+      - 庆典·魔球
+  - command:
+      - item add 210077
+庆典·斗剧:
+  - names:
+      - 庆典·斗剧
+  - command:
+      - item add 210078
+稻妻·神樱:
+  - names:
+      - 稻妻·神樱
+  - command:
+      - item add 210079
+纪行·鸣神大社:
+  - names:
+      - 纪行·鸣神大社
+  - command:
+      - item add 210080
+神里绫华·扇子:
+  - names:
+      - 神里绫华·扇子
+  - command:
+      - item add 210081
+宵宫·琉金火花:
+  - names:
+      - 宵宫·琉金火花
+  - command:
+      - item add 210082
+早柚·不倒貉貉:
+  - names:
+      - 早柚·不倒貉貉
+  - command:
+      - item add 210083
+稻妻·雷电之纹:
+  - names:
+      - 稻妻·雷电之纹
+  - command:
+      - item add 210084
+稻妻·神里之纹:
+  - names:
+      - 稻妻·神里之纹
+  - command:
+      - item add 210085
+成就·门扉:
+  - names:
+      - 成就·门扉
+  - command:
+      - item add 210086
+成就·遍历:
+  - names:
+      - 成就·遍历
+  - command:
+      - item add 210087
+成就·石龙:
+  - names:
+      - 成就·石龙
+  - command:
+      - item add 210088
+成就·繁花:
+  - names:
+      - 成就·繁花
+  - command:
+      - item add 210089
+稻妻·九条之纹:
+  - names:
+      - 稻妻·九条之纹
+  - command:
+      - item add 210090
+庆典·妙算:
+  - names:
+      - 庆典·妙算
+  - command:
+      - item add 210091
+雷电将军·开眼:
+  - names:
+      - 雷电将军·开眼
+  - command:
+      - item add 210092
+珊瑚宫心海·渊:
+  - names:
+      - 珊瑚宫心海·渊
+  - command:
+      - item add 210093
+九条裟罗·天狗:
+  - names:
+      - 九条裟罗·天狗
+  - command:
+      - item add 210094
+埃洛伊·曙光记:
+  - names:
+      - 埃洛伊·曙光记
+  - command:
+      - item add 210095
+纪行·逐月:
+  - names:
+      - 纪行·逐月
+  - command:
+      - item add 210096
+稻妻·珊瑚宫之纹:
+  - names:
+      - 稻妻·珊瑚宫之纹
+  - command:
+      - item add 210097
+成就·敲针:
+  - names:
+      - 成就·敲针
+  - command:
+      - item add 210098
+庆典·倾耳:
+  - names:
+      - 庆典·倾耳
+  - command:
+      - item add 210099
+庆典·一揆:
+  - names:
+      - 庆典·一揆
+  - command:
+      - item add 210100
+托马·炎袖:
+  - names:
+      - 托马·炎袖
+  - command:
+      - item add 210101
+纪行·神将:
+  - names:
+      - 纪行·神将
+  - command:
+      - item add 210102
+稻妻·鹫羽:
+  - names:
+      - 稻妻·鹫羽
+  - command:
+      - item add 210103
+五郎·悠犬:
+  - names:
+      - 五郎·悠犬
+  - command:
+      - item add 210104
+一斗·鬼颜:
+  - names:
+      - 一斗·鬼颜
+  - command:
+      - item add 210105
+纪行·白英:
+  - names:
+      - 纪行·白英
+  - command:
+      - item add 210106
+申鹤·栉掠:
+  - names:
+      - 申鹤·栉掠
+  - command:
+      - item add 210107
+云堇·对韵:
+  - names:
+      - 云堇·对韵
+  - command:
+      - item add 210108
+稻妻·常世:
+  - names:
+      - 稻妻·常世
+  - command:
+      - item add 210109
+纪行·流彩:
+  - names:
+      - 纪行·流彩
+  - command:
+      - item add 210110
+庆典·觥筹:
+  - names:
+      - 庆典·觥筹
+  - command:
+      - item add 210111
+八重神子·梦狐:
+  - names:
+      - 八重神子·梦狐
+  - command:
+      - item add 210112
+纪行·蛰醒:
+  - names:
+      - 纪行·蛰醒
+  - command:
+      - item add 210113
+神里绫人·涟漪:
+  - names:
+      - 神里绫人·涟漪
+  - command:
+      - item add 210114
+流明·辉石:
+  - names:
+      - 流明·辉石
+  - command:
+      - item add 210115
+成就·雷音:
+  - names:
+      - 成就·雷音
+  - command:
+      - item add 210116
+成就·层岩:
+  - names:
+      - 成就·层岩
+  - command:
+      - item add 210117
+纪行·容彩:
+  - names:
+      - 纪行·容彩
+  - command:
+      - item add 210118
+夜兰·一掷:
+  - names:
+      - 夜兰·一掷
+  - command:
+      - item add 210119
+久岐忍·络:
+  - names:
+      - 久岐忍·络
+  - command:
+      - item add 210120
+纪行·天命:
+  - names:
+      - 纪行·天命
+  - command:
+      - item add 210121
+鹿野院平藏·鞠毬:
+  - names:
+      - 鹿野院平藏·鞠毬
+  - command:
+      - item add 210122
+纪行·海蓝:
+  - names:
+      - 纪行·海蓝
+  - command:
+      - item add 210123
+提纳里·沐露:
+  - names:
+      - 提纳里·沐露
+  - command:
+      - item add 210124
+柯莱·豹蔚:
+  - names:
+      - 柯莱·豹蔚
+  - command:
+      - item add 210125
+多莉·魔灯:
+  - names:
+      - 多莉·魔灯
+  - command:
+      - item add 210126
+纪行·深林:
+  - names:
+      - 纪行·深林
+  - command:
+      - item add 210127
+成就·漫行:
+  - names:
+      - 成就·漫行
+  - command:
+      - item add 210128
+成就·逢缘:
+  - names:
+      - 成就·逢缘
+  - command:
+      - item add 210129
+须弥·瑶林:
+  - names:
+      - 须弥·瑶林
+  - command:
+      - item add 210130
+须弥·照览:
+  - names:
+      - 须弥·照览
+  - command:
+      - item add 210131
+须弥·正明:
+  - names:
+      - 须弥·正明
+  - command:
+      - item add 210132
+纪行·归风:
+  - names:
+      - 纪行·归风
+  - command:
+      - item add 210133
+赛诺·幽缄:
+  - names:
+      - 赛诺·幽缄
+  - command:
+      - item add 210134
+坎蒂丝·苍鹭:
+  - names:
+      - 坎蒂丝·苍鹭
+  - command:
+      - item add 210135
+妮露·莲舞:
+  - names:
+      - 妮露·莲舞
+  - command:
+      - item add 210136
+成就·七芒:
+  - names:
+      - 成就·七芒
+  - command:
+      - item add 210137
+须弥·踏沙:
+  - names:
+      - 须弥·踏沙
+  - command:
+      - item add 210138
+成就·镜梦:
+  - names:
+      - 成就·镜梦
+  - command:
+      - item add 210139
+纳西妲·仰月:
+  - names:
+      - 纳西妲·仰月
+  - command:
+      - item add 210140
+莱依拉·昼梦:
+  - names:
+      - 莱依拉·昼梦
+  - command:
+      - item add 210141
+纪行·蕈原:
+  - names:
+      - 纪行·蕈原
+  - command:
+      - item add 210142
+流浪者·浮歌:
+  - names:
+      - 流浪者·浮歌
+  - command:
+      - item add 210143
+珐露珊·封秘:
+  - names:
+      - 珐露珊·封秘
+  - command:
+      - item add 210144
+成就·七圣:
+  - names:
+      - 成就·七圣
+  - command:
+      - item add 210145
+纪行·灵津:
+  - names:
+      - 纪行·灵津
+  - command:
+      - item add 210146
+艾尔海森·诲明:
+  - names:
+      - 艾尔海森·诲明
+  - command:
+      - item add 210147
+瑶瑶·月桂:
+  - names:
+      - 瑶瑶·月桂
+  - command:
+      - item add 210148
+庆典·岫云:
+  - names:
+      - 庆典·岫云
+  - command:
+      - item add 210149
+纪行·合韵:
+  - names:
+      - 纪行·合韵
+  - command:
+      - item add 210150
+须弥·砂岚:
+  - names:
+      - 须弥·砂岚
+  - command:
+      - item add 210151
+迪希雅·净焰:
+  - names:
+      - 迪希雅·净焰
+  - command:
+      - item add 210152
+米卡·索引:
+  - names:
+      - 米卡·索引
+  - command:
+      - item add 210153
+纪行·意巧:
+  - names:
+      - 纪行·意巧
+  - command:
+      - item add 210154
+白术·祛风:
+  - names:
+      - 白术·祛风
+  - command:
+      - item add 210155
+卡维·穹庭:
+  - names:
+      - 卡维·穹庭
+  - command:
+      - item add 210156
+成就·万种:
+  - names:
+      - 成就·万种
+  - command:
+      - item add 210157
+成就·槿暮:
+  - names:
+      - 成就·槿暮
+  - command:
+      - item add 210158
+须弥·大梦:
+  - names:
+      - 须弥·大梦
+  - command:
+      - item add 210159
+须弥·甘露:
+  - names:
+      - 须弥·甘露
+  - command:
+      - item add 210160
+纪行·荣冕:
+  - names:
+      - 纪行·荣冕
+  - command:
+      - item add 210161

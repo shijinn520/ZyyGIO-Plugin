@@ -1,0 +1,16 @@
+流浪者的经验:
+  - names:
+      - 流浪者的经验
+  - command:
+      - item add 104001
+冒险家的经验:
+  - names:
+      - 冒险家的经验
+  - command:
+      - item add 104002
+大英雄的经验:
+  - names:
+      - 大英雄的经验
+      - 大经验书
+  - command:
+      - item add 104003

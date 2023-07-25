@@ -1,0 +1,1280 @@
+璀璨原钻碎屑:
+  - names:
+      - 璀璨原钻碎屑
+  - command:
+      - item add 104101 500
+璀璨原钻断片:
+  - names:
+      - 璀璨原钻断片
+  - command:
+      - item add 104102 500
+璀璨原钻块:
+  - names:
+      - 璀璨原钻块
+  - command:
+      - item add 104103 500
+璀璨原钻:
+  - names:
+      - 璀璨原钻
+  - command:
+      - item add 104104 500
+燃愿玛瑙碎屑:
+  - names:
+      - 燃愿玛瑙碎屑
+  - command:
+      - item add 104111 500
+燃愿玛瑙断片:
+  - names:
+      - 燃愿玛瑙断片
+  - command:
+      - item add 104112 500
+燃愿玛瑙块:
+  - names:
+      - 燃愿玛瑙块
+  - command:
+      - item add 104113 500
+燃愿玛瑙:
+  - names:
+      - 燃愿玛瑙
+  - command:
+      - item add 104114 500
+涤净青金碎屑:
+  - names:
+      - 涤净青金碎屑
+  - command:
+      - item add 104121 500
+涤净青金断片:
+  - names:
+      - 涤净青金断片
+  - command:
+      - item add 104122 500
+涤净青金块:
+  - names:
+      - 涤净青金块
+  - command:
+      - item add 104123 500
+涤净青金:
+  - names:
+      - 涤净青金
+  - command:
+      - item add 104124 500
+生长碧翡碎屑:
+  - names:
+      - 生长碧翡碎屑
+  - command:
+      - item add 104131 500
+生长碧翡断片:
+  - names:
+      - 生长碧翡断片
+  - command:
+      - item add 104132 500
+生长碧翡块:
+  - names:
+      - 生长碧翡块
+  - command:
+      - item add 104133 500
+生长碧翡:
+  - names:
+      - 生长碧翡
+  - command:
+      - item add 104134 500
+最胜紫晶碎屑:
+  - names:
+      - 最胜紫晶碎屑
+  - command:
+      - item add 104141 500
+最胜紫晶断片:
+  - names:
+      - 最胜紫晶断片
+  - command:
+      - item add 104142 500
+最胜紫晶块:
+  - names:
+      - 最胜紫晶块
+  - command:
+      - item add 104143 500
+最胜紫晶:
+  - names:
+      - 最胜紫晶
+  - command:
+      - item add 104144 500
+自在松石碎屑:
+  - names:
+      - 自在松石碎屑
+  - command:
+      - item add 104151 500
+自在松石断片:
+  - names:
+      - 自在松石断片
+  - command:
+      - item add 104152 500
+自在松石块:
+  - names:
+      - 自在松石块
+  - command:
+      - item add 104153 500
+自在松石:
+  - names:
+      - 自在松石
+  - command:
+      - item add 104154 500
+哀叙冰玉碎屑:
+  - names:
+      - 哀叙冰玉碎屑
+  - command:
+      - item add 104161 500
+哀叙冰玉断片:
+  - names:
+      - 哀叙冰玉断片
+  - command:
+      - item add 104162 500
+哀叙冰玉块:
+  - names:
+      - 哀叙冰玉块
+  - command:
+      - item add 104163 500
+哀叙冰玉:
+  - names:
+      - 哀叙冰玉
+  - command:
+      - item add 104164 500
+坚牢黄玉碎屑:
+  - names:
+      - 坚牢黄玉碎屑
+  - command:
+      - item add 104171 500
+坚牢黄玉断片:
+  - names:
+      - 坚牢黄玉断片
+  - command:
+      - item add 104172 500
+坚牢黄玉块:
+  - names:
+      - 坚牢黄玉块
+  - command:
+      - item add 104173 500
+坚牢黄玉:
+  - names:
+      - 坚牢黄玉
+  - command:
+      - item add 104174 500
+自由的教导:
+  - names:
+      - 自由的教导
+  - command:
+      - item add 104301 500
+自由的指引:
+  - names:
+      - 自由的指引
+  - command:
+      - item add 104302 500
+自由的哲学:
+  - names:
+      - 自由的哲学
+  - command:
+      - item add 104303 500
+抗争的教导:
+  - names:
+      - 抗争的教导
+  - command:
+      - item add 104304 500
+抗争的指引:
+  - names:
+      - 抗争的指引
+  - command:
+      - item add 104305 500
+抗争的哲学:
+  - names:
+      - 抗争的哲学
+  - command:
+      - item add 104306 500
+诗文的教导:
+  - names:
+      - 诗文的教导
+  - command:
+      - item add 104307 500
+诗文的指引:
+  - names:
+      - 诗文的指引
+  - command:
+      - item add 104308 500
+诗文的哲学:
+  - names:
+      - 诗文的哲学
+  - command:
+      - item add 104309 500
+繁荣的教导:
+  - names:
+      - 繁荣的教导
+  - command:
+      - item add 104310 500
+繁荣的指引:
+  - names:
+      - 繁荣的指引
+  - command:
+      - item add 104311 500
+繁荣的哲学:
+  - names:
+      - 繁荣的哲学
+  - command:
+      - item add 104312 500
+勤劳的教导:
+  - names:
+      - 勤劳的教导
+  - command:
+      - item add 104313 500
+勤劳的指引:
+  - names:
+      - 勤劳的指引
+  - command:
+      - item add 104314 500
+勤劳的哲学:
+  - names:
+      - 勤劳的哲学
+  - command:
+      - item add 104315 500
+黄金的教导:
+  - names:
+      - 黄金的教导
+  - command:
+      - item add 104316 500
+黄金的指引:
+  - names:
+      - 黄金的指引
+  - command:
+      - item add 104317 500
+黄金的哲学:
+  - names:
+      - 黄金的哲学
+  - command:
+      - item add 104318 500
+智识之冕:
+  - names:
+      - 智识之冕
+  - command:
+      - item add 104319 500
+浮世的教导:
+  - names:
+      - 浮世的教导
+  - command:
+      - item add 104320 500
+浮世的指引:
+  - names:
+      - 浮世的指引
+  - command:
+      - item add 104321 500
+浮世的哲学:
+  - names:
+      - 浮世的哲学
+  - command:
+      - item add 104322 500
+风雅的教导:
+  - names:
+      - 风雅的教导
+  - command:
+      - item add 104323 500
+风雅的指引:
+  - names:
+      - 风雅的指引
+  - command:
+      - item add 104324 500
+风雅的哲学:
+  - names:
+      - 风雅的哲学
+  - command:
+      - item add 104325 500
+天光的教导:
+  - names:
+      - 天光的教导
+  - command:
+      - item add 104326 500
+天光的指引:
+  - names:
+      - 天光的指引
+  - command:
+      - item add 104327 500
+天光的哲学:
+  - names:
+      - 天光的哲学
+  - command:
+      - item add 104328 500
+诤言的教导:
+  - names:
+      - 诤言的教导
+  - command:
+      - item add 104329 500
+诤言的指引:
+  - names:
+      - 诤言的指引
+  - command:
+      - item add 104330 500
+诤言的哲学:
+  - names:
+      - 诤言的哲学
+  - command:
+      - item add 104331 500
+巧思的教导:
+  - names:
+      - 巧思的教导
+  - command:
+      - item add 104332 500
+巧思的指引:
+  - names:
+      - 巧思的指引
+  - command:
+      - item add 104333 500
+巧思的哲学:
+  - names:
+      - 巧思的哲学
+  - command:
+      - item add 104334 500
+笃行的教导:
+  - names:
+      - 笃行的教导
+  - command:
+      - item add 104335 500
+笃行的指引:
+  - names:
+      - 笃行的指引
+  - command:
+      - item add 104336 500
+笃行的哲学:
+  - names:
+      - 笃行的哲学
+  - command:
+      - item add 104337 500
+原质:
+  - names:
+      - 原质
+  - command:
+      - item add 112001 500
+史莱姆凝液:
+  - names:
+      - 史莱姆凝液
+  - command:
+      - item add 112002 500
+史莱姆清:
+  - names:
+      - 史莱姆清
+  - command:
+      - item add 112003 500
+史莱姆原浆:
+  - names:
+      - 史莱姆原浆
+  - command:
+      - item add 112004 500
+破损的面具:
+  - names:
+      - 破损的面具
+  - command:
+      - item add 112005 500
+污秽的面具:
+  - names:
+      - 污秽的面具
+  - command:
+      - item add 112006 500
+不祥的面具:
+  - names:
+      - 不祥的面具
+  - command:
+      - item add 112007 500
+导能绘卷:
+  - names:
+      - 导能绘卷
+  - command:
+      - item add 112008 500
+封魔绘卷:
+  - names:
+      - 封魔绘卷
+  - command:
+      - item add 112009 500
+禁咒绘卷:
+  - names:
+      - 禁咒绘卷
+  - command:
+      - item add 112010 500
+牢固的箭簇:
+  - names:
+      - 牢固的箭簇
+  - command:
+      - item add 112011 500
+锐利的箭簇:
+  - names:
+      - 锐利的箭簇
+  - command:
+      - item add 112012 500
+历战的箭簇:
+  - names:
+      - 历战的箭簇
+  - command:
+      - item add 112013 500
+沉重号角:
+  - names:
+      - 沉重号角
+  - command:
+      - item add 112014 500
+黑铜号角:
+  - names:
+      - 黑铜号角
+  - command:
+      - item add 112015 500
+黑晶号角:
+  - names:
+      - 黑晶号角
+  - command:
+      - item add 112016 500
+晦暗刻像:
+  - names:
+      - 晦暗刻像
+  - command:
+      - item add 112017 500
+夤夜刻像:
+  - names:
+      - 夤夜刻像
+  - command:
+      - item add 112018 500
+幽邃刻像:
+  - names:
+      - 幽邃刻像
+  - command:
+      - item add 112019 500
+地脉的旧枝:
+  - names:
+      - 地脉的旧枝
+  - command:
+      - item add 112020 500
+地脉的枯叶:
+  - names:
+      - 地脉的枯叶
+  - command:
+      - item add 112021 500
+地脉的新芽:
+  - names:
+      - 地脉的新芽
+  - command:
+      - item add 112022 500
+混沌装置:
+  - names:
+      - 混沌装置
+  - command:
+      - item add 112023 500
+混沌回路:
+  - names:
+      - 混沌回路
+  - command:
+      - item add 112024 500
+混沌炉心:
+  - names:
+      - 混沌炉心
+  - command:
+      - item add 112025 500
+雾虚花粉:
+  - names:
+      - 雾虚花粉
+  - command:
+      - item add 112026 500
+雾虚草囊:
+  - names:
+      - 雾虚草囊
+  - command:
+      - item add 112027 500
+雾虚灯芯:
+  - names:
+      - 雾虚灯芯
+  - command:
+      - item add 112028 500
+猎兵祭刀:
+  - names:
+      - 猎兵祭刀
+  - command:
+      - item add 112029 500
+特工祭刀:
+  - names:
+      - 特工祭刀
+  - command:
+      - item add 112030 500
+督察长祭刀:
+  - names:
+      - 督察长祭刀
+  - command:
+      - item add 112031 500
+新兵的徽记:
+  - names:
+      - 新兵的徽记
+  - command:
+      - item add 112032 500
+士官的徽记:
+  - names:
+      - 士官的徽记
+  - command:
+      - item add 112033 500
+尉官的徽记:
+  - names:
+      - 尉官的徽记
+  - command:
+      - item add 112034 500
+寻宝鸦印:
+  - names:
+      - 寻宝鸦印
+  - command:
+      - item add 112035 500
+藏银鸦印:
+  - names:
+      - 藏银鸦印
+  - command:
+      - item add 112036 500
+攫金鸦印:
+  - names:
+      - 攫金鸦印
+  - command:
+      - item add 112037 500
+骗骗花蜜:
+  - names:
+      - 骗骗花蜜
+  - command:
+      - item add 112038 500
+微光花蜜:
+  - names:
+      - 微光花蜜
+  - command:
+      - item add 112039 500
+原素花蜜:
+  - names:
+      - 原素花蜜
+  - command:
+      - item add 112040 500
+脆弱的骨片:
+  - names:
+      - 脆弱的骨片
+  - command:
+      - item add 112041 500
+结实的骨片:
+  - names:
+      - 结实的骨片
+  - command:
+      - item add 112042 500
+石化的骨片:
+  - names:
+      - 石化的骨片
+  - command:
+      - item add 112043 500
+破旧的刀镡:
+  - names:
+      - 破旧的刀镡
+  - command:
+      - item add 112044 500
+影打刀镡:
+  - names:
+      - 影打刀镡
+  - command:
+      - item add 112045 500
+名刀镡:
+  - names:
+      - 名刀镡
+  - command:
+      - item add 112046 500
+混沌机关:
+  - names:
+      - 混沌机关
+  - command:
+      - item add 112047 500
+混沌枢纽:
+  - names:
+      - 混沌枢纽
+  - command:
+      - item add 112048 500
+混沌真眼:
+  - names:
+      - 混沌真眼
+  - command:
+      - item add 112049 500
+黯淡棱镜:
+  - names:
+      - 黯淡棱镜
+  - command:
+      - item add 112050 500
+水晶棱镜:
+  - names:
+      - 水晶棱镜
+  - command:
+      - item add 112051 500
+偏光棱镜:
+  - names:
+      - 偏光棱镜
+  - command:
+      - item add 112052 500
+浮游干核:
+  - names:
+      - 浮游干核
+  - command:
+      - item add 112053 500
+浮游幽核:
+  - names:
+      - 浮游幽核
+  - command:
+      - item add 112054 500
+浮游晶化核:
+  - names:
+      - 浮游晶化核
+  - command:
+      - item add 112055 500
+隐兽指爪:
+  - names:
+      - 隐兽指爪
+  - command:
+      - item add 112056 500
+隐兽利爪:
+  - names:
+      - 隐兽利爪
+  - command:
+      - item add 112057 500
+隐兽鬼爪:
+  - names:
+      - 隐兽鬼爪
+  - command:
+      - item add 112058 500
+蕈兽孢子:
+  - names:
+      - 蕈兽孢子
+  - command:
+      - item add 112059 500
+荧光孢粉:
+  - names:
+      - 荧光孢粉
+  - command:
+      - item add 112060 500
+孢囊晶尘:
+  - names:
+      - 孢囊晶尘
+  - command:
+      - item add 112061 500
+失活菌核:
+  - names:
+      - 失活菌核
+  - command:
+      - item add 112062 500
+休眠菌核:
+  - names:
+      - 休眠菌核
+  - command:
+      - item add 112063 500
+茁壮菌核:
+  - names:
+      - 茁壮菌核
+  - command:
+      - item add 112064 500
+褪色红绸:
+  - names:
+      - 褪色红绸
+  - command:
+      - item add 112065 500
+镶边红绸:
+  - names:
+      - 镶边红绸
+  - command:
+      - item add 112066 500
+织金红绸:
+  - names:
+      - 织金红绸
+  - command:
+      - item add 112067 500
+混沌容器:
+  - names:
+      - 混沌容器
+  - command:
+      - item add 112068 500
+混沌模块:
+  - names:
+      - 混沌模块
+  - command:
+      - item add 112069 500
+混沌锚栓:
+  - names:
+      - 混沌锚栓
+  - command:
+      - item add 112070 500
+破缺棱晶:
+  - names:
+      - 破缺棱晶
+  - command:
+      - item add 112071 500
+混浊棱晶:
+  - names:
+      - 混浊棱晶
+  - command:
+      - item add 112072 500
+辉光棱晶:
+  - names:
+      - 辉光棱晶
+  - command:
+      - item add 112073 500
+残毁的横脊:
+  - names:
+      - 残毁的横脊
+  - command:
+      - item add 112074 500
+密固的横脊:
+  - names:
+      - 密固的横脊
+  - command:
+      - item add 112075 500
+锲纹的横脊:
+  - names:
+      - 锲纹的横脊
+  - command:
+      - item add 112076 500
+来自何处的待放之花:
+  - names:
+      - 来自何处的待放之花
+  - command:
+      - item add 112077 500
+何人所珍藏之花:
+  - names:
+      - 何人所珍藏之花
+  - command:
+      - item add 112078 500
+漫游者的盛放之花:
+  - names:
+      - 漫游者的盛放之花
+  - command:
+      - item add 112079 500
+飓风之种:
+  - names:
+      - 飓风之种
+  - command:
+      - item add 113001 500
+雷光棱镜:
+  - names:
+      - 雷光棱镜
+  - command:
+      - item add 113002 500
+东风之翎:
+  - names:
+      - 东风之翎
+  - command:
+      - item add 113003 500
+东风之爪:
+  - names:
+      - 东风之爪
+  - command:
+      - item add 113004 500
+东风的吐息:
+  - names:
+      - 东风的吐息
+  - command:
+      - item add 113005 500
+北风之尾:
+  - names:
+      - 北风之尾
+  - command:
+      - item add 113006 500
+北风之环:
+  - names:
+      - 北风之环
+  - command:
+      - item add 113007 500
+北风的魂匣:
+  - names:
+      - 北风的魂匣
+  - command:
+      - item add 113008 500
+玄岩之塔:
+  - names:
+      - 玄岩之塔
+  - command:
+      - item add 113009 500
+极寒之核:
+  - names:
+      - 极寒之核
+  - command:
+      - item add 113010 500
+常燃火种:
+  - names:
+      - 常燃火种
+  - command:
+      - item add 113011 500
+净水之心:
+  - names:
+      - 净水之心
+  - command:
+      - item add 113012 500
+吞天之鲸·只角:
+  - names:
+      - 吞天之鲸·只角
+  - command:
+      - item add 113013 500
+魔王之刃·残片:
+  - names:
+      - 魔王之刃·残片
+  - command:
+      - item add 113014 500
+武炼之魂·孤影:
+  - names:
+      - 武炼之魂·孤影
+  - command:
+      - item add 113015 500
+未熟之玉:
+  - names:
+      - 未熟之玉
+  - command:
+      - item add 113016 500
+龙王之冕:
+  - names:
+      - 龙王之冕
+  - command:
+      - item add 113017 500
+血玉之枝:
+  - names:
+      - 血玉之枝
+  - command:
+      - item add 113018 500
+鎏金之鳞:
+  - names:
+      - 鎏金之鳞
+  - command:
+      - item add 113019 500
+晶凝之华:
+  - names:
+      - 晶凝之华
+  - command:
+      - item add 113020 500
+魔偶机心:
+  - names:
+      - 魔偶机心
+  - command:
+      - item add 113022 500
+恒常机关之心:
+  - names:
+      - 恒常机关之心
+  - command:
+      - item add 113023 500
+阴燃之珠:
+  - names:
+      - 阴燃之珠
+  - command:
+      - item add 113024 500
+熔毁之刻:
+  - names:
+      - 熔毁之刻
+  - command:
+      - item add 113025 500
+狱火之蝶:
+  - names:
+      - 狱火之蝶
+  - command:
+      - item add 113026 500
+灰烬之心:
+  - names:
+      - 灰烬之心
+  - command:
+      - item add 113027 500
+排异之露:
+  - names:
+      - 排异之露
+  - command:
+      - item add 113028 500
+雷霆数珠:
+  - names:
+      - 雷霆数珠
+  - command:
+      - item add 113029 500
+兽境王器:
+  - names:
+      - 兽境王器
+  - command:
+      - item add 113030 500
+龙嗣伪鳍:
+  - names:
+      - 龙嗣伪鳍
+  - command:
+      - item add 113031 500
+凶将之手眼:
+  - names:
+      - 凶将之手眼
+  - command:
+      - item add 113032 500
+祸神之禊泪:
+  - names:
+      - 祸神之禊泪
+  - command:
+      - item add 113033 500
+万劫之真意:
+  - names:
+      - 万劫之真意
+  - command:
+      - item add 113034 500
+符纹之齿:
+  - names:
+      - 符纹之齿
+  - command:
+      - item add 113035 500
+蕈王钩喙:
+  - names:
+      - 蕈王钩喙
+  - command:
+      - item add 113036 500
+藏雷野实:
+  - names:
+      - 藏雷野实
+  - command:
+      - item add 113037 500
+永续机芯:
+  - names:
+      - 永续机芯
+  - command:
+      - item add 113038 500
+导光四面体:
+  - names:
+      - 导光四面体
+  - command:
+      - item add 113039 500
+灭诤草蔓:
+  - names:
+      - 灭诤草蔓
+  - command:
+      - item add 113040 500
+傀儡的悬丝:
+  - names:
+      - 傀儡的悬丝
+  - command:
+      - item add 113041 500
+无心的渊镜:
+  - names:
+      - 无心的渊镜
+  - command:
+      - item add 113042 500
+空行的虚铃:
+  - names:
+      - 空行的虚铃
+  - command:
+      - item add 113043 500
+苍砾蕊羽:
+  - names:
+      - 苍砾蕊羽
+  - command:
+      - item add 113044 500
+常暗圆环:
+  - names:
+      - 常暗圆环
+  - command:
+      - item add 113045 500
+生长天地之蕨草:
+  - names:
+      - 生长天地之蕨草
+  - command:
+      - item add 113046 500
+原初绿洲之初绽:
+  - names:
+      - 原初绿洲之初绽
+  - command:
+      - item add 113047 500
+亘古树海之一瞬:
+  - names:
+      - 亘古树海之一瞬
+  - command:
+      - item add 113048 500
+高塔孤王的破瓦:
+  - names:
+      - 高塔孤王的破瓦
+  - command:
+      - item add 114001 500
+高塔孤王的残垣:
+  - names:
+      - 高塔孤王的残垣
+  - command:
+      - item add 114002 500
+高塔孤王的断片:
+  - names:
+      - 高塔孤王的断片
+  - command:
+      - item add 114003 500
+高塔孤王的碎梦:
+  - names:
+      - 高塔孤王的碎梦
+  - command:
+      - item add 114004 500
+凛风奔狼的始龀:
+  - names:
+      - 凛风奔狼的始龀
+  - command:
+      - item add 114005 500
+凛风奔狼的裂齿:
+  - names:
+      - 凛风奔狼的裂齿
+  - command:
+      - item add 114006 500
+凛风奔狼的断牙:
+  - names:
+      - 凛风奔狼的断牙
+  - command:
+      - item add 114007 500
+凛风奔狼的怀乡:
+  - names:
+      - 凛风奔狼的怀乡
+  - command:
+      - item add 114008 500
+狮牙斗士的枷锁:
+  - names:
+      - 狮牙斗士的枷锁
+  - command:
+      - item add 114009 500
+狮牙斗士的铁链:
+  - names:
+      - 狮牙斗士的铁链
+  - command:
+      - item add 114010 500
+狮牙斗士的镣铐:
+  - names:
+      - 狮牙斗士的镣铐
+  - command:
+      - item add 114011 500
+狮牙斗士的理想:
+  - names:
+      - 狮牙斗士的理想
+  - command:
+      - item add 114012 500
+孤云寒林的光砂:
+  - names:
+      - 孤云寒林的光砂
+  - command:
+      - item add 114013 500
+孤云寒林的辉岩:
+  - names:
+      - 孤云寒林的辉岩
+  - command:
+      - item add 114014 500
+孤云寒林的圣骸:
+  - names:
+      - 孤云寒林的圣骸
+  - command:
+      - item add 114015 500
+孤云寒林的神体:
+  - names:
+      - 孤云寒林的神体
+  - command:
+      - item add 114016 500
+雾海云间的铅丹:
+  - names:
+      - 雾海云间的铅丹
+  - command:
+      - item add 114017 500
+雾海云间的汞丹:
+  - names:
+      - 雾海云间的汞丹
+  - command:
+      - item add 114018 500
+雾海云间的金丹:
+  - names:
+      - 雾海云间的金丹
+  - command:
+      - item add 114019 500
+雾海云间的转还:
+  - names:
+      - 雾海云间的转还
+  - command:
+      - item add 114020 500
+漆黑陨铁的一粒:
+  - names:
+      - 漆黑陨铁的一粒
+  - command:
+      - item add 114021 500
+漆黑陨铁的一片:
+  - names:
+      - 漆黑陨铁的一片
+  - command:
+      - item add 114022 500
+漆黑陨铁的一角:
+  - names:
+      - 漆黑陨铁的一角
+  - command:
+      - item add 114023 500
+漆黑陨铁的一块:
+  - names:
+      - 漆黑陨铁的一块
+  - command:
+      - item add 114024 500
+远海夷地的瑚枝:
+  - names:
+      - 远海夷地的瑚枝
+  - command:
+      - item add 114025 500
+远海夷地的玉枝:
+  - names:
+      - 远海夷地的玉枝
+  - command:
+      - item add 114026 500
+远海夷地的琼枝:
+  - names:
+      - 远海夷地的琼枝
+  - command:
+      - item add 114027 500
+远海夷地的金枝:
+  - names:
+      - 远海夷地的金枝
+  - command:
+      - item add 114028 500
+鸣神御灵的明惠:
+  - names:
+      - 鸣神御灵的明惠
+  - command:
+      - item add 114029 500
+鸣神御灵的欢喜:
+  - names:
+      - 鸣神御灵的欢喜
+  - command:
+      - item add 114030 500
+鸣神御灵的亲爱:
+  - names:
+      - 鸣神御灵的亲爱
+  - command:
+      - item add 114031 500
+鸣神御灵的勇武:
+  - names:
+      - 鸣神御灵的勇武
+  - command:
+      - item add 114032 500
+今昔剧画之恶尉:
+  - names:
+      - 今昔剧画之恶尉
+  - command:
+      - item add 114033 500
+今昔剧画之虎啮:
+  - names:
+      - 今昔剧画之虎啮
+  - command:
+      - item add 114034 500
+今昔剧画之一角:
+  - names:
+      - 今昔剧画之一角
+  - command:
+      - item add 114035 500
+今昔剧画之鬼人:
+  - names:
+      - 今昔剧画之鬼人
+  - command:
+      - item add 114036 500
+谧林涓露的铜符:
+  - names:
+      - 谧林涓露的铜符
+  - command:
+      - item add 114037 500
+谧林涓露的铁符:
+  - names:
+      - 谧林涓露的铁符
+  - command:
+      - item add 114038 500
+谧林涓露的银符:
+  - names:
+      - 谧林涓露的银符
+  - command:
+      - item add 114039 500
+谧林涓露的金符:
+  - names:
+      - 谧林涓露的金符
+  - command:
+      - item add 114040 500
+绿洲花园的追忆:
+  - names:
+      - 绿洲花园的追忆
+  - command:
+      - item add 114041 500
+绿洲花园的恩惠:
+  - names:
+      - 绿洲花园的恩惠
+  - command:
+      - item add 114042 500
+绿洲花园的哀思:
+  - names:
+      - 绿洲花园的哀思
+  - command:
+      - item add 114043 500
+绿洲花园的真谛:
+  - names:
+      - 绿洲花园的真谛
+  - command:
+      - item add 114044 500
+烈日威权的残响:
+  - names:
+      - 烈日威权的残响
+  - command:
+      - item add 114045 500
+烈日威权的余光:
+  - names:
+      - 烈日威权的余光
+  - command:
+      - item add 114046 500
+烈日威权的梦想:
+  - names:
+      - 烈日威权的梦想
+  - command:
+      - item add 114047 500
+烈日威权的旧日:
+  - names:
+      - 烈日威权的旧日
+  - command:
+      - item add 114048 500
+腐殖龙髓:
+  - names:
+      - 腐殖龙髓
+  - command:
+      - item add 200103 500
+看得见的风:
+  - names:
+      - 看得见的风
+  - command:
+      - item add 200104 500
+童真的断篇:
+  - names:
+      - 童真的断篇
+  - command:
+      - item add 200105 500
+海皇香脂:
+  - names:
+      - 海皇香脂
+  - command:
+      - item add 200106 500
+赤穗酒枡:
+  - names:
+      - 赤穗酒枡
+  - command:
+      - item add 200107 500
+溶媒:
+  - names:
+      - 溶媒
+  - command:
+      - item add 200108 500
+明目之油膏:
+  - names:
+      - 明目之油膏
+  - command:
+      - item add 200109 500
+霞色宝珠:
+  - names:
+      - 霞色宝珠
+  - command:
+      - item add 200110 500
+原海鱼油:
+  - names:
+      - 原海鱼油
+  - command:
+      - item add 200111 500
+迁风的苍翎:
+  - names:
+      - 迁风的苍翎
+  - command:
+      - item add 200112 500
+若狭的藁末:
+  - names:
+      - 若狭的藁末
+  - command:
+      - item add 200113 500
+不凋的绢华:
+  - names:
+      - 不凋的绢华
+  - command:
+      - item add 200114 500
+凝恒的脂蜡:
+  - names:
+      - 凝恒的脂蜡
+  - command:
+      - item add 200115 500
