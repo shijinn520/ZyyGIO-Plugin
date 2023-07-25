@@ -18,7 +18,7 @@
       - 饰金套
   - command:
       - item add 21514 50
-      - item add 52421 50
+      - item add 21524 50
       - item add 21534 50
       - item add 21544 50
       - item add 21554 50
@@ -29,7 +29,7 @@
       - 楼阁套
   - command:
       - item add 27514 50
-      - item add 52427 50
+      - item add 27524 50
       - item add 27534 50
       - item add 27544 50
       - item add 27554 50
@@ -40,7 +40,7 @@
       - 乐园套
   - command:
       - item add 28514 50
-      - item add 52428 50
+      - item add 28524 50
       - item add 28534 50
       - item add 28544 50
       - item add 28554 50
@@ -51,7 +51,7 @@
       - 水仙套
   - command:
       - item add 29514 50
-      - item add 52429 50
+      - item add 29524 50
       - item add 29534 50
       - item add 29544 50
       - item add 29554 50
@@ -62,7 +62,7 @@
       - 花海套
   - command:
       - item add 30514 50
-      - item add 52430 50
+      - item add 30524 50
       - item add 30534 50
       - item add 30544 50
       - item add 30554 50
@@ -71,7 +71,7 @@
       - 行者之心
   - command:
       - item add 51514 50
-      - item add 52451 50
+      - item add 51524 50
       - item add 51534 50
       - item add 51544 50
       - item add 51554 50
@@ -80,7 +80,7 @@
       - 勇士之心
   - command:
       - item add 52514 50
-      - item add 52452 50
+      - item add 52524 50
       - item add 52534 50
       - item add 52544 50
       - item add 52554 50
@@ -89,7 +89,7 @@
       - 守护之心
   - command:
       - item add 53514 50
-      - item add 52453 50
+      - item add 53524 50
       - item add 53534 50
       - item add 53544 50
       - item add 53554 50
@@ -98,7 +98,7 @@
       - 奇迹
   - command:
       - item add 54514 50
-      - item add 52454 50
+      - item add 54524 50
       - item add 54534 50
       - item add 54544 50
       - item add 54554 50
@@ -107,7 +107,7 @@
       - 战狂
   - command:
       - item add 55514 50
-      - item add 52455 50
+      - item add 55524 50
       - item add 55534 50
       - item add 55544 50
       - item add 55554 50
@@ -116,7 +116,7 @@
       - 武人
   - command:
       - item add 56514 50
-      - item add 52456 50
+      - item add 56524 50
       - item add 56534 50
       - item add 56544 50
       - item add 56554 50
@@ -126,7 +126,7 @@
       - 教官套
   - command:
       - item add 57514 50
-      - item add 52457 50
+      - item add 57524 50
       - item add 57534 50
       - item add 57544 50
       - item add 57554 50
@@ -136,7 +136,7 @@
       - 赌徒套
   - command:
       - item add 58514 50
-      - item add 52458 50
+      - item add 58524 50
       - item add 58534 50
       - item add 58544 50
       - item add 58554 50
@@ -145,7 +145,7 @@
       - 流放者
   - command:
       - item add 59514 50
-      - item add 52459 50
+      - item add 59524 50
       - item add 59534 50
       - item add 59544 50
       - item add 59554 50
@@ -154,7 +154,7 @@
       - 学士
   - command:
       - item add 62514 50
-      - item add 52462 50
+      - item add 62524 50
       - item add 62534 50
       - item add 62544 50
       - item add 62554 50
@@ -164,7 +164,7 @@
       - 冰套
   - command:
       - item add 71514 50
-      - item add 52471 50
+      - item add 71524 50
       - item add 71534 50
       - item add 71544 50
       - item add 71554 50
@@ -175,7 +175,7 @@
       - 平雷套
   - command:
       - item add 72514 50
-      - item add 52472 50
+      - item add 72524 50
       - item add 72534 50
       - item add 72544 50
       - item add 72554 50
@@ -186,7 +186,7 @@
       - 渡火套
   - command:
       - item add 73514 50
-      - item add 52473 50
+      - item add 73524 50
       - item add 73534 50
       - item add 73544 50
       - item add 73554 50
@@ -197,7 +197,7 @@
       - 少女套
   - command:
       - item add 74514 50
-      - item add 52474 50
+      - item add 74524 50
       - item add 74534 50
       - item add 74544 50
       - item add 74554 50
@@ -207,7 +207,7 @@
       - 角斗士
   - command:
       - item add 75514 50
-      - item add 52475 50
+      - item add 75524 50
       - item add 75534 50
       - item add 75544 50
       - item add 75554 50
@@ -217,7 +217,7 @@
       - 四风套
   - command:
       - item add 76514 50
-      - item add 52476 50
+      - item add 76524 50
       - item add 76534 50
       - item add 76544 50
       - item add 76554 50
@@ -228,7 +228,7 @@
       - 乐团套
   - command:
       - item add 77514 50
-      - item add 52477 50
+      - item add 77524 50
       - item add 77534 50
       - item add 77544 50
       - item add 77554 50
@@ -239,7 +239,7 @@
       - 冰砂套
   - command:
       - item add 78514 50
-      - item add 52478 50
+      - item add 78524 50
       - item add 78534 50
       - item add 78544 50
       - item add 78554 50
@@ -250,7 +250,7 @@
       - 如雷套
   - command:
       - item add 79514 50
-      - item add 52479 50
+      - item add 79524 50
       - item add 79534 50
       - item add 79544 50
       - item add 79554 50
@@ -261,7 +261,7 @@
       - 魔女套
   - command:
       - item add 80514 50
-      - item add 52480 50
+      - item add 80524 50
       - item add 80534 50
       - item add 80544 50
       - item add 80554 50
@@ -272,7 +272,7 @@
       - 宗室套
   - command:
       - item add 81514 50
-      - item add 52481 50
+      - item add 81524 50
       - item add 81534 50
       - item add 81544 50
       - item add 81554 50
@@ -283,7 +283,7 @@
       - 骑士套
   - command:
       - item add 82514 50
-      - item add 52482 50
+      - item add 82524 50
       - item add 82534 50
       - item add 82544 50
       - item add 82554 50
@@ -294,7 +294,7 @@
       - 磐岩套
   - command:
       - item add 88514 50
-      - item add 52488 50
+      - item add 88524 50
       - item add 88534 50
       - item add 88544 50
       - item add 88554 50
@@ -305,7 +305,7 @@
       - 流星套
   - command:
       - item add 89514 50
-      - item add 52489 50
+      - item add 89524 50
       - item add 89534 50
       - item add 89544 50
       - item add 89554 50
@@ -315,7 +315,7 @@
       - 水套
   - command:
       - item add 90514 50
-      - item add 52490 50
+      - item add 90524 50
       - item add 90534 50
       - item add 90544 50
       - item add 90554 50
@@ -326,7 +326,7 @@
       - 千岩套
   - command:
       - item add 91514 50
-      - item add 52491 50
+      - item add 91524 50
       - item add 91534 50
       - item add 91544 50
       - item add 91554 50
@@ -337,7 +337,7 @@
       - 苍白套
   - command:
       - item add 92514 50
-      - item add 52492 50
+      - item add 92524 50
       - item add 92534 50
       - item add 92544 50
       - item add 92554 50
@@ -348,7 +348,7 @@
       - 追忆套
   - command:
       - item add 93514 50
-      - item add 52493 50
+      - item add 93524 50
       - item add 93534 50
       - item add 93544 50
       - item add 93554 50
@@ -359,7 +359,7 @@
       - 绝缘套
   - command:
       - item add 94514 50
-      - item add 52494 50
+      - item add 94524 50
       - item add 94534 50
       - item add 94544 50
       - item add 94554 50
@@ -370,7 +370,7 @@
       - 华馆套
   - command:
       - item add 95514 50
-      - item add 52495 50
+      - item add 95524 50
       - item add 95534 50
       - item add 95544 50
       - item add 95554 50
@@ -381,7 +381,7 @@
       - 海染套
   - command:
       - item add 96514 50
-      - item add 52496 50
+      - item add 96524 50
       - item add 96534 50
       - item add 96544 50
       - item add 96554 50
@@ -392,7 +392,7 @@
       - 辰砂套
   - command:
       - item add 97514 50
-      - item add 52497 50
+      - item add 97524 50
       - item add 97534 50
       - item add 97544 50
       - item add 97554 50
@@ -403,7 +403,7 @@
       - 余响套
   - command:
       - item add 98514 50
-      - item add 52498 50
+      - item add 98524 50
       - item add 98534 50
       - item add 98544 50
       - item add 98554 50
@@ -412,7 +412,7 @@
       - 高天的风之主
   - command:
       - item add 99514 50
-      - item add 52499 50
+      - item add 99524 50
       - item add 99534 50
       - item add 99544 50
       - item add 99554 50

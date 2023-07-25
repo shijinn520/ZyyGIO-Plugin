@@ -110,7 +110,7 @@ export const other = [
         fnc: 'CdkList'
     },
     {
-        reg: /^#添加(命令|邮件) (.*)$/,
+        reg: /^#?添加(命令|邮件) (.*)$/,
         fnc: 'addalias',
     },
     {
@@ -118,7 +118,7 @@ export const other = [
         fnc: 'delalias'
     },
     {
-        reg: /\/?查找(.*)$/,
+        reg: /^\/?查找(.*)$/,
         fnc: 'lookupQuest'
     },
     {
