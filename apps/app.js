@@ -110,8 +110,8 @@ export async function GetUser(e = {}) {
     const file = `${data}/user/${e.user_id.toString().replace("qg_", "")}.yaml`
 
     if (!fs.existsSync(file)) {
-        if (!e.msg.includes("绑定")) {
-            e.reply([segment.at(e.user_id), "\n请先绑定UID\n格式：绑定+UID\n举例：绑定100001"])
+        if (!e.msg.includes("绑定") && /((添加|完成|完成父|清除父)任务|^\/|^邮件).*/.test(e.msg)) {
+            e.reply([segment.at(e.user_id), "未绑定UID，请使用指令「绑定100001」进行绑定"])
         }
     }
     else {
