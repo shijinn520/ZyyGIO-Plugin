@@ -194,22 +194,14 @@ export class ZhiYu extends plugin {
     // 撤回消息防止别的玩家使用他人兑换码
     e.group.recallMsg(e.message_id)
 
-    if (!fs.existsSync(file)) {
-      e.reply([segment.at(e.user_id), `无效的兑换码!`])
-      return
-    }
+    if (!fs.existsSync(file)) return e.reply([segment.at(e.user_id), `无效的兑换码!`])
 
     const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
-    if (cfg.redeemlimit <= cfg.used) {
-      e.reply([segment.at(e.user_id), "可兑换次数为0"])
-      return
-    }
+    if (cfg.redeemlimit <= cfg.used) return e.reply([segment.at(e.user_id), "可兑换次数为0"])
+
 
     if (uid in cfg.uid) {
-      if (cfg.uid[uid] >= cfg.uidusagelimit) {
-        e.reply([segment.at(e.user_id), `使用次数达到上限`])
-        return
-      }
+      if (cfg.uid[uid] >= cfg.uidusagelimit) return e.reply([segment.at(e.user_id), `使用次数达到上限`])
     }
     const { ip, port, region, sign, ticket,
       CdkSender, CdkTitle, CdkContent } = await GetServer(e)
@@ -280,10 +272,7 @@ export class ZhiYu extends plugin {
 
     const uid = e.msg.replace(/[^0-9]/g, "")
 
-    if (!uid) {
-      e.reply([segment.at(e.user_id), "(｡・`ω´･)UID捏？"])
-      return
-    }
+    if (!uid) return e.reply([segment.at(e.user_id), "(｡・`ω´･)UID捏？"])
 
     const { BanTitle, BanTime } = await GetServer(e)
     /** 封建时间=当前时间 */
@@ -306,10 +295,8 @@ export class ZhiYu extends plugin {
     let duration = 0
     time = time.replace(/[一二三四五六七八九十]/g, match => chineseToNumber[match])
     const unit = time.match(/[天日周月年]/)[0]
-    if (!unit) {
-      e.reply("时间格式错误...")
-      return
-    }
+    if (!unit) return e.reply("时间格式错误...")
+
     duration = parseInt(time) * timeMultiplier[unit]
     /** 解禁时间 */
     let end_time = moment(begin_time).add(duration).format('YYYY-MM-DD HH:mm:ss')

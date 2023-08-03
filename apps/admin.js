@@ -63,10 +63,7 @@ export class ZhiYu extends plugin {
     }
 
     if (["#开启CDK生成", "#开启Cdk生成", "#开启cdk生成"].includes(e.msg)) {
-      if (cfg.生成cdk.状态 === true) {
-        e.reply("CDK生成当前已经开启，无需重复开启")
-        return
-      }
+      if (cfg.生成cdk.状态 === true) return e.reply("CDK生成当前已经开启，无需重复开启")
       else {
         const getthefolder = (folder) =>
           fs.readdirSync(folder, { withFileTypes: true })
@@ -76,10 +73,7 @@ export class ZhiYu extends plugin {
         const folder = `${data}/group`
         /** 初始化完成的群列表 */
         const allfolder = getthefolder(folder)
-        if (!folder) {
-          e.reply("目前没有任何初始化的群聊")
-          return
-        }
+        if (!folder) return e.reply("目前没有任何初始化的群聊")
         const allgroup = allfolder.map((group, index) => `${index + 1}. ${group}`).join("\n")
         e.reply(`群聊列表：\n${allgroup}\n\n输入序号\n选择生成的cdk在哪个群聊使用`)
         this.setContext('CreateCDK')
@@ -110,29 +104,23 @@ export class ZhiYu extends plugin {
         if (action.message.includes(e.msg.replace(/#/, ""))) {
           const { feature, cfgkey } = action
           if (e.msg.includes("开启")) {
-            if (cfg[cfgkey].状态 === true) {
-              e.reply(`${feature}当前已经开启，无需重复开启`)
-              return
-            } else {
+            if (cfg[cfgkey].状态 === true) return e.reply(`${feature}当前已经开启，无需重复开启`)
+            else {
               cfg[cfgkey].状态 = true
               fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
-              this.AppStatus(e)
-              return
+              return this.AppStatus(e)
             }
           } else {
-            if (cfg[cfgkey].状态 === false) {
-              e.reply(`${feature}当前已经关闭，无需重复关闭`)
-              return
-            } else {
+            if (cfg[cfgkey].状态 === false) return e.reply(`${feature}当前已经关闭，无需重复关闭`)
+            else {
               cfg[cfgkey].状态 = false
               fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
-              this.AppStatus(e)
-              return
+              return this.AppStatus(e)
             }
           }
         }
       }
-      e.reply(`无此功能`)
+      return e.reply(`无此功能`)
     }
   }
 
@@ -148,10 +136,8 @@ export class ZhiYu extends plugin {
 
     const file = `${data}/group/${scenes}/config.yaml`
     const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
-    if (!allfolder[this.e.message[0].text - 1]) {
-      this.reply("序号错误")
-      return
-    }
+    if (!allfolder[this.e.message[0].text - 1]) return this.reply("序号错误")
+
     cfg.生成cdk.状态 = true
     cfg.生成cdk.群聊id = allfolder[this.e.message[0].text - 1]
 
@@ -162,10 +148,7 @@ export class ZhiYu extends plugin {
 
   async AppStatus(e) {
     const { scenes } = await GetUser(e)
-    if (!(fs.existsSync(`${data}/group/${scenes}`))) {
-      e.reply(`当前${scenes}还未初始化`)
-      return
-    }
+    if (!(fs.existsSync(`${data}/group/${scenes}`))) return e.reply(`当前${scenes}还未初始化`)
 
     const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
     const gm = cfg.GM.状态 ? "✔️" : "关闭"
@@ -192,10 +175,8 @@ export class ZhiYu extends plugin {
 
   /** 管理员相关 */
   async manage(e) {
-    if (!e.at) {
-      e.reply("请@需要成为管理的玩家")
-      return
-    }
+    if (!e.at) return e.reply("请@需要成为管理的玩家")
+
     const file = `${data}/user/${e.at.toString().replace("qg_", "")}.yaml`
     if (!fs.existsSync(file)) {
       const admin = {
@@ -207,18 +188,14 @@ export class ZhiYu extends plugin {
     const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
 
     if (/设置|绑定/.test(e.msg)) {
-      if (cfg.Administrator) {
-        e.reply(`已经是管理了哦(*^▽^*)`)
-        return
-      }
+      if (cfg.Administrator) return e.reply(`已经是管理了哦(*^▽^*)`)
+
       cfg.Administrator = true
       fs.writeFileSync(file, Yaml.stringify(cfg))
       e.reply([segment.at(e.at), `呀，新的管理(〃'▽'〃)`])
     } else {
-      if (!cfg.Administrator) {
-        e.reply("你在搞什么，他又不是管理。ヽ(ー_ー)ノ")
-        return
-      }
+      if (!cfg.Administrator) return e.reply("你在搞什么，他又不是管理。ヽ(ー_ー)ノ")
+
       cfg.Administrator = false
       fs.writeFileSync(file, Yaml.stringify(cfg))
       e.reply("解绑成功(^_−)☆")
@@ -228,12 +205,7 @@ export class ZhiYu extends plugin {
   async personalUID(e) {
     const { scenes, GioAdmin } = await GetUser(e)
     const { UID } = await GetState(scenes)
-    if (!UID) {
-      if (e.isMaster || GioAdmin) {
-        e.reply(`\x1b[31m[ZhiYu]当前群聊 ${scenes} UID绑定功能 未初始化或已关闭\x1b[0m`)
-      }
-      return
-    }
+    if (!UID) if (e.isMaster || GioAdmin) return e.reply(`\x1b[31m[ZhiYu]当前群聊 ${scenes} UID绑定功能 未初始化或已关闭\x1b[0m`)
 
     const uid = e.msg.replace(/[^0-9]/g, '')
     const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
@@ -242,10 +214,7 @@ export class ZhiYu extends plugin {
     if (!uid) return
 
     const regex = new RegExp(cfg.UID.正则)
-    if (!regex.test(uid) && !e.isMaster && !GioAdmin) {
-      e.reply([segment.at(e.user_id), cfg.UID.提示])
-      return
-    }
+    if (!regex.test(uid) && !e.isMaster && !GioAdmin) return e.reply([segment.at(e.user_id), cfg.UID.提示])
 
     /** 玩家群聊ID */
     let user = e.user_id
@@ -265,11 +234,7 @@ export class ZhiYu extends plugin {
       if (e.isMaster || GioAdmin) {
         UserCfg.uid = uid
         fs.writeFileSync(file, Yaml.stringify(UserCfg))
-      } else {
-        // 非管理员
-        e.reply([segment.at(user), `\n当前已绑定的UID：${UserCfg.uid}\n如需换绑，请联系管理人员，请遵守规则哦`])
-        return
-      }
+      } else return e.reply([segment.at(user), `\n当前已绑定的UID：${UserCfg.uid}\n如需换绑，请联系管理人员，请遵守规则哦`])
     } else {
       // 不存在配置文件
       const NewUser = {
@@ -444,10 +409,7 @@ export class ZhiYu extends plugin {
     exec(cmd, { cwd: `${_path}` }, function (error, stdout) {
       if (/Already up[ -]to[ -]date/.test(stdout)) {
         exec(log, { cwd: `${_path}` }, function (error, stdout) {
-          if (error) {
-            console.error(`exec error: ${error}`)
-            return
-          }
+          if (error) return console.error(`exec error: ${error}`)
 
           const gitlog = stdout.split(' ')
           local = gitlog
@@ -466,8 +428,7 @@ export class ZhiYu extends plugin {
             .replace(/error: The following untracked working tree files would be overwritten by merge/gi, '错误：以下未跟踪的工作树文件将被合并覆盖')
             .replace(/Please move or remove them before you merge/gi, '请在合并之前移动或删除它们')
             .replace(/Aborting/gi, '中止')
-          e.reply(`存在冲突：\n${Error}\n` + '请解决冲突后再更新，或者执行 强制更新GM，放弃本地修改')
-          return
+          return e.reply(`存在冲突：\n${Error}\n` + '请解决冲突后再更新，或者执行 强制更新GM，放弃本地修改')
         } else {
           const Error = error.message
             .replace(/Command failed/gi, '命令失败')
@@ -478,15 +439,11 @@ export class ZhiYu extends plugin {
             .replace(/Failed to connect to/gi, '无法连接到')
             .replace(/after/gi, '之后')
             .replace(/ms/gi, '毫秒')
-          e.reply(`连接超时：\n${Error}\n` + '请检查网络连接')
-          return
+          return e.reply(`连接超时：\n${Error}\n` + '请检查网络连接')
         }
       }
       exec(log, { cwd: `${_path}` }, function (error, stdout) {
-        if (error) {
-          console.error(`exec error: ${error}`)
-          return
-        }
+        if (error) return console.error(`exec error: ${error}`)
 
         const gitlog = stdout.split(' ')
         local = gitlog

@@ -145,10 +145,7 @@ logger.info('\x1b[36m%s\x1b[0m', '-----------------------------')
 
 // 当前的远程仓库地址
 exec('git config --get remote.origin.url', { cwd: `${_path}` }, (err, stdout, stderr) => {
-  if (err) {
-    console.error(err)
-    return
-  }
+  if (err) return console.error(err)
 
   // 检测当前的远程仓库地址是否等于指定地址
   const gitee = [
@@ -163,19 +160,13 @@ exec('git config --get remote.origin.url', { cwd: `${_path}` }, (err, stdout, st
 
   if (gitee.includes(stdout.trim())) {
     exec("git remote set-url origin https://gitee.com/Zyy955/ZyyGio-Plugin.git", { cwd: `${_path}` }, (err, stdout, stderr) => {
-      if (err) {
-        console.error(err)
-        return
-      }
+      if (err) return console.error(err)
       logger.mark('GIO插件：检测到旧的 Gitee 仓库源，已修改为最新的 Gitee 仓库！')
     })
   }
   else if (github.includes(stdout.trim())) {
     exec("git remote set-url origin https://github.com/Zyy955/ZyyGio-Plugin.git", { cwd: `${_path}` }, (err, stdout, stderr) => {
-      if (err) {
-        console.error(err)
-        return
-      }
+      if (err) return console.error(err)
       logger.mark('GIO插件：检测到旧的 Github 仓库源，已修改为最新的 Github 仓库！')
     })
   }

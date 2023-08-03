@@ -57,10 +57,7 @@ export class ZhiYu extends plugin {
         const { scenes, GioAdmin } = await GetUser(e)
         const { GM, Mail } = await GetState(scenes)
 
-        if (!e.isMaster && !GioAdmin) {
-            e.reply([segment.at(e.user_id), "只有管理员才能命令我qwq"])
-            return
-        }
+        if (!e.isMaster && !GioAdmin) return e.reply([segment.at(e.user_id), "只有管理员才能命令我qwq"])
 
         if (e.msg.includes("添加命令")) {
             if (!GM) return
@@ -76,10 +73,7 @@ export class ZhiYu extends plugin {
         const { GM } = await GetState(scenes)
         if (!GM) return
 
-        if (!GioAdmin && !e.isMaster) {
-            e.reply(`只有管理大大才能命令我哦~\n(*/ω＼*)`)
-            return
-        }
+        if (!GioAdmin && !e.isMaster) return e.reply(`只有管理大大才能命令我哦~\n(*/ω＼*)`)
 
         if (e.msg.includes("命令")) {
             e.reply(delGM(e))
@@ -124,10 +118,7 @@ async function List(e) {
         .map(file => '#' + file.slice(0, -5) + '别名')
 
     YamlFiles.push("#自定义别名")
-    if (e.msg.includes("列表")) {
-        e.reply(`使用方法：\n发送以下任意指令即可查看对应别名\n\n别名列表：\n${YamlFiles.join('\n')}`)
-        return
-    }
+    if (e.msg.includes("列表")) return e.reply(`使用方法：\n发送以下任意指令即可查看对应别名\n\n别名列表：\n${YamlFiles.join('\n')}`)
 
     const file = `${alias}/command/${msg}.yaml`
     let data = {
@@ -190,9 +181,7 @@ function addGM(e) {
     }
 
     const conflictingAliases = name.filter((a) => knownAliases.has(a))
-    if (conflictingAliases.length > 0) {
-        return [segment.at(e.user_id), `存在别名：${conflictingAliases.join(', ')}`]
-    }
+    if (conflictingAliases.length > 0) return [segment.at(e.user_id), `存在别名：${conflictingAliases.join(', ')}`]
 
     cfg[name[0]] = [
         { names: name },

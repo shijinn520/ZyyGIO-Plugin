@@ -35,15 +35,11 @@ export class ZhiYu extends plugin {
             const file = `${config}/cdk.yaml`
             const cfg = Yaml.parse(fs.readFileSync(file, 'utf8'))
 
-            if (!(cfg[msg])) {
-                e.reply([segment.at(e.user_id), `\n${msg} 不存在\n发送“快捷生成列表”查看已有的`])
-                return
-            }
+            if (!(cfg[msg])) return e.reply([segment.at(e.user_id), `\n${msg} 不存在\n发送“快捷生成列表”查看已有的`])
 
             const content = cfg[msg].split('-')
-            if (content[0] !== '邮件' && content[0] !== '命令') {
-                return e.reply("兑换类型不正确，请检查")
-            }
+            if (content[0] !== '邮件' && content[0] !== '命令') return e.reply("兑换类型不正确，请检查")
+
             cdks = [
                 "开始生成",
                 "随机",
@@ -66,13 +62,9 @@ export class ZhiYu extends plugin {
         if (msg.length !== 6) {
             const base64 = Buffer.from(fs.readFileSync(resources + '/cdk/cdk-自定义.png')).toString('base64')
             await e.reply([segment.image(`base64://${base64}`)])
-            e.reply("正确格式：\n自定义cdk-兑换类型-兑换码-总使用次数-单uid使用次数-对应命令")
-            return
+            return e.reply("正确格式：\n自定义cdk-兑换类型-兑换码-总使用次数-单uid使用次数-对应命令")
         }
-        if (msg[1] !== '邮件' && msg[1] !== '命令') {
-            e.reply("只能输入邮件或者命令")
-            return
-        }
+        if (msg[1] !== '邮件' && msg[1] !== '命令') return e.reply("只能输入邮件或者命令")
 
         cdks = [
             "开始生成",
@@ -96,12 +88,10 @@ export class ZhiYu extends plugin {
         if (msg.length !== 5) {
             const base64 = Buffer.from(fs.readFileSync(resources + '/cdk/cdk-随机.png')).toString('base64')
             await e.reply([segment.image(`base64://${base64}`)])
-            e.reply("正确格式：\n随机cdk-兑换类型-生成数量-TXT前缀-对应命令")
-            return
+            return e.reply("正确格式：\n随机cdk-兑换类型-生成数量-TXT前缀-对应命令")
         }
         if (msg[1] !== '邮件' && msg[1] !== '命令') {
-            e.reply("只能输入邮件或者命令")
-            return
+            return e.reply("只能输入邮件或者命令")
         }
 
         cdks = [
