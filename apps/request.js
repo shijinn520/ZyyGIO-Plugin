@@ -46,14 +46,6 @@ export async function ComputeMail(uid, region, content, expire_time, item_list, 
 
 /** 向MuipServer发送请求 */
 export async function Request(e = {}, mode, urls = [], uid) {
-    const options = {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        timeout: 1000
-    }
-
     const fetchResults = [].concat(urls).map((url, index) => {
         const timeoutPromise = new Promise((_, reject) => {
             setTimeout(() => {
@@ -63,7 +55,7 @@ export async function Request(e = {}, mode, urls = [], uid) {
 
         const fetchPromise = new Promise((resolve, reject) => {
             setTimeout(() => {
-                fetch(url, options)
+                fetch(url)
                     .then(response => resolve(response))
                     .catch(error => reject(error))
             }, index * 150)
