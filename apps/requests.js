@@ -35,7 +35,7 @@ export class mails extends plugin {
         // if (!state) return e.reply([segment.at(e.user_id), `全服邮件还在发送中...请勿重复触发...`])
 
         // state = false
-        e.reply([segment.at(e.user_id), `正在执行...预计需要10-20分钟...`])
+        e.reply("正在执行...")
         // const cfg = Yaml.parse(fs.readFileSync(`${alias}/mail/mail.yaml`, 'utf8'))
         const msg = e.msg.split(' ')
 
@@ -75,66 +75,8 @@ export class mails extends plugin {
 
         /** 等待所有url计算完毕 */
         await Promise.all(asyncTasks)
-
-        /** 向MuipServer发送请求 */
-        let time = 100
-        const succs = []
-        const fails = []
-        const Timeout = []
-
-        const options = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            timeout: 1000
-        }
-
-        // 定义函数用于发送请求
-        const sendRequest = async (url) => {
-            try {
-                const response = await fetch(url, options)
-                const data = await response.json()
-                return data
-            } catch (error) {
-                throw new Error(`请求错误: ${error.message}`)
-            }
-        }
-
-        // 定义函数用于批量请求
-        const batchRequest = async (urls) => {
-            for (const url of urls) {
-                try {
-                    const uid = url.match(/uid=(\d+)/)[1]
-                    // 使用Promise.race来添加超时错误处理
-                    const result = await Promise.race([
-                        sendRequest(url),
-                        new Promise((_, reject) => setTimeout(() => reject(new Error(`超过3秒未响应：${uid}`)), 3000))
-                    ])
-                    console.log(result)
-                    const { succ, fail } = await dispose(result, uid)
-                    if (succ.length > 0) succs.push(succ)
-                    if (fail.length > 0) fails.push(fail)
-
-                    const s = Timeout.length + fails.length + succs.length
-                    time = s % 100 === 0 ? 1000 : 100
-                    if ((Timeout.length + fails.length) >= 50) return console.log("错误超过50，以停止后续请求")
-
-                    // 使用setTimeout来处理请求间隔，间隔时间为150
-                    await new Promise(resolve => setTimeout(resolve, time))
-                } catch (error) {
-                    // console.error(error.message)
-                    Timeout.push(error.message)
-                }
-
-            }
-            if (urls.length === (Timeout.length + fails.length + succs.length)) {
-                console.log("succs:", succs)
-                console.log("fails:", fails)
-                console.log("Timeout:", Timeout)
-            }
-        }
-        batchRequest(urls)
+        e.reply([segment.at(e.user_id), `预计需要${urls.length * 0.05}分钟...`])
+        await batchRequest(urls, e)
     }
 }
 
@@ -273,7 +215,7 @@ async function 生日邮件() {
                                 fail.push(`失败 -> 物品数量超限`)
                             }
                             else if (retcode === 1002) {
-                                fail.push(`失败 -> ${data.msg.replace(/para error/g, '段落错误')}`)
+                                fail.push(`失败 -> ${data.msg.replace(/para error/g, '参数错误')}`)
                             }
                             else if (retcode === 1003) {
                                 fail.push(`失败 -> 服务器验证签名错误`)
@@ -336,8 +278,54 @@ async function 生日邮件() {
     }
 }
 
+/** 向MuipServer发送请求 */
+async function batchRequest(urls, e) {
+    let time = 10
+    const succs = []
+    const fails = []
+    const Timeout = []
+    for (const url of urls) {
+        try {
+            /** 从请求的url中提取uid */
+            const uid = url.match(/uid=(\d+)/)[1]
 
+            const result = await Promise.race([
+                fetch(url).then(response => response.json()),
+                new Promise((_, reject) => setTimeout(() => reject(new Error(`超过3秒未响应：${uid}`)), 3000))
+            ])
 
+            console.log(result)
+
+            /** 将响应结果可视化处理 */
+            const { succ, fail } = await dispose(result, uid)
+            if (succ.length > 0) succs.push(succ)
+            if (fail.length > 0) fails.push(fail)
+
+            /** 处理请求间隔，当达到100的倍数，等待1s */
+            const count = Timeout.length + fails.length + succs.length
+            time = count % 100 === 0 ? 1000 : 10
+
+            /** 将请求失败+响应失败的数量相加，达到50则停止后续请求 */
+            if ((Timeout.length + fails.length) >= 50)
+                return e.reply([segment.at(e.user_id), "错误超过50，以停止后续请求"])
+
+            /** 请求间隔 */
+            await new Promise(resolve => setTimeout(resolve, time))
+        } catch (error) {
+            Timeout.push(`请求错误：${error.message}`)
+        }
+    }
+    if (urls.length >= 1000) {
+
+    }
+    if (urls.length === (Timeout.length + fails.length + succs.length)) {
+        console.log("succs:", succs)
+        console.log("fails:", fails)
+        console.log("Timeout:", Timeout)
+    }
+}
+
+/** 将响应结果可视化处理 */
 async function dispose(data, uid) {
     const succ = []
     const fail = []
@@ -358,7 +346,7 @@ async function dispose(data, uid) {
         647: "失败 -> 返回物品数量为0",
         661: "失败 -> 树脂超过限制",
         860: `失败：${datamsg}  ->  ${uid}\n原因：活动已关闭`,
-        1002: `失败 -> ${data.msg.replace(/para error/g, '段落错误')}`,
+        1002: `失败 -> ${data.msg.replace(/para error/g, '参数错误')}`,
         1003: "失败 -> 服务器验证签名错误",
         1010: "失败 -> 服务器区服不匹配",
         1117: "失败 -> 未达到副本要求等级",
