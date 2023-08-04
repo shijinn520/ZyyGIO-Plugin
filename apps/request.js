@@ -12,7 +12,10 @@ export async function ComputeGM(signkey, sign) {
 }
 
 /** 构建邮件请求参数，计算sign */
-export async function ComputeMail(uid, region, content, expire_time, item_list, sender, title, ticket, sign) {
+export async function ComputeMail(uid, region, content, expire_time, item_list, sender, title, ticket, sign, collection) {
+    /** 对生日邮件开启收藏 */
+    let is_collectible = "false"
+    if (collection) is_collectible = "true"
 
     let signkey = {
         cmd: '1005',
@@ -22,7 +25,7 @@ export async function ComputeMail(uid, region, content, expire_time, item_list, 
         content: content,
         expire_time: expire_time,
         importance: '0',
-        is_collectible: "false",
+        is_collectible: is_collectible,
         item_limit_type: '1',
         item_list: item_list,
         source_type: '0',

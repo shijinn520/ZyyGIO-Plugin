@@ -108,6 +108,13 @@ export class ZhiYu extends plugin {
             else {
               cfg[cfgkey].状态 = true
               fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
+
+              /** 生日需要多修改一个配置 */
+              if (e.msg.includes("生日")) {
+                const birthday = Yaml.parse(fs.readFileSync(`${config}/birthday.yaml`, 'utf8'))
+                birthday[scenes].mode = true
+                fs.writeFileSync(`${config}/birthday.yaml`, Yaml.stringify(birthday))
+              }
               return this.AppStatus(e)
             }
           } else {
@@ -115,6 +122,13 @@ export class ZhiYu extends plugin {
             else {
               cfg[cfgkey].状态 = false
               fs.writeFileSync(`${data}/group/${scenes}/config.yaml`, Yaml.stringify(cfg))
+
+              /** 生日需要多修改一个配置 */
+              if (e.msg.includes("生日")) {
+                const birthday = Yaml.parse(fs.readFileSync(`${config}/birthday.yaml`, 'utf8'))
+                birthday[scenes].mode = false
+                fs.writeFileSync(`${config}/birthday.yaml`, Yaml.stringify(birthday))
+              }
               return this.AppStatus(e)
             }
           }
@@ -170,7 +184,19 @@ export class ZhiYu extends plugin {
       }
     }
 
-    e.reply(`功能列表：\nGM：${gm}\n邮件：${mail}\n生日推送：${birthday}\n每日签到：${CheckIns}\ncdk生成：${addCdk}\ncdk：${cdk}\n在线玩家：${state}\n绑定UID：${UID}\n封禁玩家：${Ban}\n\n当前环境ID：${scenes}\n当前服务器ID：${id}\n当前服务器名称：${name}`)
+    const msg = [
+      "功能列表：",
+      `GM：${gm}`,
+      `邮件：${mail}`,
+      `生日推送：${birthday}`,
+      `每日签到：${CheckIns}`,
+      `cdk：${cdk}`,
+      `cdk生成：${addCdk}`,
+      `在线玩家：${state}`,
+      `绑定UID：${UID}`,
+      `封禁玩家：${Ban}`
+    ]
+    return e.reply(`${msg.join('\n')}\n\n当前环境ID：${scenes}\n当前服务器ID：${id}\n当前服务器名称：${name}`)
   }
 
   /** 管理员相关 */
@@ -205,7 +231,7 @@ export class ZhiYu extends plugin {
   async personalUID(e) {
     const { scenes, GioAdmin } = await GetUser(e)
     const { UID } = await GetState(scenes)
-    if (!UID) if (e.isMaster || GioAdmin) return e.reply(`\x1b[31m[ZhiYu]当前群聊 ${scenes} UID绑定功能 未初始化或已关闭\x1b[0m`)
+    if (!UID) if (e.isMaster || GioAdmin) return e.reply(`当前群聊 ${scenes} UID绑定功能 未初始化或已关闭`)
 
     const uid = e.msg.replace(/[^0-9]/g, '')
     const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
@@ -214,7 +240,8 @@ export class ZhiYu extends plugin {
     if (!uid) return
 
     const regex = new RegExp(cfg.UID.正则)
-    if (!regex.test(uid) && !e.isMaster && !GioAdmin) return e.reply([segment.at(e.user_id), cfg.UID.提示])
+    if (!regex.test(uid) && !e.isMaster && !GioAdmin)
+      return e.reply([segment.at(e.user_id), cfg.UID.提示])
 
     /** 玩家群聊ID */
     let user = e.user_id
@@ -234,7 +261,10 @@ export class ZhiYu extends plugin {
       if (e.isMaster || GioAdmin) {
         UserCfg.uid = uid
         fs.writeFileSync(file, Yaml.stringify(UserCfg))
-      } else return e.reply([segment.at(user), `\n当前已绑定的UID：${UserCfg.uid}\n如需换绑，请联系管理人员，请遵守规则哦`])
+      } else {
+        const msg = `\n当前已绑定的UID：${UserCfg.uid}\n如需换绑，请联系管理人员，请遵守规则哦`
+        return e.reply([segment.at(user), msg])
+      }
     } else {
       // 不存在配置文件
       const NewUser = {
@@ -245,9 +275,7 @@ export class ZhiYu extends plugin {
     }
 
     /** 添加检测防止崩溃 */
-    if (!fs.existsSync(alluid)) {
-      fs.writeFileSync(alluid, ' - "0"\n')
-    }
+    if (!fs.existsSync(alluid)) fs.writeFileSync(alluid, ' - "0"\n')
 
     // 写入全服uid
     const existingstrings = []
@@ -372,6 +400,10 @@ export class ZhiYu extends plugin {
 
     const cfg = Yaml.parse(fs.readFileSync(`${data}/group/${scenes}/config.yaml`, 'utf8'))
     const yamlfile = `${data}/alluid/${cfg.server.ip}-${cfg.server.port}.yaml`
+
+    /** 添加检测防止崩溃 */
+    if (!fs.existsSync(yamlfile)) fs.writeFileSync(yamlfile, ' - "0"\n')
+
     const msg = e.msg.split(' ')
     const start = parseInt(msg[1])
     const end = parseInt(msg[2])

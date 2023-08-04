@@ -6,7 +6,7 @@ import { construct } from './regex.js'
 import { ComputeGM, ComputeMail, Request } from './request.js'
 import { GetServer, GetUser, GetState, GetPassList } from './app.js'
 
-const { data, config } = global.ZhiYu
+const { data, config, alias } = global.ZhiYu
 
 export class ZhiYu extends plugin {
   constructor() {
@@ -73,7 +73,7 @@ export class ZhiYu extends plugin {
     if (!Mail || !uid) return
 
     const { ip, port, region, sign, ticket, MailSender } = await GetServer(e)
-    const mails = Yaml.parse(fs.readFileSync(`${config}/mail.yaml`, 'utf8'))
+    const mails = Yaml.parse(fs.readFileSync(`${alias}/mail/mail.yaml`, 'utf8'))
     /** 为什么要加这个... 因为坑逼频道插件没有转码 */
     const msg = (e.msg.replace(/&lt;color=([^&]+)&gt;([^&]+)&lt;\/color&gt;/g, '<color=$1>$2</color>')).split(' ')
 
@@ -91,12 +91,13 @@ export class ZhiYu extends plugin {
         content = obj[2].content
         item_list = obj[3].item_list
         break
-      } else {
-        if (msg.length < 4) {
-          e.reply([segment.at(e.user_id), `邮件格式错误\n\n格式：邮件 [标题] [内容] [ID:数量,ID:数量]\n举例：邮件 测试 你好 201:1`])
-          return
-        }
       }
+    }
+
+    /** 等待循环完毕判断格式 */
+    if (!item_list || !/:|：/.test(item_list)) {
+      e.reply([segment.at(e.user_id), `邮件格式错误\n\n格式：邮件 [标题] [内容] [ID:数量,ID:数量]\n举例：邮件 测试 你好 201:1`])
+      return
     }
 
     /** 黑白名单 */

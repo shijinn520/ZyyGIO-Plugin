@@ -1,13 +1,11 @@
 import fs from 'fs'
-import http from 'http'
 import Yaml from 'yaml'
-import crypto from 'crypto'
+import moment from 'moment'
 import fetch from 'node-fetch'
-import schedule from 'node-schedule'
 import { ComputeMail } from './request.js'
 import { GetUser, GetServer, GetState } from './app.js'
 
-let state = true
+let state = false
 const { data, config, alias } = global.ZhiYu
 
 export class mails extends plugin {
@@ -19,268 +17,178 @@ export class mails extends plugin {
             priority: -100,
             rule: [
                 {
-                    reg: '^#全服邮件 (.*)$',
+                    reg: /^#全服邮件+/,
                     fnc: 'allMail'
                 }
             ]
         })
+
+        /** 生日邮件定时推送 */
+        this.task = {
+            cron: "0 0 0 * * *",
+            name: '生日邮件定时推送',
+            fnc: () => this.taskMail(),
+        }
     }
-    /** qwq改的头疼，就这样吧 */
+
     async allMail(e) {
         const { scenes, GioAdmin } = await GetUser(e)
         const { Mail } = await GetState(scenes)
         if (!Mail) return
 
         if (!GioAdmin && !e.isMaster) return e.reply(`只有管理大大才能命令我哦~\n(*/ω＼*)`)
-        // if (!state) return e.reply([segment.at(e.user_id), `全服邮件还在发送中...请勿重复触发...`])
+        /** 防止短时间重复触发 */
+        if (state) return e.reply([segment.at(e.user_id), `全服邮件还在发送中...请勿重复触发...`])
+        state = true
 
-        // state = false
         e.reply("正在执行...")
-        // const cfg = Yaml.parse(fs.readFileSync(`${alias}/mail/mail.yaml`, 'utf8'))
-        const msg = e.msg.split(' ')
+        /** 为什么要加这个... 因为坑逼频道插件没有转码 */
+        const msg = (e.msg.replace(/&lt;color=([^&]+)&gt;([^&]+)&lt;\/color&gt;/g, '<color=$1>$2</color>')).split(' ')
+        const mails = Yaml.parse(fs.readFileSync(`${alias}/mail/mail.yaml`, 'utf8'))
 
         let title = msg[1]
         let content = msg[2]
         let item_list = msg[3]
 
+        for (const key in mails) {
+            /** 这里检测是否存在别名 */
+            const obj = mails[key]
+            const names = obj[0].names
+            if (names && names.includes(msg[1])) {
+                title = obj[1].title
+                content = obj[2].content
+                item_list = obj[3].item_list
+                break
+            }
+        }
+
+        /** 等待循环完毕判断格式 */
+        if (!item_list || !/:|：/.test(item_list)) {
+            const reply = `邮件格式错误\n\n格式：邮件 [标题] [内容] [ID:数量,ID:数量]\n举例：邮件 测试 你好 201:1`
+            state = false
+            return e.reply([segment.at(e.user_id), reply])
+        }
+
         const { ip, port, region, sign, ticket, MailSender } = await GetServer(e)
 
-        /** 使用可读流解析全服uid */
-        let uids
-        let filecontent = ''
-        const stream = fs.createReadStream(`${data}/alluid/${ip}-${port}.yaml`, 'utf8')
-        stream.on('data', (chunk) => { filecontent += chunk })
-        await new Promise((resolve, reject) => {
-            stream.on('end', () => {
-                uids = Yaml.parse(filecontent)
-                resolve()
-            })
-            stream.on('error', (error) => {
-                logger.mark("读取文件错误", error)
-                reject(error)
-            })
-        })
+        /** 获取全服uid */
+        const uids = await allUid(ip, port)
 
         /** 计算url并存储到urls里面，准备开始请求 */
         const urls = []
-        let sender = MailSender
+        const sender = MailSender
         const now = Math.floor(Date.now() / 1000)
         const expire_time = (now + (30 * 24 * 60 * 60)).toString()
+        const collection = false
 
         const asyncTasks = uids.map(async uid => {
             const request = await ComputeMail(uid, region, content,
-                expire_time, item_list, sender, title, ticket, sign)
+                expire_time, item_list, sender, title, ticket, sign, collection)
             urls.push(`http://${ip}:${port}/api?${request}`)
         })
 
         /** 等待所有url计算完毕 */
         await Promise.all(asyncTasks)
-        e.reply([segment.at(e.user_id), `预计需要${urls.length * 0.05}分钟...`])
+        e.reply([segment.at(e.user_id), `预计需要${(urls.length * 0.02).toFixed(2)}分钟...`])
         await batchRequest(urls, e)
     }
-}
 
+    /** 每天凌晨检查当天是否存在角色生日 */
+    async taskMail() {
+        const cfg = Yaml.parse(fs.readFileSync(`${config}/birthdaymail.yaml`, 'utf8'))
 
+        /** 获取当前日期的月和日 */
+        const currentMonth = new Date().getMonth() + 1
+        const currentDay = new Date().getDate()
 
+        /** 收集所有符合条件的生日日期 */
+        const theRole = Object.keys(cfg).filter(key => {
+            const [month, day] = key.split('-').map(Number)
+            return month === currentMonth && day === currentDay
+        })
 
-/** 生日邮件 */
-const cfg = Yaml.parse(fs.readFileSync(`${config}/birthdaymail.yaml`, 'utf8'))
-const expressions = Object.keys(cfg).map((key) => {
-    const [month, day] = key.split('-')
-    return `01 00 ${day} ${month} *`
-})
+        /** 查看是否有需要推送的群聊 */
+        const Group = Yaml.parse(fs.readFileSync(`${config}/birthday.yaml`, 'utf8'))
 
-expressions.forEach((expression) => {
-    schedule.scheduleJob(expression, async () => {
-        await 生日邮件()
-    })
-})
-
-
-async function 生日邮件() {
-    const cfg = Yaml.parse(fs.readFileSync(`${config}/birthday.yaml`, 'utf8'))
-    const date = `${(new Date().getMonth() + 1).toString().padStart(2, '0')}-${new Date().getDate()}`
-
-    for (const key in cfg) {
-        const { mode, ip, port, region, sign } = cfg[key]
-        if (!mode) continue
-
-        let now = Math.floor(Date.now() / 1000)
-        const mail = Yaml.parse(fs.readFileSync(`${config}/birthdaymail.yaml`, 'utf8'))
-
-        const birthday = mail[date]
-        for (const keys in birthday) {
-            logger.mark(`检测到今天是${keys}生日...开始发送邮件`)
-            let uids
-            let filecontent = ''
-            const sender = keys
-            const title = birthday[keys].标题
-            const content = birthday[keys].内容
-            const item_list = birthday[keys].奖励
-
-            const cfgfile = Yaml.parse(fs.readFileSync(`${data}/group/${key}/config.yaml`, 'utf8'))
-            const stream = fs.createReadStream(`${data}/alluid/${cfgfile.server.ip}-${cfgfile.server.port}.yaml`, 'utf8')
-            stream.on('data', (chunk) => { filecontent += chunk })
-            await new Promise((resolve, reject) => {
-                stream.on('end', () => {
-                    const parsedContent = Yaml.parse(filecontent)
-                    uids = parsedContent
-                    resolve()
-                })
-
-                stream.on('error', (error) => {
-                    logger.mark("读取文件错误", error)
-                    reject(error)
-                })
-            })
-
-            const batchSize = 100 // 每批次发送的请求数量
-            const interval = 500 // 发送请求的时间间隔
-            const messages = []
-            const succ = []
-            const fail = []
-            let errorCount = 0
-            let responseCount = 0
-
-            for (let i = 0; i < uids.length; i += batchSize) {
-                const batch = uids.slice(i, i + batchSize)
-                const requests = batch.map(id => {
-                    const original = {
-                        cmd: '1005',
-                        uid: id,
-                        region: region,
-                        config_id: '0',
-                        content: content,
-                        expire_time: (now + (30 * 24 * 60 * 60)).toString(),
-                        importance: '0',
-                        is_collectible: "true",
-                        item_limit_type: '1',
-                        item_list: item_list,
-                        source_type: '0',
-                        tag: '0',
-                        sender: sender,
-                        title: title,
-                        ticket: `Zyy${now}`,
-                    }
-                    const url = Object.keys(original)
-                        .sort()
-                        .map(key => `${key}=${original[key]}`)
-                        .join('&')
-
-                    const newsign = `&sign=` + crypto.createHash('sha256').update(url + sign).digest('hex')
-
-                    const options = {
-                        host: ip,
-                        port: port,
-                        path: `/api?${encodeURI(url)}${newsign}`,
-                        method: 'GET',
-                        headers: {
-                            'Host': `${ip}:${port}`
-                        },
-                        timeout: 10000
-                    }
-                    return new Promise((resolve, reject) => {
-                        const req = http.request(options, res => {
-                            let data = ''
-                            res.on('data', chunk => {
-                                data += chunk
-                            })
-                            res.on('end', () => {
-                                resolve(data)
-                            })
-                        })
-                        req.setTimeout(100000, () => {
-                            req.abort()
-                        })
-                        req.on('error', error => {
-                            logger.mark(`请求错误:`, error)
-                            reject(error)
-                        })
-                        req.end()
-                    })
-                })
-                try {
-                    const responses = await Promise.allSettled(requests)
-                    for (const response of responses) {
-                        if (response.status === 'fulfilled') {
-                            const data = JSON.parse(response.value)
-                            const retcode = data.retcode
-                            if (retcode === 0) {
-                                succ.push(`\n成功 -> ${data.uid}`)
-                            }
-                            else if (retcode === -1) {
-                                fail.push(`失败 -> 发生未知错误`)
-                            }
-                            else if (retcode === 617) {
-                                fail.push(`失败 -> 物品数量超限`)
-                            }
-                            else if (retcode === 1002) {
-                                fail.push(`失败 -> ${data.msg.replace(/para error/g, '参数错误')}`)
-                            }
-                            else if (retcode === 1003) {
-                                fail.push(`失败 -> 服务器验证签名错误`)
-                            }
-                            else if (retcode === 1010) {
-                                fail.push(`失败 -> 服务器区服错误`)
-                            }
-                            else if (retcode === 1311) {
-                                fail.push(`失败 -> 禁止发送「创世结晶」`)
-                            }
-                            else if (retcode === 1312) {
-                                fail.push(`失败 -> 游戏货币超限`)
-                            }
-                            else if (retcode === 2006) {
-                                fail.push(`失败 -> 禁止重复发送邮件`)
-                            }
-                            else if (retcode === 2028) {
-                                fail.push(`失败 -> 邮件日期设置错误，请修改[expire_time]`)
-                            }
-                            else {
-                                fail.push(`失败 -> 请把此内容反馈给作者\n反馈内容：[msg:${data.msg} retcode:${data.retcode}]`)
-                            }
-                            messages.push({ id: data.uid, status: retcode })
-                        } else {
-                            logger.mark(`请求错误:`, response.reason)
-                            errorCount++
-                        }
-                    }
-
-                    responseCount += responses.length
-                    if (fail.length > 50) {
-                        logger.mark(`\n失败过多\n失败原因：\n${fail.slice(0, 10).join('\n')}\n失败原因仅展示前10个，完整请前往控制台查看\n当前批次请求错误数量超过50，已停止后续所有请求`)
-                        logger.mark('当前批次请求错误数量超过50，停止后续所有请求')
-                        break
-                    }
-
-                    // 1000个请求暂停发送响应
-                    if (responseCount >= 1000) {
-                        if (fail.length > 0) {
-                            logger.mark(`生日邮件发送中...\n玩家数量：${uids.length}\n请求成功：${messages.length}\n请求失败：${errorCount}\n发送成功：${succ.length}\n发送失败:${fail.length}\n失败原因：\n${fail.slice(0, 10).join('\n')}\n失败原因仅展示前10个，完整原因请前往控制台查看`)
-                        }
-                        else {
-                            logger.mark(`生日邮件发送中...\n玩家数量：${uids.length}\n请求成功：${messages.length}\n请求失败：${errorCount}\n发送成功：${succ.length}\n发送失败:${fail.length}`)
-                        }
-                        responseCount = 0
-                        await new Promise(resolve => setTimeout(resolve, 10000)) // 等待10秒钟
-                    }
-                } catch (error) {
-                    logger.mark.error(`请求错误:`, error)
-                    errorCount++
-                }
-                if (i + batchSize < uids.length) {
-                    await new Promise(resolve => setTimeout(resolve, interval))
+        for (const birthday of theRole) {
+            const names = Object.keys(cfg[birthday])
+            /** 存在多个角色的情况下 依次发送 */
+            for (const name of names) {
+                logger.mark(`今天是 ${name} 的生日~`)
+                for (const key in Group) {
+                    const { mode, ip, port, region, sign } = Group[key]
+                    /** 判断群聊是否开启推送 */
+                    if (mode) await festival(ip, port, region, sign, birthday, name)
+                    /** mode状态未开启跳出循环 */
+                    else continue
                 }
             }
-            logger.mark(`失败原因：`, fail)
-            logger.mark(`服务器 ${ip} 生日邮件发送完毕...\n玩家数量：${uids.length}\n请求成功：${messages.length}\n请求失败：${errorCount}\n发送成功：${succ.length}\n发送失败:${fail.length}`)
-            now++
         }
     }
 }
 
-/** 向MuipServer发送请求 */
+
+async function festival(ip, port, region, sign, birthday, name) {
+    state = true
+    /** 获取全服uid */
+    const uids = await allUid(ip, port)
+
+    /** 读取角色对应文案构成邮件参数 */
+    const cfg = Yaml.parse(fs.readFileSync(`${config}/birthdaymail.yaml`, 'utf8'))
+
+    const sender = name
+    const collection = true
+    const title = cfg[birthday][name].标题
+    const content = cfg[birthday][name].内容
+    const item_list = cfg[birthday][name].奖励
+    const now = Math.floor(Date.now() / 1000)
+    const expire_time = (now + (365 * 24 * 60 * 60)).toString()
+
+    /** 计算url并存储到urls里面，准备开始请求 */
+    const urls = []
+
+    const asyncTasks = uids.map(async uid => {
+        const ticket = `Zyy955${uid}${moment().format('YYYYMMDDHHmmss')}`
+        const request = await ComputeMail(uid, region, content, expire_time,
+            item_list, sender, title, ticket, sign, collection)
+        urls.push(`http://${ip}:${port}/api?${request}`)
+    })
+
+    /** 等待所有url计算完毕 */
+    await Promise.all(asyncTasks)
+    logger.mark(`预计需要${(urls.length * 0.01).toFixed(2)}分钟...`)
+    const e = false
+    await batchRequest(urls, e)
+}
+
+/** 使用可读流解析全服uid */
+async function allUid(ip, port) {
+    let uids
+    let filecontent = ''
+    const file = `${data}/alluid/${ip}-${port}.yaml`
+
+    /** 添加检测防止崩溃 */
+    if (!fs.existsSync(file)) fs.writeFileSync(file, ' - "0"\n')
+
+    const stream = fs.createReadStream(file, 'utf8')
+    stream.on('data', (chunk) => { filecontent += chunk })
+    await new Promise((resolve, reject) => {
+        stream.on('end', () => {
+            uids = Yaml.parse(filecontent)
+            resolve()
+        })
+        stream.on('error', (error) => {
+            logger.mark("读取文件错误", error)
+            reject(error)
+        })
+    })
+
+    return uids
+}
+
+/** 向MuipServer批量发送请求 */
 async function batchRequest(urls, e) {
-    let time = 10
+    let time = 20
     const succs = []
     const fails = []
     const Timeout = []
@@ -289,12 +197,12 @@ async function batchRequest(urls, e) {
             /** 从请求的url中提取uid */
             const uid = url.match(/uid=(\d+)/)[1]
 
+            /** 设置延迟，muipserver响应过慢直接中断 */
             const result = await Promise.race([
                 fetch(url).then(response => response.json()),
                 new Promise((_, reject) => setTimeout(() => reject(new Error(`超过3秒未响应：${uid}`)), 3000))
             ])
-
-            console.log(result)
+            logger.debug(result)
 
             /** 将响应结果可视化处理 */
             const { succ, fail } = await dispose(result, uid)
@@ -303,25 +211,44 @@ async function batchRequest(urls, e) {
 
             /** 处理请求间隔，当达到100的倍数，等待1s */
             const count = Timeout.length + fails.length + succs.length
-            time = count % 100 === 0 ? 1000 : 10
-
-            /** 将请求失败+响应失败的数量相加，达到50则停止后续请求 */
-            if ((Timeout.length + fails.length) >= 50)
-                return e.reply([segment.at(e.user_id), "错误超过50，以停止后续请求"])
-
-            /** 请求间隔 */
+            time = count % 100 === 0 ? 1000 : 20
             await new Promise(resolve => setTimeout(resolve, time))
         } catch (error) {
+            logger.debug(error.message)
             Timeout.push(`请求错误：${error.message}`)
         }
-    }
-    if (urls.length >= 1000) {
 
+        /** 将请求失败+响应失败的数量相加，达到50则停止后续请求 */
+        if ((Timeout.length + fails.length) >= 50) {
+            logger.error("错误指令 fails", fails)
+            logger.error("请求错误 Timeout：", Timeout)
+            const msg = `${fails.join('\n').trim()}${Timeout.join('\n').trim()}`
+            const reply = `错误次数过多\n详细错误：\n${msg}\n\n已停止继续发送，请检查指令~`
+            if (!e) return logger.mark(reply)
+            else return e.reply([segment.at(e.user_id), `\n${reply}`])
+        }
     }
-    if (urls.length === (Timeout.length + fails.length + succs.length)) {
-        console.log("succs:", succs)
-        console.log("fails:", fails)
-        console.log("Timeout:", Timeout)
+
+    /** 求和 */
+    const sum = Timeout.length + fails.length + succs.length
+
+    /** 当请求数量为100的倍数，控制台打印进度 */
+    if (sum > 0 && sum % 100 === 0) {
+        logger.mark(`总请求：${urls.length} 已发送：${sum} 待发送：${urls.length - sum} 发送成功：${succs.length}`)
+    }
+
+    /** 发送完毕进行回复 */
+    if (urls.length === sum) {
+        const msg = `总请求：${urls.length}\n成功：${succs.length}\n失败：${fails.length}\n请求错误：${Timeout.length}`
+        state = false
+
+        /** 输出错误日志~ */
+        logger.error("错误指令 fails", fails)
+        logger.error("请求错误 Timeout：", Timeout)
+
+        /** Miaozai的频道插件没测试过是否可以进行主动发消息 */
+        if (!e) return logger.mark(`发送完毕...\n${msg}`)
+        else return Bot.pickGroup(e.group_id).sendMsg([segment.at(e.user_id), `发送完毕...\n${msg}`])
     }
 }
 
@@ -346,7 +273,7 @@ async function dispose(data, uid) {
         647: "失败 -> 返回物品数量为0",
         661: "失败 -> 树脂超过限制",
         860: `失败：${datamsg}  ->  ${uid}\n原因：活动已关闭`,
-        1002: `失败 -> ${data.msg.replace(/para error/g, '参数错误')}`,
+        1002: `失败 -> 参数错误 ${uid}`,
         1003: "失败 -> 服务器验证签名错误",
         1010: "失败 -> 服务器区服不匹配",
         1117: "失败 -> 未达到副本要求等级",
@@ -359,8 +286,10 @@ async function dispose(data, uid) {
         2006: "失败 -> 禁止重复发送邮件",
         2028: "失败 -> 邮件日期设置错误，请修改「expire_time」",
         8002: "失败 -> 传说钥匙超过限制",
-        "-1": "失败 -> 发生未知错误"
+        "-1": `失败 -> 发生未知错误 ${uid}`
     }
+
+    /** 根据状态码判断对应内容 进行可视化处理 */
     if (retcode === 0) {
         succ.push(`成功：${datamsg}  ->  ${uid}`)
     } else if (ErrorCode.hasOwnProperty(retcode)) {
@@ -368,5 +297,6 @@ async function dispose(data, uid) {
     } else {
         fail.push(`失败 -> 请把此内容反馈给作者\nUID:${uid}\n反馈内容：\n${data}`)
     }
+
     return { succ, fail }
 }
